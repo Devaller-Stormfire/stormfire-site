@@ -1,21 +1,49 @@
 {
-  "updated_at": "02.03.2026 22:30 CET",
-  "global_status": "offline",
-  "players_now": 0,
-  "factions": {
-    "faction1_name": "Drachenbund",
-    "faction2_name": "Wolfsmark",
-    "faction1_players": 0,
-    "faction2_players": 0
+  "updated_at": "2026-03-02T22:30:00+01:00",
+  "global": {
+    "status": "online",
+    "message": "Website live. Mirror Integration in Arbeit.",
+    "players_now": 12,
+    "players_peak24h": 18
   },
-  "servers": [
+  "factions": [
+    { "id": "drachenbund", "name": "Drachenbund", "players_now": 7 },
+    { "id": "wolfsmark",   "name": "Wolfsmark",   "players_now": 5 }
+  ],
+  "realms": [
     {
-      "name": "Stormfire-01",
+      "id": "ewiger-bund",
+      "name": "Ewiger Bund",
       "region": "EU-DE",
-      "status": "offline",
-      "players": 0,
-      "faction1": 0,
-      "faction2": 0
+      "status": "online",
+      "message": "Stabil",
+      "uptime": "0h",
+      "players_now": 12,
+      "factions": {
+        "drachenbund": 7,
+        "wolfsmark": 5
+      },
+      "endpoints": {
+        "game": "stormfire-01.stormfire.dev:7777",
+        "query": "stormfire-01.stormfire.dev:7778"
+      }
+    },
+    {
+      "id": "testrealm",
+      "name": "Testrealm",
+      "region": "EU-DE",
+      "status": "maintenance",
+      "message": "Wartung / interne Tests",
+      "uptime": "0h",
+      "players_now": 0,
+      "factions": {
+        "drachenbund": 0,
+        "wolfsmark": 0
+      },
+      "endpoints": {
+        "game": "test-01.stormfire.dev:7777",
+        "query": "test-01.stormfire.dev:7778"
+      }
     }
   ]
 }
