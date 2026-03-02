@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>STORMFIRE – Leaderboard</title>
+  <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+<body>
+  <canvas id="astral"></canvas>
+
+  <div class="page">
+    <header>
+      <div class="brand">
+        <img src="/assets/img/logo.png" alt="STORMFIRE Logo" />
+        <div class="title">
+          <strong>STORMFIRE</strong>
+          <span>Leaderboard</span>
+        </div>
+      </div>
+
+      <nav>
+        <a class="navbtn" href="/status.html">Status</a>
+        <a class="navbtn active" href="/leaderboard.html">Leaderboard</a>
+        <a class="navbtn" href="/impressum.html">Impressum</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="hero">
+        <div>
+          <h1>Top 5 Ranglisten</h1>
+          <p>PvP, Damage, Gold und Playtime – direkt aus <span class="small">/data/leaderboard.json</span>.</p>
+        </div>
+        <div class="badge">
+          <span class="dot good"></span>
+          <span id="lbUpdated">Lädt…</span>
+        </div>
+      </div>
+
+      <section class="grid">
+        <article class="card">
+          <div class="hd">
+            <h2>Top 5 PvP</h2>
+            <span class="small">Rating</span>
+          </div>
+          <div class="bd">
+            <table class="table" id="tblPvp">
+              <thead>
+                <tr>
+                  <th class="rank">#</th>
+                  <th>Name</th>
+                  <th>Fraktion</th>
+                  <th>Rating</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="hd">
+            <h2>Most Damage</h2>
+            <span class="small">Total</span>
+          </div>
+          <div class="bd">
+            <table class="table" id="tblDmg">
+              <thead>
+                <tr>
+                  <th class="rank">#</th>
+                  <th>Name</th>
+                  <th>Klasse</th>
+                  <th>Damage</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="hd">
+            <h2>Most Gold</h2>
+            <span class="small">Total</span>
+          </div>
+          <div class="bd">
+            <table class="table" id="tblGold">
+              <thead>
+                <tr>
+                  <th class="rank">#</th>
+                  <th>Name</th>
+                  <th>Realm</th>
+                  <th>Gold</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="hd">
+            <h2>Most Playtime</h2>
+            <span class="small">Stunden</span>
+          </div>
+          <div class="bd">
+            <table class="table" id="tblPlaytime">
+              <thead>
+                <tr>
+                  <th class="rank">#</th>
+                  <th>Name</th>
+                  <th>Level</th>
+                  <th>Stunden</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="card" style="grid-column: span 12;">
+          <div class="hd">
+            <h2>Hinweis</h2>
+            <span class="small">Dev Phase</span>
+          </div>
+          <div class="bd">
+            <div class="pill">
+              <b>Info</b>
+              <span class="small">Solange das Spiel offline ist, sind die Werte Demo. Sobald ihr Serverdaten habt, könnt ihr <code>/data/leaderboard.json</code> automatisiert updaten (z.B. via GitHub Action).</span>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      © STORMFIRE — Leaderboard UI • Datenquelle: <span class="small">/data/leaderboard.json</span>
+    </footer>
+  </div>
+
+  <script src="/assets/js/common.js"></script>
+  <script src="/assets/js/leaderboard.js"></script>
+</body>
+</html>
