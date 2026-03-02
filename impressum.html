@@ -1,50 +1,101 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Impressum – STORMFIRE</title>
-<style>
-body{
-    margin:0;
-    font-family:Arial;
-    background:#000;
-    color:white;
-    padding:40px;
-}
-a{color:#ff7a00;}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>STORMFIRE – Impressum</title>
+  <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
 <body>
+  <canvas id="astral"></canvas>
 
-<h1>Impressum</h1>
+  <div class="page">
+    <header>
+      <div class="brand">
+        <img src="/assets/img/logo.png" alt="STORMFIRE Logo" />
+        <div class="title">
+          <strong>STORMFIRE</strong>
+          <span>Impressum</span>
+        </div>
+      </div>
 
-<p>
-Angaben gemäß § 5 TMG
-</p>
+      <nav>
+        <a class="navbtn" href="/status.html">Status</a>
+        <a class="navbtn" href="/leaderboard.html">Leaderboard</a>
+        <a class="navbtn active" href="/impressum.html">Impressum</a>
+      </nav>
+    </header>
 
-<p>
-Denis Toni Güven<br>
-Projekt: STORMFIRE<br>
-Deutschland
-</p>
+    <main>
+      <div class="hero">
+        <div>
+          <h1>Impressum</h1>
+          <p>Rechtliche Hinweise & Kontakt – Stand: <span class="small">Spiel in Entwicklung</span>.</p>
+        </div>
+        <div class="badge">
+          <span class="dot warn"></span>
+          <span>In Development</span>
+        </div>
+      </div>
 
-<p>
-E-Mail: team@stormfire.dev
-</p>
+      <section class="grid">
+        <article class="card" style="grid-column: span 12;">
+          <div class="hd">
+            <h2>Rechte</h2>
+            <span class="small">Copyright</span>
+          </div>
+          <div class="bd">
+            <div class="kpi" style="grid-template-columns: 1fr;">
+              <div class="box">
+                <div class="label">Alle Rechte</div>
+                <div class="value glow">Denis Toni Güven</div>
+                <div class="small">Hinweis: STORMFIRE ist ein Projekt in Entwicklung. Inhalte können sich ändern.</div>
+              </div>
+            </div>
+          </div>
+        </article>
 
-<p>
-Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:<br>
-Denis Toni Güven
-</p>
+        <article class="card">
+          <div class="hd">
+            <h2>Kontakt</h2>
+            <span class="small">Platzhalter</span>
+          </div>
+          <div class="bd">
+            <div class="kpi" style="grid-template-columns: 1fr;">
+              <div class="box">
+                <div class="label">E-Mail</div>
+                <div class="value">contact@stormfire.dev</div>
+                <div class="small">(Platzhalter – hier später echte Kontaktadresse eintragen)</div>
+              </div>
+              <div class="box">
+                <div class="label">Adresse</div>
+                <div class="value">[Platzhalter Straße 1]</div>
+                <div class="small">[PLZ] [Stadt], Deutschland</div>
+              </div>
+            </div>
+          </div>
+        </article>
 
-<p>
-© 2026 Denis Toni Güven – Alle Rechte vorbehalten
-</p>
+        <article class="card">
+          <div class="hd">
+            <h2>Hinweis</h2>
+            <span class="small">Development</span>
+          </div>
+          <div class="bd">
+            <div class="pill">
+              <b>Info</b>
+              <span class="small">Spiel in Entwicklung – Features, Balance und Systeme sind Work in Progress. Diese Website dient als Showcase & Dev-Status.</span>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
 
-<p>
-<a href="index.html">Zurück zur Startseite</a>
-</p>
+    <footer>
+      © STORMFIRE — Impressum • „Spiel in Entwicklung“
+    </footer>
+  </div>
 
+  <script src="/assets/js/common.js"></script>
 </body>
 </html>
