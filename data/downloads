@@ -1,0 +1,23 @@
+{
+  "current": {
+    "version": "0.0.1",
+    "build": "DEVLOG-1",
+    "buttonText": "STORMFIRE Launcher herunterladen",
+    "url": "downloads/StormfireLauncher_0.0.1.zip"
+  },
+  "patches": [
+    {
+      "title": "Devlog #1 – Der erste Funke",
+      "date": "2026-03-02",
+      "version": "0.0.1",
+      "items": [
+        "Website-Grundgerüst steht – STORMFIRE ist jetzt offiziell online.",
+        "Launcher-Entwicklung gestartet: News & Updates direkt im Launcher geplant.",
+        "Mirror-Integration läuft: Multiplayer-Fundament wird gerade festgezogen.",
+        "Login/Register + Realm-Auswahl stabil; Character Create/Select fast fertig.",
+        "Rassen aktuell als T-Pose-Import (Animationen folgen).",
+        "Nächster Schritt: Mirror sauber abschließen → danach Datenbank (Account/Charakter)."
+      ]
+    }
+  ]
+}
