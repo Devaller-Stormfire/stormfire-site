@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>STORMFIRE – Download</title>
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script defer src="assets/js/download.js"></script>
+</head>
+
+<body class="sf-body">
+  <!-- Astral Background -->
+  <div class="sf-astral" aria-hidden="true"></div>
+
+  <header class="sf-header">
+    <a class="sf-brand" href="index.html">
+      <img class="sf-logo" src="assets/img/logo.png" alt="STORMFIRE Logo" />
+      <div class="sf-brand-text">
+        <div class="sf-title">STORMFIRE</div>
+        <div class="sf-subtitle">Launcher & Updates</div>
+      </div>
+    </a>
+
+    <nav class="sf-nav">
+      <a href="index.html">Home</a>
+      <a class="active" href="download.html">Download</a>
+      <a href="status.html">Serverstatus</a>
+      <a href="leaderboard.html">Ranglisten</a>
+    </nav>
+  </header>
+
+  <main class="sf-container">
+    <section class="sf-card sf-hero">
+      <div class="sf-hero-left">
+        <h1>Hol dir den Launcher</h1>
+        <p class="sf-muted">
+          Der STORMFIRE Launcher bringt dir Updates, News & Patchnotes direkt nach Hause – ohne dass du ständig die Website öffnen musst.
+        </p>
+
+        <div class="sf-download-box">
+          <div class="sf-row">
+            <div>
+              <div class="sf-label">Aktuelle Version</div>
+              <div id="dlVersion" class="sf-value">lädt…</div>
+            </div>
+            <div>
+              <div class="sf-label">Build</div>
+              <div id="dlBuild" class="sf-value">lädt…</div>
+            </div>
+          </div>
+
+          <a id="dlButton" class="sf-btn sf-btn-primary" href="#" download>
+            Launcher herunterladen
+          </a>
+
+          <div id="dlHint" class="sf-hint">
+            Tipp: Wenn Windows meckert, erst „Weitere Informationen“ → „Trotzdem ausführen“ (nur solange wir noch im Test sind).
+          </div>
+        </div>
+      </div>
+
+      <div class="sf-hero-right">
+        <div class="sf-roadmap-wrap">
+          <div class="sf-label">Aktuelle Roadmap</div>
+          <img class="sf-roadmap" src="assets/img/roadmap.png" alt="STORMFIRE Roadmap" />
+        </div>
+      </div>
+    </section>
+
+    <section class="sf-card">
+      <h2>Patchnotes</h2>
+      <div id="patchList" class="sf-patchlist">
+        lädt…
+      </div>
+    </section>
+
+    <section class="sf-card">
+      <h2>System-Infos</h2>
+      <ul class="sf-list">
+        <li><b>Windows:</b> 10/11 (64-bit)</li>
+        <li><b>Internet:</b> benötigt (Login/Server)</li>
+        <li><b>Status:</b> aktuell Testphase (Family & Friends)</li>
+      </ul>
+    </section>
+
+    <footer class="sf-footer">
+      <div>© <span id="year"></span> STORMFIRE • Alle Rechte: Denis Toni Güven</div>
+      <div class="sf-muted">Impressum kommt auf einer separaten Seite (impressum.html).</div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
