@@ -3,393 +3,157 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>News – STORMFIRE</title>
+  <title>STORMFIRE – Home</title>
+  <link rel="icon" href="/assets/img/logo.png" />
 
-  <style>
-    :root{
-      --bg0:#000814;
-      --bg1:#020a14;
-      --card:rgba(255,255,255,0.06);
-      --card2:rgba(0,0,0,0.35);
-      --border:rgba(255,255,255,0.12);
-      --text:#e9f2ff;
-      --muted:rgba(233,242,255,0.72);
-      --fire:#ff8a00;
-      --storm:#4cc9ff;
-      --good:#46ff9a;
-      --bad:#ff4d4d;
-      --warn:#ffd166;
-      --shadow: 0 18px 60px rgba(0,0,0,0.55);
-      --radius: 18px;
-      --max: 1100px;
-    }
-
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--text);
-      background: radial-gradient(circle at 50% 20%, #14213d 0%, var(--bg0) 45%, #000 100%);
-      overflow-x:hidden;
-    }
-
-    /* Animated Astral Fog */
-    body::before{
-      content:"";
-      position:fixed;
-      inset:-60%;
-      background:
-        radial-gradient(circle, rgba(76,201,255,0.16) 0%, transparent 62%),
-        radial-gradient(circle, rgba(255,138,0,0.14) 0%, transparent 60%),
-        radial-gradient(circle, rgba(130,87,229,0.10) 0%, transparent 62%);
-      filter: blur(1px);
-      animation: astralMove 26s linear infinite;
-      z-index:-2;
-    }
-    @keyframes astralMove{
-      0%{transform:rotate(0deg) scale(1.05)}
-      100%{transform:rotate(360deg) scale(1.05)}
-    }
-
-    /* Starfield */
-    .stars{
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      z-index:-1;
-      opacity:0.7;
-      background-image:
-        radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.7) 40%, transparent 41%),
-        radial-gradient(1px 1px at 80% 15%, rgba(255,255,255,0.55) 40%, transparent 41%),
-        radial-gradient(1px 1px at 10% 75%, rgba(255,255,255,0.5) 40%, transparent 41%),
-        radial-gradient(2px 2px at 65% 60%, rgba(255,255,255,0.6) 40%, transparent 41%),
-        radial-gradient(1px 1px at 40% 55%, rgba(255,255,255,0.45) 40%, transparent 41%),
-        radial-gradient(2px 2px at 90% 80%, rgba(255,255,255,0.55) 40%, transparent 41%);
-      animation: twinkle 6s ease-in-out infinite alternate;
-    }
-    @keyframes twinkle{
-      from{opacity:0.55}
-      to{opacity:0.85}
-    }
-
-    a{color:var(--storm); text-decoration:none}
-    a:hover{opacity:0.9}
-
-    .wrap{
-      max-width:var(--max);
-      margin:0 auto;
-      padding: 28px 16px 70px;
-    }
-
-    .topbar{
-      display:flex;
-      gap:18px;
-      align-items:center;
-      justify-content:space-between;
-      padding: 14px 14px;
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.25));
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-    }
-
-    .brand{
-      display:flex;
-      gap:14px;
-      align-items:center;
-      min-width: 220px;
-    }
-
-    .logo{
-      width:54px;
-      height:54px;
-      border-radius: 14px;
-      border:1px solid rgba(255,255,255,0.18);
-      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-      object-fit:cover;
-      background:#111;
-    }
-
-    .brand h1{
-      font-size:18px;
-      margin:0;
-      letter-spacing:0.6px;
-      line-height:1.1;
-    }
-    .brand .tag{
-      font-size:12px;
-      color:var(--muted);
-      margin-top:4px;
-    }
-
-    .nav{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-    .nav a{
-      padding:10px 12px;
-      border:1px solid var(--border);
-      border-radius: 14px;
-      background: rgba(255,255,255,0.04);
-      color: var(--text);
-      font-size: 13px;
-    }
-    .nav a:hover{border-color: rgba(76,201,255,0.35); background: rgba(76,201,255,0.08);}
-
-    .hero{
-      margin-top:18px;
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      overflow:hidden;
-      box-shadow: var(--shadow);
-      background: linear-gradient(135deg, rgba(255,138,0,0.10), rgba(76,201,255,0.08));
-      position:relative;
-    }
-    .hero::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: radial-gradient(circle at 20% 20%, rgba(255,138,0,0.22), transparent 45%),
-                  radial-gradient(circle at 70% 35%, rgba(76,201,255,0.18), transparent 50%),
-                  radial-gradient(circle at 50% 100%, rgba(130,87,229,0.14), transparent 55%);
-      pointer-events:none;
-      mix-blend-mode: screen;
-    }
-    .hero-inner{
-      padding: 22px 18px;
-      position:relative;
-      z-index:1;
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:14px;
-      flex-wrap:wrap;
-    }
-    .hero-title{
-      font-size: 26px;
-      margin: 0 0 8px;
-      letter-spacing: 0.6px;
-      text-shadow: 0 10px 35px rgba(0,0,0,0.75);
-    }
-    .hero-sub{
-      margin:0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.55;
-      max-width: 920px;
-    }
-
-    .pill{
-      font-size:12px;
-      padding: 7px 10px;
-      border:1px solid rgba(255,255,255,0.14);
-      border-radius: 999px;
-      background: rgba(255,255,255,0.04);
-      color: var(--muted);
-      white-space:nowrap;
-    }
-
-    .controls{
-      margin-top:16px;
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.25));
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-      padding: 12px 12px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-      justify-content:space-between;
-    }
-
-    .leftControls, .rightControls{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      flex-wrap:wrap;
-    }
-
-    .input{
-      padding: 10px 12px;
-      border-radius: 14px;
-      border:1px solid rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.04);
-      color: var(--text);
-      outline:none;
-      min-width: 260px;
-      max-width: 540px;
-    }
-    .select{
-      padding: 10px 12px;
-      border-radius: 14px;
-      border:1px solid rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.04);
-      color: var(--text);
-      outline:none;
-    }
-
-    .btn{
-      display:inline-block;
-      padding: 10px 14px;
-      border-radius: 14px;
-      border:1px solid rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.05);
-      color: var(--text);
-      font-size: 13px;
-      cursor:pointer;
-      user-select:none;
-    }
-    .btn:hover{border-color: rgba(255,138,0,0.35); background: rgba(255,138,0,0.10);}
-
-    .grid{
-      margin-top:16px;
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-
-    .card{
-      border:1px solid rgba(255,255,255,0.10);
-      border-radius: 16px;
-      background: rgba(0,0,0,0.28);
-      padding: 14px 14px;
-    }
-
-    .postTop{
-      display:flex;
-      gap:12px;
-      justify-content:space-between;
-      align-items:flex-start;
-      flex-wrap:wrap;
-    }
-    .postTitle{
-      margin:0;
-      font-size: 16px;
-      font-weight: 900;
-      letter-spacing: 0.2px;
-    }
-    .postMeta{
-      color: var(--muted);
-      font-size: 12px;
-      white-space:nowrap;
-      margin-top: 2px;
-    }
-
-    .tags{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      margin-top:10px;
-    }
-    .tag{
-      font-size:12px;
-      padding: 6px 10px;
-      border:1px solid rgba(255,255,255,0.14);
-      border-radius: 999px;
-      background: rgba(255,255,255,0.04);
-      color: rgba(233,242,255,0.9);
-    }
-
-    .postBody{
-      margin: 10px 0 0;
-      color: rgba(233,242,255,0.86);
-      font-size: 13px;
-      line-height: 1.65;
-      white-space: pre-wrap;
-    }
-
-    .hint{
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.45;
-    }
-
-    .footer{
-      margin-top: 18px;
-      color: var(--muted);
-      font-size: 12px;
-      text-align:center;
-      padding: 10px 0;
-    }
-  </style>
+  <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
-
 <body>
-  <div class="stars"></div>
+  <canvas id="astral"></canvas>
 
-  <div class="wrap">
-    <!-- TOPBAR -->
-    <div class="topbar">
+  <div class="page">
+    <header>
       <div class="brand">
-        <img class="logo" src="assets/logo.png" alt="STORMFIRE Logo" onerror="this.src='assets/logo.jpg';" />
-        <div>
-          <h1>STORMFIRE</h1>
-          <div class="tag">Dev Logs • News • Patchnotes</div>
+        <img src="/assets/img/logo.png" alt="STORMFIRE Logo" />
+        <div class="title">
+          <strong>STORMFIRE</strong>
+          <span>Dev Logs • News • Patchnotes</span>
         </div>
       </div>
 
-      <div class="nav">
-        <a href="index.html">Home</a>
-        <a href="news.html" style="border-color: rgba(76,201,255,0.35); background: rgba(76,201,255,0.08);">News</a>
-        <a href="download.html">Launcher Download</a>
-        <a href="rankings.html">Rankings</a>
-        <a href="impressum.html">Impressum</a>
-      </div>
-    </div>
+      <nav>
+        <a class="navbtn active" href="/index.html">Home</a>
+        <a class="navbtn" href="/news.html">News</a>
+        <a class="navbtn" href="/download.html">Launcher Download</a>
+        <a class="navbtn" href="/leaderboard.html">Rankings</a>
+        <a class="navbtn" href="/impressum.html">Impressum</a>
+      </nav>
+    </header>
 
-    <!-- HERO -->
-    <div class="hero">
-      <div class="hero-inner">
+    <main>
+      <div class="hero">
         <div>
-          <h2 class="hero-title">STORMFIRE News</h2>
-          <p class="hero-sub">
-            Alles kommt aus <b>data/news.json</b>. Du fügst neue Posts nur noch dort hinzu – Website & Launcher lesen das automatisch.
-          </p>
+          <h1>Willkommen in STORMFIRE</h1>
+          <p>Der Astralstrom erwacht. Hier findest du den aktuellen Entwicklungsstand, News und später Live-Status & Rankings.</p>
         </div>
-        <div class="pill" id="updatedPill">lädt…</div>
-      </div>
-    </div>
 
-    <!-- CONTROLS -->
-    <div class="controls">
-      <div class="leftControls">
-        <input class="input" id="searchInput" placeholder="Suchen (Titel, Text, Tags)..." />
-        <select class="select" id="typeSelect">
-          <option value="all">Alle Typen</option>
-          <option value="devlog">Devlog</option>
-          <option value="news">News</option>
-          <option value="patch">Patch</option>
-        </select>
+        <div class="badge" id="homeBadge">
+          <span class="dot warn" id="homeDot"></span>
+          <span id="homeDotText">Dev Build</span>
+        </div>
       </div>
 
-      <div class="rightControls">
-        <span class="pill" id="countPill">0 Posts</span>
-        <button class="btn" id="reloadBtn" type="button">Neu laden</button>
-      </div>
-    </div>
+      <section class="grid">
+        <article class="card">
+          <div class="hd">
+            <h2>Server Status</h2>
+            <span class="small" id="statusUpdated">—</span>
+          </div>
+          <div class="bd">
+            <div class="kpi">
+              <div class="box">
+                <div class="label">Realm</div>
+                <div class="value glow" id="realmName">—</div>
+              </div>
+              <div class="box">
+                <div class="label">Online</div>
+                <div class="value glow" id="playersOnline">—</div>
+              </div>
+              <div class="box">
+                <div class="label">Fraktion 1</div>
+                <div class="value" id="f1">—</div>
+              </div>
+              <div class="box">
+                <div class="label">Fraktion 2</div>
+                <div class="value" id="f2">—</div>
+              </div>
+            </div>
+          </div>
+        </article>
 
-    <!-- POSTS -->
-    <div class="grid" id="postsGrid">
-      <div class="hint">News werden geladen…</div>
-    </div>
+        <article class="card">
+          <div class="hd">
+            <h2>Letzter Post</h2>
+            <span class="small" id="newsUpdated">—</span>
+          </div>
+          <div class="bd">
+            <div id="latestPost" class="small">Lädt…</div>
+            <div style="margin-top:12px;">
+              <a class="navbtn" href="/news.html">Zu allen News</a>
+            </div>
+          </div>
+        </article>
 
-    <div class="footer">
+        <article class="card" style="grid-column: span 12;">
+          <div class="hd">
+            <h2>Hinweis</h2>
+            <span class="small">Projekt in Entwicklung</span>
+          </div>
+          <div class="bd">
+            <div class="pill">
+              <b>Info</b>
+              <span class="small">Spiel in Entwicklung. Inhalte können sich ändern. Keine Gameplay-Vorteile durch Website.</span>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
       © <span id="year"></span> STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)
-    </div>
+    </footer>
   </div>
 
+  <script src="/assets/js/common.js"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // -----------------------------
-    // Safe HTML
-    // -----------------------------
+    const $ = (id) => document.getElementById(id);
+
+    function setDot(state){
+      const dot = $("homeDot");
+      dot.classList.remove("good","warn","bad");
+      if(state==="online") dot.classList.add("good");
+      else if(state==="maintenance") dot.classList.add("warn");
+      else dot.classList.add("bad");
+    }
+
+    async function loadHome(){
+      // Status
+      try{
+        const s = await window.sf.fetchJSON("/data/status.json");
+        $("statusUpdated").textContent = "Update: " + window.sf.formatTime(s.lastUpdated);
+        $("realmName").textContent = s.realm?.name || "—";
+        $("playersOnline").textContent = window.sf.formatNumber(s.playersOnline);
+        $("f1").textContent = s.factions?.[0]?.name || "—";
+        $("f2").textContent = s.factions?.[1]?.name || "—";
+
+        setDot(s.status || "offline");
+        $("homeDotText").textContent = (s.status || "offline").toUpperCase();
+      }catch(e){
+        $("statusUpdated").textContent = "Status nicht verfügbar";
+        setDot("offline");
+        $("homeDotText").textContent = "OFFLINE";
+      }
+
+      // Latest news
+      try{
+        const n = await window.sf.fetchJSON("/data/news.json");
+        $("newsUpdated").textContent = "Update: " + (n.updated_at || "—");
+        const posts = Array.isArray(n.posts) ? n.posts.slice() : [];
+        posts.sort((a,b) => String(b?.date ?? "").localeCompare(String(a?.date ?? "")));
+        const p = posts[0];
+        $("latestPost").innerHTML = p
+          ? `<div style="font-weight:800; font-size:14px; margin-bottom:6px;">${escapeHtml(p.title || "Ohne Titel")}</div>
+             <div class="small">${escapeHtml((p.date||"") + (p.author ? " • " + p.author : ""))}</div>
+             <div style="margin-top:10px; white-space:pre-wrap;">${escapeHtml((p.body||"").slice(0, 280))}${(p.body||"").length>280 ? "…" : ""}</div>`
+          : "Noch keine Posts.";
+      }catch(e){
+        $("newsUpdated").textContent = "News nicht verfügbar";
+        $("latestPost").textContent = "Konnte News nicht laden.";
+      }
+    }
+
     function escapeHtml(str){
       return String(str ?? "")
         .replaceAll("&","&amp;")
@@ -399,134 +163,7 @@
         .replaceAll("'","&#039;");
     }
 
-    // -----------------------------
-    // State
-    // -----------------------------
-    let allPosts = [];
-
-    // -----------------------------
-    // Fetch JSON (friendly to GitHub Pages)
-    // - cache-busting nur 1x pro Minute, damit GitHub nicht gespammt wird
-    // -----------------------------
-    async function fetchJson(url){
-      const bust = "v=" + Math.floor(Date.now() / 60000);
-      const fullUrl = url + (url.includes("?") ? "&" : "?") + bust;
-
-      const res = await fetch(fullUrl, { cache: "force-cache", credentials: "omit" });
-      if(!res.ok) throw new Error(url + " HTTP " + res.status);
-      return res.json();
-    }
-
-    // -----------------------------
-    // Load news.json (v1.0)
-    // Erwartet:
-    // {
-    //   "updated_at": "...",
-    //   "posts": [ { id,type,title,date,author,tags[],body } ]
-    // }
-    // -----------------------------
-    async function loadNews(){
-      const grid = document.getElementById("postsGrid");
-      grid.innerHTML = '<div class="hint">News werden geladen…</div>';
-
-      const data = await fetchJson("data/news.json");
-
-      const updated = data?.updated_at ?? "";
-      document.getElementById("updatedPill").textContent = updated ? ("Update: " + updated) : "Update: —";
-
-      const posts = Array.isArray(data?.posts) ? data.posts : [];
-      // Sort: neuestes Datum zuerst (fallback: original Reihenfolge)
-      posts.sort((a,b) => String(b?.date ?? "").localeCompare(String(a?.date ?? "")));
-
-      allPosts = posts;
-      render();
-    }
-
-    // -----------------------------
-    // Render filtered
-    // -----------------------------
-    function render(){
-      const grid = document.getElementById("postsGrid");
-      const q = String(document.getElementById("searchInput").value ?? "").trim().toLowerCase();
-      const type = String(document.getElementById("typeSelect").value ?? "all").toLowerCase();
-
-      let filtered = allPosts;
-
-      if(type !== "all"){
-        filtered = filtered.filter(p => String(p?.type ?? "").toLowerCase() === type);
-      }
-
-      if(q){
-        filtered = filtered.filter(p => {
-          const title = String(p?.title ?? "").toLowerCase();
-          const body = String(p?.body ?? "").toLowerCase();
-          const tags = Array.isArray(p?.tags) ? p.tags.join(" ").toLowerCase() : "";
-          return title.includes(q) || body.includes(q) || tags.includes(q);
-        });
-      }
-
-      document.getElementById("countPill").textContent = filtered.length + " Posts";
-
-      if(filtered.length === 0){
-        grid.innerHTML = '<div class="hint">Keine Treffer. (Oder noch keine Posts in <b>data/news.json</b>.)</div>';
-        return;
-      }
-
-      grid.innerHTML = filtered.map(p => {
-        const title = escapeHtml(p?.title ?? "Ohne Titel");
-        const date = escapeHtml(p?.date ?? "");
-        const author = escapeHtml(p?.author ?? "");
-        const type = escapeHtml((p?.type ?? "news").toUpperCase());
-        const body = escapeHtml(p?.body ?? "");
-        const tags = Array.isArray(p?.tags) ? p.tags : [];
-
-        const metaParts = [];
-        if(date) metaParts.push(date);
-        if(author) metaParts.push(author);
-        metaParts.push(type);
-
-        return `
-          <article class="card">
-            <div class="postTop">
-              <h3 class="postTitle">${title}</h3>
-              <div class="postMeta">${escapeHtml(metaParts.join(" • "))}</div>
-            </div>
-
-            ${tags.length ? `
-              <div class="tags">
-                ${tags.map(t => `<span class="tag">${escapeHtml(t)}</span>`).join("")}
-              </div>
-            ` : ""}
-
-            <p class="postBody">${body}</p>
-          </article>
-        `;
-      }).join("");
-    }
-
-    // -----------------------------
-    // Events
-    // -----------------------------
-    document.getElementById("searchInput").addEventListener("input", () => render());
-    document.getElementById("typeSelect").addEventListener("change", () => render());
-    document.getElementById("reloadBtn").addEventListener("click", async () => {
-      try{ await loadNews(); }
-      catch(e){
-        const grid = document.getElementById("postsGrid");
-        grid.innerHTML = '<div class="hint">Konnte <b>data/news.json</b> nicht laden. Prüfe Pfad/JSON.</div>';
-      }
-    });
-
-    // init
-    (async () => {
-      try{
-        await loadNews();
-      }catch(e){
-        const grid = document.getElementById("postsGrid");
-        document.getElementById("updatedPill").textContent = "Update: —";
-        grid.innerHTML = '<div class="hint">Konnte <b>data/news.json</b> nicht laden. Prüfe Pfad/JSON.</div>';
-      }
-    })();
+    loadHome();
   </script>
 </body>
 </html>
