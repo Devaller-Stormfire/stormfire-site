@@ -1,17 +1,21 @@
 {
-  "realm": "Ewiger Bund",
-  "server": {
-    "name": "Stormfire-01",
-    "region": "EU-DE",
-    "status": "offline",
-    "uptime": "0h"
-  },
-  "players": {
-    "online": 0,
-    "peak24h": 0
-  },
+  "updated_at": "02.03.2026 22:30 CET",
+  "global_status": "offline",
+  "players_now": 0,
   "factions": {
-    "drachenbund": 0,
-    "wolfsmark": 0
-  }
+    "faction1_name": "Drachenbund",
+    "faction2_name": "Wolfsmark",
+    "faction1_players": 0,
+    "faction2_players": 0
+  },
+  "servers": [
+    {
+      "name": "Stormfire-01",
+      "region": "EU-DE",
+      "status": "offline",
+      "players": 0,
+      "faction1": 0,
+      "faction2": 0
+    }
+  ]
 }
