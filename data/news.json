@@ -1,0 +1,5 @@
+{
+  "title": "Dev Log #01 – Das Feuer erwacht",
+  "date": "02.03.2026",
+  "content": "Heute markiert einen gewaltigen Schritt für STORMFIRE.\n\nDie offizielle Website ist nun online – das Tor zu einer neuen Welt steht offen. Parallel dazu arbeiten wir intensiv am Launcher-System, welches künftig Updates, Versionierung und News direkt ins Spiel transportieren wird.\n\nDas Login-System ist vollständig funktionsfähig. Das Realm-System steht stabil. Character Create und Character Select befinden sich in der finalen Phase der Umsetzung.\n\nUnsere Rassen wurden bereits als T-Pose Modelle in das Projekt integriert – das Fundament der Welt Jueria steht.\n\nDerzeit konzentrieren wir uns auf die vollständige Integration von Mirror, um die Multiplayer-Architektur serverautoritär aufzubauen. Direkt im Anschluss folgt die Anbindung der Datenbank – der nächste große Schritt Richtung persistenter Welt.\n\nSTORMFIRE wächst. System für System. Fundament für Fundament.\n\nDies ist erst der Anfang."
+}
