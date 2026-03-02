@@ -1,7 +1,14 @@
-[
-  {
-    "title": "Devlog 1 – Die Astralflamme wurde entzündet",
-    "date": "2026-03-02",
-    "content": "Heute haben wir einen riesigen Schritt geschafft: Die STORMFIRE-Website steht – und parallel wächst unser Launcher weiter.\n\nBereits stabil:\n- Login & Register System\n- Realm Auswahl\n- Charakter Create & Select (fast fertig)\n\nAktuell im Fokus:\nMirror Multiplayer Integration.\n\nDanach folgt Datenbank-Anbindung, damit Accounts & Charaktere persistent gespeichert werden."
-  }
-]
+{
+  "updated_at": "2026-03-02T22:30:00+01:00",
+  "posts": [
+    {
+      "id": "devlog-001",
+      "type": "devlog",
+      "title": "Devlog 1 – Die Astralflamme wurde entzündet",
+      "date": "2026-03-02",
+      "author": "Devaller",
+      "tags": ["DEVLOG", "WEBSITE", "MIRROR", "LAUNCHER"],
+      "body": "Heute haben wir einen riesigen Schritt geschafft: Die STORMFIRE-Website steht – und parallel wächst unser Launcher weiter.\n\n✅ Bereits stabil:\n- Login & Register System\n- Realm-Auswahl\n- Character Create & Select (fast fertig)\n\n🔥 Aktuell im Fokus:\n- Mirror Multiplayer Integration (wir sind mittendrin)\n\n➡️ Danach:\n- Datenbank-Anbindung, damit Accounts/Charaktere sauber gespeichert werden\n- Animationen & Feinschliff\n\nSTORMFIRE lebt. Und das ist erst der Anfang."
+    }
+  ]
+}
