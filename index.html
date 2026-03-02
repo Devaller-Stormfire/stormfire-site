@@ -1,110 +1,715 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STORMFIRE</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>STORMFIRE – Offizielle Website</title>
 
-<style>
-body{
-    margin:0;
-    font-family:Arial, sans-serif;
-    background: radial-gradient(circle at top, #1a1a1a, #000);
-    color:white;
-    text-align:center;
-}
+  <style>
+    :root{
+      --bg0:#000814;
+      --bg1:#020a14;
+      --card:rgba(255,255,255,0.06);
+      --card2:rgba(0,0,0,0.35);
+      --border:rgba(255,255,255,0.12);
+      --text:#e9f2ff;
+      --muted:rgba(233,242,255,0.72);
+      --fire:#ff8a00;
+      --storm:#4cc9ff;
+      --good:#46ff9a;
+      --bad:#ff4d4d;
+      --warn:#ffd166;
+      --shadow: 0 18px 60px rgba(0,0,0,0.55);
+      --radius: 18px;
+      --max: 1100px;
+    }
 
-header{
-    padding:40px 20px;
-}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 50% 20%, #14213d 0%, var(--bg0) 45%, #000 100%);
+      overflow-x:hidden;
+    }
 
-.logo{
-    width:300px;
-    max-width:90%;
-}
+    /* Animated Astral Fog */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:-60%;
+      background:
+        radial-gradient(circle, rgba(76,201,255,0.16) 0%, transparent 62%),
+        radial-gradient(circle, rgba(255,138,0,0.14) 0%, transparent 60%),
+        radial-gradient(circle, rgba(130,87,229,0.10) 0%, transparent 62%);
+      filter: blur(1px);
+      animation: astralMove 26s linear infinite;
+      z-index:-2;
+    }
+    @keyframes astralMove{
+      0%{transform:rotate(0deg) scale(1.05)}
+      100%{transform:rotate(360deg) scale(1.05)}
+    }
 
-h1{
-    font-size:48px;
-    background:linear-gradient(90deg,#ff7a00,#ff0000,#00aaff);
-    -webkit-background-clip:text;
-    color:transparent;
-}
+    /* Starfield */
+    .stars{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:-1;
+      opacity:0.7;
+      background-image:
+        radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.7) 40%, transparent 41%),
+        radial-gradient(1px 1px at 80% 15%, rgba(255,255,255,0.55) 40%, transparent 41%),
+        radial-gradient(1px 1px at 10% 75%, rgba(255,255,255,0.5) 40%, transparent 41%),
+        radial-gradient(2px 2px at 65% 60%, rgba(255,255,255,0.6) 40%, transparent 41%),
+        radial-gradient(1px 1px at 40% 55%, rgba(255,255,255,0.45) 40%, transparent 41%),
+        radial-gradient(2px 2px at 90% 80%, rgba(255,255,255,0.55) 40%, transparent 41%);
+      animation: twinkle 6s ease-in-out infinite alternate;
+    }
+    @keyframes twinkle{
+      from{opacity:0.55}
+      to{opacity:0.85}
+    }
 
-.download-btn{
-    display:inline-block;
-    margin:20px;
-    padding:15px 40px;
-    font-size:20px;
-    background:linear-gradient(90deg,#ff7a00,#ff0000);
-    border:none;
-    border-radius:8px;
-    color:white;
-    text-decoration:none;
-    transition:0.3s;
-}
+    a{color:var(--storm); text-decoration:none}
+    a:hover{opacity:0.9}
 
-.download-btn:hover{
-    transform:scale(1.05);
-}
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding: 28px 16px 70px;
+    }
 
-.section{
-    padding:50px 20px;
-}
+    .topbar{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      justify-content:space-between;
+      padding: 14px 14px;
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.25));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
 
-.card{
-    background:#111;
-    margin:15px auto;
-    padding:20px;
-    border-radius:10px;
-    max-width:600px;
-}
+    .brand{
+      display:flex;
+      gap:14px;
+      align-items:center;
+      min-width: 220px;
+    }
 
-footer{
-    margin-top:50px;
-    padding:20px;
-    background:#111;
-    font-size:14px;
-}
-</style>
+    .logo{
+      width:54px;
+      height:54px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,0.18);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+      object-fit:cover;
+      background:#111;
+    }
+
+    .brand h1{
+      font-size:18px;
+      margin:0;
+      letter-spacing:0.6px;
+      line-height:1.1;
+    }
+    .brand .tag{
+      font-size:12px;
+      color:var(--muted);
+      margin-top:4px;
+    }
+
+    .nav{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .nav a{
+      padding:10px 12px;
+      border:1px solid var(--border);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      font-size: 13px;
+    }
+    .nav a:hover{border-color: rgba(76,201,255,0.35); background: rgba(76,201,255,0.08);}
+
+    .hero{
+      margin-top:18px;
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      background: linear-gradient(135deg, rgba(255,138,0,0.10), rgba(76,201,255,0.08));
+      position:relative;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: radial-gradient(circle at 20% 20%, rgba(255,138,0,0.22), transparent 45%),
+                  radial-gradient(circle at 70% 35%, rgba(76,201,255,0.18), transparent 50%),
+                  radial-gradient(circle at 50% 100%, rgba(130,87,229,0.14), transparent 55%);
+      pointer-events:none;
+      mix-blend-mode: screen;
+    }
+    .hero-inner{
+      padding: 26px 18px;
+      position:relative;
+      z-index:1;
+    }
+    .hero-title{
+      font-size: 28px;
+      margin: 0 0 8px;
+      letter-spacing: 0.6px;
+      text-shadow: 0 10px 35px rgba(0,0,0,0.75);
+    }
+    .hero-sub{
+      margin:0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+      max-width: 920px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+    @media(min-width: 980px){
+      .grid{ grid-template-columns: 1fr 1fr; }
+    }
+
+    .card{
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.25));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      overflow:hidden;
+    }
+    .card-h{
+      padding: 14px 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .card-h h2{
+      margin:0;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: rgba(233,242,255,0.9);
+    }
+    .card-b{
+      padding: 14px 14px 16px;
+    }
+
+    .pill{
+      font-size:12px;
+      padding: 7px 10px;
+      border:1px solid rgba(255,255,255,0.14);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+      white-space:nowrap;
+    }
+
+    .statusRow{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    @media(min-width: 560px){
+      .statusRow{ grid-template-columns: 1fr 1fr 1fr 1fr; }
+    }
+
+    .stat{
+      border:1px solid rgba(255,255,255,0.10);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      padding: 12px 12px;
+    }
+    .stat .k{
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .stat .v{
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+    .v.good{ color: var(--good); }
+    .v.bad{ color: var(--bad); }
+    .v.warn{ color: var(--warn); }
+
+    .servers{
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .serverItem{
+      border:1px solid rgba(255,255,255,0.10);
+      border-radius: 16px;
+      background: rgba(0,0,0,0.28);
+      padding: 12px 12px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    @media(min-width: 680px){
+      .serverItem{
+        grid-template-columns: 1.1fr 0.9fr 1fr;
+        align-items:center;
+      }
+    }
+    .serverName{
+      font-weight: 800;
+      letter-spacing:0.2px;
+    }
+    .serverMeta{
+      color: var(--muted);
+      font-size: 12px;
+      line-height:1.4;
+    }
+    .serverRight{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-start;
+    }
+    @media(min-width: 680px){
+      .serverRight{ justify-content:flex-end; }
+    }
+
+    .badge{
+      padding: 7px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.04);
+      font-size: 12px;
+      color: rgba(233,242,255,0.9);
+    }
+    .badge.up{ border-color: rgba(70,255,154,0.35); background: rgba(70,255,154,0.10); }
+    .badge.down{ border-color: rgba(255,77,77,0.35); background: rgba(255,77,77,0.10); }
+    .badge.maint{ border-color: rgba(255,209,102,0.35); background: rgba(255,209,102,0.10); color: #fff; }
+
+    .newsList{
+      display:flex;
+      flex-direction:column;
+      gap: 12px;
+    }
+    .newsItem{
+      border:1px solid rgba(255,255,255,0.10);
+      border-radius: 16px;
+      background: rgba(0,0,0,0.28);
+      padding: 12px 12px;
+    }
+    .newsTop{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+    }
+    .newsTitle{
+      margin:0;
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: 0.2px;
+    }
+    .newsDate{
+      font-size: 12px;
+      color: var(--muted);
+      white-space:nowrap;
+      margin-top: 2px;
+    }
+    .newsText{
+      margin: 8px 0 0;
+      color: rgba(233,242,255,0.85);
+      font-size: 13px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+
+    .roadmapImg{
+      width:100%;
+      border-radius: 14px;
+      margin-top: 12px;
+      border:1px solid rgba(255,255,255,0.14);
+      box-shadow: 0 18px 60px rgba(0,0,0,0.55);
+    }
+
+    .footer{
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align:center;
+      padding: 10px 0;
+    }
+
+    .hint{
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .btn{
+      display:inline-block;
+      padding: 10px 14px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      font-size: 13px;
+    }
+    .btn:hover{border-color: rgba(255,138,0,0.35); background: rgba(255,138,0,0.10);}
+  </style>
 </head>
 
 <body>
+  <div class="stars"></div>
 
-<header>
-    <img src="logo.png" class="logo">
-    <h1>STORMFIRE</h1>
-    <a href="#" class="download-btn">Launcher herunterladen</a>
-</header>
+  <div class="wrap">
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="brand">
+        <!-- Logo-Datei: assets/logo.png (oder .jpg) -->
+        <img class="logo" src="assets/logo.png" alt="STORMFIRE Logo"
+             onerror="this.src='assets/logo.jpg';" />
+        <div>
+          <h1>STORMFIRE</h1>
+          <div class="tag">Offizielle Seite • Dev Logs • Status • Launcher</div>
+        </div>
+      </div>
 
-<div class="section">
-    <h2>News</h2>
-    <div class="card">
-        <h3>Version 0.1</h3>
-        <p>Closed Alpha gestartet 🔥</p>
+      <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="news.html">News</a>
+        <a href="download.html">Launcher Download</a>
+        <a href="rankings.html">Rankings</a>
+        <a href="impressum.html">Impressum</a>
+      </div>
     </div>
-</div>
 
-<div class="section">
-    <h2>PvP Rangliste</h2>
-    <div class="card">#1 Spieler – 2400 Rating</div>
-    <div class="card">#2 Spieler – 2200 Rating</div>
-    <div class="card">#3 Spieler – 2100 Rating</div>
-    <div class="card">#4 Spieler – 2000 Rating</div>
-    <div class="card">#5 Spieler – 1900 Rating</div>
-</div>
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-inner">
+        <h2 class="hero-title">Das Feuer erwacht.</h2>
+        <p class="hero-sub">
+          STORMFIRE ist ein serverautoritäres Online-RPG im Aufbau. Login & Realm stehen,
+          Character Create/Select sind fast fertig, Rassen sind als T-Pose integriert.
+          Aktuell: Mirror Multiplayer-Integration → danach Datenbank/Persistenz → dann Welt & Content.
+        </p>
+      </div>
+    </div>
 
-<div class="section">
-    <h2>Statistiken</h2>
-    <div class="card">Meiste Damage: 9.452.331</div>
-    <div class="card">Meistes Gold: 42.991</div>
-    <div class="card">Meiste Spielzeit: 312 Stunden</div>
-</div>
+    <div class="grid">
+      <!-- SERVER STATUS -->
+      <div class="card">
+        <div class="card-h">
+          <h2>Live Serverstatus</h2>
+          <span class="pill" id="statusUpdated">lädt…</span>
+        </div>
+        <div class="card-b">
+          <div class="statusRow">
+            <div class="stat">
+              <div class="k">Gesamtstatus</div>
+              <div class="v" id="globalStatus">—</div>
+            </div>
+            <div class="stat">
+              <div class="k">Aktive Spieler</div>
+              <div class="v" id="playersNow">—</div>
+            </div>
+            <div class="stat">
+              <div class="k">Fraktion 1</div>
+              <div class="v" id="faction1Now">—</div>
+              <div class="hint" id="faction1Name" style="margin-top:6px;">—</div>
+            </div>
+            <div class="stat">
+              <div class="k">Fraktion 2</div>
+              <div class="v" id="faction2Now">—</div>
+              <div class="hint" id="faction2Name" style="margin-top:6px;">—</div>
+            </div>
+          </div>
 
-<footer>
-    © 2026 Denis Toni Güven – Alle Rechte vorbehalten  
-    <br>
-    Impressum folgt
-</footer>
+          <div style="margin-top:12px" class="hint">
+            Diese Werte kommen aus <b>data/status.json</b>. Du kannst sie jederzeit aktualisieren (Commit),
+            und Website + Launcher lesen automatisch die neuen Daten.
+          </div>
 
+          <div class="servers" id="serversList" style="margin-top:14px"></div>
+
+          <div style="margin-top:12px">
+            <a class="btn" href="download.html">Launcher herunterladen</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- NEWS -->
+      <div class="card">
+        <div class="card-h">
+          <h2>Dev Logs & News</h2>
+          <span class="pill">aus data/news.json</span>
+        </div>
+        <div class="card-b">
+          <div class="newsList" id="newsList">
+            <div class="hint">News werden geladen…</div>
+          </div>
+          <div style="margin-top:12px">
+            <a class="btn" href="news.html">Alle News ansehen</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROADMAP -->
+      <div class="card" style="grid-column: 1 / -1;">
+        <div class="card-h">
+          <h2>STORMFIRE Roadmap</h2>
+          <span class="pill">aktuell</span>
+        </div>
+        <div class="card-b">
+          <div class="servers">
+            <div class="serverItem">
+              <div>
+                <div class="serverName">🔥 Website</div>
+                <div class="serverMeta">Live</div>
+              </div>
+              <div class="serverMeta">Basis für Dev Logs, Launcher Download, Status & Rankings</div>
+              <div class="serverRight"><span class="badge up">ONLINE</span></div>
+            </div>
+
+            <div class="serverItem">
+              <div>
+                <div class="serverName">🔐 Login & Realm</div>
+                <div class="serverMeta">Stabil</div>
+              </div>
+              <div class="serverMeta">Account-Flow steht, Realm-Auswahl ist funktionsfähig</div>
+              <div class="serverRight"><span class="badge up">READY</span></div>
+            </div>
+
+            <div class="serverItem">
+              <div>
+                <div class="serverName">👤 Character Create & Select</div>
+                <div class="serverMeta">Fast fertig</div>
+              </div>
+              <div class="serverMeta">Rassen als T-Pose integriert, UI/Flow finalisieren</div>
+              <div class="serverRight"><span class="badge maint">FINALIZING</span></div>
+            </div>
+
+            <div class="serverItem">
+              <div>
+                <div class="serverName">🌐 Mirror Multiplayer</div>
+                <div class="serverMeta">In Arbeit</div>
+              </div>
+              <div class="serverMeta">Serverautoritär aufbauen → danach Persistenz</div>
+              <div class="serverRight"><span class="badge maint">IN DEV</span></div>
+            </div>
+
+            <div class="serverItem">
+              <div>
+                <div class="serverName">🗄 Datenbank</div>
+                <div class="serverMeta">Nächster Schritt</div>
+              </div>
+              <div class="serverMeta">Accounts/Charaktere persistent + Stats für Rankings/Website</div>
+              <div class="serverRight"><span class="badge">NEXT</span></div>
+            </div>
+
+            <div class="serverItem">
+              <div>
+                <div class="serverName">🚀 Launcher</div>
+                <div class="serverMeta">Aktiv in Entwicklung</div>
+              </div>
+              <div class="serverMeta">News + Version + Download/Updates ohne Website-Zwang</div>
+              <div class="serverRight"><span class="badge maint">IN DEV</span></div>
+            </div>
+          </div>
+
+          <!-- Roadmap Bild: assets/roadmap.png -->
+          <img class="roadmapImg" src="assets/roadmap.png" alt="STORMFIRE Roadmap"
+               onerror="this.style.display='none';" />
+
+          <div class="hint" style="margin-top:10px">
+            Roadmap-Bild optional: Lege es als <b>assets/roadmap.png</b> ab.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      © <span id="year"></span> STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // -----------------------------
+    // Helpers
+    // -----------------------------
+    function safeText(elId, value){
+      const el = document.getElementById(elId);
+      if (!el) return;
+      el.textContent = (value ?? "—");
+    }
+
+    function setStatusValue(elId, value, mode){
+      const el = document.getElementById(elId);
+      if (!el) return;
+      el.classList.remove("good","bad","warn");
+      if (mode) el.classList.add(mode);
+      el.textContent = (value ?? "—");
+    }
+
+    function statusBadge(status){
+      const s = (status || "").toLowerCase();
+      if (s === "online" || s === "up") return '<span class="badge up">ONLINE</span>';
+      if (s === "maintenance" || s === "wartung") return '<span class="badge maint">WARTUNG</span>';
+      if (s === "offline" || s === "down") return '<span class="badge down">OFFLINE</span>';
+      return '<span class="badge">UNKNOWN</span>';
+    }
+
+    function globalStatusMode(status){
+      const s = (status || "").toLowerCase();
+      if (s === "online" || s === "up") return "good";
+      if (s === "maintenance" || s === "wartung") return "warn";
+      if (s === "offline" || s === "down") return "bad";
+      return "";
+    }
+
+    // -----------------------------
+    // Load News
+    // -----------------------------
+    async function loadNews(){
+      const list = document.getElementById("newsList");
+      try{
+        const res = await fetch("data/news.json", { cache: "no-store" });
+        if(!res.ok) throw new Error("news.json nicht gefunden");
+        const items = await res.json();
+
+        if(!Array.isArray(items) || items.length === 0){
+          list.innerHTML = '<div class="hint">Noch keine News vorhanden.</div>';
+          return;
+        }
+
+        // Neuste zuerst (wenn du willst: items.slice().reverse())
+        const shown = items.slice(0, 3);
+
+        list.innerHTML = shown.map(n => `
+          <div class="newsItem">
+            <div class="newsTop">
+              <h3 class="newsTitle">${escapeHtml(n.title || "Ohne Titel")}</h3>
+              <div class="newsDate">${escapeHtml(n.date || "")}</div>
+            </div>
+            <p class="newsText">${escapeHtml(n.content || "")}</p>
+          </div>
+        `).join("");
+
+      }catch(err){
+        list.innerHTML = '<div class="hint">News konnten nicht geladen werden. Prüfe <b>data/news.json</b>.</div>';
+      }
+    }
+
+    // -----------------------------
+    // Load Status
+    // -----------------------------
+    async function loadStatus(){
+      try{
+        const res = await fetch("data/status.json", { cache: "no-store" });
+        if(!res.ok) throw new Error("status.json nicht gefunden");
+        const s = await res.json();
+
+        // global status
+        const mode = globalStatusMode(s.global_status);
+        setStatusValue("globalStatus", (s.global_status || "UNKNOWN").toUpperCase(), mode);
+
+        // players
+        safeText("playersNow", (s.players_now ?? "—"));
+
+        // factions
+        safeText("faction1Name", s.factions?.faction1_name ?? "Fraktion 1");
+        safeText("faction2Name", s.factions?.faction2_name ?? "Fraktion 2");
+        safeText("faction1Now", s.factions?.faction1_players ?? "—");
+        safeText("faction2Now", s.factions?.faction2_players ?? "—");
+
+        // updated
+        const updated = s.updated_at ?? "";
+        safeText("statusUpdated", updated ? ("Update: " + updated) : "Update: —");
+
+        // servers list
+        const list = document.getElementById("serversList");
+        const servers = Array.isArray(s.servers) ? s.servers : [];
+
+        if(servers.length === 0){
+          list.innerHTML = `<div class="hint">Keine Server eingetragen. Bearbeite <b>data/status.json</b>.</div>`;
+          return;
+        }
+
+        list.innerHTML = servers.map(sr => {
+          const name = escapeHtml(sr.name || "Server");
+          const region = escapeHtml(sr.region || "");
+          const status = escapeHtml(sr.status || "unknown");
+          const players = (sr.players ?? "—");
+          const f1 = (sr.faction1 ?? "—");
+          const f2 = (sr.faction2 ?? "—");
+
+          return `
+            <div class="serverItem">
+              <div>
+                <div class="serverName">${name}</div>
+                <div class="serverMeta">${region ? (region + " • ") : ""}Status: ${status.toUpperCase()}</div>
+              </div>
+              <div class="serverMeta">
+                Spieler: <b>${players}</b><br/>
+                ${escapeHtml(s.factions?.faction1_name ?? "Fraktion 1")}: <b>${f1}</b> •
+                ${escapeHtml(s.factions?.faction2_name ?? "Fraktion 2")}: <b>${f2}</b>
+              </div>
+              <div class="serverRight">
+                ${statusBadge(status)}
+              </div>
+            </div>
+          `;
+        }).join("");
+
+      }catch(err){
+        setStatusValue("globalStatus", "OFFLINE", "bad");
+        safeText("playersNow", "—");
+        safeText("faction1Now", "—");
+        safeText("faction2Now", "—");
+        safeText("statusUpdated", "Status nicht verfügbar");
+        const list = document.getElementById("serversList");
+        list.innerHTML = `<div class="hint">Status konnte nicht geladen werden. Prüfe <b>data/status.json</b>.</div>`;
+      }
+    }
+
+    // -----------------------------
+    // HTML escape
+    // -----------------------------
+    function escapeHtml(str){
+      return String(str ?? "")
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+
+    // init
+    loadNews();
+    loadStatus();
+  </script>
 </body>
 </html>
