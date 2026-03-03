@@ -10,45 +10,49 @@
 <body>
   <canvas id="astral"></canvas>
 
-  <div class="page">
-    <header>
-      <div class="brand">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brandBox">
         <img src="/assets/img/logo.png" alt="STORMFIRE Logo" />
-        <div class="title">
-          <strong>STORMFIRE</strong>
-          <span>Team & GM Team</span>
+        <div>
+          <div class="t1">STORMFIRE</div>
+          <div class="t2">Team & GM Team</div>
         </div>
       </div>
 
-      <div class="headerRight">
-        <nav>
+      <div class="sideSection">
+        <div class="sideTitle">Navigation</div>
+        <nav class="sideNav">
           <a class="navbtn" href="/index.html">Home</a>
           <a class="navbtn" href="/news.html">News</a>
-          <a class="navbtn" href="/status.html">Status</a>
+          <a class="navbtn" href="/status.html">Realm Status</a>
           <a class="navbtn" href="/leaderboard.html">Leaderboard</a>
           <a class="navbtn" href="/roadmap.html">Roadmap</a>
           <a class="navbtn" href="/gallery.html">Galerie</a>
-          <a class="navbtn" href="/download.html">Download</a>
-          <a class="navbtn active" href="/team.html">Team</a>
+          <a class="navbtn" href="/team.html">Team</a>
+          <a class="navbtn" href="/download.html">Launcher</a>
           <a class="navbtn" href="/impressum.html">Impressum</a>
         </nav>
+      </div>
 
+      <div class="sideSection">
+        <div class="sideTitle">Live</div>
         <div class="liveStatus">
           <span class="dot warn" id="liveDot"></span>
           <span id="liveTxt">Lädt…</span>
         </div>
       </div>
-    </header>
+    </aside>
 
-    <main>
+    <main class="content">
       <div class="hero">
         <div>
           <h1>Team & GM Team</h1>
-          <p>Offizielle Ansprechpartner für Entwicklung & Moderation (Platzhalter – später live aus DB).</p>
+          <p>Aktuell manuell gepflegt – später automatisch aus Datenbank/API.</p>
         </div>
         <div class="badge">
           <span class="dot warn"></span>
-          <span>In Development</span>
+          <span id="teamUpdated">Lädt…</span>
         </div>
       </div>
 
@@ -58,88 +62,45 @@
             <h2>Core Team</h2>
             <span class="small">Development</span>
           </div>
-          <div class="bd">
-            <div class="kpi">
-              <div class="box">
-                <div class="label">Projektleitung</div>
-                <div class="value glow">Devaller</div>
-                <div class="small">Design • Code • Worldbuilding</div>
-              </div>
-
-              <div class="box">
-                <div class="label">Kontakt</div>
-                <div class="value">team@stormfire.dev</div>
-                <div class="small">Antwortzeit: variabel (Projekt in Entwicklung)</div>
-              </div>
-            </div>
-
-            <p class="small" style="margin-top:12px;">
-              Später kann diese Seite live aus der Datenbank kommen (Rollen, Profile, Online-Status, Discord-Verknüpfung).
-            </p>
-          </div>
+          <div class="teamGrid" id="coreTeam"></div>
         </article>
 
         <article class="card" style="grid-column: span 12;">
           <div class="hd">
             <h2>GM Team</h2>
-            <span class="small">Support • Moderation • Events</span>
+            <span class="small">Support • Moderation</span>
           </div>
-          <div class="bd">
-            <p class="small">
-              Aktuell sind die Namen Platzhalter. Sobald das Account-System + DB live ist,
-              können hier offizielle GM-Profile angezeigt werden.
-            </p>
+          <div class="teamGrid" id="gmTeam"></div>
+        </article>
 
-            <div class="kpi" style="margin-top:12px;">
-              <div class="box">
-                <div class="label">GM Lead</div>
-                <div class="value">—</div>
-                <div class="small">Platzhalter</div>
-              </div>
-              <div class="box">
-                <div class="label">Game Master</div>
-                <div class="value">—</div>
-                <div class="small">Platzhalter</div>
-              </div>
-              <div class="box">
-                <div class="label">Support</div>
-                <div class="value">—</div>
-                <div class="small">Platzhalter</div>
-              </div>
-              <div class="box">
-                <div class="label">Event Team</div>
-                <div class="value">—</div>
-                <div class="small">Platzhalter</div>
-              </div>
-            </div>
+        <article class="card" id="adminCard" style="grid-column: span 12; display:none;">
+          <div class="hd">
+            <h2>Admin</h2>
+            <span class="small">Nur sichtbar wenn eingeloggt</span>
           </div>
+          <div class="teamGrid" id="adminTeam"></div>
         </article>
 
         <article class="card" style="grid-column: span 12;">
           <div class="hd">
-            <h2>Regeln</h2>
-            <span class="small">Kurz & klar</span>
+            <h2>Hinweis</h2>
+            <span class="small">Sicher & offiziell</span>
           </div>
-          <div class="bd">
-            <ul class="small" style="margin:0; padding-left:18px;">
-              <li>Kein GM wird nach Passwörtern fragen.</li>
-              <li>Support nur über offizielle Kanäle (später Account-Panel / Tickets).</li>
-              <li>Missbrauch von GM-Namen wird geahndet.</li>
-            </ul>
+          <div class="small">
+            Kein GM fragt nach Passwörtern. Support später über Account/Ticketsystem.
           </div>
         </article>
       </section>
-    </main>
 
-    <footer>
-      © <span id="year"></span> STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)
-    </footer>
+      <footer>
+        © <span id="year"></span> STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)
+      </footer>
+    </main>
   </div>
 
   <script src="/assets/js/common.js"></script>
   <script src="/assets/js/site.js"></script>
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <script src="/assets/js/team.js"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
