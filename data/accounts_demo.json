@@ -1,0 +1,11 @@
+{
+  "accounts": [
+    {
+      "username": "Devaller",
+      "characters": [
+        { "name": "Astra", "level": 12, "faction": "Drachenbund", "race": "Mensch", "class": "Klingenläufer" },
+        { "name": "Wolfsruf", "level": 7, "faction": "Wolfsmark", "race": "Ork", "class": "Falkenschütze" }
+      ]
+    }
+  ]
+}
