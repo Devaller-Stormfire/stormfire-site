@@ -2,19 +2,25 @@
 <rss version="2.0">
   <channel>
     <title>STORMFIRE – Dev Logs & News</title>
-    <description>Dev Logs, News und Patchnotes für STORMFIRE.</description>
     <link>https://stormfire.dev/</link>
-    <language>de-de</language>
+    <description>Updates, Devlogs und Patchnotes rund um STORMFIRE.</description>
+    <language>de</language>
+    <lastBuildDate>Tue, 03 Mar 2026 16:00:00 +0100</lastBuildDate>
 
-    <!-- ITEM TEMPLATE: kopieren wenn du neue News in data/news.json ergänzt -->
+    <item>
+      <title>Devlog 2 – Das Tor öffnet sich</title>
+      <link>https://stormfire.dev/news.html</link>
+      <guid>stormfire-devlog-002</guid>
+      <pubDate>Tue, 03 Mar 2026 12:00:00 +0100</pubDate>
+      <description>Launcher + Website wachsen zusammen. (Kurzfassung im Feed)</description>
+    </item>
+
     <item>
       <title>Devlog 1 – Die Astralflamme wurde entzündet</title>
       <link>https://stormfire.dev/news.html</link>
-      <guid>devlog-001</guid>
-      <pubDate>Sun, 02 Mar 2026 21:30:00 +0100</pubDate>
-      <description><![CDATA[
-        Heute haben wir einen riesigen Schritt geschafft: Die STORMFIRE-Website steht – und parallel wächst unser Launcher weiter…
-      ]]></description>
+      <guid>stormfire-devlog-001</guid>
+      <pubDate>Mon, 02 Mar 2026 12:00:00 +0100</pubDate>
+      <description>Erster großer Meilenstein: Portal + Grundsysteme.</description>
     </item>
 
   </channel>
