@@ -2,6 +2,15 @@
   "updated_at": "2026-03-03T16:00:00+01:00",
   "posts": [
     {
+  "id": "devlog-003",
+  "type": "devlog",
+  "title": "Devlog 3 – Der Sturm formt sich",
+  "date": "2026-03-03",
+  "author": "Devaller",
+  "tags": ["DEVLOG", "DISCORD", "COMMUNITY"],
+  "body": "Heute wurde unsere Discord-Community offiziell integriert...\n\nWir bauen die Brücke zwischen Website, Launcher und Community.\n\nDas Tor öffnet sich weiter."
+}
+    {
       "id": "devlog-002",
       "type": "devlog",
       "title": "Devlog 2 – Das Tor öffnet sich",
