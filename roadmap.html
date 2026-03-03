@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>STORMFIRE – Roadmap</title>
+  <link rel="icon" href="/assets/img/logo.png" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+<body>
+  <canvas id="astral"></canvas>
+
+  <div class="page">
+    <header>
+      <div class="brand">
+        <img src="/assets/img/logo.png" alt="STORMFIRE Logo" />
+        <div class="title">
+          <strong>STORMFIRE</strong>
+          <span>Dev Logs • News • Patchnotes</span>
+        </div>
+      </div>
+
+      <div class="headerRight">
+        <nav>
+          <a class="navbtn" href="/index.html">Home</a>
+          <a class="navbtn" href="/news.html">News</a>
+          <a class="navbtn" href="/status.html">Status</a>
+          <a class="navbtn" href="/leaderboard.html">Leaderboard</a>
+          <a class="navbtn active" href="/roadmap.html">Roadmap</a>
+          <a class="navbtn" href="/gallery.html">Galerie</a>
+          <a class="navbtn" href="/download.html">Download</a>
+          <a class="navbtn" href="/impressum.html">Impressum</a>
+        </nav>
+
+        <div class="liveStatus">
+          <span class="dot warn" id="liveDot"></span>
+          <span id="liveTxt">Lädt…</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="hero">
+        <div>
+          <h1>Roadmap</h1>
+          <p>Unser aktueller Stand und die nächsten großen Etappen.</p>
+        </div>
+        <div class="badge">
+          <span class="dot warn"></span>
+          <span id="rmUpdated">Lädt…</span>
+        </div>
+      </div>
+
+      <section class="grid">
+        <article class="card" style="grid-column: span 12;">
+          <div class="hd"><h2>Stages</h2><span class="small">Done / Doing / Todo</span></div>
+          <div class="bd">
+            <div id="rmGrid" class="grid"></div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)
+    </footer>
+  </div>
+
+  <script src="/assets/js/common.js"></script>
+  <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/roadmap.js"></script>
+</body>
+</html>
