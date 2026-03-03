@@ -71,8 +71,10 @@
     try{
       const data = await window.sf.fetchJSON("/data/news.json");
       elUpdated.textContent = data?.updated_at ? ("Update: " + data.updated_at) : "Update: —";
+
       const posts = Array.isArray(data?.posts) ? data.posts.slice() : [];
       posts.sort((a,b)=> String(b?.date ?? "").localeCompare(String(a?.date ?? "")));
+
       allPosts = posts;
       render();
     }catch(e){
@@ -87,14 +89,13 @@
 
   btnReload.addEventListener("click", async () => {
     const t = Date.now();
-    if(t - lastManualReload < 5000) return;
+    if(t - lastManualReload < 5000) return; // Anti-Spam
     lastManualReload = t;
     await loadNews();
   });
 
   await loadNews();
 
-  // sanftes Refresh (max 60s, tab visible)
   setInterval(() => { if(document.visibilityState === "visible") loadNews(); }, 60_000);
   document.addEventListener("visibilitychange", () => {
     if(document.visibilityState === "visible") loadNews();
