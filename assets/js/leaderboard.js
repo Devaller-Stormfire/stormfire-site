@@ -1,69 +1,50 @@
-// leaderboard.js — renders /data/leaderboard.json onto leaderboard.html
+(async function(){
+  const grid = document.getElementById("lbGrid");
+  const updated = document.getElementById("lbUpdated");
 
-(async function () {
-  const $ = (id) => document.getElementById(id);
+  function table(title, rows, cols){
+    const head = cols.map(c => `<th>${window.sf.escapeHtml(c)}</th>`).join("");
+    const body = rows.map((r,i)=>`
+      <tr>
+        <td class="rank">${i+1}</td>
+        <td>${window.sf.escapeHtml(r.name||"—")}</td>
+        <td>${window.sf.escapeHtml(r.realm||"—")}</td>
+        <td>${window.sf.escapeHtml(String(r.value ?? "—"))}</td>
+      </tr>
+    `).join("");
 
-  function fillTable(tableId, rows, cols) {
-    const tbody = $(tableId).querySelector("tbody");
-    tbody.innerHTML = "";
-
-    rows.slice(0, 5).forEach((r, i) => {
-      const tr = document.createElement("tr");
-
-      const tdRank = document.createElement("td");
-      tdRank.className = "rank";
-      tdRank.textContent = String(i + 1);
-      tr.appendChild(tdRank);
-
-      for (const c of cols) {
-        const td = document.createElement("td");
-        td.textContent = r[c] ?? "—";
-        tr.appendChild(td);
-      }
-
-      tbody.appendChild(tr);
-    });
-
-    if (!rows || rows.length === 0) {
-      const tr = document.createElement("tr");
-      const td = document.createElement("td");
-      td.colSpan = cols.length + 1;
-      td.className = "small";
-      td.textContent = "Keine Daten.";
-      tr.appendChild(td);
-      tbody.appendChild(tr);
-    }
+    return `
+      <article class="card" style="grid-column: span 6;">
+        <div class="hd"><h2>${window.sf.escapeHtml(title)}</h2><span class="small">Top 5</span></div>
+        <table class="table">
+          <thead><tr><th>#</th>${head}</tr></thead>
+          <tbody>${body}</tbody>
+        </table>
+      </article>
+    `;
   }
 
-  try {
+  try{
     const data = await window.sf.fetchJSON("/data/leaderboard.json");
-    $("lbUpdated").textContent = "Letztes Update: " + window.sf.formatTime(data.lastUpdated);
+    updated.textContent = data?.updated_at ? ("Update: " + window.sf.formatTime(data.updated_at)) : "Update: —";
 
-    // PvP
-    fillTable("tblPvp", data.pvpTop5 || [], ["name", "faction", "rating"]);
+    const pvp = Array.isArray(data?.pvpTop5) ? data.pvpTop5 : [];
+    const dmg = Array.isArray(data?.mostDamageTop5) ? data.mostDamageTop5 : [];
+    const gold = Array.isArray(data?.mostGoldTop5) ? data.mostGoldTop5 : [];
+    const play = Array.isArray(data?.mostPlaytimeTop5) ? data.mostPlaytimeTop5 : [];
 
-    // Damage
-    const dmg = (data.mostDamageTop5 || []).map(x => ({
-      ...x,
-      damage: window.sf.formatNumber(x.damage)
-    }));
-    fillTable("tblDmg", dmg, ["name", "class", "damage"]);
-
-    // Gold
-    const gold = (data.mostGoldTop5 || []).map(x => ({
-      ...x,
-      gold: window.sf.formatNumber(x.gold)
-    }));
-    fillTable("tblGold", gold, ["name", "realm", "gold"]);
-
-    // Playtime
-    const play = (data.mostPlaytimeTop5 || []).map(x => ({
-      ...x,
-      hours: window.sf.formatNumber(x.hours)
-    }));
-    fillTable("tblPlaytime", play, ["name", "level", "hours"]);
-  } catch (err) {
-    console.error(err);
-    $("lbUpdated").textContent = "Konnte /data/leaderboard.json nicht laden.";
+    grid.innerHTML =
+      table("Top 5 PvP", pvp, ["Name","Realm","Rating"]) +
+      table("Most Damage", dmg, ["Name","Realm","Damage"]) +
+      table("Most Gold", gold, ["Name","Realm","Gold"]) +
+      table("Most Playtime", play, ["Name","Realm","Hours"]);
+  }catch{
+    updated.textContent = "Update: —";
+    grid.innerHTML = `
+      <article class="card" style="grid-column: span 12;">
+        <div class="hd"><h2>Leaderboard nicht verfügbar</h2></div>
+        <div class="small">Konnte <code>/data/leaderboard.json</code> nicht laden.</div>
+      </article>
+    `;
   }
 })();
