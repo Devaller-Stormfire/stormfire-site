@@ -1,6 +1,12 @@
 {
-  "lastUpdated": "2026-03-03T12:00:00+01:00",
+  "updated_at": "2026-03-03T17:00:00+01:00",
   "items": [
-    { "url": "/assets/img/logo.png", "caption": "STORMFIRE Logo (Platzhalter)", "by": "System" }
+    {
+      "title": "Beispiel-Upload",
+      "by": "Devaller",
+      "date": "2026-03-03",
+      "img": "",
+      "note": "Hier kommen später Screenshots/Artworks von Spielern rein – mit Login + DB/API."
+    }
   ]
 }
