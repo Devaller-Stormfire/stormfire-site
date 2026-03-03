@@ -24,17 +24,17 @@
   }
 
   function cmpDesc(a, b) {
-    // 1) date (oder ts) absteigend
+    // 1) ts oder date absteigend
     const ta = toTime(a?.ts || a?.date);
     const tb = toTime(b?.ts || b?.date);
     if (tb !== ta) return tb - ta;
 
-    // 2) id absteigend (devlog-003 > devlog-002 etc.)
+    // 2) id absteigend (devlog-003 > devlog-002)
     const ida = String(a?.id ?? "");
     const idb = String(b?.id ?? "");
     if (idb !== ida) return idb.localeCompare(ida);
 
-    // 3) fallback: Originalindex (stabil)
+    // 3) fallback: Original-Reihenfolge (stabil)
     return (a?._i ?? 0) - (b?._i ?? 0);
   }
 
@@ -89,7 +89,7 @@
 
           ${tagHtml}
 
-          <div class="small" style="margin-top:10px; white-space:pre-wrap;">${body}</div>
+          <div class="small" style="margin-top:10px; white-space:pre-wrap; line-height:1.65;">${body}</div>
         </article>
       `;
     }).join("");
