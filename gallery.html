@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>STORMFIRE – Galerie</title>
+  <link rel="icon" href="/assets/img/logo.png" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+<body>
+  <canvas id="astral"></canvas>
+
+  <div class="page">
+    <header>
+      <div class="brand">
+        <img src="/assets/img/logo.png" alt="STORMFIRE Logo" />
+        <div class="title">
+          <strong>STORMFIRE</strong>
+          <span>Dev Logs • News • Patchnotes</span>
+        </div>
+      </div>
+
+      <div class="headerRight">
+        <nav>
+          <a class="navbtn" href="/index.html">Home</a>
+          <a class="navbtn active" href="/gallery.html">Galerie</a>
+          <a class="navbtn" href="/login.html">Login</a>
+          <a class="navbtn" href="/account.html">Mein Account</a>
+        </nav>
+
+        <div class="liveStatus">
+          <span class="dot warn" id="liveDot"></span>
+          <span id="liveTxt">Lädt…</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="hero">
+        <div>
+          <h1>Spieler Galerie</h1>
+          <p>Screenshots, Artworks, Builds – später mit echtem Upload & Moderation.</p>
+        </div>
+        <div class="badge"><span class="dot warn"></span><span id="galState">Prototype</span></div>
+      </div>
+
+      <section class="grid">
+        <article class="card" style="grid-column: span 12;">
+          <div class="hd"><h2>Upload</h2><span class="small">kommt mit Backend</span></div>
+          <div class="bd">
+            <div class="small" id="uploadHint">Bitte einloggen, um später hochzuladen.</div>
+            <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+              <input class="input" type="file" disabled />
+              <button class="navbtn" disabled>Upload (später)</button>
+              <a class="navbtn" href="/login.html">Login</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" style="grid-column: span 12;">
+          <div class="hd"><h2>Galerie</h2><span class="small" id="galUpdated">—</span></div>
+          <div class="bd">
+            <div id="galGrid" class="galleryGrid"></div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)
+    </footer>
+  </div>
+
+  <script src="/assets/js/common.js"></script>
+  <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/gallery.js"></script>
+</body>
+</html>
