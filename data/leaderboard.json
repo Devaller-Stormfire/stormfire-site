@@ -1,31 +1,31 @@
 {
-  "lastUpdated": "2026-03-02T12:00:00+01:00",
+  "updated_at": "2026-03-03T17:00:00+01:00",
   "pvpTop5": [
-    { "name": "Astralwolf", "faction": "Wolfsmark", "rating": 2480 },
-    { "name": "Drachenkind", "faction": "Drachenbund", "rating": 2412 },
-    { "name": "Sturmrufer", "faction": "Wolfsmark", "rating": 2320 },
-    { "name": "Aetherion", "faction": "Drachenbund", "rating": 2266 },
-    { "name": "Eisblut", "faction": "Wolfsmark", "rating": 2199 }
+    { "name": "—", "realm": "Blutmond", "value": 0 },
+    { "name": "—", "realm": "Blutmond", "value": 0 },
+    { "name": "—", "realm": "Blutmond", "value": 0 },
+    { "name": "—", "realm": "Blutmond", "value": 0 },
+    { "name": "—", "realm": "Blutmond", "value": 0 }
   ],
   "mostDamageTop5": [
-    { "name": "KlingenläuferX", "class": "Klingenläufer", "damage": 18923456 },
-    { "name": "FalkenschützeZ", "class": "Falkenschütze", "damage": 16450211 },
-    { "name": "Elementargeist", "class": "Beschwörer", "damage": 15100990 },
-    { "name": "Stahlwacht", "class": "Wächter", "damage": 14011888 },
-    { "name": "Nachtklinge", "class": "Klingenläufer", "damage": 13122770 }
+    { "name": "—", "realm": "Sturmprüfung", "value": 0 },
+    { "name": "—", "realm": "Sturmprüfung", "value": 0 },
+    { "name": "—", "realm": "Sturmprüfung", "value": 0 },
+    { "name": "—", "realm": "Sturmprüfung", "value": 0 },
+    { "name": "—", "realm": "Sturmprüfung", "value": 0 }
   ],
   "mostGoldTop5": [
-    { "name": "Goldfinger", "realm": "Ewiger Bund", "gold": 912345 },
-    { "name": "Bronzemeister", "realm": "Ewiger Bund", "gold": 801120 },
-    { "name": "Auktionshai", "realm": "Ewiger Bund", "gold": 744500 },
-    { "name": "Kaufmann", "realm": "Ewiger Bund", "gold": 690000 },
-    { "name": "Schatzhort", "realm": "Ewiger Bund", "gold": 615400 }
+    { "name": "—", "realm": "Ewiger Bund", "value": 0 },
+    { "name": "—", "realm": "Ewiger Bund", "value": 0 },
+    { "name": "—", "realm": "Ewiger Bund", "value": 0 },
+    { "name": "—", "realm": "Ewiger Bund", "value": 0 },
+    { "name": "—", "realm": "Ewiger Bund", "value": 0 }
   ],
   "mostPlaytimeTop5": [
-    { "name": "Devaller", "level": 30, "hours": 412 },
-    { "name": "Wolfswanderer", "level": 28, "hours": 356 },
-    { "name": "Drachenreiter", "level": 27, "hours": 330 },
-    { "name": "Questleser", "level": 26, "hours": 298 },
-    { "name": "Dungeonratte", "level": 25, "hours": 271 }
+    { "name": "—", "realm": "Ewiger Bund", "value": 0 },
+    { "name": "—", "realm": "Ewiger Bund", "value": 0 },
+    { "name": "—", "realm": "Ewiger Bund", "value": 0 },
+    { "name": "—", "realm": "Ewiger Bund", "value": 0 },
+    { "name": "—", "realm": "Ewiger Bund", "value": 0 }
   ]
 }
