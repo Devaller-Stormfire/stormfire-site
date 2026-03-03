@@ -10,40 +10,45 @@
 <body>
   <canvas id="astral"></canvas>
 
-  <div class="page">
-    <header>
-      <div class="brand">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brandBox">
         <img src="/assets/img/logo.png" alt="STORMFIRE Logo" />
-        <div class="title">
-          <strong>STORMFIRE</strong>
-          <span>Dev Logs • News • Patchnotes</span>
+        <div>
+          <div class="t1">STORMFIRE</div>
+          <div class="t2">Roadmap</div>
         </div>
       </div>
 
-      <div class="headerRight">
-        <nav>
+      <div class="sideSection">
+        <div class="sideTitle">Navigation</div>
+        <nav class="sideNav">
           <a class="navbtn" href="/index.html">Home</a>
           <a class="navbtn" href="/news.html">News</a>
-          <a class="navbtn" href="/status.html">Status</a>
+          <a class="navbtn" href="/status.html">Realm Status</a>
           <a class="navbtn" href="/leaderboard.html">Leaderboard</a>
-          <a class="navbtn active" href="/roadmap.html">Roadmap</a>
+          <a class="navbtn" href="/roadmap.html">Roadmap</a>
           <a class="navbtn" href="/gallery.html">Galerie</a>
-          <a class="navbtn" href="/download.html">Download</a>
+          <a class="navbtn" href="/team.html">Team</a>
+          <a class="navbtn" href="/download.html">Launcher</a>
           <a class="navbtn" href="/impressum.html">Impressum</a>
         </nav>
+      </div>
 
+      <div class="sideSection">
+        <div class="sideTitle">Live</div>
         <div class="liveStatus">
           <span class="dot warn" id="liveDot"></span>
           <span id="liveTxt">Lädt…</span>
         </div>
       </div>
-    </header>
+    </aside>
 
-    <main>
+    <main class="content">
       <div class="hero">
         <div>
           <h1>Roadmap</h1>
-          <p>Unser aktueller Stand und die nächsten großen Etappen.</p>
+          <p>Stages – Login, Realm, CharCreate, Mirror, DB, World, Quests, Raids</p>
         </div>
         <div class="badge">
           <span class="dot warn"></span>
@@ -51,23 +56,18 @@
         </div>
       </div>
 
-      <section class="grid">
-        <article class="card" style="grid-column: span 12;">
-          <div class="hd"><h2>Stages</h2><span class="small">Done / Doing / Todo</span></div>
-          <div class="bd">
-            <div id="rmGrid" class="grid"></div>
-          </div>
-        </article>
-      </section>
-    </main>
+      <section class="grid" id="rmGrid"></section>
 
-    <footer>
-      © <span id="year"></span> STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)
-    </footer>
+      <footer>
+        © <span id="year"></span> STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)
+      </footer>
+    </main>
   </div>
 
+  <script src="/assets/js/astral.js"></script>
   <script src="/assets/js/common.js"></script>
   <script src="/assets/js/site.js"></script>
   <script src="/assets/js/roadmap.js"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
