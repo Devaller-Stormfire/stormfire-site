@@ -1,56 +1,25 @@
-(async function () {
-  const byId = (id) => document.getElementById(id);
+(async function(){
+  const upd = document.getElementById("dlUpdated");
+  const ver = document.getElementById("dlVersion");
+  const log = document.getElementById("dlChangelog");
+  const btn = document.getElementById("dlBtn");
+  const sha = document.getElementById("dlSha");
 
-  const dlVersion = byId("dlVersion");
-  const dlBuild = byId("dlBuild");
-  const dlButton = byId("dlButton");
-  const patchList = byId("patchList");
+  try{
+    const data = await window.sf.fetchJSON("/data/launcher.json");
+    upd.textContent = data?.updated_at ? ("Update: " + window.sf.formatTime(data.updated_at)) : "Update: —";
+    ver.textContent = data?.version ? ("v" + data.version) : "—";
+    log.textContent = data?.changelog || "—";
+    sha.textContent = data?.sha256 || "—";
 
-  try {
-    const res = await fetch("data/downloads.json", { cache: "no-store" });
-    const data = await res.json();
-
-    // Header
-    dlVersion.textContent = data.current.version || "-";
-    dlBuild.textContent = data.current.build || "-";
-
-    // Download button
-    dlButton.href = data.current.url || "#";
-    dlButton.textContent = data.current.buttonText || "Launcher herunterladen";
-
-    // Patchnotes
-    const patches = (data.patches || []);
-    if (!patches.length) {
-      patchList.textContent = "Noch keine Patchnotes vorhanden.";
-      return;
-    }
-
-    patchList.innerHTML = patches.map(p => {
-      const items = (p.items || []).map(i => `<li>${escapeHtml(i)}</li>`).join("");
-      return `
-        <article class="sf-patch">
-          <div class="sf-patch-head">
-            <div class="sf-patch-title">${escapeHtml(p.title || "Patch")}</div>
-            <div class="sf-patch-meta">${escapeHtml(p.date || "")} • ${escapeHtml(p.version || "")}</div>
-          </div>
-          <ul class="sf-patch-items">${items}</ul>
-        </article>
-      `;
-    }).join("");
-
-  } catch (e) {
-    dlVersion.textContent = "-";
-    dlBuild.textContent = "-";
-    patchList.textContent = "Fehler beim Laden der Downloads/Patchnotes. Prüfe data/downloads.json";
-    console.error(e);
-  }
-
-  function escapeHtml(s) {
-    return String(s ?? "")
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
+    const url = data?.download_url || "#";
+    btn.href = url;
+    btn.textContent = url === "#" ? "Download (bald)" : "Download";
+  }catch{
+    upd.textContent = "Update: —";
+    ver.textContent = "—";
+    log.textContent = "Konnte /data/launcher.json nicht laden.";
+    btn.href = "#";
+    sha.textContent = "—";
   }
 })();
