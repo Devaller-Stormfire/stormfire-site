@@ -1,49 +1,108 @@
-// status.js — renders /data/status.json onto status.html
-
 (async function () {
-  const $ = (id) => document.getElementById(id);
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-  function setBadge(state, text) {
-    const dot = $("statusDot");
-    const label = $("statusText");
+  const grid = document.querySelector("section.grid");
+  const pill = document.getElementById("pageState");
+  const dot = document.getElementById("pageDot");
+  const updated = document.getElementById("lastUpdated");
 
-    dot.classList.remove("good", "warn", "bad");
-    if (state === "online") dot.classList.add("good");
-    else if (state === "maintenance") dot.classList.add("warn");
-    else dot.classList.add("bad");
-
-    label.textContent = text;
+  function dotClass(status) {
+    const s = String(status || "offline").toLowerCase();
+    if (s === "online") return "good";
+    if (s === "maintenance") return "warn";
+    return "bad";
   }
 
-  try {
-    const data = await window.sf.fetchJSON("/data/status.json");
-
-    // Badge state logic
-    if (data.status === "online") setBadge("online", "ONLINE");
-    else if (data.status === "maintenance") setBadge("maintenance", "MAINTENANCE");
-    else setBadge("offline", "OFFLINE");
-
-    $("lastUpdated").textContent = "Letztes Update: " + window.sf.formatTime(data.lastUpdated);
-
-    $("serverName").textContent = data.server?.name || "—";
-    $("realmName").textContent = data.realm?.name || "—";
-    $("region").textContent = data.server?.region || "—";
-    $("mode").textContent = data.realm?.type || "—";
-
-    $("playersOnline").textContent = window.sf.formatNumber(data.playersOnline);
-    $("capacity").textContent = window.sf.formatNumber(data.capacity);
-
-    const f1 = data.factions?.[0];
-    const f2 = data.factions?.[1];
-
-    $("faction1").textContent = f1?.name || "—";
-    $("faction2").textContent = f2?.name || "—";
-
-    $("faction1Sub").textContent = f1 ? `${window.sf.formatNumber(f1.players)} Spieler • ${f1.percent}%` : "—";
-    $("faction2Sub").textContent = f2 ? `${window.sf.formatNumber(f2.players)} Spieler • ${f2.percent}%` : "—";
-  } catch (err) {
-    console.error(err);
-    setBadge("offline", "DATENFEHLER");
-    $("lastUpdated").textContent = "Konnte /data/status.json nicht laden.";
+  function prettyStatus(status){
+    const s = String(status || "offline").toLowerCase();
+    if (s === "online") return "ONLINE";
+    if (s === "maintenance") return "MAINTENANCE";
+    return "OFFLINE";
   }
+
+  function realmCard(r) {
+    const f1 = r.factions?.[0] || { name: "Fraktion 1", players: 0 };
+    const f2 = r.factions?.[1] || { name: "Fraktion 2", players: 0 };
+
+    return `
+      <article class="card">
+        <div class="hd">
+          <h2>${window.sf.escapeHtml(r.name)}</h2>
+          <span class="pill">
+            <span class="dot ${dotClass(r.status)}"></span>
+            <b>${prettyStatus(r.status)}</b>
+          </span>
+        </div>
+        <div class="bd">
+          <div class="kpi">
+            <div class="box">
+              <div class="label">Region</div>
+              <div class="value">${window.sf.escapeHtml(r.region || "—")}</div>
+            </div>
+            <div class="box">
+              <div class="label">Modus</div>
+              <div class="value">${window.sf.escapeHtml(r.type || "—")}</div>
+            </div>
+            <div class="box">
+              <div class="label">Online</div>
+              <div class="value glow">${window.sf.formatNumber(r.playersOnline || 0)}</div>
+            </div>
+            <div class="box">
+              <div class="label">Capacity</div>
+              <div class="value">${window.sf.formatNumber(r.capacity || 0)}</div>
+            </div>
+            <div class="box">
+              <div class="label">${window.sf.escapeHtml(f1.name)}</div>
+              <div class="value">${window.sf.formatNumber(f1.players || 0)}</div>
+            </div>
+            <div class="box">
+              <div class="label">${window.sf.escapeHtml(f2.name)}</div>
+              <div class="value">${window.sf.formatNumber(f2.players || 0)}</div>
+            </div>
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
+  async function load() {
+    try {
+      dot.className = "dot warn";
+      pill.textContent = "Lädt…";
+      if (updated) updated.textContent = "—";
+
+      const data = await window.sf.fetchJSON("/data/status.json");
+      const realms = Array.isArray(data.realms) ? data.realms : [];
+
+      if (updated) updated.textContent = "Update: " + window.sf.formatTime(data.lastUpdated);
+
+      const anyOnline = realms.some(r => String(r.status).toLowerCase() === "online");
+      dot.className = "dot " + (anyOnline ? "good" : "bad");
+      pill.textContent = anyOnline ? "ONLINE" : "OFFLINE";
+
+      grid.innerHTML = realms.map(realmCard).join("") || `
+        <article class="card" style="grid-column: span 12;">
+          <div class="hd"><h2>Keine Realms</h2></div>
+          <div class="bd small">In /data/status.json sind noch keine Realms eingetragen.</div>
+        </article>
+      `;
+    } catch (e) {
+      console.warn(e);
+      dot.className = "dot bad";
+      pill.textContent = "OFFLINE";
+      grid.innerHTML = `
+        <article class="card" style="grid-column: span 12;">
+          <div class="hd"><h2>Status nicht verfügbar</h2></div>
+          <div class="bd small">Konnte /data/status.json nicht laden. Offline-Fallback greift, wenn Cache vorhanden ist.</div>
+        </article>
+      `;
+    }
+  }
+
+  await load();
+
+  // Optional: alle 60s aktualisieren
+  setInterval(() => {
+    if (document.visibilityState === "visible") load();
+  }, 60_000);
 })();
