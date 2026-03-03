@@ -3,123 +3,70 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>STORMFIRE – Status</title>
+  <title>STORMFIRE – Realm Status</title>
+  <link rel="icon" href="/assets/img/logo.png" />
   <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
 <body>
   <canvas id="astral"></canvas>
 
-  <div class="page">
-    <header>
-      <div class="brand">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brandBox">
         <img src="/assets/img/logo.png" alt="STORMFIRE Logo" />
-        <div class="title">
-          <strong>STORMFIRE</strong>
-          <span>Server Status</span>
+        <div>
+          <div class="t1">STORMFIRE</div>
+          <div class="t2">Realm Status</div>
         </div>
       </div>
 
-      <nav>
-        <a class="navbtn active" href="/status.html">Status</a>
-        <a class="navbtn" href="/leaderboard.html">Leaderboard</a>
-        <a class="navbtn" href="/impressum.html">Impressum</a>
-      </nav>
-    </header>
+      <div class="sideSection">
+        <div class="sideTitle">Navigation</div>
+        <nav class="sideNav">
+          <a class="navbtn" href="/index.html">Home</a>
+          <a class="navbtn" href="/news.html">News</a>
+          <a class="navbtn" href="/status.html">Realm Status</a>
+          <a class="navbtn" href="/leaderboard.html">Leaderboard</a>
+          <a class="navbtn" href="/roadmap.html">Roadmap</a>
+          <a class="navbtn" href="/gallery.html">Galerie</a>
+          <a class="navbtn" href="/team.html">Team</a>
+          <a class="navbtn" href="/download.html">Launcher</a>
+          <a class="navbtn" href="/impressum.html">Impressum</a>
+        </nav>
+      </div>
 
-    <main>
+      <div class="sideSection">
+        <div class="sideTitle">Live</div>
+        <div class="liveStatus">
+          <span class="dot warn" id="liveDot"></span>
+          <span id="liveTxt">Lädt…</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
       <div class="hero">
         <div>
-          <h1>Live-Serverstatus</h1>
-          <p>Aktuelle Realm-Infos, Spielerzahlen und Fraktionsverteilung – direkt aus <span class="small">/data/status.json</span>.</p>
+          <h1>Live Realm Status</h1>
+          <p>Alle Realms + Online + Fraktionen. Aktuell offline.</p>
         </div>
-
-        <div class="badge" id="statusBadge">
-          <span class="dot warn" id="statusDot"></span>
-          <span id="statusText">Lädt…</span>
+        <div class="badge">
+          <span class="dot warn" id="pageDot"></span>
+          <span id="pageState">Lädt…</span>
         </div>
       </div>
 
-      <section class="grid">
-        <article class="card">
-          <div class="hd">
-            <h2>Realm</h2>
-            <span class="small" id="lastUpdated">—</span>
-          </div>
-          <div class="bd">
-            <div class="kpi">
-              <div class="box">
-                <div class="label">Server</div>
-                <div class="value glow" id="serverName">—</div>
-              </div>
-              <div class="box">
-                <div class="label">Realm</div>
-                <div class="value glow" id="realmName">—</div>
-              </div>
-              <div class="box">
-                <div class="label">Region</div>
-                <div class="value" id="region">—</div>
-              </div>
-              <div class="box">
-                <div class="label">Modus</div>
-                <div class="value" id="mode">—</div>
-              </div>
-            </div>
-          </div>
-        </article>
+      <section class="grid" id="realmGrid"></section>
 
-        <article class="card">
-          <div class="hd">
-            <h2>Spieler & Fraktionen</h2>
-            <span class="small">Live Snapshot</span>
-          </div>
-          <div class="bd">
-            <div class="kpi">
-              <div class="box">
-                <div class="label">Aktuelle Spielerzahl</div>
-                <div class="value glow" id="playersOnline">—</div>
-              </div>
-
-              <div class="box">
-                <div class="label">Max Capacity</div>
-                <div class="value" id="capacity">—</div>
-              </div>
-
-              <div class="box">
-                <div class="label">Fraktion 1</div>
-                <div class="value" id="faction1">—</div>
-                <div class="small" id="faction1Sub">—</div>
-              </div>
-
-              <div class="box">
-                <div class="label">Fraktion 2</div>
-                <div class="value" id="faction2">—</div>
-                <div class="small" id="faction2Sub">—</div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="card" style="grid-column: span 12;">
-          <div class="hd">
-            <h2>Hinweise</h2>
-            <span class="small">Dev-Status</span>
-          </div>
-          <div class="bd">
-            <div class="pill">
-              <b>Info</b>
-              <span class="small">Wenn dein Spiel noch offline ist: setz <code>online: false</code> in <code>/data/status.json</code> – die Seite bleibt trotzdem “live”.</span>
-            </div>
-          </div>
-        </article>
-      </section>
+      <footer>
+        © <span id="year"></span> STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)
+      </footer>
     </main>
-
-    <footer>
-      © STORMFIRE — Status UI (GitHub Pages kompatibel) • Datenquelle: <span class="small">/data/status.json</span>
-    </footer>
   </div>
 
   <script src="/assets/js/common.js"></script>
+  <script src="/assets/js/site.js"></script>
   <script src="/assets/js/status.js"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
