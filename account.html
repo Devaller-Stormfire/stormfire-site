@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>STORMFIRE – Mein Account</title>
+  <link rel="icon" href="/assets/img/logo.png" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+<body>
+  <canvas id="astral"></canvas>
+
+  <div class="page">
+    <header>
+      <div class="brand">
+        <img src="/assets/img/logo.png" alt="STORMFIRE Logo" />
+        <div class="title">
+          <strong>STORMFIRE</strong>
+          <span>Dev Logs • News • Patchnotes</span>
+        </div>
+      </div>
+
+      <div class="headerRight">
+        <nav>
+          <a class="navbtn" href="/index.html">Home</a>
+          <a class="navbtn" href="/gallery.html">Galerie</a>
+          <a class="navbtn" href="/login.html">Login</a>
+          <a class="navbtn active" href="/account.html">Mein Account</a>
+        </nav>
+
+        <div class="liveStatus">
+          <span class="dot warn" id="liveDot"></span>
+          <span id="liveTxt">Lädt…</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="hero">
+        <div>
+          <h1>Mein Account</h1>
+          <p>Frontend-Ansicht: später echte Charaktere vom Server.</p>
+        </div>
+        <div class="badge"><span class="dot warn"></span><span id="accUser">—</span></div>
+      </div>
+
+      <section class="grid">
+        <article class="card" style="grid-column: span 12;">
+          <div class="hd"><h2>Charaktere</h2><span class="small">Demo-Daten</span></div>
+          <div class="bd">
+            <div id="charList" class="small">Lädt…</div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)
+    </footer>
+  </div>
+
+  <script src="/assets/js/common.js"></script>
+  <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/account.js"></script>
+</body>
+</html>
