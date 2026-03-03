@@ -10,69 +10,84 @@
 <body>
   <canvas id="astral"></canvas>
 
-  <div class="page">
-    <header>
-      <div class="brand">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brandBox">
         <img src="/assets/img/logo.png" alt="STORMFIRE Logo" />
-        <div class="title">
-          <strong>STORMFIRE</strong>
-          <span>Dev Logs • News • Patchnotes</span>
+        <div>
+          <div class="t1">STORMFIRE</div>
+          <div class="t2">Galerie</div>
         </div>
       </div>
 
-      <div class="headerRight">
-        <nav>
+      <div class="sideSection">
+        <div class="sideTitle">Navigation</div>
+        <nav class="sideNav">
           <a class="navbtn" href="/index.html">Home</a>
-          <a class="navbtn active" href="/gallery.html">Galerie</a>
-          <a class="navbtn" href="/login.html">Login</a>
-          <a class="navbtn" href="/account.html">Mein Account</a>
+          <a class="navbtn" href="/news.html">News</a>
+          <a class="navbtn" href="/status.html">Realm Status</a>
+          <a class="navbtn" href="/leaderboard.html">Leaderboard</a>
+          <a class="navbtn" href="/roadmap.html">Roadmap</a>
+          <a class="navbtn" href="/gallery.html">Galerie</a>
+          <a class="navbtn" href="/team.html">Team</a>
+          <a class="navbtn" href="/download.html">Launcher</a>
+          <a class="navbtn" href="/impressum.html">Impressum</a>
         </nav>
+      </div>
 
+      <div class="sideSection">
+        <div class="sideTitle">Live</div>
         <div class="liveStatus">
           <span class="dot warn" id="liveDot"></span>
           <span id="liveTxt">Lädt…</span>
         </div>
       </div>
-    </header>
+    </aside>
 
-    <main>
+    <main class="content">
       <div class="hero">
         <div>
-          <h1>Spieler Galerie</h1>
-          <p>Screenshots, Artworks, Builds – später mit echtem Upload & Moderation.</p>
+          <h1>Galerie</h1>
+          <p>Später: Spieler-Uploads + Login. Jetzt: Demo-Daten aus <code>/data/gallery.json</code>.</p>
         </div>
-        <div class="badge"><span class="dot warn"></span><span id="galState">Prototype</span></div>
+        <div class="badge">
+          <span class="dot warn"></span>
+          <span id="galUpdated">Lädt…</span>
+        </div>
       </div>
 
       <section class="grid">
         <article class="card" style="grid-column: span 12;">
-          <div class="hd"><h2>Upload</h2><span class="small">kommt mit Backend</span></div>
-          <div class="bd">
-            <div class="small" id="uploadHint">Bitte einloggen, um später hochzuladen.</div>
-            <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
-              <input class="input" type="file" disabled />
-              <button class="navbtn" disabled>Upload (später)</button>
-              <a class="navbtn" href="/login.html">Login</a>
-            </div>
+          <div class="hd">
+            <h2>Upload (später)</h2>
+            <span class="small">nur vorbereitet</span>
+          </div>
+          <div class="small">
+            Upload wird erst aktiviert, wenn Account/Login + API live ist.
+            (Frontend ist vorbereitet, keine echten Uploads auf GitHub Pages.)
+          </div>
+          <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn" type="button" id="fakeLoginBtn">Test: Login an/aus</button>
+            <span class="pill"><b>Login</b> <span id="loginState">—</span></span>
           </div>
         </article>
 
         <article class="card" style="grid-column: span 12;">
-          <div class="hd"><h2>Galerie</h2><span class="small" id="galUpdated">—</span></div>
-          <div class="bd">
-            <div id="galGrid" class="galleryGrid"></div>
-          </div>
+          <div class="hd"><h2>Beiträge</h2><span class="small" id="galCount">0</span></div>
+          <div id="galGrid" class="small">Lädt…</div>
         </article>
       </section>
-    </main>
 
-    <footer>
-      © <span id="year"></span> STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)
-    </footer>
+      <footer>
+        © <span id="year"></span> STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)
+      </footer>
+    </main>
   </div>
 
+  <script src="/assets/js/astral.js"></script>
   <script src="/assets/js/common.js"></script>
   <script src="/assets/js/site.js"></script>
   <script src="/assets/js/gallery.js"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
