@@ -10,114 +10,84 @@
 <body>
   <canvas id="astral"></canvas>
 
-  <div class="page">
-    <header>
-      <div class="brand">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brandBox">
         <img src="/assets/img/logo.png" alt="STORMFIRE Logo" />
-        <div class="title">
-          <strong>STORMFIRE</strong>
-          <span>Dev Logs • News • Patchnotes</span>
+        <div>
+          <div class="t1">STORMFIRE</div>
+          <div class="t2">Portal</div>
         </div>
       </div>
 
-      <div class="headerRight">
-        <nav>
-          <a class="navbtn active" href="/index.html">Home</a>
+      <div class="sideSection">
+        <div class="sideTitle">Navigation</div>
+        <nav class="sideNav">
+          <a class="navbtn" href="/index.html">Home</a>
           <a class="navbtn" href="/news.html">News</a>
-          <a class="navbtn" href="/status.html">Status</a>
+          <a class="navbtn" href="/status.html">Realm Status</a>
           <a class="navbtn" href="/leaderboard.html">Leaderboard</a>
           <a class="navbtn" href="/roadmap.html">Roadmap</a>
           <a class="navbtn" href="/gallery.html">Galerie</a>
-          <a class="navbtn" href="/download.html">Download</a>
+          <a class="navbtn" href="/team.html">Team</a>
+          <a class="navbtn" href="/download.html">Launcher</a>
           <a class="navbtn" href="/impressum.html">Impressum</a>
         </nav>
+      </div>
 
-        <div class="liveStatus" id="liveStatus">
+      <div class="sideSection">
+        <div class="sideTitle">Live</div>
+        <div class="liveStatus">
           <span class="dot warn" id="liveDot"></span>
           <span id="liveTxt">Lädt…</span>
         </div>
       </div>
-    </header>
+    </aside>
 
-    <main>
+    <main class="content">
       <div class="hero">
         <div>
           <h1>Willkommen in STORMFIRE</h1>
-          <p>Aktueller Stand, Live-Status, Devlogs – alles im Astral-Design.</p>
+          <p>Dev Logs, Realm Status, Rankings und später: Account & Charakteranzeige – live aus der Datenbank.</p>
         </div>
         <div class="badge">
           <span class="dot warn"></span>
-          <span>Dev Build</span>
+          <span id="homeUpdated">Lädt…</span>
         </div>
       </div>
 
       <section class="grid">
-        <article class="card">
-          <div class="hd">
-            <h2>Server Snapshot</h2>
-            <span class="small" id="homeStatusUpdated">—</span>
-          </div>
-          <div class="bd">
-            <div class="kpi">
-              <div class="box">
-                <div class="label">Realm</div>
-                <div class="value glow" id="homeRealm">—</div>
-              </div>
-              <div class="box">
-                <div class="label">Online</div>
-                <div class="value glow" id="homeOnline">—</div>
-              </div>
-              <div class="box">
-                <div class="label">Fraktion 1</div>
-                <div class="value" id="homeF1">—</div>
-              </div>
-              <div class="box">
-                <div class="label">Fraktion 2</div>
-                <div class="value" id="homeF2">—</div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="hd">
-            <h2>Letzte 3 News</h2>
-            <span class="small" id="homeNewsUpdated">—</span>
-          </div>
-          <div class="bd">
-            <div id="homeNewsList" class="small">Lädt…</div>
-            <div style="margin-top:12px;">
-              <a class="navbtn" href="/news.html">Alle News öffnen</a>
-            </div>
-          </div>
-        </article>
-
         <article class="card" style="grid-column: span 12;">
           <div class="hd">
-            <h2>Account</h2>
-            <span class="small">Frontend vorbereitet</span>
+            <h2>Letzte 3 News</h2>
+            <span class="small">automatisch aus <code>/data/news.json</code></span>
           </div>
-          <div class="bd">
-            <div class="pill">
-              <b>Neu</b>
-              <span class="small">Login/Account/Galerie sind als Konzept vorbereitet (noch ohne echtes Backend).</span>
-            </div>
-            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-              <a class="navbtn" href="/login.html">Login</a>
-              <a class="navbtn" href="/account.html">Mein Account</a>
-            </div>
-          </div>
+          <div id="homeNews"></div>
+        </article>
+
+        <article class="card">
+          <div class="hd"><h2>Realm Status</h2><span class="small">Live / Offline</span></div>
+          <div class="small">Alle Realms mit Online-Zahl & Fraktionen.</div>
+          <div style="margin-top:10px;"><a class="navbtn" href="/status.html">→ Status öffnen</a></div>
+        </article>
+
+        <article class="card">
+          <div class="hd"><h2>Launcher</h2><span class="small">Manifest</span></div>
+          <div class="small">Version, Changelog, Download-Link, SHA256.</div>
+          <div style="margin-top:10px;"><a class="navbtn" href="/download.html">→ Download öffnen</a></div>
         </article>
       </section>
-    </main>
 
-    <footer>
-      © <span id="year"></span> STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)
-    </footer>
+      <footer>
+        © <span id="year"></span> STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)
+      </footer>
+    </main>
   </div>
 
+  <script src="/assets/js/astral.js"></script>
   <script src="/assets/js/common.js"></script>
   <script src="/assets/js/site.js"></script>
   <script src="/assets/js/home.js"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
