@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>STORMFIRE – Tritt Discord bei</title>
+  <link rel="icon" href="/assets/img/logo.png" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+<body>
+  <canvas id="astral"></canvas>
+
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="brandBox">
+        <img src="/assets/img/logo.png" alt="STORMFIRE Logo" />
+        <div>
+          <div class="t1">STORMFIRE</div>
+          <div class="t2">Community</div>
+        </div>
+      </div>
+
+      <div class="sideSection">
+        <div class="sideTitle">Navigation</div>
+        <nav class="sideNav">
+          <a class="navbtn" href="/index.html">Home</a>
+          <a class="navbtn" href="/news.html">News</a>
+          <a class="navbtn" href="/status.html">Realm Status</a>
+          <a class="navbtn" href="/leaderboard.html">Leaderboard</a>
+          <a class="navbtn" href="/roadmap.html">Roadmap</a>
+          <a class="navbtn" href="/gallery.html">Galerie</a>
+          <a class="navbtn" href="/team.html">Team</a>
+          <a class="navbtn active" href="/discord.html">Discord</a>
+          <a class="navbtn" href="/download.html">Launcher</a>
+          <a class="navbtn" href="/impressum.html">Impressum</a>
+        </nav>
+      </div>
+
+      <div class="sideSection">
+        <div class="sideTitle">Live</div>
+        <div class="liveStatus">
+          <span class="dot warn" id="liveDot"></span>
+          <span id="liveTxt">Lädt…</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+      <div class="hero">
+        <div>
+          <h1>Tritt unserem Discord bei</h1>
+          <p>Werde Teil der STORMFIRE-Community, diskutiere Builds, Devlogs und finde Mitstreiter.</p>
+        </div>
+      </div>
+
+      <section class="grid">
+        <article class="card" style="grid-column: span 12; text-align:center;">
+          
+          <div style="font-size:20px; font-weight:900; margin-bottom:12px;">
+            🔥 STORMFIRE Community 🔥
+          </div>
+
+          <div class="small" style="margin-bottom:18px;">
+            Dev Updates • Realm Diskussionen • PvP Talk • Community Events
+          </div>
+
+          <a class="navbtn"
+             href="https://discord.gg/wvpdyZ6wW"
+             target="_blank"
+             rel="noopener noreferrer"
+             style="font-size:16px; padding:14px 22px;">
+             👉 Jetzt Discord beitreten
+          </a>
+
+          <div class="small" style="margin-top:18px; opacity:0.7;">
+            Hinweis: Der Link öffnet Discord in einem neuen Tab.
+          </div>
+
+        </article>
+      </section>
+
+      <footer>
+        © <span id="year"></span> STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)
+      </footer>
+    </main>
+  </div>
+
+  <script src="/assets/js/astral.js"></script>
+  <script src="/assets/js/common.js"></script>
+  <script src="/assets/js/site.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
