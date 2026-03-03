@@ -1,20 +1,42 @@
+// /assets/js/home.js — Last 3 News teaser (stable sort)
 (async function(){
   const wrap = document.getElementById("homeNews");
   const updated = document.getElementById("homeUpdated");
+  if(!wrap || !updated || !window.sf?.fetchJSON) return;
+
+  function toTime(v){
+    if(!v) return 0;
+    const t = Date.parse(String(v));
+    return Number.isFinite(t) ? t : 0;
+  }
+
+  function cmpDesc(a,b){
+    const ta = toTime(a?.ts || a?.date);
+    const tb = toTime(b?.ts || b?.date);
+    if(tb !== ta) return tb - ta;
+
+    const ida = String(a?.id ?? "");
+    const idb = String(b?.id ?? "");
+    if(idb !== ida) return idb.localeCompare(ida);
+
+    return (a?._i ?? 0) - (b?._i ?? 0);
+  }
 
   function postCard(p){
     const title = window.sf.escapeHtml(p?.title || "Ohne Titel");
     const date = window.sf.escapeHtml(p?.date || "");
     const type = window.sf.escapeHtml(String(p?.type || "news").toUpperCase());
-    const body = window.sf.escapeHtml(p?.body || "").slice(0, 280) + (String(p?.body||"").length > 280 ? "…" : "");
+    const rawBody = String(p?.body || "");
+    const body = window.sf.escapeHtml(rawBody).slice(0, 280) + (rawBody.length > 280 ? "…" : "");
+
     return `
-      <div style="border:1px solid rgba(255,255,255,0.10); border-radius:16px; background:rgba(0,0,0,0.16); padding:12px; margin-top:10px;">
-        <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;">
-          <div style="font-weight:900;">${title}</div>
-          <div class="small">${date} • ${type}</div>
+      <article class="card" style="grid-column: span 12;">
+        <div class="hd">
+          <h2>${title}</h2>
+          <span class="small">${date} • ${type}</span>
         </div>
-        <div class="small" style="margin-top:8px; white-space:pre-wrap;">${body}</div>
-      </div>
+        <div class="small" style="white-space:pre-wrap; line-height:1.65;">${body}</div>
+      </article>
     `;
   }
 
@@ -23,7 +45,9 @@
     updated.textContent = data?.updated_at ? ("Update: " + window.sf.formatTime(data.updated_at)) : "Update: —";
 
     const posts = Array.isArray(data?.posts) ? data.posts.slice() : [];
-    posts.sort((a,b)=> String(b?.date ?? "").localeCompare(String(a?.date ?? "")));
+    for(let i=0;i<posts.length;i++) posts[i]._i = i;
+    posts.sort(cmpDesc);
+
     const last3 = posts.slice(0,3);
 
     if(!last3.length){
@@ -32,7 +56,7 @@
     }
 
     wrap.innerHTML = last3.map(postCard).join("") + `
-      <div style="margin-top:12px;">
+      <div style="margin-top:10px;">
         <a class="navbtn" href="/news.html">→ Alle News öffnen</a>
       </div>
     `;
