@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>STORMFIRE – Home</title>
   <link rel="icon" href="/assets/img/logo.png" />
-
   <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
 <body>
@@ -21,51 +20,60 @@
         </div>
       </div>
 
-      <nav>
-        <a class="navbtn active" href="/index.html">Home</a>
-        <a class="navbtn" href="/news.html">News</a>
-        <a class="navbtn" href="/download.html">Launcher Download</a>
-        <a class="navbtn" href="/leaderboard.html">Rankings</a>
-        <a class="navbtn" href="/impressum.html">Impressum</a>
-      </nav>
+      <div class="headerRight">
+        <nav>
+          <a class="navbtn active" href="/index.html">Home</a>
+          <a class="navbtn" href="/news.html">News</a>
+          <a class="navbtn" href="/status.html">Status</a>
+          <a class="navbtn" href="/leaderboard.html">Leaderboard</a>
+          <a class="navbtn" href="/roadmap.html">Roadmap</a>
+          <a class="navbtn" href="/gallery.html">Galerie</a>
+          <a class="navbtn" href="/download.html">Download</a>
+          <a class="navbtn" href="/impressum.html">Impressum</a>
+        </nav>
+
+        <div class="liveStatus" id="liveStatus">
+          <span class="dot warn" id="liveDot"></span>
+          <span id="liveTxt">Lädt…</span>
+        </div>
+      </div>
     </header>
 
     <main>
       <div class="hero">
         <div>
           <h1>Willkommen in STORMFIRE</h1>
-          <p>Der Astralstrom erwacht. Hier findest du den aktuellen Entwicklungsstand, News und später Live-Status & Rankings.</p>
+          <p>Aktueller Stand, Live-Status, Devlogs – alles im Astral-Design.</p>
         </div>
-
-        <div class="badge" id="homeBadge">
-          <span class="dot warn" id="homeDot"></span>
-          <span id="homeDotText">Dev Build</span>
+        <div class="badge">
+          <span class="dot warn"></span>
+          <span>Dev Build</span>
         </div>
       </div>
 
       <section class="grid">
         <article class="card">
           <div class="hd">
-            <h2>Server Status</h2>
-            <span class="small" id="statusUpdated">—</span>
+            <h2>Server Snapshot</h2>
+            <span class="small" id="homeStatusUpdated">—</span>
           </div>
           <div class="bd">
             <div class="kpi">
               <div class="box">
                 <div class="label">Realm</div>
-                <div class="value glow" id="realmName">—</div>
+                <div class="value glow" id="homeRealm">—</div>
               </div>
               <div class="box">
                 <div class="label">Online</div>
-                <div class="value glow" id="playersOnline">—</div>
+                <div class="value glow" id="homeOnline">—</div>
               </div>
               <div class="box">
                 <div class="label">Fraktion 1</div>
-                <div class="value" id="f1">—</div>
+                <div class="value" id="homeF1">—</div>
               </div>
               <div class="box">
                 <div class="label">Fraktion 2</div>
-                <div class="value" id="f2">—</div>
+                <div class="value" id="homeF2">—</div>
               </div>
             </div>
           </div>
@@ -73,26 +81,30 @@
 
         <article class="card">
           <div class="hd">
-            <h2>Letzter Post</h2>
-            <span class="small" id="newsUpdated">—</span>
+            <h2>Letzte 3 News</h2>
+            <span class="small" id="homeNewsUpdated">—</span>
           </div>
           <div class="bd">
-            <div id="latestPost" class="small">Lädt…</div>
+            <div id="homeNewsList" class="small">Lädt…</div>
             <div style="margin-top:12px;">
-              <a class="navbtn" href="/news.html">Zu allen News</a>
+              <a class="navbtn" href="/news.html">Alle News öffnen</a>
             </div>
           </div>
         </article>
 
         <article class="card" style="grid-column: span 12;">
           <div class="hd">
-            <h2>Hinweis</h2>
-            <span class="small">Projekt in Entwicklung</span>
+            <h2>Account</h2>
+            <span class="small">Frontend vorbereitet</span>
           </div>
           <div class="bd">
             <div class="pill">
-              <b>Info</b>
-              <span class="small">Spiel in Entwicklung. Inhalte können sich ändern. Keine Gameplay-Vorteile durch Website.</span>
+              <b>Neu</b>
+              <span class="small">Login/Account/Galerie sind als Konzept vorbereitet (noch ohne echtes Backend).</span>
+            </div>
+            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+              <a class="navbtn" href="/login.html">Login</a>
+              <a class="navbtn" href="/account.html">Mein Account</a>
             </div>
           </div>
         </article>
@@ -105,65 +117,7 @@
   </div>
 
   <script src="/assets/js/common.js"></script>
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    const $ = (id) => document.getElementById(id);
-
-    function setDot(state){
-      const dot = $("homeDot");
-      dot.classList.remove("good","warn","bad");
-      if(state==="online") dot.classList.add("good");
-      else if(state==="maintenance") dot.classList.add("warn");
-      else dot.classList.add("bad");
-    }
-
-    async function loadHome(){
-      // Status
-      try{
-        const s = await window.sf.fetchJSON("/data/status.json");
-        $("statusUpdated").textContent = "Update: " + window.sf.formatTime(s.lastUpdated);
-        $("realmName").textContent = s.realm?.name || "—";
-        $("playersOnline").textContent = window.sf.formatNumber(s.playersOnline);
-        $("f1").textContent = s.factions?.[0]?.name || "—";
-        $("f2").textContent = s.factions?.[1]?.name || "—";
-
-        setDot(s.status || "offline");
-        $("homeDotText").textContent = (s.status || "offline").toUpperCase();
-      }catch(e){
-        $("statusUpdated").textContent = "Status nicht verfügbar";
-        setDot("offline");
-        $("homeDotText").textContent = "OFFLINE";
-      }
-
-      // Latest news
-      try{
-        const n = await window.sf.fetchJSON("/data/news.json");
-        $("newsUpdated").textContent = "Update: " + (n.updated_at || "—");
-        const posts = Array.isArray(n.posts) ? n.posts.slice() : [];
-        posts.sort((a,b) => String(b?.date ?? "").localeCompare(String(a?.date ?? "")));
-        const p = posts[0];
-        $("latestPost").innerHTML = p
-          ? `<div style="font-weight:800; font-size:14px; margin-bottom:6px;">${escapeHtml(p.title || "Ohne Titel")}</div>
-             <div class="small">${escapeHtml((p.date||"") + (p.author ? " • " + p.author : ""))}</div>
-             <div style="margin-top:10px; white-space:pre-wrap;">${escapeHtml((p.body||"").slice(0, 280))}${(p.body||"").length>280 ? "…" : ""}</div>`
-          : "Noch keine Posts.";
-      }catch(e){
-        $("newsUpdated").textContent = "News nicht verfügbar";
-        $("latestPost").textContent = "Konnte News nicht laden.";
-      }
-    }
-
-    function escapeHtml(str){
-      return String(str ?? "")
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
-    }
-
-    loadHome();
-  </script>
+  <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/home.js"></script>
 </body>
 </html>
