@@ -1,0 +1,13 @@
+{
+  "updated_at": "2026-03-03T17:00:00+01:00",
+  "stages": [
+    { "title": "Stage 1 – Login", "desc": "Login UI + Account Flow", "status": "wip" },
+    { "title": "Stage 2 – Realm", "desc": "Realm Auswahl + Status Integration", "status": "wip" },
+    { "title": "Stage 3 – Character Create", "desc": "Rassen, Attribute, Vorschau", "status": "wip" },
+    { "title": "Stage 4 – Mirror", "desc": "Netcode / Multiplayer Foundation", "status": "planned" },
+    { "title": "Stage 5 – Datenbank", "desc": "Accounts, Charaktere, Live Daten", "status": "planned" },
+    { "title": "Stage 6 – World", "desc": "Zonen, Spawns, Grundsysteme", "status": "planned" },
+    { "title": "Stage 7 – Quests", "desc": "Questlog, Story, Events", "status": "planned" },
+    { "title": "Stage 8 – Raids", "desc": "Raid Framework, Bosses, Loot", "status": "planned" }
+  ]
+}
