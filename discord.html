@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>STORMFIRE – Tritt Discord bei</title>
+  <title>STORMFIRE – Discord</title>
   <link rel="icon" href="/assets/img/logo.png" />
   <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
@@ -18,7 +18,7 @@
         <img src="/assets/img/logo.png" alt="STORMFIRE Logo" />
         <div>
           <div class="t1">STORMFIRE</div>
-          <div class="t2">Community</div>
+          <div class="t2">Community • Discord</div>
         </div>
       </div>
 
@@ -51,19 +51,49 @@
     <main class="content">
       <div class="hero">
         <div>
-          <h1>Tritt unserem Discord bei</h1>
-          <p>Werde Teil der STORMFIRE-Community, diskutiere Builds, Devlogs und finde Mitstreiter.</p>
+          <h1>Discord</h1>
+          <p>Werde Teil der STORMFIRE-Community: Devlogs, Updates, PvP-Talk, Events.</p>
+        </div>
+
+        <div class="badge">
+          <span class="dot warn"></span>
+          <span>Community</span>
         </div>
       </div>
 
       <section class="grid">
+
+        <article class="card" style="grid-column: span 12;">
+          <div class="hd">
+            <h2>Live Discord Counter</h2>
+            <span class="small">Mitglieder & Online (Invite Counts)</span>
+          </div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+            <span class="pill">
+              <b>Status</b> <span id="discordCounterStatus">—</span>
+            </span>
+
+            <span class="pill">
+              <b>Online</b> <span id="discordOnline">—</span>
+            </span>
+
+            <span class="pill">
+              <b>Mitglieder</b> <span id="discordMembers">—</span>
+            </span>
+          </div>
+
+          <div class="small" style="margin-top:10px; opacity:0.85;">
+            Hinweis: Werte kommen direkt von Discord (Cache + Fallback, kein GitHub-Limit).
+          </div>
+        </article>
+
         <article class="card" style="grid-column: span 12; text-align:center;">
-          
-          <div style="font-size:20px; font-weight:900; margin-bottom:12px;">
+          <div style="font-size:20px; font-weight:900; margin-bottom:10px;">
             🔥 STORMFIRE Community 🔥
           </div>
 
-          <div class="small" style="margin-bottom:18px;">
+          <div class="small" style="margin-bottom:16px;">
             Dev Updates • Realm Diskussionen • PvP Talk • Community Events
           </div>
 
@@ -71,26 +101,41 @@
              href="https://discord.gg/wvpdyZ6wW"
              target="_blank"
              rel="noopener noreferrer"
-             style="font-size:16px; padding:14px 22px;">
+             style="font-size:16px; padding:14px 22px; justify-content:center;">
              👉 Jetzt Discord beitreten
           </a>
 
-          <div class="small" style="margin-top:18px; opacity:0.7;">
-            Hinweis: Der Link öffnet Discord in einem neuen Tab.
+          <div class="small" style="margin-top:16px; opacity:0.7;">
+            Der Link öffnet Discord in einem neuen Tab.
           </div>
-
         </article>
+
+        <article class="card" style="grid-column: span 12;">
+          <div class="hd">
+            <h2>Regeln (Kurz)</h2>
+            <span class="small">Fair Play</span>
+          </div>
+          <div class="small" style="white-space:pre-wrap;">
+• Kein Spam / Scam
+• Kein Account- / Passwort-Support über DMs
+• Respektvoller Umgang
+• Feedback willkommen – aber konstruktiv
+          </div>
+        </article>
+
       </section>
 
       <footer>
         © <span id="year"></span> STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)
       </footer>
     </main>
+
   </div>
 
   <script src="/assets/js/astral.js"></script>
   <script src="/assets/js/common.js"></script>
   <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/discord-counter.js" defer></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
