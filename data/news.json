@@ -1,6 +1,16 @@
 {
   "updated_at": "2026-03-02T22:30:00+01:00",
   "posts": [
+ {
+  "id": "devlog-002",
+  "type": "devlog",
+  "title": "Devlog 2 – Das Tor öffnet sich",
+  "date": "2026-03-03",
+  "author": "Devaller",
+  "tags": ["DEVLOG", "LAUNCHER"],
+  "body": "Mit dem heutigen Tag wurde das Tor zu STORMFIRE erschaffen.\n\nDer Launcher erhebt sich als erstes sichtbares Fundament unserer Welt – ein Portal zwischen Realität und Jueria.\n\nEr vereint News, Update-System, Realm-Informationen und bereitet die Bühne für Freundesliste und Shop.\n\nWas jetzt noch ruhig erscheint, wird bald pulsieren.\n\nDer Sturm sammelt seine Kraft.\nDie Astralflamme lodert.\nUnd wir stehen erst am Anfang."
+}
+    
     {
       "id": "devlog-001",
       "type": "devlog",
