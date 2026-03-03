@@ -33,13 +33,17 @@ function lsRead(path){
     if(!obj || typeof obj.ts !== "number") return null;
     if((now() - obj.ts) > LS_TTL_MS) return null;
     return obj.data ?? null;
-  }catch{ return null; }
+  }catch{
+    return null;
+  }
 }
 
 function lsWrite(path, data){
   try{
     localStorage.setItem(lsKey(path), JSON.stringify({ ts: now(), data }));
-  }catch{ /* ignore quota */ }
+  }catch{
+    /* ignore quota */
+  }
 }
 
 window.sf.fetchJSON = async function(path){
@@ -77,13 +81,12 @@ window.sf.fetchJSON = async function(path){
       const ls = lsRead(path);
       if (ls) return ls;
       if (c) return c.data;
-
       throw new Error(`Fetch error ${res.status} for ${path}`);
     }
 
     failState.delete(path);
-
     const data = await res.json();
+
     memCache.set(path, { ts: now(), data });
     lsWrite(path, data);
     return data;
@@ -107,14 +110,14 @@ window.sf.formatTime = window.sf.formatTime || (iso => {
   return d.toLocaleString("de-DE", { dateStyle: "medium", timeStyle: "short" });
 });
 
-window.sf.escapeHtml = window.sf.escapeHtml || (str => String(str ?? "")
-  .replaceAll("&","&amp;")
-  .replaceAll("<","&lt;")
-  .replaceAll(">","&gt;")
-  .replaceAll('"',"&quot;")
-  .replaceAll("'","&#039;")
-);
+window.sf.escapeHtml = window.sf.escapeHtml || (str => {
+  return String(str ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+});
 
 // Login flag (frontend placeholder)
-// Later: replace with real token/session from API
 window.sf.isLoggedIn = window.sf.isLoggedIn || (() => localStorage.getItem("sf_logged_in") === "1");
