@@ -4,13 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>STORMFIRE – Team</title>
+
   <link rel="icon" href="/assets/img/logo.png" />
   <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
+
 <body>
   <canvas id="astral"></canvas>
 
   <div class="layout">
+    <!-- SIDEBAR -->
     <aside class="sidebar">
       <div class="brandBox">
         <img src="/assets/img/logo.png" alt="STORMFIRE Logo" />
@@ -27,9 +30,13 @@
           <a class="navbtn" href="/news.html">News</a>
           <a class="navbtn" href="/status.html">Realm Status</a>
           <a class="navbtn" href="/leaderboard.html">Leaderboard</a>
+
           <a class="navbtn" href="/roadmap.html">Roadmap</a>
           <a class="navbtn" href="/gallery.html">Galerie</a>
-          <a class="navbtn" href="/team.html">Team</a>
+
+          <a class="navbtn active" href="/team.html">Team</a>
+          <a class="navbtn" href="/bewerbung.html">Bewerben</a>
+
           <a class="navbtn" href="/discord.html">Discord</a>
           <a class="navbtn" href="/download.html">Launcher</a>
           <a class="navbtn" href="/impressum.html">Impressum</a>
@@ -45,12 +52,17 @@
       </div>
     </aside>
 
+    <!-- CONTENT -->
     <main class="content">
       <div class="hero">
         <div>
           <h1>Team & GM Team</h1>
-          <p>Aktuell manuell gepflegt – später automatisch aus Datenbank/API.</p>
+          <p>
+            DEV/GM Rollen sind offiziell. Alpha/Beta Credits werden hier gesammelt –
+            später automatisch aus Datenbank/API.
+          </p>
         </div>
+
         <div class="badge">
           <span class="dot warn"></span>
           <span id="teamUpdated">Lädt…</span>
@@ -58,6 +70,7 @@
       </div>
 
       <section class="grid">
+        <!-- CORE -->
         <article class="card" style="grid-column: span 12;">
           <div class="hd">
             <h2>Core Team</h2>
@@ -66,6 +79,7 @@
           <div class="teamGrid" id="coreTeam"></div>
         </article>
 
+        <!-- GM -->
         <article class="card" style="grid-column: span 12;">
           <div class="hd">
             <h2>GM Team</h2>
@@ -74,6 +88,7 @@
           <div class="teamGrid" id="gmTeam"></div>
         </article>
 
+        <!-- ADMIN (hidden unless logged in) -->
         <article class="card" id="adminCard" style="grid-column: span 12; display:none;">
           <div class="hd">
             <h2>Admin</h2>
@@ -82,6 +97,25 @@
           <div class="teamGrid" id="adminTeam"></div>
         </article>
 
+        <!-- ALPHA TESTER -->
+        <article class="card" style="grid-column: span 12;">
+          <div class="hd">
+            <h2>Alpha Tester</h2>
+            <span class="small" id="creditsUpdated">Lädt…</span>
+          </div>
+          <div id="alphaTester" style="display:flex; gap:10px; flex-wrap:wrap;"></div>
+        </article>
+
+        <!-- BETA TESTER -->
+        <article class="card" style="grid-column: span 12;">
+          <div class="hd">
+            <h2>Beta Tester</h2>
+            <span class="small">Danke für euren Einsatz</span>
+          </div>
+          <div id="betaTester" style="display:flex; gap:10px; flex-wrap:wrap;"></div>
+        </article>
+
+        <!-- NOTE -->
         <article class="card" style="grid-column: span 12;">
           <div class="hd">
             <h2>Hinweis</h2>
@@ -99,9 +133,11 @@
     </main>
   </div>
 
+  <!-- Scripts -->
   <script src="/assets/js/common.js"></script>
   <script src="/assets/js/site.js"></script>
   <script src="/assets/js/team.js"></script>
+  <script src="/assets/js/credits.js"></script>
   <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
