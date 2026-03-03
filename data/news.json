@@ -2,28 +2,31 @@
   "updated_at": "2026-03-03T16:00:00+01:00",
   "posts": [
     {
-  "id": "devlog-003",
-  "type": "devlog",
-  "title": "Devlog 3 – Der Sturm formt sich",
-  "date": "2026-03-03",
-  "author": "Devaller",
-  "tags": ["DEVLOG", "DISCORD", "COMMUNITY"],
-  "body": "Heute wurde unsere Discord-Community offiziell integriert...\n\nWir bauen die Brücke zwischen Website, Launcher und Community.\n\nDas Tor öffnet sich weiter."
-    }
+      "id": "devlog-003",
+      "type": "devlog",
+      "title": "Devlog 3 – Der Sturm formt sich",
+      "date": "2026-03-03",
+      "ts": "2026-03-03T16:45:00+01:00",
+      "author": "Devaller",
+      "tags": ["DEVLOG", "DISCORD", "COMMUNITY"],
+      "body": "Heute wurde unsere Discord-Community offiziell integriert...\n\nWir bauen die Brücke zwischen Website, Launcher und Community.\n\nDas Tor öffnet sich weiter."
+    },
     {
       "id": "devlog-002",
       "type": "devlog",
       "title": "Devlog 2 – Das Tor öffnet sich",
       "date": "2026-03-03",
+      "ts": "2026-03-03T16:00:00+01:00",
       "author": "Devaller",
       "tags": ["DEVLOG", "LAUNCHER"],
-      "body": "Mit dem heutigen Tag wurde das Tor zu STORMFIRE erschaffen.\n\nDer Launcher erhebt sich als erstes sichtbares Fundament unserer Welt – ein Portal zwischen Realität und Jueria.\n\nEr vereint News, Update-System, Realm-Informationen und bereitet die Bühne für Freundesliste und später DB.\n\nDer Sturm sammelt seine Kraft. Und wir stehen erst am Anfang."
+      "body": "Mit dem heutigen Tag wurde das Tor zu STORMFIRE erschaffen.\n\nDer Launcher erhebt sich als erstes sichtbares Fundament unserer Welt – ein Portal zwischen Realität und Jueria.\n\nEr vereint News, Update-System, Realm-Informationen und bereitet die Bühne für Freundesliste und später DB.\n\nDer Sturm sammelt seine Kraft.\nUnd wir stehen erst am Anfang."
     },
     {
       "id": "devlog-001",
       "type": "devlog",
       "title": "Devlog 1 – Die Astralflamme wurde entzündet",
       "date": "2026-03-02",
+      "ts": "2026-03-02T12:00:00+01:00",
       "author": "Devaller",
       "tags": ["DEVLOG", "WEBSITE", "MIRROR", "LAUNCHER"],
       "body": "Die STORMFIRE-Website steht – und parallel wächst unser Launcher weiter.\n\n✅ Stabil:\n- Login & Register\n- Realm-Auswahl\n- Character Create & Select (fast)\n\n🔥 Fokus:\n- Mirror Multiplayer Foundation\n\n➡️ Danach:\n- Datenbank-Anbindung für Accounts/Charaktere\n\nSTORMFIRE lebt."
