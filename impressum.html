@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>STORMFIRE – Impressum</title>
+  <link rel="icon" href="/assets/img/logo.png" />
   <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
 <body>
@@ -19,18 +20,30 @@
         </div>
       </div>
 
-      <nav>
-        <a class="navbtn" href="/status.html">Status</a>
-        <a class="navbtn" href="/leaderboard.html">Leaderboard</a>
-        <a class="navbtn active" href="/impressum.html">Impressum</a>
-      </nav>
+      <div class="headerRight">
+        <nav>
+          <a class="navbtn" href="/index.html">Home</a>
+          <a class="navbtn" href="/news.html">News</a>
+          <a class="navbtn" href="/status.html">Status</a>
+          <a class="navbtn" href="/leaderboard.html">Leaderboard</a>
+          <a class="navbtn" href="/roadmap.html">Roadmap</a>
+          <a class="navbtn" href="/gallery.html">Galerie</a>
+          <a class="navbtn" href="/download.html">Download</a>
+          <a class="navbtn active" href="/impressum.html">Impressum</a>
+        </nav>
+
+        <div class="liveStatus">
+          <span class="dot warn" id="liveDot"></span>
+          <span id="liveTxt">Lädt…</span>
+        </div>
+      </div>
     </header>
 
     <main>
       <div class="hero">
         <div>
           <h1>Impressum</h1>
-          <p>Rechtliche Hinweise & Kontakt – Stand: <span class="small">Spiel in Entwicklung</span>.</p>
+          <p>Rechtliche Hinweise & Kontakt – Stand: Spiel in Entwicklung.</p>
         </div>
         <div class="badge">
           <span class="dot warn"></span>
@@ -42,60 +55,49 @@
         <article class="card" style="grid-column: span 12;">
           <div class="hd">
             <h2>Rechte</h2>
-            <span class="small">Copyright</span>
+            <span class="small">Alle Rechte vorbehalten</span>
           </div>
           <div class="bd">
-            <div class="kpi" style="grid-template-columns: 1fr;">
-              <div class="box">
-                <div class="label">Alle Rechte</div>
-                <div class="value glow">Denis Toni Güven</div>
-                <div class="small">Hinweis: STORMFIRE ist ein Projekt in Entwicklung. Inhalte können sich ändern.</div>
-              </div>
-            </div>
+            <p><b>Alle Rechte:</b> Denis Toni Güven</p>
+            <p class="small">Hinweis: STORMFIRE ist ein Projekt in Entwicklung. Inhalte können sich ändern.</p>
           </div>
         </article>
 
-        <article class="card">
+        <article class="card" style="grid-column: span 12;">
           <div class="hd">
             <h2>Kontakt</h2>
-            <span class="small">Platzhalter</span>
+            <span class="small">Platzhalter bis Backend live ist</span>
           </div>
           <div class="bd">
-            <div class="kpi" style="grid-template-columns: 1fr;">
-              <div class="box">
-                <div class="label">E-Mail</div>
-                <div class="value">contact@stormfire.dev</div>
-                <div class="small">(Platzhalter – hier später echte Kontaktadresse eintragen)</div>
-              </div>
-              <div class="box">
-                <div class="label">Adresse</div>
-                <div class="value">[Platzhalter Straße 1]</div>
-                <div class="small">[PLZ] [Stadt], Deutschland</div>
-              </div>
-            </div>
+            <p><b>E-Mail:</b> <a href="mailto:team@stormfire.dev">team@stormfire.dev</a></p>
+            <p><b>Adresse:</b> Unterfeldstraße, Penzberg</p>
           </div>
         </article>
 
-        <article class="card">
+        <article class="card" style="grid-column: span 12;">
           <div class="hd">
             <h2>Hinweis</h2>
-            <span class="small">Development</span>
+            <span class="small">Spiel in Entwicklung</span>
           </div>
           <div class="bd">
-            <div class="pill">
-              <b>Info</b>
-              <span class="small">Spiel in Entwicklung – Features, Balance und Systeme sind Work in Progress. Diese Website dient als Showcase & Dev-Status.</span>
-            </div>
+            <p class="small">
+              Info: Spiel in Entwicklung – Features, Balance und Systeme sind Work in Progress.
+              Diese Website dient als Showcase & Dev-Status.
+            </p>
           </div>
         </article>
       </section>
     </main>
 
     <footer>
-      © STORMFIRE — Impressum • „Spiel in Entwicklung“
+      © <span id="year"></span> STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)
     </footer>
   </div>
 
   <script src="/assets/js/common.js"></script>
+  <script src="/assets/js/site.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
