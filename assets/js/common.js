@@ -2,7 +2,7 @@
 
 window.sf = window.sf || {};
 
-// Persistente Maps (falls common.js aus Versehen doppelt geladen wird)
+// Persistente Maps (falls common.js doppelt geladen wird)
 window.sf.__memCache = window.sf.__memCache || new Map();     // path -> {ts, data}
 window.sf.__failState = window.sf.__failState || new Map();   // path -> {failCount, nextTryTs}
 
@@ -46,7 +46,7 @@ function lsWrite(path, data){
 
 // SAFE fetch JSON with: tab throttle + TTL + backoff + offline fallback
 window.sf.fetchJSON = async function(path){
-  // If tab hidden, prefer cache to avoid background hammering
+  // If tab hidden, prefer cache
   if (document.visibilityState !== "visible") {
     const c = memCache.get(path);
     if (c) return c.data;
@@ -77,7 +77,6 @@ window.sf.fetchJSON = async function(path){
       const wait = Math.min(MAX_BACKOFF_MS, BASE_BACKOFF_MS * Math.pow(2, Math.min(6, failCount)));
       failState.set(path, { failCount, nextTryTs: now() + wait });
 
-      // Offline fallback
       const ls = lsRead(path);
       if (ls) return ls;
       if (c) return c.data;
@@ -92,7 +91,6 @@ window.sf.fetchJSON = async function(path){
     lsWrite(path, data);
     return data;
   }catch(e){
-    // Offline fallback
     const ls = lsRead(path);
     if (ls) return ls;
     if (c) return c.data;
@@ -101,7 +99,10 @@ window.sf.fetchJSON = async function(path){
 };
 
 // Helpers
-window.sf.formatNumber = window.sf.formatNumber || (n => (n === null || n === undefined) ? "—" : new Intl.NumberFormat("de-DE").format(n));
+window.sf.formatNumber = window.sf.formatNumber || (n =>
+  (n === null || n === undefined) ? "—" : new Intl.NumberFormat("de-DE").format(n)
+);
+
 window.sf.formatTime = window.sf.formatTime || (iso => {
   if (!iso) return "—";
   const d = new Date(iso);
