@@ -52,9 +52,8 @@
       <div class="hero">
         <div>
           <h1>Discord</h1>
-          <p>Werde Teil der STORMFIRE-Community: Devlogs, Updates, PvP-Talk, Events.</p>
+          <p>Devlogs, Updates, PvP-Talk, Events – komm rein und werde Teil der Community.</p>
         </div>
-
         <div class="badge">
           <span class="dot warn"></span>
           <span>Community</span>
@@ -63,53 +62,62 @@
 
       <section class="grid">
 
+        <!-- COUNTER -->
         <article class="card" style="grid-column: span 12;">
           <div class="hd">
             <h2>Live Discord Counter</h2>
-            <span class="small">Mitglieder & Online (Invite Counts)</span>
+            <span class="small">Invite-Counts (ohne GitHub-Limit)</span>
           </div>
 
           <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-            <span class="pill">
-              <b>Status</b> <span id="discordCounterStatus">—</span>
-            </span>
-
-            <span class="pill">
-              <b>Online</b> <span id="discordOnline">—</span>
-            </span>
-
-            <span class="pill">
-              <b>Mitglieder</b> <span id="discordMembers">—</span>
-            </span>
+            <span class="pill"><b>Status</b> <span id="discordCounterStatus">—</span></span>
+            <span class="pill"><b>Online</b> <span id="discordOnline">—</span></span>
+            <span class="pill"><b>Mitglieder</b> <span id="discordMembers">—</span></span>
           </div>
 
           <div class="small" style="margin-top:10px; opacity:0.85;">
-            Hinweis: Werte kommen direkt von Discord (Cache + Fallback, kein GitHub-Limit).
+            Wenn Discord kurz blockt/slow ist, siehst du cached Werte aus localStorage.
           </div>
         </article>
 
+        <!-- JOIN CTA (ROBUST, IMMER SICHTBAR) -->
         <article class="card" style="grid-column: span 12; text-align:center;">
-          <div style="font-size:20px; font-weight:900; margin-bottom:10px;">
+          <div style="font-size:20px; font-weight:900; margin-bottom:12px;">
             🔥 STORMFIRE Community 🔥
           </div>
 
-          <div class="small" style="margin-bottom:16px;">
+          <div class="small" style="margin-bottom:18px;">
             Dev Updates • Realm Diskussionen • PvP Talk • Community Events
           </div>
 
-          <a class="navbtn"
-             href="https://discord.gg/wvpdyZ6wW"
+          <!-- Wichtig: Inline-Styles sorgen dafür, dass der Button NIE “verschwindet” -->
+          <a href="https://discord.gg/wvpdyZ6wW"
              target="_blank"
              rel="noopener noreferrer"
-             style="font-size:16px; padding:14px 22px; justify-content:center;">
+             style="
+               display:inline-flex;
+               align-items:center;
+               justify-content:center;
+               gap:10px;
+               padding:14px 22px;
+               border-radius:16px;
+               border:1px solid rgba(255,255,255,0.18);
+               background: rgba(76,201,255,0.10);
+               color: #e9f2ff;
+               font-weight:900;
+               font-size:16px;
+               text-decoration:none;
+               min-width: 240px;
+             ">
              👉 Jetzt Discord beitreten
           </a>
 
           <div class="small" style="margin-top:16px; opacity:0.7;">
-            Der Link öffnet Discord in einem neuen Tab.
+            Öffnet in einem neuen Tab.
           </div>
         </article>
 
+        <!-- RULES -->
         <article class="card" style="grid-column: span 12;">
           <div class="hd">
             <h2>Regeln (Kurz)</h2>
@@ -117,9 +125,9 @@
           </div>
           <div class="small" style="white-space:pre-wrap;">
 • Kein Spam / Scam
-• Kein Account- / Passwort-Support über DMs
+• Kein Account-/Passwort-Support per DM
 • Respektvoller Umgang
-• Feedback willkommen – aber konstruktiv
+• Feedback willkommen – konstruktiv
           </div>
         </article>
 
