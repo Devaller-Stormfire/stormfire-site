@@ -1,4 +1,4 @@
-// STORMFIRE site.js — sidebar active link + live status
+// STORMFIRE site.js — sidebar active link + live status + astral init
 (async function(){
   // Active link
   try{
@@ -9,7 +9,7 @@
     });
   }catch{}
 
-  // Live status in sidebar (aggregated)
+  // Live status in sidebar
   const liveDot = document.getElementById("liveDot");
   const liveTxt = document.getElementById("liveTxt");
 
@@ -22,9 +22,9 @@
     else if(state === "maintenance") liveDot.classList.add("warn");
     else liveDot.classList.add("bad");
 
-    const name = realmName ? `${realmName}` : "Realm";
+    const name = realmName || "Realm";
     const on = (online ?? 0);
-    liveTxt.textContent = `${name} • ${state.toUpperCase()} • ${window.sf.formatNumber(on)} online`;
+    liveTxt.textContent = `${name} • ${String(state).toUpperCase()} • ${window.sf.formatNumber(on)} online`;
   }
 
   async function loadLive(){
@@ -33,24 +33,22 @@
       const data = await window.sf.fetchJSON("/data/status.json");
       const realms = Array.isArray(data?.realms) ? data.realms : [];
 
-      // Pick best “main” realm for display (prefer PvE Ewiger Bund)
-      let main = realms.find(r => (r?.id === "ewiger-bund")) || realms[0];
-
+      // Prefer Ewiger Bund for the sidebar display
+      const main = realms.find(r => r?.id === "ewiger-bund") || realms[0];
       if(!main){
         setLive("offline", "Realm", 0);
         return;
       }
 
       setLive(String(main.status || "offline").toLowerCase(), main.name, main.playersOnline || 0);
-    }catch(e){
+    }catch{
       setLive("offline", "Realm", 0);
     }
   }
 
   await loadLive();
+  setInterval(() => { if(document.visibilityState === "visible") loadLive(); }, 60_000);
 
-  // Refresh gently (no spam)
-  setInterval(() => {
-    if(document.visibilityState === "visible") loadLive();
-  }, 60_000);
+  // Astral background (if script exists)
+  // (astral.js runs by itself)
 })();
