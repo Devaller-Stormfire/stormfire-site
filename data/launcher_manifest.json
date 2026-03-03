@@ -1,5 +1,6 @@
 {
-  "latestVersion": "0.0.1",
+  "latestVersion": "0.0.2",
   "downloadUrl": "https://stormfire.dev/download",
-  "notes": "Devlog 1 + Launcher UI + Vorbereitung auf Auto-Update."
+  "zipUrl": "https://stormfire.dev/launcher/StormfireLauncher.zip",
+  "notes": "Launcher UI + Auto-Update aktiviert."
 }
