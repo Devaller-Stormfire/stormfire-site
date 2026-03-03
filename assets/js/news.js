@@ -1,52 +1,48 @@
 (async function(){
-  document.getElementById("year").textContent = new Date().getFullYear();
+  const updated = document.getElementById("newsUpdated");
+  const count = document.getElementById("newsCount");
+  const list = document.getElementById("newsList");
+  const q = document.getElementById("q");
+  const type = document.getElementById("type");
+  const reload = document.getElementById("reload");
 
-  const elUpdated = document.getElementById("updatedPill");
-  const elCount = document.getElementById("countPill");
-  const elGrid = document.getElementById("postsGrid");
-  const elSearch = document.getElementById("searchInput");
-  const elType = document.getElementById("typeSelect");
-  const btnReload = document.getElementById("reloadBtn");
-
-  let allPosts = [];
-  let lastManualReload = 0;
+  let all = [];
+  let lastManual = 0;
 
   function render(){
-    const q = String(elSearch.value ?? "").trim().toLowerCase();
-    const type = String(elType.value ?? "all").toLowerCase();
+    const query = String(q.value||"").trim().toLowerCase();
+    const t = String(type.value||"all").toLowerCase();
 
-    let filtered = allPosts;
+    let filtered = all;
 
-    if(type !== "all"){
-      filtered = filtered.filter(p => String(p?.type ?? "").toLowerCase() === type);
+    if(t !== "all"){
+      filtered = filtered.filter(p => String(p?.type||"").toLowerCase() === t);
     }
-
-    if(q){
+    if(query){
       filtered = filtered.filter(p => {
-        const title = String(p?.title ?? "").toLowerCase();
-        const body = String(p?.body ?? "").toLowerCase();
+        const title = String(p?.title||"").toLowerCase();
+        const body = String(p?.body||"").toLowerCase();
         const tags = Array.isArray(p?.tags) ? p.tags.join(" ").toLowerCase() : "";
-        return title.includes(q) || body.includes(q) || tags.includes(q);
+        return title.includes(query) || body.includes(query) || tags.includes(query);
       });
     }
 
-    elCount.textContent = filtered.length + " Posts";
+    count.textContent = `${filtered.length} Posts`;
 
-    if(filtered.length === 0){
-      elGrid.innerHTML = `<div class="small">Keine Treffer.</div>`;
+    if(!filtered.length){
+      list.innerHTML = `<div class="small">Keine Treffer.</div>`;
       return;
     }
 
-    elGrid.innerHTML = filtered.map(p => {
-      const title = window.sf.escapeHtml(p?.title ?? "Ohne Titel");
-      const date = window.sf.escapeHtml(p?.date ?? "");
-      const author = window.sf.escapeHtml(p?.author ?? "");
-      const typeUp = window.sf.escapeHtml(String(p?.type ?? "news").toUpperCase());
-      const body = window.sf.escapeHtml(p?.body ?? "");
+    list.innerHTML = filtered.map(p => {
+      const title = window.sf.escapeHtml(p?.title || "Ohne Titel");
+      const date = window.sf.escapeHtml(p?.date || "");
+      const author = window.sf.escapeHtml(p?.author || "");
+      const typeUp = window.sf.escapeHtml(String(p?.type||"news").toUpperCase());
+      const body = window.sf.escapeHtml(p?.body || "");
       const tags = Array.isArray(p?.tags) ? p.tags : [];
 
       const meta = [date, author, typeUp].filter(Boolean).join(" • ");
-
       const tagHtml = tags.length
         ? `<div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;">
             ${tags.map(t => `<span class="pill"><b>${window.sf.escapeHtml(t)}</b></span>`).join("")}
@@ -54,7 +50,7 @@
         : "";
 
       return `
-        <article style="margin-bottom:14px; padding:14px; border:1px solid rgba(255,255,255,0.10); border-radius:16px; background: rgba(0,0,0,0.18);">
+        <article style="margin-top:12px; padding:14px; border:1px solid rgba(255,255,255,0.10); border-radius:16px; background: rgba(0,0,0,0.16);">
           <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
             <div style="font-weight:900; font-size:16px;">${title}</div>
             <div class="small" style="white-space:nowrap;">${meta}</div>
@@ -66,38 +62,30 @@
     }).join("");
   }
 
-  async function loadNews(){
-    elGrid.textContent = "News werden geladen…";
+  async function load(){
+    list.textContent = "Lädt…";
     try{
       const data = await window.sf.fetchJSON("/data/news.json");
-      elUpdated.textContent = data?.updated_at ? ("Update: " + data.updated_at) : "Update: —";
-
+      updated.textContent = data?.updated_at ? ("Update: " + window.sf.formatTime(data.updated_at)) : "Update: —";
       const posts = Array.isArray(data?.posts) ? data.posts.slice() : [];
       posts.sort((a,b)=> String(b?.date ?? "").localeCompare(String(a?.date ?? "")));
-
-      allPosts = posts;
+      all = posts;
       render();
     }catch(e){
-      console.warn(e);
-      elUpdated.textContent = "Update: —";
-      elGrid.innerHTML = `<div class="small">Konnte News gerade nicht laden. (Offline-Fallback greift, wenn Cache vorhanden.)</div>`;
+      updated.textContent = "Update: —";
+      list.innerHTML = `<div class="small">Konnte News gerade nicht laden.</div>`;
     }
   }
 
-  elSearch.addEventListener("input", render);
-  elType.addEventListener("change", render);
+  q.addEventListener("input", render);
+  type.addEventListener("change", render);
 
-  btnReload.addEventListener("click", async () => {
+  reload.addEventListener("click", async () => {
     const t = Date.now();
-    if(t - lastManualReload < 5000) return; // Anti-Spam
-    lastManualReload = t;
-    await loadNews();
+    if(t - lastManual < 5000) return; // anti spam
+    lastManual = t;
+    await load();
   });
 
-  await loadNews();
-
-  setInterval(() => { if(document.visibilityState === "visible") loadNews(); }, 60_000);
-  document.addEventListener("visibilitychange", () => {
-    if(document.visibilityState === "visible") loadNews();
-  });
+  await load();
 })();
