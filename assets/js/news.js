@@ -1,92 +1,102 @@
-<!doctype html>
-<html lang="de">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>STORMFIRE – News</title>
-  <link rel="icon" href="/assets/img/logo.png" />
-  <link rel="stylesheet" href="/assets/css/style.css" />
-</head>
-<body>
-  <canvas id="astral"></canvas>
+(async function(){
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-  <div class="page">
-    <header>
-      <div class="brand">
-        <img src="/assets/img/logo.png" alt="STORMFIRE Logo" />
-        <div class="title">
-          <strong>STORMFIRE</strong>
-          <span>Dev Logs • News • Patchnotes</span>
-        </div>
-      </div>
+  const elUpdated = document.getElementById("updatedPill");
+  const elCount = document.getElementById("countPill");
+  const elGrid = document.getElementById("postsGrid");
+  const elSearch = document.getElementById("searchInput");
+  const elType = document.getElementById("typeSelect");
+  const btnReload = document.getElementById("reloadBtn");
 
-      <div class="headerRight">
-        <nav>
-          <a class="navbtn" href="/index.html">Home</a>
-          <a class="navbtn active" href="/news.html">News</a>
-          <a class="navbtn" href="/status.html">Status</a>
-          <a class="navbtn" href="/leaderboard.html">Leaderboard</a>
-          <a class="navbtn" href="/roadmap.html">Roadmap</a>
-          <a class="navbtn" href="/gallery.html">Galerie</a>
-          <a class="navbtn" href="/download.html">Download</a>
-          <a class="navbtn" href="/impressum.html">Impressum</a>
-        </nav>
+  let allPosts = [];
+  let lastManualReload = 0;
 
-        <div class="liveStatus">
-          <span class="dot warn" id="liveDot"></span>
-          <span id="liveTxt">Lädt…</span>
-        </div>
-      </div>
-    </header>
+  function render(){
+    const q = String(elSearch.value ?? "").trim().toLowerCase();
+    const type = String(elType.value ?? "all").toLowerCase();
 
-    <main>
-      <div class="hero">
-        <div>
-          <h1>STORMFIRE News</h1>
-          <p>Dev Logs, News und Patchnotes – kompakt und sauber.</p>
-        </div>
-        <div class="badge">
-          <span class="dot good"></span>
-          <span id="updatedPill">Lädt…</span>
-        </div>
-      </div>
+    let filtered = allPosts;
 
-      <section class="grid">
-        <article class="card" style="grid-column: span 12;">
-          <div class="hd">
-            <h2>Filter</h2>
-            <span class="small" id="countPill">0 Posts</span>
+    if(type !== "all"){
+      filtered = filtered.filter(p => String(p?.type ?? "").toLowerCase() === type);
+    }
+
+    if(q){
+      filtered = filtered.filter(p => {
+        const title = String(p?.title ?? "").toLowerCase();
+        const body = String(p?.body ?? "").toLowerCase();
+        const tags = Array.isArray(p?.tags) ? p.tags.join(" ").toLowerCase() : "";
+        return title.includes(q) || body.includes(q) || tags.includes(q);
+      });
+    }
+
+    elCount.textContent = filtered.length + " Posts";
+
+    if(filtered.length === 0){
+      elGrid.innerHTML = `<div class="small">Keine Treffer.</div>`;
+      return;
+    }
+
+    elGrid.innerHTML = filtered.map(p => {
+      const title = window.sf.escapeHtml(p?.title ?? "Ohne Titel");
+      const date = window.sf.escapeHtml(p?.date ?? "");
+      const author = window.sf.escapeHtml(p?.author ?? "");
+      const typeUp = window.sf.escapeHtml(String(p?.type ?? "news").toUpperCase());
+      const body = window.sf.escapeHtml(p?.body ?? "");
+      const tags = Array.isArray(p?.tags) ? p.tags : [];
+
+      const meta = [date, author, typeUp].filter(Boolean).join(" • ");
+
+      const tagHtml = tags.length
+        ? `<div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;">
+            ${tags.map(t => `<span class="pill"><b>${window.sf.escapeHtml(t)}</b></span>`).join("")}
+           </div>`
+        : "";
+
+      return `
+        <article style="margin-bottom:14px; padding:14px; border:1px solid rgba(255,255,255,0.10); border-radius:16px; background: rgba(0,0,0,0.18);">
+          <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+            <div style="font-weight:900; font-size:16px;">${title}</div>
+            <div class="small" style="white-space:nowrap;">${meta}</div>
           </div>
-          <div class="bd" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between; align-items:center;">
-            <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-              <input class="input" id="searchInput" placeholder="Suchen (Titel, Text, Tags)..." />
-              <select class="select" id="typeSelect">
-                <option value="all">Alle Typen</option>
-                <option value="devlog">Devlog</option>
-                <option value="news">News</option>
-                <option value="patch">Patch</option>
-              </select>
-            </div>
-            <button class="navbtn" id="reloadBtn" type="button">Neu laden</button>
-          </div>
+          ${tagHtml}
+          <div style="margin-top:10px; white-space:pre-wrap; line-height:1.65;">${body}</div>
         </article>
+      `;
+    }).join("");
+  }
 
-        <article class="card" style="grid-column: span 12;">
-          <div class="hd"><h2>Posts</h2><span class="small">Chronologisch</span></div>
-          <div class="bd">
-            <div id="postsGrid" class="small">News werden geladen…</div>
-          </div>
-        </article>
-      </section>
-    </main>
+  async function loadNews(){
+    elGrid.textContent = "News werden geladen…";
+    try{
+      const data = await window.sf.fetchJSON("/data/news.json");
+      elUpdated.textContent = data?.updated_at ? ("Update: " + data.updated_at) : "Update: —";
+      const posts = Array.isArray(data?.posts) ? data.posts.slice() : [];
+      posts.sort((a,b)=> String(b?.date ?? "").localeCompare(String(a?.date ?? "")));
+      allPosts = posts;
+      render();
+    }catch(e){
+      console.warn(e);
+      elUpdated.textContent = "Update: —";
+      elGrid.innerHTML = `<div class="small">Konnte News gerade nicht laden. (Offline-Fallback greift, wenn Cache vorhanden.)</div>`;
+    }
+  }
 
-    <footer>
-      © <span id="year"></span> STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)
-    </footer>
-  </div>
+  elSearch.addEventListener("input", render);
+  elType.addEventListener("change", render);
 
-  <script src="/assets/js/common.js"></script>
-  <script src="/assets/js/site.js"></script>
-  <script src="/assets/js/news.js"></script>
-</body>
-</html>
+  btnReload.addEventListener("click", async () => {
+    const t = Date.now();
+    if(t - lastManualReload < 5000) return;
+    lastManualReload = t;
+    await loadNews();
+  });
+
+  await loadNews();
+
+  // sanftes Refresh (max 60s, tab visible)
+  setInterval(() => { if(document.visibilityState === "visible") loadNews(); }, 60_000);
+  document.addEventListener("visibilitychange", () => {
+    if(document.visibilityState === "visible") loadNews();
+  });
+})();
