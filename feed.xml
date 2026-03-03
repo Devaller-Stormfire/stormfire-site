@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>STORMFIRE – Dev Logs & News</title>
+    <description>Dev Logs, News und Patchnotes für STORMFIRE.</description>
+    <link>https://stormfire.dev/</link>
+    <language>de-de</language>
+
+    <!-- ITEM TEMPLATE: kopieren wenn du neue News in data/news.json ergänzt -->
+    <item>
+      <title>Devlog 1 – Die Astralflamme wurde entzündet</title>
+      <link>https://stormfire.dev/news.html</link>
+      <guid>devlog-001</guid>
+      <pubDate>Sun, 02 Mar 2026 21:30:00 +0100</pubDate>
+      <description><![CDATA[
+        Heute haben wir einen riesigen Schritt geschafft: Die STORMFIRE-Website steht – und parallel wächst unser Launcher weiter…
+      ]]></description>
+    </item>
+
+  </channel>
+</rss>
