@@ -2,6 +2,16 @@
   "updated_at": "2026-03-03T16:00:00+01:00",
   "posts": [
     {
+      "id": "devlog-004",
+      "type": "devlog",
+      "title": "Devlog 4 – Das Herz der Welt",
+      "date": "2026-03-04",
+      "ts": "2026-03-04T18:30:00+01:00",
+      "author": "Devaller",
+      "tags": ["DEVLOG", "DATABASE", "PROGRESS"],
+      "body": "Heute haben wir einen wichtigen Meilenstein für STORMFIRE erreicht.\n\nDie Grundlage unserer Datenbank ist nun erfolgreich in das Projekt integriert.\n\nDas bedeutet, dass Systeme wie Accounts, Charaktere, Rankings und Realms bald vollständig aus einer zentralen Datenquelle arbeiten werden.\n\nDer Kern der Struktur steht bereits.\n\nJetzt müssen wir ihn nur noch vollständig zum Leben erwecken.\n\nNoch einige Verbindungen, Tests und Feinschliff – und das Fundament unseres Online-Universums wird aktiv.\n\nDie Welt von Jueria formt sich weiter.\n\nSTORMFIRE wächst.\nUnd der Sturm sammelt seine Kraft."
+    },
+    {
       "id": "devlog-003",
       "type": "devlog",
       "title": "Devlog 3 – Der Sturm formt sich",
