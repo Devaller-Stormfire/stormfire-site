@@ -1,73 +1,167 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>STORMFIRE – Realm Status</title>
-  <link rel="icon" href="/assets/img/logo.png" />
-  <link rel="stylesheet" href="/assets/css/style.css" />
+  <meta name="description" content="Realm Status, Serverstatus und geplante Live-Informationen für STORMFIRE." />
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <canvas id="astral"></canvas>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html">
+        <div class="brand-logo"></div>
+        <div class="brand-text">
+          <strong>STORMFIRE</strong>
+          <span>Realm Status</span>
+        </div>
+      </a>
 
-  <div class="layout">
-    <aside class="sidebar">
-      <div class="brandBox">
-        <img src="/assets/img/logo.png" alt="STORMFIRE Logo" />
-        <div>
-          <div class="t1">STORMFIRE</div>
-          <div class="t2">Realm Status</div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="news.html">News</a>
+        <a class="active" href="status.html">Realm Status</a>
+        <a href="leaderboard.html">Leaderboard</a>
+        <a href="roadmap.html">Roadmap</a>
+        <a href="gallery.html">Galerie</a>
+        <a href="geschichte.html">Geschichte</a>
+        <a href="team.html">Team</a>
+        <a href="discord.html">Discord</a>
+        <a href="download.html">Launcher</a>
+        <a href="impressum.html">Impressum</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <div class="container">
+        <div class="translate-note">
+          Diese Seite ist aktuell auf Deutsch. Dein Browser kann sie in der Regel automatisch übersetzen.
+        </div>
+        <h1>Realm Status</h1>
+        <p>
+          Hier werden später Serverstatus, Realm-Informationen und wichtige Live-Daten zu STORMFIRE angezeigt.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid-3">
+          <article class="card">
+            <div class="stat-label">Login / Auth</div>
+            <div class="stat-value status-offline">Noch nicht live</div>
+            <p style="margin-top:10px;">
+              Die Serverstruktur befindet sich noch in Entwicklung.
+              Diese Anzeige wird später live mit dem Backend verbunden.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="stat-label">Realm Server</div>
+            <div class="stat-value status-offline">Noch nicht live</div>
+            <p style="margin-top:10px;">
+              Reale Realm-Statusdaten werden erst eingebunden,
+              sobald die Multiplayer- und Servergrundlagen aktiv sind.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="stat-label">Spielwelt</div>
+            <div class="stat-value">In Vorbereitung</div>
+            <p style="margin-top:10px;">
+              Die Weltbereiche und ihre technische Struktur werden derzeit vorbereitet,
+              sind aber noch nicht öffentlich online.
+            </p>
+          </article>
         </div>
       </div>
+    </section>
 
-      <div class="sideSection">
-        <div class="sideTitle">Navigation</div>
-        <nav class="sideNav">
-          <a class="navbtn" href="/index.html">Home</a>
-          <a class="navbtn" href="/news.html">News</a>
-          <a class="navbtn" href="/status.html">Realm Status</a>
-          <a class="navbtn" href="/leaderboard.html">Leaderboard</a>
-          <a class="navbtn" href="/roadmap.html">Roadmap</a>
-          <a class="navbtn" href="/gallery.html">Galerie</a>
-          <a class="navbtn" href="/team.html">Team</a>
-          <a class="navbtn" href="/discord.html">Discord</a>
-          <a class="navbtn" href="/download.html">Launcher</a>
-          <a class="navbtn" href="/impressum.html">Impressum</a>
-        </nav>
-      </div>
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Geplante Statusinformationen</h2>
+          <p>Diese Seite wird später deutlich erweitert.</p>
+        </div>
 
-      <div class="sideSection">
-        <div class="sideTitle">Live</div>
-        <div class="liveStatus">
-          <span class="dot warn" id="liveDot"></span>
-          <span id="liveTxt">Lädt…</span>
+        <div class="grid-2">
+          <article class="card">
+            <h3>Serverübersicht</h3>
+            <p>
+              Später sollen hier Login-Status, Realm-Status,
+              Verfügbarkeit und eventuelle Wartungszeiten angezeigt werden.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Spielerzahlen</h3>
+            <p>
+              Künftige Anzeigen können Online-Spieler, Fraktionsverteilung
+              oder Realm-Aktivität sichtbar machen.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Wartungen & Hinweise</h3>
+            <p>
+              Geplante Wartungsfenster, technische Störungen
+              und wichtige Systemmeldungen werden hier später zentral veröffentlicht.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Events & Weltstatus</h3>
+            <p>
+              Langfristig kann diese Seite auch besondere Weltereignisse,
+              Instabilitäten oder aktive Realm-Zustände anzeigen.
+            </p>
+          </article>
         </div>
       </div>
-    </aside>
+    </section>
 
-    <main class="content">
-      <div class="hero">
-        <div>
-          <h1>Live Realm Status</h1>
-          <p>Alle Realms + Online + Fraktionen. Aktuell offline.</p>
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Aktueller Stand</h2>
+          <p>Warum noch keine Live-Daten angezeigt werden.</p>
         </div>
-        <div class="badge">
-          <span class="dot warn" id="pageDot"></span>
-          <span id="pageState">Lädt…</span>
+
+        <ul class="list-clean">
+          <li>Die Datenbankstruktur befindet sich noch im Aufbau und in Integration.</li>
+          <li>Networking und Realm-Verbindungen werden aktuell vorbereitet.</li>
+          <li>Die Website dient derzeit vor allem als Projektportal und Devlog-Basis.</li>
+          <li>Live-Realm-Status wird erst sinnvoll, sobald Login, Charaktere und Multiplayer stabil laufen.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="card">
+          <h3>Noch nicht live – aber geplant</h3>
+          <p>
+            STORMFIRE befindet sich weiterhin in aktiver Entwicklung.
+            Diese Status-Seite ist bereits als Grundlage vorbereitet und wird
+            später mit echten Live-Daten verbunden, sobald die Backend- und Realm-Systeme stehen.
+          </p>
         </div>
       </div>
+    </section>
+  </main>
 
-      <section class="grid" id="realmGrid"></section>
-
-      <footer>
-        © <span id="year"></span> STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)
-      </footer>
-    </main>
-  </div>
-
-  <script src="/assets/js/common.js"></script>
-  <script src="/assets/js/site.js"></script>
-  <script src="/assets/js/status.js"></script>
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)</div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="news.html">News</a>
+        <a href="download.html">Launcher</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
