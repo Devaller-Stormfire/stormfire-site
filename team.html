@@ -1,143 +1,161 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>STORMFIRE – Team</title>
-
-  <link rel="icon" href="/assets/img/logo.png" />
-  <link rel="stylesheet" href="/assets/css/style.css" />
+  <meta name="description" content="Das Team hinter STORMFIRE, Projektstatus und Rollen im aktuellen Entwicklungsstand." />
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
-
 <body>
-  <canvas id="astral"></canvas>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html">
+        <div class="brand-logo"></div>
+        <div class="brand-text">
+          <strong>STORMFIRE</strong>
+          <span>Team</span>
+        </div>
+      </a>
 
-  <div class="layout">
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-      <div class="brandBox">
-        <img src="/assets/img/logo.png" alt="STORMFIRE Logo" />
-        <div>
-          <div class="t1">STORMFIRE</div>
-          <div class="t2">Team & GM Team</div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="news.html">News</a>
+        <a href="status.html">Realm Status</a>
+        <a href="leaderboard.html">Leaderboard</a>
+        <a href="roadmap.html">Roadmap</a>
+        <a href="gallery.html">Galerie</a>
+        <a href="geschichte.html">Geschichte</a>
+        <a class="active" href="team.html">Team</a>
+        <a href="discord.html">Discord</a>
+        <a href="download.html">Launcher</a>
+        <a href="impressum.html">Impressum</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <div class="container">
+        <div class="translate-note">
+          Diese Seite ist aktuell auf Deutsch. Dein Browser kann sie in der Regel automatisch übersetzen.
+        </div>
+        <h1>Das Team hinter STORMFIRE</h1>
+        <p>
+          STORMFIRE befindet sich aktuell in Entwicklung und wird derzeit in kleiner Struktur aufgebaut.
+          Das Projekt wächst Schritt für Schritt weiter.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid-2">
+          <article class="card">
+            <span class="badge">Projektleitung</span>
+            <h3 style="margin-top:12px;">Denis Toni Güven</h3>
+            <p>
+              Gründer und Hauptverantwortlicher von STORMFIRE.
+              Fokus auf Vision, Weltenaufbau, Systeme, Designrichtung, Struktur und Projektentwicklung.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="badge">Aktueller Zustand</span>
+            <h3 style="margin-top:12px;">Frühe Entwicklungsphase</h3>
+            <p>
+              Das Projekt wird derzeit mit klarer Ausrichtung aufgebaut.
+              Im Vordergrund stehen aktuell Technik, Grundsysteme, Spielwelt und die langfristige Struktur des MMORPGs.
+            </p>
+          </article>
         </div>
       </div>
+    </section>
 
-      <div class="sideSection">
-        <div class="sideTitle">Navigation</div>
-        <nav class="sideNav">
-          <a class="navbtn" href="/index.html">Home</a>
-          <a class="navbtn" href="/news.html">News</a>
-          <a class="navbtn" href="/status.html">Realm Status</a>
-          <a class="navbtn" href="/leaderboard.html">Leaderboard</a>
-
-          <a class="navbtn" href="/roadmap.html">Roadmap</a>
-          <a class="navbtn" href="/gallery.html">Galerie</a>
-
-          <a class="navbtn active" href="/team.html">Team</a>
-          <a class="navbtn" href="/bewerbung.html">Bewerben</a>
-
-          <a class="navbtn" href="/discord.html">Discord</a>
-          <a class="navbtn" href="/download.html">Launcher</a>
-          <a class="navbtn" href="/impressum.html">Impressum</a>
-        </nav>
-      </div>
-
-      <div class="sideSection">
-        <div class="sideTitle">Live</div>
-        <div class="liveStatus">
-          <span class="dot warn" id="liveDot"></span>
-          <span id="liveTxt">Lädt…</span>
-        </div>
-      </div>
-    </aside>
-
-    <!-- CONTENT -->
-    <main class="content">
-      <div class="hero">
-        <div>
-          <h1>Team & GM Team</h1>
-          <p>
-            DEV/GM Rollen sind offiziell. Alpha/Beta Credits werden hier gesammelt –
-            später automatisch aus Datenbank/API.
-          </p>
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Woran aktuell gearbeitet wird</h2>
+          <p>Die aktuelle Entwicklungsphase konzentriert sich auf die Grundlagen.</p>
         </div>
 
-        <div class="badge">
-          <span class="dot warn"></span>
-          <span id="teamUpdated">Lädt…</span>
+        <div class="grid-3">
+          <article class="card">
+            <h3>Technische Basis</h3>
+            <p>
+              Aufbau von Login, Charakterfluss, Datenbankstruktur,
+              Backend-Anbindung und Multiplayer-Grundlagen.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Welt & Lore</h3>
+            <p>
+              Ausbau der Welt Jueria, Fraktionen, Kontinente,
+              Aetherion, Astralbahn und der allgemeinen Spielidentität.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Assets & Stil</h3>
+            <p>
+              Aufbau einer klaren visuellen Richtung mit Charakteren, Natur, Gebäuden,
+              Props, Gegnern und ersten spielrelevanten Weltbereichen.
+            </p>
+          </article>
         </div>
       </div>
+    </section>
 
-      <section class="grid">
-        <!-- CORE -->
-        <article class="card" style="grid-column: span 12;">
-          <div class="hd">
-            <h2>Core Team</h2>
-            <span class="small">Development</span>
-          </div>
-          <div class="teamGrid" id="coreTeam"></div>
-        </article>
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Langfristige Rollen</h2>
+          <p>Diese Bereiche werden später mit dem Wachstum des Projekts weiter ausgebaut.</p>
+        </div>
 
-        <!-- GM -->
-        <article class="card" style="grid-column: span 12;">
-          <div class="hd">
-            <h2>GM Team</h2>
-            <span class="small">Support • Moderation</span>
-          </div>
-          <div class="teamGrid" id="gmTeam"></div>
-        </article>
+        <ul class="list-clean">
+          <li><strong>Game Design:</strong> Klassen, Progression, Fraktionen, Gameplay-Systeme</li>
+          <li><strong>Worldbuilding:</strong> Kontinente, Städte, Lore, Dungeons, Transportwege</li>
+          <li><strong>Tech & Backend:</strong> Datenbank, Networking, Serverstruktur, Systeme</li>
+          <li><strong>Art & Assets:</strong> Charaktere, Monster, Natur, Props, Weltmodule</li>
+          <li><strong>Community:</strong> Website, Devlogs, Discord und spätere Spielerkommunikation</li>
+        </ul>
+      </div>
+    </section>
 
-        <!-- ADMIN (hidden unless logged in) -->
-        <article class="card" id="adminCard" style="grid-column: span 12; display:none;">
-          <div class="hd">
-            <h2>Admin</h2>
-            <span class="small">Nur sichtbar wenn eingeloggt</span>
-          </div>
-          <div class="teamGrid" id="adminTeam"></div>
-        </article>
+    <section class="section">
+      <div class="container">
+        <div class="grid-2">
+          <article class="card">
+            <h3>Alpha- & Beta-Phase</h3>
+            <p>
+              Später wird diese Seite erweitert, um Mitwirkende, Tester,
+              Unterstützer und besondere Projektrollen sichtbar zu machen.
+            </p>
+          </article>
 
-        <!-- ALPHA TESTER -->
-        <article class="card" style="grid-column: span 12;">
-          <div class="hd">
-            <h2>Alpha Tester</h2>
-            <span class="small" id="creditsUpdated">Lädt…</span>
-          </div>
-          <div id="alphaTester" style="display:flex; gap:10px; flex-wrap:wrap;"></div>
-        </article>
+          <article class="card">
+            <h3>Projektgedanke</h3>
+            <p>
+              STORMFIRE soll nicht einfach nur ein weiteres Projekt sein,
+              sondern Schritt für Schritt zu einer eigenständigen MMORPG-Welt heranwachsen.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
 
-        <!-- BETA TESTER -->
-        <article class="card" style="grid-column: span 12;">
-          <div class="hd">
-            <h2>Beta Tester</h2>
-            <span class="small">Danke für euren Einsatz</span>
-          </div>
-          <div id="betaTester" style="display:flex; gap:10px; flex-wrap:wrap;"></div>
-        </article>
-
-        <!-- NOTE -->
-        <article class="card" style="grid-column: span 12;">
-          <div class="hd">
-            <h2>Hinweis</h2>
-            <span class="small">Sicher & offiziell</span>
-          </div>
-          <div class="small">
-            Kein GM fragt nach Passwörtern. Support später über Account/Ticketsystem.
-          </div>
-        </article>
-      </section>
-
-      <footer>
-        © <span id="year"></span> STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)
-      </footer>
-    </main>
-  </div>
-
-  <!-- Scripts -->
-  <script src="/assets/js/common.js"></script>
-  <script src="/assets/js/site.js"></script>
-  <script src="/assets/js/team.js"></script>
-  <script src="/assets/js/credits.js"></script>
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)</div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="news.html">News</a>
+        <a href="geschichte.html">Geschichte</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
