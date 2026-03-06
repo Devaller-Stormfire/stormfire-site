@@ -1,95 +1,146 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>STORMFIRE – News</title>
-  <link rel="icon" href="/assets/img/logo.png" />
-  <link rel="stylesheet" href="/assets/css/style.css" />
+  <meta name="description" content="Neuigkeiten und Devlogs zu STORMFIRE. Fortschritte, Systeme, Artworks und Entwicklungsstand des MMORPG-Projekts." />
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <canvas id="astral"></canvas>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html">
+        <div class="brand-logo"></div>
+        <div class="brand-text">
+          <strong>STORMFIRE</strong>
+          <span>News</span>
+        </div>
+      </a>
 
-  <div class="layout">
-    <aside class="sidebar">
-      <div class="brandBox">
-        <img src="/assets/img/logo.png" alt="STORMFIRE Logo" />
-        <div>
-          <div class="t1">STORMFIRE</div>
-          <div class="t2">News</div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a class="active" href="news.html">News</a>
+        <a href="status.html">Realm Status</a>
+        <a href="leaderboard.html">Leaderboard</a>
+        <a href="roadmap.html">Roadmap</a>
+        <a href="gallery.html">Galerie</a>
+        <a href="geschichte.html">Geschichte</a>
+        <a href="team.html">Team</a>
+        <a href="discord.html">Discord</a>
+        <a href="download.html">Launcher</a>
+        <a href="impressum.html">Impressum</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <div class="container">
+        <div class="translate-note">
+          Diese Seite ist aktuell auf Deutsch. Dein Browser kann sie in der Regel automatisch übersetzen.
+        </div>
+        <h1>News & Devlogs</h1>
+        <p>
+          Hier sammeln wir Fortschritte, Entscheidungen und Einblicke in die Entwicklung von STORMFIRE.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="news-list">
+
+          <article class="news-item">
+            <div class="news-meta">06.03.2026 • Devlog</div>
+            <h3>Weltaufbau, Assets und neue Grundlagen</h3>
+            <p>
+              Aktuell bauen wir die visuelle Basis von STORMFIRE weiter aus.
+              Dazu gehören neue Charaktere, Weltobjekte, Natur-Assets, Transportideen wie die Astralbahn
+              und erste Bausteine für Dörfer, Bahnhöfe und größere Regionen.
+            </p>
+          </article>
+
+          <article class="news-item">
+            <div class="news-meta">05.03.2026 • Systemupdate</div>
+            <h3>Fokus auf Datenbank und Networking</h3>
+            <p>
+              Der aktuelle technische Schwerpunkt liegt auf der Integration der Datenbank
+              und dem Networking. Ziel ist es, Login, Charakterdaten und spätere Spielsysteme
+              sauber serverseitig aufzubauen, bevor die eigentliche Multiplayer-Welt live geht.
+            </p>
+          </article>
+
+          <article class="news-item">
+            <div class="news-meta">04.03.2026 • Charaktersystem</div>
+            <h3>Charaktererstellung weiter ausgebaut</h3>
+            <p>
+              Die Charaktererstellung wurde weiter verfeinert. Fraktionen, Rassen, Geschlecht,
+              erste visuelle Vorschauen und die allgemeine UI-Richtung sind inzwischen klarer definiert.
+              Das Ziel bleibt ein klassisch inspiriertes MMORPG-Gefühl mit eigener Stormfire-Identität.
+            </p>
+          </article>
+
+          <article class="news-item">
+            <div class="news-meta">03.03.2026 • Website</div>
+            <h3>Website, Devlogs und Projektpräsentation</h3>
+            <p>
+              Neben der Spielentwicklung arbeiten wir weiter an der Website.
+              Sie dient als zentrale Anlaufstelle für News, Lore, Launcher-Infos
+              und spätere Community-Bereiche rund um STORMFIRE.
+            </p>
+          </article>
+
+          <article class="news-item">
+            <div class="news-meta">02.03.2026 • Vision</div>
+            <h3>Stormfire bleibt ein langfristiges Projekt</h3>
+            <p>
+              STORMFIRE ist kein kurzfristiges Experiment, sondern ein langfristig geplantes MMORPG-Projekt.
+              Wir dokumentieren die Entwicklung bewusst früh, um transparent zu zeigen,
+              wie die Welt, die Systeme und die Technik Schritt für Schritt entstehen.
+            </p>
+          </article>
+
         </div>
       </div>
+    </section>
 
-      <div class="sideSection">
-        <div class="sideTitle">Navigation</div>
-        <nav class="sideNav">
-          <a class="navbtn" href="/index.html">Home</a>
-          <a class="navbtn" href="/news.html">News</a>
-          <a class="navbtn" href="/status.html">Realm Status</a>
-          <a class="navbtn" href="/leaderboard.html">Leaderboard</a>
-          <a class="navbtn" href="/roadmap.html">Roadmap</a>
-          <a class="navbtn" href="/gallery.html">Galerie</a>
-          <a class="navbtn" href="/team.html">Team</a>
-          <a class="navbtn" href="/discord.html">Discord</a>
-          <a class="navbtn" href="/download.html">Launcher</a>
-          <a class="navbtn" href="/impressum.html">Impressum</a>
-        </nav>
-      </div>
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Was hier später noch kommt</h2>
+          <p>Diese News-Seite wird nach und nach erweitert.</p>
+        </div>
 
-      <div class="sideSection">
-        <div class="sideTitle">Live</div>
-        <div class="liveStatus">
-          <span class="dot warn" id="liveDot"></span>
-          <span id="liveTxt">Lädt…</span>
+        <div class="grid-3">
+          <article class="card">
+            <h3>Patchnotes</h3>
+            <p>Änderungen, Fixes und neue Inhalte aus der Entwicklung und aus späteren Tests.</p>
+          </article>
+
+          <article class="card">
+            <h3>Art & World Updates</h3>
+            <p>Neue Gebiete, Modelle, Konzepte, Gegner, Fraktionen und visuelle Fortschritte.</p>
+          </article>
+
+          <article class="card">
+            <h3>Technische Devlogs</h3>
+            <p>Einblicke in Launcher, Login, Datenbank, Networking und Systemarchitektur.</p>
+          </article>
         </div>
       </div>
-    </aside>
+    </section>
+  </main>
 
-    <main class="content">
-      <div class="hero">
-        <div>
-          <h1>News</h1>
-          <p>Devlogs • Patchnotes • Updates</p>
-        </div>
-        <div class="badge">
-          <span class="dot warn"></span>
-          <span id="newsUpdated">Lädt…</span>
-        </div>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)</div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="geschichte.html">Geschichte</a>
+        <a href="download.html">Launcher</a>
       </div>
-
-      <section class="grid">
-        <article class="card" style="grid-column: span 12;">
-          <div class="hd">
-            <h2>Filter</h2>
-            <span class="small" id="newsCount">0 Posts</span>
-          </div>
-          <div style="display:flex; gap:10px; flex-wrap:wrap;">
-            <input class="input" id="q" placeholder="Suchen (Titel, Text, Tags)..." />
-            <select class="select" id="type">
-              <option value="all">Alle Typen</option>
-              <option value="devlog">Devlog</option>
-              <option value="news">News</option>
-              <option value="patch">Patch</option>
-            </select>
-            <button class="btn" id="reload" type="button">Neu laden</button>
-          </div>
-        </article>
-
-        <article class="card" style="grid-column: span 12;">
-          <div id="newsList" class="small">Lädt…</div>
-        </article>
-      </section>
-
-      <footer>
-        © <span id="year"></span> STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)
-      </footer>
-    </main>
-  </div>
-
-  <script src="/assets/js/astral.js"></script>
-  <script src="/assets/js/common.js"></script>
-  <script src="/assets/js/site.js"></script>
-  <script src="/assets/js/news.js"></script>
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+    </div>
+  </footer>
 </body>
 </html>
