@@ -1,74 +1,177 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>STORMFIRE – Roadmap</title>
-  <link rel="icon" href="/assets/img/logo.png" />
-  <link rel="stylesheet" href="/assets/css/style.css" />
+  <meta name="description" content="Roadmap von STORMFIRE. Geplante Entwicklungsschritte vom aktuellen Stand bis zu späteren Spielsystemen." />
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <canvas id="astral"></canvas>
-
   <div class="layout">
     <aside class="sidebar">
-      <div class="brandBox">
-        <img src="/assets/img/logo.png" alt="STORMFIRE Logo" />
-        <div>
-          <div class="t1">STORMFIRE</div>
-          <div class="t2">Roadmap</div>
+      <a class="brand" href="index.html">
+        <div class="brand-logo"></div>
+        <div class="brand-text">
+          <strong>STORMFIRE</strong>
+          <span>Roadmap</span>
         </div>
-      </div>
+      </a>
 
-      <div class="sideSection">
-        <div class="sideTitle">Navigation</div>
-        <nav class="sideNav">
-          <a class="navbtn" href="/index.html">Home</a>
-          <a class="navbtn" href="/news.html">News</a>
-          <a class="navbtn" href="/status.html">Realm Status</a>
-          <a class="navbtn" href="/leaderboard.html">Leaderboard</a>
-          <a class="navbtn" href="/roadmap.html">Roadmap</a>
-          <a class="navbtn" href="/gallery.html">Galerie</a>
-          <a class="navbtn" href="/team.html">Team</a>
-          <a class="navbtn" href="/discord.html">Discord</a>
-          <a class="navbtn" href="/download.html">Launcher</a>
-          <a class="navbtn" href="/impressum.html">Impressum</a>
-        </nav>
-      </div>
+      <nav class="sidebar-nav">
+        <a href="index.html">Home</a>
+        <a href="news.html">News</a>
+        <a href="status.html">Realm Status</a>
+        <a href="leaderboard.html">Leaderboard</a>
+        <a class="active" href="roadmap.html">Roadmap</a>
+        <a href="gallery.html">Galerie</a>
+        <a href="geschichte.html">Geschichte</a>
+        <a href="team.html">Team</a>
+        <a href="discord.html">Discord</a>
+        <a href="download.html">Launcher</a>
+        <a href="impressum.html">Impressum</a>
+      </nav>
 
-      <div class="sideSection">
-        <div class="sideTitle">Live</div>
-        <div class="liveStatus">
-          <span class="dot warn" id="liveDot"></span>
-          <span id="liveTxt">Lädt…</span>
-        </div>
+      <div class="sidebar-box">
+        <h3>Projektstatus</h3>
+        <p>Frühe Entwicklung mit Fokus auf Technik, Systeme und Weltbasis.</p>
       </div>
     </aside>
 
     <main class="content">
-      <div class="hero">
-        <div>
-          <h1>Roadmap</h1>
-          <p>Stages – Login, Realm, CharCreate, Mirror, DB, World, Quests, Raids</p>
-        </div>
-        <div class="badge">
-          <span class="dot warn"></span>
-          <span id="rmUpdated">Lädt…</span>
-        </div>
+      <div class="translate-note">
+        Diese Seite ist aktuell auf Deutsch. Dein Browser kann sie in der Regel automatisch übersetzen.
       </div>
 
-      <section class="grid" id="rmGrid"></section>
+      <section class="page-head">
+        <h1>Roadmap</h1>
+        <p>
+          Diese Roadmap zeigt die aktuelle Richtung von STORMFIRE.
+          Sie ist kein starres Versprechen, sondern ein realistischer Überblick über geplante Entwicklungsschritte.
+        </p>
+      </section>
 
-      <footer>
-        © <span id="year"></span> STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)
+      <section class="section">
+        <div class="section-head">
+          <h2>Aktuelle Priorität</h2>
+          <p>Technische Grundlagen stehen vor Inhalten.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <h3>Datenbank</h3>
+            <p>Saubere Speicherung für Accounts, Charaktere und spätere Spielfortschritte.</p>
+          </article>
+
+          <article class="card">
+            <h3>Networking</h3>
+            <p>Multiplayer-Grundlagen, Realm-Struktur und technische Serveranbindung.</p>
+          </article>
+
+          <article class="card">
+            <h3>Client Flow</h3>
+            <p>Login, Realm-Auswahl, Charaktererstellung und Übergänge zwischen den Systemen.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <h2>Geplante Entwicklungsphasen</h2>
+          <p>Vom technischen Fundament bis zur spielbaren Welt.</p>
+        </div>
+
+        <div class="roadmap-list">
+          <article class="roadmap-step">
+            <h3>1. Grundsysteme stabilisieren</h3>
+            <p>
+              Abschluss der Datenbankanbindung, Login- und Charakterflüsse,
+              erste saubere Persistenz und die Grundlage für serverseitige Systeme.
+            </p>
+          </article>
+
+          <article class="roadmap-step">
+            <h3>2. Multiplayer & Realm-Struktur</h3>
+            <p>
+              Aufbau der Realm-Logik, Verbindung von Spielern mit der Spielwelt,
+              erste Mehrspielerfunktionen und technischer Kern für spätere Inhalte.
+            </p>
+          </article>
+
+          <article class="roadmap-step">
+            <h3>3. Spielwelt-Basis</h3>
+            <p>
+              Aufbau von Vorngar, Elyraen, Aetherion, Weltmodulen,
+              Bahnhöfen, Häfen, Naturzonen und den ersten zusammenhängenden Gebieten.
+            </p>
+          </article>
+
+          <article class="roadmap-step">
+            <h3>4. Charaktere, Gegner und NPCs</h3>
+            <p>
+              Integration spielbarer Rassen, Fraktionswachen, Storyfiguren,
+              humanoider Gegner sowie weiterer Monster und Weltkreaturen.
+            </p>
+          </article>
+
+          <article class="roadmap-step">
+            <h3>5. Kampfsystem & Progression</h3>
+            <p>
+              Aufbau des eigentlichen Kampfsystems, Klassenverhalten,
+              Attribute, Talente, Gegnerlogik und erste spielbare Progression.
+            </p>
+          </article>
+
+          <article class="roadmap-step">
+            <h3>6. Inventar, Items und Berufe</h3>
+            <p>
+              Umsetzung von Inventar, Ausrüstung, Gegenständen,
+              Berufen, Beutelogik und grundlegender Charakterentwicklung.
+            </p>
+          </article>
+
+          <article class="roadmap-step">
+            <h3>7. Dungeons, PvE und PvP</h3>
+            <p>
+              Erste PvE-Inhalte, Dungeons, Gegnergruppen,
+              Fraktionskonflikte und spätere PvP-nahe Systeme.
+            </p>
+          </article>
+
+          <article class="roadmap-step">
+            <h3>8. Alpha-Phase</h3>
+            <p>
+              Wenn Technik und Spielkern stabil genug sind,
+              beginnt eine erste testbare Phase mit Fokus auf Stabilität, Feedback und Kern-Gameplay.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <h2>Langfristige Ziele</h2>
+          <p>Was STORMFIRE später besonders machen soll.</p>
+        </div>
+
+        <ul class="list-clean">
+          <li>Eine eigene MMORPG-Welt mit klarer Identität statt bloßer Nostalgie-Kopie</li>
+          <li>Reisesysteme wie Astralbahn, Schiffe und Kontinentverbindungen</li>
+          <li>Fraktionen mit echter Atmosphäre und Wiedererkennungswert</li>
+          <li>Eine lebendige Welt mit Lore, Natur, Gegnern, Städten und neutralen Zonen</li>
+          <li>Langfristig spielbare Systeme für PvE, PvP, Berufe, soziale Inhalte und Progression</li>
+        </ul>
+      </section>
+
+      <footer class="footer">
+        <div>© STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)</div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="news.html">News</a>
+          <a href="download.html">Launcher</a>
+        </div>
       </footer>
     </main>
   </div>
-
-  <script src="/assets/js/astral.js"></script>
-  <script src="/assets/js/common.js"></script>
-  <script src="/assets/js/site.js"></script>
-  <script src="/assets/js/roadmap.js"></script>
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
