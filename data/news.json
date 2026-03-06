@@ -2,6 +2,17 @@
   "updated_at": "2026-03-03T16:00:00+01:00",
   "posts": [
     {
+   "id": "devlog-005",
+  "type": "devlog",
+  "title": "Devlog 5 – Die ersten Inseln erwachen",
+  "date": "2026-03-06",
+  "ts": "2026-03-06T20:30:00+01:00",
+  "author": "Devaller",
+     "tags": ["DEVLOG", "WORLD", 
+     "body": "Heute haben wir einen weiteren großen Schritt in der Welt von STORMFIRE erreicht.\n\nDie Startinseln unserer Welt sind nun vollständig aufgebaut.\n\nDie Landschaften stehen bereits – Küsten, Wege und das Fundament der ersten Abenteuer sind gelegt.\n\nWas noch fehlt, sind die letzten Details:\n\n• Gebäude\n• NPCs\n• Vegetation und Gras\n\nDoch das Herz dieser Welt schlägt bereits.\n\nParallel kämpfen wir weiterhin damit, unsere Datenbank vollständig mit dem System zu verbinden. Es ist einer dieser Momente in der Entwicklung, in denen man kurz am Verzweifeln ist – aber genau solche Hürden formen das Fundament eines großen Projekts.\n\nNoch ein paar Schritte.\nNoch ein paar Nächte.\n\nDann wird STORMFIRE beginnen, wirklich zu leben.\n\nDer Sturm sammelt seine Kraft."
+    }
+    
+    {
       "id": "devlog-004",
       "type": "devlog",
       "title": "Devlog 4 – Das Herz der Welt",
