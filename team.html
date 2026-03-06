@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>STORMFIRE – Team</title>
-  <meta name="description" content="Das Team hinter STORMFIRE, Projektstatus und Rollen im aktuellen Entwicklungsstand." />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <meta name="description" content="Das Team hinter STORMFIRE, Projektstatus und Rollen im aktuellen Entwicklungsstand.">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <header class="topbar">
-    <div class="container topbar-inner">
+  <div class="layout">
+
+    <aside class="sidebar">
       <a class="brand" href="index.html">
         <div class="brand-logo"></div>
         <div class="brand-text">
@@ -18,7 +19,7 @@
         </div>
       </a>
 
-      <nav class="nav">
+      <nav class="sidebar-nav">
         <a href="index.html">Home</a>
         <a href="news.html">News</a>
         <a href="status.html">Realm Status</a>
@@ -31,131 +32,107 @@
         <a href="download.html">Launcher</a>
         <a href="impressum.html">Impressum</a>
       </nav>
-    </div>
-  </header>
 
-  <main>
-    <section class="page-head">
-      <div class="container">
-        <div class="translate-note">
-          Diese Seite ist aktuell auf Deutsch. Dein Browser kann sie in der Regel automatisch übersetzen.
-        </div>
-        <h1>Das Team hinter STORMFIRE</h1>
-        <p>
-          STORMFIRE befindet sich aktuell in Entwicklung und wird derzeit in kleiner Struktur aufgebaut.
-          Das Projekt wächst Schritt für Schritt weiter.
-        </p>
+      <div class="sidebar-box">
+        <h3>Team</h3>
+        <p>STORMFIRE wird aktuell in kleiner Struktur aufgebaut und entwickelt.</p>
       </div>
-    </section>
+    </aside>
 
-    <section class="section">
-      <div class="container">
+    <main class="content">
+      <div class="translate-note">
+        Diese Seite ist aktuell auf Deutsch. Dein Browser kann sie automatisch übersetzen.
+      </div>
+
+      <section class="page-head">
+        <h1>Das Team hinter STORMFIRE</h1>
+        <p>STORMFIRE befindet sich aktuell in Entwicklung und wächst Schritt für Schritt weiter.</p>
+      </section>
+
+      <section class="section">
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-label">Login Server</div>
+            <div class="stat-value status-dev" id="login-status">In Entwicklung</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-label">Realm Server</div>
+            <div class="stat-value status-dev" id="realm-status">In Entwicklung</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-label">Spieler online</div>
+            <div class="stat-value" id="player-count">0</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-label">Besuche auf diesem Gerät</div>
+            <div class="stat-value" id="visit-count">0</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
         <div class="grid-2">
           <article class="card">
-            <span class="badge">Projektleitung</span>
-            <h3 style="margin-top:12px;">Denis Toni Güven</h3>
+            <h3>Projektleitung</h3>
             <p>
-              Gründer und Hauptverantwortlicher von STORMFIRE.
-              Fokus auf Vision, Weltenaufbau, Systeme, Designrichtung, Struktur und Projektentwicklung.
+              Denis Toni Güven – verantwortlich für Vision, Weltaufbau,
+              Systeme, Struktur und langfristige Richtung von STORMFIRE.
             </p>
           </article>
 
           <article class="card">
-            <span class="badge">Aktueller Zustand</span>
-            <h3 style="margin-top:12px;">Frühe Entwicklungsphase</h3>
+            <h3>Aktueller Zustand</h3>
             <p>
-              Das Projekt wird derzeit mit klarer Ausrichtung aufgebaut.
-              Im Vordergrund stehen aktuell Technik, Grundsysteme, Spielwelt und die langfristige Struktur des MMORPGs.
+              Das Projekt wird derzeit in kleiner Struktur aufgebaut.
+              Im Fokus stehen Technik, Grundsysteme, Weltbasis und Identität.
             </p>
           </article>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Woran aktuell gearbeitet wird</h2>
-          <p>Die aktuelle Entwicklungsphase konzentriert sich auf die Grundlagen.</p>
-        </div>
-
+      <section class="section">
         <div class="grid-3">
           <article class="card">
             <h3>Technische Basis</h3>
-            <p>
-              Aufbau von Login, Charakterfluss, Datenbankstruktur,
-              Backend-Anbindung und Multiplayer-Grundlagen.
-            </p>
+            <p>Login, Charakterfluss, Datenbank, Backend und Multiplayer-Grundlagen.</p>
           </article>
 
           <article class="card">
             <h3>Welt & Lore</h3>
-            <p>
-              Ausbau der Welt Jueria, Fraktionen, Kontinente,
-              Aetherion, Astralbahn und der allgemeinen Spielidentität.
-            </p>
+            <p>Jueria, Fraktionen, Kontinente, Aetherion und die allgemeine Spielidentität.</p>
           </article>
 
           <article class="card">
             <h3>Assets & Stil</h3>
-            <p>
-              Aufbau einer klaren visuellen Richtung mit Charakteren, Natur, Gebäuden,
-              Props, Gegnern und ersten spielrelevanten Weltbereichen.
-            </p>
+            <p>Charaktere, Natur, Gebäude, Gegner, Props und Weltmodule für STORMFIRE.</p>
           </article>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Langfristige Rollen</h2>
-          <p>Diese Bereiche werden später mit dem Wachstum des Projekts weiter ausgebaut.</p>
+      <footer class="footer">
+        <div>© STORMFIRE • Projekt in Entwicklung</div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="news.html">News</a>
+          <a href="geschichte.html">Geschichte</a>
         </div>
+      </footer>
+    </main>
 
-        <ul class="list-clean">
-          <li><strong>Game Design:</strong> Klassen, Progression, Fraktionen, Gameplay-Systeme</li>
-          <li><strong>Worldbuilding:</strong> Kontinente, Städte, Lore, Dungeons, Transportwege</li>
-          <li><strong>Tech & Backend:</strong> Datenbank, Networking, Serverstruktur, Systeme</li>
-          <li><strong>Art & Assets:</strong> Charaktere, Monster, Natur, Props, Weltmodule</li>
-          <li><strong>Community:</strong> Website, Devlogs, Discord und spätere Spielerkommunikation</li>
-        </ul>
-      </div>
-    </section>
+  </div>
 
-    <section class="section">
-      <div class="container">
-        <div class="grid-2">
-          <article class="card">
-            <h3>Alpha- & Beta-Phase</h3>
-            <p>
-              Später wird diese Seite erweitert, um Mitwirkende, Tester,
-              Unterstützer und besondere Projektrollen sichtbar zu machen.
-            </p>
-          </article>
+  <script>
+    document.getElementById("login-status").textContent = "In Entwicklung";
+    document.getElementById("realm-status").textContent = "In Entwicklung";
+    document.getElementById("player-count").textContent = "0";
 
-          <article class="card">
-            <h3>Projektgedanke</h3>
-            <p>
-              STORMFIRE soll nicht einfach nur ein weiteres Projekt sein,
-              sondern Schritt für Schritt zu einer eigenständigen MMORPG-Welt heranwachsen.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div>© STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)</div>
-      <div class="footer-links">
-        <a href="index.html">Home</a>
-        <a href="news.html">News</a>
-        <a href="geschichte.html">Geschichte</a>
-      </div>
-    </div>
-  </footer>
+    let visits = localStorage.getItem("stormfire_visits");
+    visits = visits ? parseInt(visits, 10) + 1 : 1;
+    localStorage.setItem("stormfire_visits", visits);
+    document.getElementById("visit-count").textContent = visits;
+  </script>
 </body>
 </html>
