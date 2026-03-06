@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>STORMFIRE – News</title>
-  <meta name="description" content="Neuigkeiten und Devlogs zu STORMFIRE. Fortschritte, Systeme, Artworks und Entwicklungsstand des MMORPG-Projekts." />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <meta name="description" content="Neuigkeiten und Devlogs zu STORMFIRE. Fortschritte, Systeme, Artworks und Entwicklungsstand des MMORPG-Projekts.">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <header class="topbar">
-    <div class="container topbar-inner">
+  <div class="layout">
+
+    <aside class="sidebar">
       <a class="brand" href="index.html">
         <div class="brand-logo"></div>
         <div class="brand-text">
@@ -18,7 +19,7 @@
         </div>
       </a>
 
-      <nav class="nav">
+      <nav class="sidebar-nav">
         <a href="index.html">Home</a>
         <a class="active" href="news.html">News</a>
         <a href="status.html">Realm Status</a>
@@ -31,116 +32,101 @@
         <a href="download.html">Launcher</a>
         <a href="impressum.html">Impressum</a>
       </nav>
-    </div>
-  </header>
 
-  <main>
-    <section class="page-head">
-      <div class="container">
-        <div class="translate-note">
-          Diese Seite ist aktuell auf Deutsch. Dein Browser kann sie in der Regel automatisch übersetzen.
-        </div>
-        <h1>News & Devlogs</h1>
-        <p>
-          Hier sammeln wir Fortschritte, Entscheidungen und Einblicke in die Entwicklung von STORMFIRE.
-        </p>
+      <div class="sidebar-box">
+        <h3>News Bereich</h3>
+        <p>Hier sammeln sich Devlogs, Fortschritte und Einblicke in die Entwicklung.</p>
       </div>
-    </section>
+    </aside>
 
-    <section class="section">
-      <div class="container">
+    <main class="content">
+      <div class="translate-note">
+        Diese Seite ist aktuell auf Deutsch. Dein Browser kann sie automatisch übersetzen.
+      </div>
+
+      <section class="page-head">
+        <h1>News & Devlogs</h1>
+        <p>Hier dokumentieren wir die Entwicklung von STORMFIRE Schritt für Schritt.</p>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <h2>Live Übersicht</h2>
+          <p>Aktuell noch Platzhalter, später an echte Systeme anbinden.</p>
+        </div>
+
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-label">Login Server</div>
+            <div class="stat-value status-dev" id="login-status">In Entwicklung</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-label">Realm Server</div>
+            <div class="stat-value status-dev" id="realm-status">In Entwicklung</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-label">Spieler online</div>
+            <div class="stat-value" id="player-count">0</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-label">Besuche auf diesem Gerät</div>
+            <div class="stat-value" id="visit-count">0</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
         <div class="news-list">
-
           <article class="news-item">
             <div class="news-meta">06.03.2026 • Devlog</div>
             <h3>Weltaufbau, Assets und neue Grundlagen</h3>
-            <p>
-              Aktuell bauen wir die visuelle Basis von STORMFIRE weiter aus.
-              Dazu gehören neue Charaktere, Weltobjekte, Natur-Assets, Transportideen wie die Astralbahn
-              und erste Bausteine für Dörfer, Bahnhöfe und größere Regionen.
-            </p>
+            <p>Charaktere, Gegner, Natur, Props, Gebäude und Transportideen werden aktuell als Weltbasis aufgebaut.</p>
           </article>
 
           <article class="news-item">
             <div class="news-meta">05.03.2026 • Systemupdate</div>
             <h3>Fokus auf Datenbank und Networking</h3>
-            <p>
-              Der aktuelle technische Schwerpunkt liegt auf der Integration der Datenbank
-              und dem Networking. Ziel ist es, Login, Charakterdaten und spätere Spielsysteme
-              sauber serverseitig aufzubauen, bevor die eigentliche Multiplayer-Welt live geht.
-            </p>
+            <p>Der Schwerpunkt liegt derzeit auf Account-Logik, Charakterspeicherung und den Grundlagen für Multiplayer.</p>
           </article>
 
           <article class="news-item">
             <div class="news-meta">04.03.2026 • Charaktersystem</div>
             <h3>Charaktererstellung weiter ausgebaut</h3>
-            <p>
-              Die Charaktererstellung wurde weiter verfeinert. Fraktionen, Rassen, Geschlecht,
-              erste visuelle Vorschauen und die allgemeine UI-Richtung sind inzwischen klarer definiert.
-              Das Ziel bleibt ein klassisch inspiriertes MMORPG-Gefühl mit eigener Stormfire-Identität.
-            </p>
+            <p>Fraktionen, Rassen, Vorschauen und UI-Struktur wurden weiter klarer ausgerichtet.</p>
           </article>
 
           <article class="news-item">
             <div class="news-meta">03.03.2026 • Website</div>
-            <h3>Website, Devlogs und Projektpräsentation</h3>
-            <p>
-              Neben der Spielentwicklung arbeiten wir weiter an der Website.
-              Sie dient als zentrale Anlaufstelle für News, Lore, Launcher-Infos
-              und spätere Community-Bereiche rund um STORMFIRE.
-            </p>
-          </article>
-
-          <article class="news-item">
-            <div class="news-meta">02.03.2026 • Vision</div>
-            <h3>Stormfire bleibt ein langfristiges Projekt</h3>
-            <p>
-              STORMFIRE ist kein kurzfristiges Experiment, sondern ein langfristig geplantes MMORPG-Projekt.
-              Wir dokumentieren die Entwicklung bewusst früh, um transparent zu zeigen,
-              wie die Welt, die Systeme und die Technik Schritt für Schritt entstehen.
-            </p>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Was hier später noch kommt</h2>
-          <p>Diese News-Seite wird nach und nach erweitert.</p>
-        </div>
-
-        <div class="grid-3">
-          <article class="card">
-            <h3>Patchnotes</h3>
-            <p>Änderungen, Fixes und neue Inhalte aus der Entwicklung und aus späteren Tests.</p>
-          </article>
-
-          <article class="card">
-            <h3>Art & World Updates</h3>
-            <p>Neue Gebiete, Modelle, Konzepte, Gegner, Fraktionen und visuelle Fortschritte.</p>
-          </article>
-
-          <article class="card">
-            <h3>Technische Devlogs</h3>
-            <p>Einblicke in Launcher, Login, Datenbank, Networking und Systemarchitektur.</p>
+            <h3>Projektportal wird weiter ausgebaut</h3>
+            <p>Die Website dient als Devlog-Plattform, Lore-Portal und später auch als Launcher- und Statusbereich.</p>
           </article>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div>© STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)</div>
-      <div class="footer-links">
-        <a href="index.html">Home</a>
-        <a href="geschichte.html">Geschichte</a>
-        <a href="download.html">Launcher</a>
-      </div>
-    </div>
-  </footer>
+      <footer class="footer">
+        <div>© STORMFIRE • Projekt in Entwicklung</div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="roadmap.html">Roadmap</a>
+          <a href="download.html">Launcher</a>
+        </div>
+      </footer>
+    </main>
+
+  </div>
+
+  <script>
+    document.getElementById("login-status").textContent = "In Entwicklung";
+    document.getElementById("realm-status").textContent = "In Entwicklung";
+    document.getElementById("player-count").textContent = "0";
+
+    let visits = localStorage.getItem("stormfire_visits");
+    visits = visits ? parseInt(visits, 10) + 1 : 1;
+    localStorage.setItem("stormfire_visits", visits);
+    document.getElementById("visit-count").textContent = visits;
+  </script>
 </body>
 </html>
