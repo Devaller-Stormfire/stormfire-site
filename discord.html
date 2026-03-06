@@ -1,151 +1,160 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>STORMFIRE – Discord</title>
-  <link rel="icon" href="/assets/img/logo.png" />
-  <link rel="stylesheet" href="/assets/css/style.css" />
+  <meta name="description" content="Discord und Community-Bereich von STORMFIRE. Folge der Entwicklung und bleibe mit dem Projekt verbunden." />
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <canvas id="astral"></canvas>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html">
+        <div class="brand-logo"></div>
+        <div class="brand-text">
+          <strong>STORMFIRE</strong>
+          <span>Discord</span>
+        </div>
+      </a>
 
-  <div class="layout">
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="news.html">News</a>
+        <a href="status.html">Realm Status</a>
+        <a href="leaderboard.html">Leaderboard</a>
+        <a href="roadmap.html">Roadmap</a>
+        <a href="gallery.html">Galerie</a>
+        <a href="geschichte.html">Geschichte</a>
+        <a href="team.html">Team</a>
+        <a class="active" href="discord.html">Discord</a>
+        <a href="download.html">Launcher</a>
+        <a href="impressum.html">Impressum</a>
+      </nav>
+    </div>
+  </header>
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-      <div class="brandBox">
-        <img src="/assets/img/logo.png" alt="STORMFIRE Logo" />
-        <div>
-          <div class="t1">STORMFIRE</div>
-          <div class="t2">Community • Discord</div>
+  <main>
+    <section class="page-head">
+      <div class="container">
+        <div class="translate-note">
+          Diese Seite ist aktuell auf Deutsch. Dein Browser kann sie in der Regel automatisch übersetzen.
+        </div>
+        <h1>Discord & Community</h1>
+        <p>
+          Hier findest du den Community-Bereich von STORMFIRE.
+          Später wird Discord die zentrale Anlaufstelle für News, Feedback, Tests und Austausch.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-panel">
+            <div class="kicker">Community</div>
+            <h1 style="font-size:clamp(1.8rem,4vw,2.8rem);">Bleib mit STORMFIRE verbunden</h1>
+            <p>
+              Discord wird später der zentrale Ort für Projektupdates,
+              Diskussionen, Screenshots, frühes Feedback und Community-Aufbau rund um STORMFIRE.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#" target="_blank" rel="noopener noreferrer">Discord beitreten</a>
+              <a class="btn btn-secondary" href="news.html">News lesen</a>
+            </div>
+          </div>
+
+          <aside class="hero-side hero-panel">
+            <div class="stat">
+              <div class="stat-label">Community</div>
+              <div class="stat-value">Im Aufbau</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">Geplante Inhalte</div>
+              <div class="stat-value">News, Feedback, Tests</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">Ziel</div>
+              <div class="stat-value">Zentrale Anlaufstelle</div>
+            </div>
+          </aside>
         </div>
       </div>
+    </section>
 
-      <div class="sideSection">
-        <div class="sideTitle">Navigation</div>
-        <nav class="sideNav">
-          <a class="navbtn" href="/index.html">Home</a>
-          <a class="navbtn" href="/news.html">News</a>
-          <a class="navbtn" href="/status.html">Realm Status</a>
-          <a class="navbtn" href="/leaderboard.html">Leaderboard</a>
-          <a class="navbtn" href="/roadmap.html">Roadmap</a>
-          <a class="navbtn" href="/gallery.html">Galerie</a>
-          <a class="navbtn" href="/team.html">Team</a>
-          <a class="navbtn active" href="/discord.html">Discord</a>
-          <a class="navbtn" href="/download.html">Launcher</a>
-          <a class="navbtn" href="/impressum.html">Impressum</a>
-        </nav>
-      </div>
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Was dich im Discord später erwartet</h2>
+          <p>Der Server soll nicht nur Werbung sein, sondern ein echter Projektbereich.</p>
+        </div>
 
-      <div class="sideSection">
-        <div class="sideTitle">Live</div>
-        <div class="liveStatus">
-          <span class="dot warn" id="liveDot"></span>
-          <span id="liveTxt">Lädt…</span>
+        <div class="grid-3">
+          <article class="card">
+            <h3>Entwicklungsupdates</h3>
+            <p>Neue Devlogs, Teaser, Fortschritte und Hinweise zu aktuellen Projektbereichen.</p>
+          </article>
+
+          <article class="card">
+            <h3>Feedback & Ideen</h3>
+            <p>Raum für Meinungen, Vorschläge und Austausch rund um Systeme, Welt und Design.</p>
+          </article>
+
+          <article class="card">
+            <h3>Spätere Tests</h3>
+            <p>Wenn die Zeit dafür kommt, wird Discord auch für Alpha- und Beta-Informationen wichtig.</p>
+          </article>
         </div>
       </div>
-    </aside>
+    </section>
 
-    <!-- CONTENT -->
-    <main class="content">
-      <div class="hero">
-        <div>
-          <h1>Discord</h1>
-          <p>Devlogs, Updates, PvP-Talk, Events – komm rein und werde Teil der Community.</p>
-        </div>
-        <div class="badge">
-          <span class="dot warn"></span>
-          <span>Community</span>
+    <section class="section">
+      <div class="container">
+        <div class="grid-2">
+          <article class="card">
+            <h3>Frühe Community</h3>
+            <p>
+              Gerade in frühen Entwicklungsphasen ist eine kleine, ehrliche Community oft wertvoller
+              als bloße Reichweite. Discord soll genau dafür ein passender Ort werden.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Mehr als nur ein Chat</h3>
+            <p>
+              Langfristig kann der Discord auch Bereiche für Lore, Fraktionen, Devlogs,
+              Testerrollen, Community-News und besondere Projektmeilensteine enthalten.
+            </p>
+          </article>
         </div>
       </div>
+    </section>
 
-      <section class="grid">
+    <section class="section">
+      <div class="container">
+        <div class="card">
+          <h3>Discord-Link</h3>
+          <p>
+            Sobald euer finaler oder aktueller Einladungslink feststeht, ersetzt du einfach das
+            <strong>#</strong> im Button oben durch euren echten Discord-Link.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
 
-        <!-- COUNTER -->
-        <article class="card" style="grid-column: span 12;">
-          <div class="hd">
-            <h2>Live Discord Counter</h2>
-            <span class="small">Invite-Counts (ohne GitHub-Limit)</span>
-          </div>
-
-          <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-            <span class="pill"><b>Status</b> <span id="discordCounterStatus">—</span></span>
-            <span class="pill"><b>Online</b> <span id="discordOnline">—</span></span>
-            <span class="pill"><b>Mitglieder</b> <span id="discordMembers">—</span></span>
-          </div>
-
-          <div class="small" style="margin-top:10px; opacity:0.85;">
-            Wenn Discord kurz blockt/slow ist, siehst du cached Werte aus localStorage.
-          </div>
-        </article>
-
-        <!-- JOIN CTA (ROBUST, IMMER SICHTBAR) -->
-        <article class="card" style="grid-column: span 12; text-align:center;">
-          <div style="font-size:20px; font-weight:900; margin-bottom:12px;">
-            🔥 STORMFIRE Community 🔥
-          </div>
-
-          <div class="small" style="margin-bottom:18px;">
-            Dev Updates • Realm Diskussionen • PvP Talk • Community Events
-          </div>
-
-          <!-- Wichtig: Inline-Styles sorgen dafür, dass der Button NIE “verschwindet” -->
-          <a href="https://discord.gg/wvpdyZ6wW"
-             target="_blank"
-             rel="noopener noreferrer"
-             style="
-               display:inline-flex;
-               align-items:center;
-               justify-content:center;
-               gap:10px;
-               padding:14px 22px;
-               border-radius:16px;
-               border:1px solid rgba(255,255,255,0.18);
-               background: rgba(76,201,255,0.10);
-               color: #e9f2ff;
-               font-weight:900;
-               font-size:16px;
-               text-decoration:none;
-               min-width: 240px;
-             ">
-             👉 Jetzt Discord beitreten
-          </a>
-
-          <div class="small" style="margin-top:16px; opacity:0.7;">
-            Öffnet in einem neuen Tab.
-          </div>
-        </article>
-
-        <!-- RULES -->
-        <article class="card" style="grid-column: span 12;">
-          <div class="hd">
-            <h2>Regeln (Kurz)</h2>
-            <span class="small">Fair Play</span>
-          </div>
-          <div class="small" style="white-space:pre-wrap;">
-• Kein Spam / Scam
-• Kein Account-/Passwort-Support per DM
-• Respektvoller Umgang
-• Feedback willkommen – konstruktiv
-          </div>
-        </article>
-
-      </section>
-
-      <footer>
-        © <span id="year"></span> STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)
-      </footer>
-    </main>
-
-  </div>
-
-  <script src="/assets/js/astral.js"></script>
-  <script src="/assets/js/common.js"></script>
-  <script src="/assets/js/site.js"></script>
-  <script src="/assets/js/discord-counter.js" defer></script>
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)</div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="news.html">News</a>
+        <a href="download.html">Launcher</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
