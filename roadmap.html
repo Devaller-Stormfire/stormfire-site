@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>STORMFIRE – Roadmap</title>
-  <meta name="description" content="Roadmap von STORMFIRE. Geplante Entwicklungsschritte vom aktuellen Stand bis zu späteren Spielsystemen." />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <meta name="description" content="Roadmap von STORMFIRE. Geplante Entwicklungsschritte vom aktuellen Stand bis zu späteren Spielsystemen.">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
   <div class="layout">
+
     <aside class="sidebar">
       <a class="brand" href="index.html">
         <div class="brand-logo"></div>
@@ -33,138 +34,91 @@
       </nav>
 
       <div class="sidebar-box">
-        <h3>Projektstatus</h3>
-        <p>Frühe Entwicklung mit Fokus auf Technik, Systeme und Weltbasis.</p>
+        <h3>Roadmap</h3>
+        <p>Die Roadmap zeigt die Richtung des Projekts, nicht starre Versprechen.</p>
       </div>
     </aside>
 
     <main class="content">
       <div class="translate-note">
-        Diese Seite ist aktuell auf Deutsch. Dein Browser kann sie in der Regel automatisch übersetzen.
+        Diese Seite ist aktuell auf Deutsch. Dein Browser kann sie automatisch übersetzen.
       </div>
 
       <section class="page-head">
         <h1>Roadmap</h1>
-        <p>
-          Diese Roadmap zeigt die aktuelle Richtung von STORMFIRE.
-          Sie ist kein starres Versprechen, sondern ein realistischer Überblick über geplante Entwicklungsschritte.
-        </p>
+        <p>Die aktuelle Entwicklungsrichtung von STORMFIRE vom technischen Fundament bis zur spielbaren Welt.</p>
       </section>
 
       <section class="section">
-        <div class="section-head">
-          <h2>Aktuelle Priorität</h2>
-          <p>Technische Grundlagen stehen vor Inhalten.</p>
-        </div>
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-label">Login Server</div>
+            <div class="stat-value status-dev" id="login-status">In Entwicklung</div>
+          </div>
 
-        <div class="grid-3">
-          <article class="card">
-            <h3>Datenbank</h3>
-            <p>Saubere Speicherung für Accounts, Charaktere und spätere Spielfortschritte.</p>
-          </article>
+          <div class="stat-card">
+            <div class="stat-label">Realm Server</div>
+            <div class="stat-value status-dev" id="realm-status">In Entwicklung</div>
+          </div>
 
-          <article class="card">
-            <h3>Networking</h3>
-            <p>Multiplayer-Grundlagen, Realm-Struktur und technische Serveranbindung.</p>
-          </article>
+          <div class="stat-card">
+            <div class="stat-label">Spieler online</div>
+            <div class="stat-value" id="player-count">0</div>
+          </div>
 
-          <article class="card">
-            <h3>Client Flow</h3>
-            <p>Login, Realm-Auswahl, Charaktererstellung und Übergänge zwischen den Systemen.</p>
-          </article>
+          <div class="stat-card">
+            <div class="stat-label">Besuche auf diesem Gerät</div>
+            <div class="stat-value" id="visit-count">0</div>
+          </div>
         </div>
       </section>
 
       <section class="section">
-        <div class="section-head">
-          <h2>Geplante Entwicklungsphasen</h2>
-          <p>Vom technischen Fundament bis zur spielbaren Welt.</p>
-        </div>
-
         <div class="roadmap-list">
           <article class="roadmap-step">
             <h3>1. Grundsysteme stabilisieren</h3>
-            <p>
-              Abschluss der Datenbankanbindung, Login- und Charakterflüsse,
-              erste saubere Persistenz und die Grundlage für serverseitige Systeme.
-            </p>
+            <p>Datenbank, Login-Flows, Charakterdaten und saubere Persistenz.</p>
           </article>
 
           <article class="roadmap-step">
             <h3>2. Multiplayer & Realm-Struktur</h3>
-            <p>
-              Aufbau der Realm-Logik, Verbindung von Spielern mit der Spielwelt,
-              erste Mehrspielerfunktionen und technischer Kern für spätere Inhalte.
-            </p>
+            <p>Networking, Realm-Logik und die ersten onlinefähigen Grundlagen.</p>
           </article>
 
           <article class="roadmap-step">
             <h3>3. Spielwelt-Basis</h3>
-            <p>
-              Aufbau von Vorngar, Elyraen, Aetherion, Weltmodulen,
-              Bahnhöfen, Häfen, Naturzonen und den ersten zusammenhängenden Gebieten.
-            </p>
+            <p>Vorngar, Elyraen, Aetherion, Weltmodule, Bahnhöfe, Häfen und Regionen.</p>
           </article>
 
           <article class="roadmap-step">
             <h3>4. Charaktere, Gegner und NPCs</h3>
-            <p>
-              Integration spielbarer Rassen, Fraktionswachen, Storyfiguren,
-              humanoider Gegner sowie weiterer Monster und Weltkreaturen.
-            </p>
+            <p>Spielbare Rassen, Wachen, Storyfiguren, Gegner und Monsterintegration.</p>
           </article>
 
           <article class="roadmap-step">
             <h3>5. Kampfsystem & Progression</h3>
-            <p>
-              Aufbau des eigentlichen Kampfsystems, Klassenverhalten,
-              Attribute, Talente, Gegnerlogik und erste spielbare Progression.
-            </p>
+            <p>Klassenlogik, Attribute, Gegnerverhalten, Talente und Progressionskern.</p>
           </article>
 
           <article class="roadmap-step">
             <h3>6. Inventar, Items und Berufe</h3>
-            <p>
-              Umsetzung von Inventar, Ausrüstung, Gegenständen,
-              Berufen, Beutelogik und grundlegender Charakterentwicklung.
-            </p>
+            <p>Inventar, Loot, Ausrüstung, Handwerk und ökonomische Grundsysteme.</p>
           </article>
 
           <article class="roadmap-step">
             <h3>7. Dungeons, PvE und PvP</h3>
-            <p>
-              Erste PvE-Inhalte, Dungeons, Gegnergruppen,
-              Fraktionskonflikte und spätere PvP-nahe Systeme.
-            </p>
+            <p>Instanzen, Fraktionskonflikte, PvE-Systeme und spätere PvP-Inhalte.</p>
           </article>
 
           <article class="roadmap-step">
             <h3>8. Alpha-Phase</h3>
-            <p>
-              Wenn Technik und Spielkern stabil genug sind,
-              beginnt eine erste testbare Phase mit Fokus auf Stabilität, Feedback und Kern-Gameplay.
-            </p>
+            <p>Erste testbare Phase mit Fokus auf Stabilität, Feedback und Kern-Gameplay.</p>
           </article>
         </div>
       </section>
 
-      <section class="section">
-        <div class="section-head">
-          <h2>Langfristige Ziele</h2>
-          <p>Was STORMFIRE später besonders machen soll.</p>
-        </div>
-
-        <ul class="list-clean">
-          <li>Eine eigene MMORPG-Welt mit klarer Identität statt bloßer Nostalgie-Kopie</li>
-          <li>Reisesysteme wie Astralbahn, Schiffe und Kontinentverbindungen</li>
-          <li>Fraktionen mit echter Atmosphäre und Wiedererkennungswert</li>
-          <li>Eine lebendige Welt mit Lore, Natur, Gegnern, Städten und neutralen Zonen</li>
-          <li>Langfristig spielbare Systeme für PvE, PvP, Berufe, soziale Inhalte und Progression</li>
-        </ul>
-      </section>
-
       <footer class="footer">
-        <div>© STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)</div>
+        <div>© STORMFIRE • Projekt in Entwicklung</div>
         <div class="footer-links">
           <a href="index.html">Home</a>
           <a href="news.html">News</a>
@@ -172,6 +126,18 @@
         </div>
       </footer>
     </main>
+
   </div>
+
+  <script>
+    document.getElementById("login-status").textContent = "In Entwicklung";
+    document.getElementById("realm-status").textContent = "In Entwicklung";
+    document.getElementById("player-count").textContent = "0";
+
+    let visits = localStorage.getItem("stormfire_visits");
+    visits = visits ? parseInt(visits, 10) + 1 : 1;
+    localStorage.setItem("stormfire_visits", visits);
+    document.getElementById("visit-count").textContent = visits;
+  </script>
 </body>
 </html>
