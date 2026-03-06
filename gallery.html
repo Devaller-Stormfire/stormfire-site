@@ -1,94 +1,195 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>STORMFIRE – Galerie</title>
-  <link rel="icon" href="/assets/img/logo.png" />
-  <link rel="stylesheet" href="/assets/css/style.css" />
+  <meta name="description" content="Galerie zu STORMFIRE mit Einblicken in Artworks, Modelle, Weltaufbau und Entwicklungsfortschritt." />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:18px;
+    }
+
+    .gallery-item{
+      overflow:hidden;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      box-shadow:var(--shadow);
+    }
+
+    .gallery-placeholder{
+      aspect-ratio: 16 / 10;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:
+        linear-gradient(135deg, rgba(216,179,106,.14), rgba(255,255,255,.04)),
+        rgba(255,255,255,.03);
+      color:var(--muted);
+      font-weight:700;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      font-size:.9rem;
+    }
+
+    .gallery-info{
+      padding:16px;
+    }
+
+    .gallery-info h3{
+      margin:0 0 8px;
+      font-size:1.06rem;
+    }
+
+    .gallery-info p{
+      margin:0;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    @media (max-width: 980px){
+      .gallery-grid{
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-  <canvas id="astral"></canvas>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html">
+        <div class="brand-logo"></div>
+        <div class="brand-text">
+          <strong>STORMFIRE</strong>
+          <span>Galerie</span>
+        </div>
+      </a>
 
-  <div class="layout">
-    <aside class="sidebar">
-      <div class="brandBox">
-        <img src="/assets/img/logo.png" alt="STORMFIRE Logo" />
-        <div>
-          <div class="t1">STORMFIRE</div>
-          <div class="t2">Galerie</div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="news.html">News</a>
+        <a href="status.html">Realm Status</a>
+        <a href="leaderboard.html">Leaderboard</a>
+        <a href="roadmap.html">Roadmap</a>
+        <a class="active" href="gallery.html">Galerie</a>
+        <a href="geschichte.html">Geschichte</a>
+        <a href="team.html">Team</a>
+        <a href="discord.html">Discord</a>
+        <a href="download.html">Launcher</a>
+        <a href="impressum.html">Impressum</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <div class="container">
+        <div class="translate-note">
+          Diese Seite ist aktuell auf Deutsch. Dein Browser kann sie in der Regel automatisch übersetzen.
+        </div>
+        <h1>Galerie</h1>
+        <p>
+          Hier sammeln wir visuelle Eindrücke aus der Entwicklung von STORMFIRE:
+          Charaktere, Modelle, Natur, Gebäude, Weltmodule und allgemeine Stilrichtungen.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Einblicke in die Entwicklung</h2>
+          <p>Diese Galerie kann später mit echten Screenshots und Builds erweitert werden.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <article class="gallery-item">
+            <div class="gallery-placeholder">Charaktere</div>
+            <div class="gallery-info">
+              <h3>Spielbare Charaktere & NPCs</h3>
+              <p>Fraktionen, Rassen, Wachen, Story-Figuren und erste Gegner-Modelle.</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <div class="gallery-placeholder">Natur</div>
+            <div class="gallery-info">
+              <h3>Wälder, Pflanzen und Weltobjekte</h3>
+              <p>Bäume, Gras, Tiere, Props und Bausteine für lebendige Landschaften.</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <div class="gallery-placeholder">Gebäude</div>
+            <div class="gallery-info">
+              <h3>Dörfer, Städte und Module</h3>
+              <p>Gebäudepakete, Burgen, Lager, Farmen und Weltmodule für Siedlungen.</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <div class="gallery-placeholder">Gegner</div>
+            <div class="gallery-info">
+              <h3>Monster & Kreaturen</h3>
+              <p>Humanoide Gegner, Elementarwesen, Naturkreaturen und weitere Bedrohungen.</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <div class="gallery-placeholder">Transport</div>
+            <div class="gallery-info">
+              <h3>Zug, Bahnhöfe und Reiseideen</h3>
+              <p>Frühe Konzepte und Modelle rund um die Astralbahn und Transportwege.</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <div class="gallery-placeholder">Weltaufbau</div>
+            <div class="gallery-info">
+              <h3>Weltstruktur & Regionen</h3>
+              <p>Vorngar, Elyraen, Aetherion und erste Richtungen für die Spielwelt.</p>
+            </div>
+          </article>
         </div>
       </div>
+    </section>
 
-      <div class="sideSection">
-        <div class="sideTitle">Navigation</div>
-        <nav class="sideNav">
-          <a class="navbtn" href="/index.html">Home</a>
-          <a class="navbtn" href="/news.html">News</a>
-          <a class="navbtn" href="/status.html">Realm Status</a>
-          <a class="navbtn" href="/leaderboard.html">Leaderboard</a>
-          <a class="navbtn" href="/roadmap.html">Roadmap</a>
-          <a class="navbtn" href="/gallery.html">Galerie</a>
-          <a class="navbtn" href="/discord.html">Discord</a>
-          <a class="navbtn" href="/team.html">Team</a>
-          <a class="navbtn" href="/download.html">Launcher</a>
-          <a class="navbtn" href="/impressum.html">Impressum</a>
-        </nav>
-      </div>
+    <section class="section">
+      <div class="container">
+        <div class="grid-2">
+          <article class="card">
+            <h3>Spätere Inhalte dieser Seite</h3>
+            <p>
+              Sobald mehr Ingame-Material verfügbar ist, wird diese Galerie um echte Screenshots,
+              Ingame-Szenen, Charaktervorschauen, Regionen und Entwicklungsvergleiche erweitert.
+            </p>
+          </article>
 
-      <div class="sideSection">
-        <div class="sideTitle">Live</div>
-        <div class="liveStatus">
-          <span class="dot warn" id="liveDot"></span>
-          <span id="liveTxt">Lädt…</span>
+          <article class="card">
+            <h3>Warum die Galerie wichtig ist</h3>
+            <p>
+              Sie zeigt nicht nur fertige Bilder, sondern dokumentiert auch die visuelle Entwicklung von STORMFIRE:
+              vom ersten Stiltest bis zur späteren Spielwelt.
+            </p>
+          </article>
         </div>
       </div>
-    </aside>
+    </section>
+  </main>
 
-    <main class="content">
-      <div class="hero">
-        <div>
-          <h1>Galerie</h1>
-          <p>Später: Spieler-Uploads + Login. Jetzt: Demo-Daten aus <code>/data/gallery.json</code>.</p>
-        </div>
-        <div class="badge">
-          <span class="dot warn"></span>
-          <span id="galUpdated">Lädt…</span>
-        </div>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)</div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="news.html">News</a>
+        <a href="geschichte.html">Geschichte</a>
       </div>
-
-      <section class="grid">
-        <article class="card" style="grid-column: span 12;">
-          <div class="hd">
-            <h2>Upload (später)</h2>
-            <span class="small">nur vorbereitet</span>
-          </div>
-          <div class="small">
-            Upload wird erst aktiviert, wenn Account/Login + API live ist.
-            (Frontend ist vorbereitet, keine echten Uploads auf GitHub Pages.)
-          </div>
-          <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
-            <button class="btn" type="button" id="fakeLoginBtn">Test: Login an/aus</button>
-            <span class="pill"><b>Login</b> <span id="loginState">—</span></span>
-          </div>
-        </article>
-
-        <article class="card" style="grid-column: span 12;">
-          <div class="hd"><h2>Beiträge</h2><span class="small" id="galCount">0</span></div>
-          <div id="galGrid" class="small">Lädt…</div>
-        </article>
-      </section>
-
-      <footer>
-        © <span id="year"></span> STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)
-      </footer>
-    </main>
-  </div>
-
-  <script src="/assets/js/astral.js"></script>
-  <script src="/assets/js/common.js"></script>
-  <script src="/assets/js/site.js"></script>
-  <script src="/assets/js/gallery.js"></script>
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+    </div>
+  </footer>
 </body>
 </html>
