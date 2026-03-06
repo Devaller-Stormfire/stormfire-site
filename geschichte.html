@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>STORMFIRE – Geschichte</title>
-  <meta name="description" content="Die Welt von STORMFIRE: Jueria, Astralkraft, das Juwel der Entstehung, Drachenbund, Wolfsmark und Aetherion." />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <meta name="description" content="Die Welt von STORMFIRE: Jueria, Astralkraft, das Juwel der Entstehung, Drachenbund, Wolfsmark und Aetherion.">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <header class="topbar">
-    <div class="container topbar-inner">
+  <div class="layout">
+
+    <aside class="sidebar">
       <a class="brand" href="index.html">
         <div class="brand-logo"></div>
         <div class="brand-text">
@@ -18,7 +19,7 @@
         </div>
       </a>
 
-      <nav class="nav">
+      <nav class="sidebar-nav">
         <a href="index.html">Home</a>
         <a href="news.html">News</a>
         <a href="status.html">Realm Status</a>
@@ -31,108 +32,124 @@
         <a href="download.html">Launcher</a>
         <a href="impressum.html">Impressum</a>
       </nav>
-    </div>
-  </header>
 
-  <main>
-    <section class="page-head">
-      <div class="container">
+      <div class="sidebar-box">
+        <h3>Lore</h3>
+        <p>Die Welt Jueria, ihre Fraktionen, Kontinente und das verdrehte Gleichgewicht.</p>
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="translate-note">
+        Diese Seite ist aktuell auf Deutsch. Dein Browser kann sie automatisch übersetzen.
+      </div>
+
+      <section class="page-head">
         <h1>Die Welt von STORMFIRE</h1>
         <p>
           Jueria ist eine Welt im Ungleichgewicht – geformt von Astralkraft,
           gespalten durch das Juwel der Entstehung und gefangen zwischen Ordnung und Freiheit.
         </p>
-      </div>
-    </section>
+      </section>
 
-    <section class="section">
-      <div class="container story-layout">
-        <article class="story-block">
-          <h2>Jueria</h2>
-          <p>
-            STORMFIRE spielt in Jueria, einer Welt, deren Herz von Astralkraft durchzogen ist.
-            Diese uralte Energie beeinflusst Länder, Kreaturen, Magie und selbst das Schicksal ihrer Bewohner.
-            Sie ist Quelle von Macht, Veränderung und Gefahr zugleich.
-          </p>
-        </article>
+      <section class="section">
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-label">Login Server</div>
+            <div class="stat-value status-dev" id="login-status">In Entwicklung</div>
+          </div>
 
-        <article class="story-block">
-          <h2>Das Juwel der Entstehung</h2>
-          <p>
-            Einst hielt das Juwel der Entstehung die Welt im Gleichgewicht. Als es zerbrach,
-            wurde Jueria für immer verändert. Die Naturgesetze verschoben sich,
-            die Astralkraft wurde instabil und ganze Regionen wandelten sich auf unnatürliche Weise.
-          </p>
-        </article>
+          <div class="stat-card">
+            <div class="stat-label">Realm Server</div>
+            <div class="stat-value status-dev" id="realm-status">In Entwicklung</div>
+          </div>
 
-        <article class="story-block">
-          <h2>Eine verdrehte Welt</h2>
-          <p>
-            Seit dem Bruch des Juwels ist die Ordnung der Welt verdreht:
-            Der Norden wurde heiß und erbarmungslos, während der Süden in Kälte und Frost versank.
-            Diese Umkehr prägt das Leben, die Kulturen und die Konflikte aller Völker.
-          </p>
-        </article>
+          <div class="stat-card">
+            <div class="stat-label">Spieler online</div>
+            <div class="stat-value" id="player-count">0</div>
+          </div>
 
-        <article class="story-block">
-          <h2>Vorngar und Elyraen</h2>
-          <p>
-            Die Welt verteilt sich auf große Kontinente mit eigenen Völkern, Landschaften und Konflikten.
-            Vorngar und Elyraen stehen im Zentrum der bekannten Welt und tragen die Spuren der astralen Instabilität
-            auf ganz unterschiedliche Weise.
-          </p>
-        </article>
+          <div class="stat-card">
+            <div class="stat-label">Besuche auf diesem Gerät</div>
+            <div class="stat-value" id="visit-count">0</div>
+          </div>
+        </div>
+      </section>
 
-        <article class="story-block">
-          <h2>Drachenbund und Wolfsmark</h2>
-          <p>
-            Jueria ist nicht in einfache Begriffe wie Gut und Böse geteilt.
-            Der Drachenbund steht für Ordnung, Struktur und Beständigkeit.
-            Wolfsmark verkörpert Freiheit, Härte und Anpassung.
-            Beide Fraktionen haben ihre eigene Wahrheit – und beide kämpfen um die Zukunft der Welt.
-          </p>
-        </article>
+      <section class="section">
+        <div class="news-list">
+          <article class="news-item">
+            <h3>Jueria</h3>
+            <p>
+              STORMFIRE spielt in Jueria, einer Welt, deren Herz von Astralkraft durchzogen ist.
+              Diese Energie beeinflusst Länder, Kreaturen, Magie und das Schicksal ihrer Bewohner.
+            </p>
+          </article>
 
-        <article class="story-block">
-          <h2>Aetherion</h2>
-          <p>
-            Zwischen den großen Machtzentren liegt Aetherion – eine neutrale Inselstadt und Handelsmacht.
-            Sie ist Zuflucht, Treffpunkt und Knotenpunkt der Welt.
-            Wer Aetherion erreichen will, reist nicht einfach durch ein Tor:
-            Man gelangt dorthin nur über Meer oder Lüfte.
-          </p>
-        </article>
+          <article class="news-item">
+            <h3>Das Juwel der Entstehung</h3>
+            <p>
+              Einst hielt das Juwel die Welt im Gleichgewicht. Als es zerbrach,
+              wurden Naturgesetze verschoben und ganze Regionen wandelten sich auf unnatürliche Weise.
+            </p>
+          </article>
 
-        <article class="story-block">
-          <h2>Die Rolle des Spielers</h2>
-          <p>
-            Die Spieler sind keine gewöhnlichen Reisenden.
-            In einer Welt voller Instabilitäten, Weltenbrüche und astraler Stürme gelten sie als stabile Variable im Astralstrom –
-            Wesen, die dem Chaos standhalten und den Lauf Juerias beeinflussen können.
-          </p>
-        </article>
+          <article class="news-item">
+            <h3>Eine verdrehte Ordnung</h3>
+            <p>
+              Seit dem Bruch wurde der Norden heiß und erbarmungslos,
+              während der Süden in Kälte und Frost versank.
+            </p>
+          </article>
 
-        <article class="story-block">
-          <h2>Stormfire Age</h2>
-          <p>
-            STORMFIRE erzählt von einer Welt am Rand des Umbruchs.
-            Alte Mächte erwachen, neue Konflikte entstehen und die Frage bleibt offen:
-            Wird Jueria an Ordnung festhalten oder in Freiheit neu geformt werden?
-          </p>
-        </article>
-      </div>
-    </section>
-  </main>
+          <article class="news-item">
+            <h3>Drachenbund und Wolfsmark</h3>
+            <p>
+              Der Drachenbund steht für Ordnung, Struktur und Beständigkeit.
+              Wolfsmark verkörpert Freiheit, Härte und Anpassung.
+              Beide Seiten kämpfen um die Zukunft Juerias.
+            </p>
+          </article>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div>© STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)</div>
-      <div class="footer-links">
-        <a href="index.html">Home</a>
-        <a href="news.html">News</a>
-        <a href="download.html">Launcher</a>
-      </div>
-    </div>
-  </footer>
+          <article class="news-item">
+            <h3>Aetherion</h3>
+            <p>
+              Zwischen den Machtzentren liegt Aetherion – eine neutrale Inselstadt und Handelsmacht,
+              erreichbar vor allem über Meer und Lüfte.
+            </p>
+          </article>
+
+          <article class="news-item">
+            <h3>Die Rolle des Spielers</h3>
+            <p>
+              Die Spieler gelten als stabile Variable im Astralstrom –
+              Wesen, die dem Chaos standhalten und den Lauf der Welt beeinflussen können.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div>© STORMFIRE • Projekt in Entwicklung</div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="news.html">News</a>
+          <a href="roadmap.html">Roadmap</a>
+        </div>
+      </footer>
+    </main>
+
+  </div>
+
+  <script>
+    document.getElementById("login-status").textContent = "In Entwicklung";
+    document.getElementById("realm-status").textContent = "In Entwicklung";
+    document.getElementById("player-count").textContent = "0";
+
+    let visits = localStorage.getItem("stormfire_visits");
+    visits = visits ? parseInt(visits, 10) + 1 : 1;
+    localStorage.setItem("stormfire_visits", visits);
+    document.getElementById("visit-count").textContent = visits;
+  </script>
 </body>
 </html>
