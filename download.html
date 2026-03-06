@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>STORMFIRE – Launcher</title>
-  <meta name="description" content="Launcher und Download-Bereich für STORMFIRE. Aktuell befindet sich das Projekt noch in Entwicklung." />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <meta name="description" content="Launcher und Download-Bereich für STORMFIRE. Aktuell befindet sich das Projekt noch in Entwicklung.">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <header class="topbar">
-    <div class="container topbar-inner">
+  <div class="layout">
+
+    <aside class="sidebar">
       <a class="brand" href="index.html">
         <div class="brand-logo"></div>
         <div class="brand-text">
@@ -18,7 +19,7 @@
         </div>
       </a>
 
-      <nav class="nav">
+      <nav class="sidebar-nav">
         <a href="index.html">Home</a>
         <a href="news.html">News</a>
         <a href="status.html">Realm Status</a>
@@ -31,113 +32,102 @@
         <a class="active" href="download.html">Launcher</a>
         <a href="impressum.html">Impressum</a>
       </nav>
-    </div>
-  </header>
 
-  <main>
-    <section class="page-head">
-      <div class="container">
-        <div class="translate-note">
-          Diese Seite ist aktuell auf Deutsch. Dein Browser kann sie in der Regel automatisch übersetzen.
-        </div>
-        <h1>Launcher & Download</h1>
-        <p>
-          Der STORMFIRE Launcher befindet sich aktuell noch in Entwicklung.
-          Hier werden später Download, Updates und wichtige Hinweise zum Client veröffentlicht.
-        </p>
+      <div class="sidebar-box">
+        <h3>Launcher</h3>
+        <p>Der Launcher ist geplant, aktuell aber noch nicht öffentlich verfügbar.</p>
       </div>
-    </section>
+    </aside>
 
-    <section class="section">
-      <div class="container">
-        <div class="hero-grid">
-          <div class="hero-panel">
-            <div class="kicker">Aktueller Status</div>
-            <h1 style="font-size:clamp(1.8rem,4vw,2.8rem);">Noch kein öffentlicher Download</h1>
-            <p>
-              Der Launcher ist noch nicht öffentlich verfügbar.
-              Sobald die technischen Grundlagen wie Datenbank, Networking und Client-Flow stabil sind,
-              wird der Download hier bereitgestellt.
-            </p>
+    <main class="content">
+      <div class="translate-note">
+        Diese Seite ist aktuell auf Deutsch. Dein Browser kann sie automatisch übersetzen.
+      </div>
 
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="news.html">Entwicklung verfolgen</a>
-              <a class="btn btn-secondary" href="discord.html">Discord ansehen</a>
-            </div>
+      <section class="page-head">
+        <h1>Launcher & Download</h1>
+        <p>Der STORMFIRE Launcher befindet sich aktuell noch in Entwicklung.</p>
+      </section>
+
+      <section class="section">
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-label">Login Server</div>
+            <div class="stat-value status-dev" id="login-status">In Entwicklung</div>
           </div>
 
-          <aside class="hero-side hero-panel">
-            <div class="stat">
-              <div class="stat-label">Launcher</div>
-              <div class="stat-value">In Arbeit</div>
-            </div>
+          <div class="stat-card">
+            <div class="stat-label">Realm Server</div>
+            <div class="stat-value status-dev" id="realm-status">In Entwicklung</div>
+          </div>
 
-            <div class="stat">
-              <div class="stat-label">Client Build</div>
-              <div class="stat-value">Noch nicht öffentlich</div>
-            </div>
+          <div class="stat-card">
+            <div class="stat-label">Spieler online</div>
+            <div class="stat-value" id="player-count">0</div>
+          </div>
 
-            <div class="stat">
-              <div class="stat-label">Nächster Schritt</div>
-              <div class="stat-value">Backend & Multiplayer</div>
-            </div>
-          </aside>
+          <div class="stat-card">
+            <div class="stat-label">Besuche auf diesem Gerät</div>
+            <div class="stat-value" id="visit-count">0</div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Was später hier verfügbar sein wird</h2>
-          <p>Der Download-Bereich wird mit dem Projekt wachsen.</p>
-        </div>
-
-        <div class="grid-3">
+      <section class="section">
+        <div class="grid-2">
           <article class="card">
-            <h3>Game Launcher</h3>
-            <p>Download des Launchers für den STORMFIRE Client inklusive zukünftiger Updates.</p>
+            <h3>Aktueller Status</h3>
+            <p>
+              Der Launcher ist noch nicht öffentlich verfügbar.
+              Sobald Datenbank, Networking und Client-Flow stabil genug sind,
+              wird der Download hier freigeschaltet.
+            </p>
           </article>
 
           <article class="card">
-            <h3>Patch-Informationen</h3>
-            <p>Versionsstände, Änderungen und technische Hinweise zu neuen Builds.</p>
-          </article>
-
-          <article class="card">
-            <h3>Systemanforderungen</h3>
-            <p>Spätere Infos zu unterstützten Plattformen, empfohlener Hardware und Installation.</p>
+            <h3>Spätere Inhalte</h3>
+            <p>
+              Hier werden künftig Download, Patchnotes, Versionen
+              und Installationshinweise für STORMFIRE erscheinen.
+            </p>
           </article>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section">
-      <div class="container">
+      <section class="section">
         <div class="section-head">
           <h2>Aktueller Entwicklungsfokus</h2>
-          <p>Bevor der Launcher öffentlich erscheint, stehen andere Grundsysteme im Vordergrund.</p>
         </div>
 
         <ul class="list-clean">
           <li>Datenbank-Anbindung für Accounts und Charaktere</li>
           <li>Networking / Multiplayer-Grundlagen</li>
           <li>Stabiler Login- und Charakterfluss</li>
-          <li>Grundstruktur für spätere Spielwelten und Inhalte</li>
+          <li>Vorbereitung der Spielwelt und Grundsysteme</li>
         </ul>
-      </div>
-    </section>
-  </main>
+      </section>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div>© STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)</div>
-      <div class="footer-links">
-        <a href="index.html">Home</a>
-        <a href="news.html">News</a>
-        <a href="geschichte.html">Geschichte</a>
-      </div>
-    </div>
-  </footer>
+      <footer class="footer">
+        <div>© STORMFIRE • Projekt in Entwicklung</div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="news.html">News</a>
+          <a href="roadmap.html">Roadmap</a>
+        </div>
+      </footer>
+    </main>
+
+  </div>
+
+  <script>
+    document.getElementById("login-status").textContent = "In Entwicklung";
+    document.getElementById("realm-status").textContent = "In Entwicklung";
+    document.getElementById("player-count").textContent = "0";
+
+    let visits = localStorage.getItem("stormfire_visits");
+    visits = visits ? parseInt(visits, 10) + 1 : 1;
+    localStorage.setItem("stormfire_visits", visits);
+    document.getElementById("visit-count").textContent = visits;
+  </script>
 </body>
 </html>
