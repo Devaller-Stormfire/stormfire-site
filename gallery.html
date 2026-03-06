@@ -1,66 +1,67 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>STORMFIRE – Galerie</title>
-  <meta name="description" content="Galerie zu STORMFIRE mit Einblicken in Artworks, Modelle, Weltaufbau und Entwicklungsfortschritt." />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <meta name="description" content="Galerie zu STORMFIRE mit Einblicken in Artworks, Modelle, Weltaufbau und Entwicklungsfortschritt.">
+  <link rel="stylesheet" href="assets/css/style.css">
   <style>
-    .gallery-grid{
-      display:grid;
-      grid-template-columns:repeat(3, 1fr);
-      gap:18px;
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
     }
 
-    .gallery-item{
-      overflow:hidden;
-      border-radius:18px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
-      box-shadow:var(--shadow);
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      box-shadow: var(--shadow);
     }
 
-    .gallery-placeholder{
+    .gallery-placeholder {
       aspect-ratio: 16 / 10;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       background:
-        linear-gradient(135deg, rgba(216,179,106,.14), rgba(255,255,255,.04)),
-        rgba(255,255,255,.03);
-      color:var(--muted);
-      font-weight:700;
-      letter-spacing:.04em;
-      text-transform:uppercase;
-      font-size:.9rem;
+        linear-gradient(135deg, rgba(216,179,106,0.14), rgba(255,255,255,0.04)),
+        rgba(255,255,255,0.03);
+      color: var(--muted);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
     }
 
-    .gallery-info{
-      padding:16px;
+    .gallery-info {
+      padding: 16px;
     }
 
-    .gallery-info h3{
-      margin:0 0 8px;
-      font-size:1.06rem;
+    .gallery-info h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
     }
 
-    .gallery-info p{
-      margin:0;
-      color:var(--muted);
-      font-size:.95rem;
+    .gallery-info p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
     }
 
-    @media (max-width: 980px){
-      .gallery-grid{
-        grid-template-columns:1fr;
+    @media (max-width: 1100px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="container topbar-inner">
+  <div class="layout">
+
+    <aside class="sidebar">
       <a class="brand" href="index.html">
         <div class="brand-logo"></div>
         <div class="brand-text">
@@ -69,7 +70,7 @@
         </div>
       </a>
 
-      <nav class="nav">
+      <nav class="sidebar-nav">
         <a href="index.html">Home</a>
         <a href="news.html">News</a>
         <a href="status.html">Realm Status</a>
@@ -82,30 +83,48 @@
         <a href="download.html">Launcher</a>
         <a href="impressum.html">Impressum</a>
       </nav>
-    </div>
-  </header>
 
-  <main>
-    <section class="page-head">
-      <div class="container">
-        <div class="translate-note">
-          Diese Seite ist aktuell auf Deutsch. Dein Browser kann sie in der Regel automatisch übersetzen.
-        </div>
-        <h1>Galerie</h1>
-        <p>
-          Hier sammeln wir visuelle Eindrücke aus der Entwicklung von STORMFIRE:
-          Charaktere, Modelle, Natur, Gebäude, Weltmodule und allgemeine Stilrichtungen.
-        </p>
+      <div class="sidebar-box">
+        <h3>Galerie</h3>
+        <p>Spätere Screenshots, Modelle und visuelle Eindrücke aus der Entwicklung.</p>
       </div>
-    </section>
+    </aside>
 
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Einblicke in die Entwicklung</h2>
-          <p>Diese Galerie kann später mit echten Screenshots und Builds erweitert werden.</p>
+    <main class="content">
+      <div class="translate-note">
+        Diese Seite ist aktuell auf Deutsch. Dein Browser kann sie automatisch übersetzen.
+      </div>
+
+      <section class="page-head">
+        <h1>Galerie</h1>
+        <p>Hier sammeln wir visuelle Eindrücke aus der Entwicklung von STORMFIRE.</p>
+      </section>
+
+      <section class="section">
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-label">Login Server</div>
+            <div class="stat-value status-dev" id="login-status">In Entwicklung</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-label">Realm Server</div>
+            <div class="stat-value status-dev" id="realm-status">In Entwicklung</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-label">Spieler online</div>
+            <div class="stat-value" id="player-count">0</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-label">Besuche auf diesem Gerät</div>
+            <div class="stat-value" id="visit-count">0</div>
+          </div>
         </div>
+      </section>
 
+      <section class="section">
         <div class="gallery-grid">
           <article class="gallery-item">
             <div class="gallery-placeholder">Charaktere</div>
@@ -127,7 +146,7 @@
             <div class="gallery-placeholder">Gebäude</div>
             <div class="gallery-info">
               <h3>Dörfer, Städte und Module</h3>
-              <p>Gebäudepakete, Burgen, Lager, Farmen und Weltmodule für Siedlungen.</p>
+              <p>Gebäudepakete, Burgen, Lager, Farmen und weitere Weltmodule.</p>
             </div>
           </article>
 
@@ -143,53 +162,41 @@
             <div class="gallery-placeholder">Transport</div>
             <div class="gallery-info">
               <h3>Zug, Bahnhöfe und Reiseideen</h3>
-              <p>Frühe Konzepte und Modelle rund um die Astralbahn und Transportwege.</p>
+              <p>Frühe Konzepte rund um Astralbahn, Häfen, Schiffe und Wege.</p>
             </div>
           </article>
 
           <article class="gallery-item">
-            <div class="gallery-placeholder">Weltaufbau</div>
+            <div class="gallery-placeholder">Welt</div>
             <div class="gallery-info">
-              <h3>Weltstruktur & Regionen</h3>
-              <p>Vorngar, Elyraen, Aetherion und erste Richtungen für die Spielwelt.</p>
+              <h3>Kontinente & Regionen</h3>
+              <p>Vorngar, Elyraen, Aetherion und die Struktur der Welt Jueria.</p>
             </div>
           </article>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section">
-      <div class="container">
-        <div class="grid-2">
-          <article class="card">
-            <h3>Spätere Inhalte dieser Seite</h3>
-            <p>
-              Sobald mehr Ingame-Material verfügbar ist, wird diese Galerie um echte Screenshots,
-              Ingame-Szenen, Charaktervorschauen, Regionen und Entwicklungsvergleiche erweitert.
-            </p>
-          </article>
-
-          <article class="card">
-            <h3>Warum die Galerie wichtig ist</h3>
-            <p>
-              Sie zeigt nicht nur fertige Bilder, sondern dokumentiert auch die visuelle Entwicklung von STORMFIRE:
-              vom ersten Stiltest bis zur späteren Spielwelt.
-            </p>
-          </article>
+      <footer class="footer">
+        <div>© STORMFIRE • Projekt in Entwicklung</div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="news.html">News</a>
+          <a href="download.html">Launcher</a>
         </div>
-      </div>
-    </section>
-  </main>
+      </footer>
+    </main>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div>© STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)</div>
-      <div class="footer-links">
-        <a href="index.html">Home</a>
-        <a href="news.html">News</a>
-        <a href="geschichte.html">Geschichte</a>
-      </div>
-    </div>
-  </footer>
+  </div>
+
+  <script>
+    document.getElementById("login-status").textContent = "In Entwicklung";
+    document.getElementById("realm-status").textContent = "In Entwicklung";
+    document.getElementById("player-count").textContent = "0";
+
+    let visits = localStorage.getItem("stormfire_visits");
+    visits = visits ? parseInt(visits, 10) + 1 : 1;
+    localStorage.setItem("stormfire_visits", visits);
+    document.getElementById("visit-count").textContent = visits;
+  </script>
 </body>
 </html>
