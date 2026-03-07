@@ -9,7 +9,7 @@
   // WICHTIG:
   // HIER DEINEN PUBLISHABLE KEY EINFÜGEN.
   // Nicht service_role verwenden.
-  const SUPABASE_PUBLISHABLE_KEY = "HIER_DEIN_PUBLISHABLE_KEY_EINFUEGEN";
+  const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_GmsSvpE-8xoRVsgePDIrsQ_p-jH5gQ2";
 
   // TABELLEN / SPALTEN
   const CHARACTERS_TABLE = "characters";
