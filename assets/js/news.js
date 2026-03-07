@@ -1,134 +1,55 @@
-// /assets/js/news.js
-// News-Seite: lädt /data/news.json, filtert, rendert
-// Fix: stabile Sortierung (Datum/Zeit + id) damit "News 3" wirklich oben steht.
-
-(async function () {
-  const updated = document.getElementById("newsUpdated");
-  const count = document.getElementById("newsCount");
-  const list = document.getElementById("newsList");
-  const q = document.getElementById("q");
-  const type = document.getElementById("type");
-  const reload = document.getElementById("reload");
-
-  // Falls die Seite andere IDs hat oder Elemente fehlen → nicht crashen
-  if (!updated || !count || !list || !q || !type || !reload || !window.sf?.fetchJSON) return;
-
-  let all = [];
-  let lastManual = 0;
-
-  function toTime(v) {
-    // akzeptiert "2026-03-03" oder ISO "2026-03-03T16:00:00+01:00"
-    if (!v) return 0;
-    const t = Date.parse(String(v));
-    return Number.isFinite(t) ? t : 0;
+(() => {
+  function escapeHtml(value) {
+    return String(value ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
   }
 
-  function cmpDesc(a, b) {
-    // 1) ts oder date absteigend
-    const ta = toTime(a?.ts || a?.date);
-    const tb = toTime(b?.ts || b?.date);
-    if (tb !== ta) return tb - ta;
+  async function fetchJSON(path) {
+    const response = await fetch(path, { cache: "no-store" });
 
-    // 2) id absteigend (devlog-003 > devlog-002)
-    const ida = String(a?.id ?? "");
-    const idb = String(b?.id ?? "");
-    if (idb !== ida) return idb.localeCompare(ida);
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status} while loading ${path}`);
+    }
 
-    // 3) fallback: Original-Reihenfolge (stabil)
-    return (a?._i ?? 0) - (b?._i ?? 0);
+    return await response.json();
   }
 
-  function render() {
-    const query = String(q.value || "").trim().toLowerCase();
-    const t = String(type.value || "all").toLowerCase();
+  function formatDate(dateString) {
+    if (!dateString) return "Unbekanntes Datum";
 
-    let filtered = all;
+    const date = new Date(dateString);
+    if (Number.isNaN(date.getTime())) return dateString;
 
-    if (t !== "all") {
-      filtered = filtered.filter(p => String(p?.type || "").toLowerCase() === t);
-    }
-
-    if (query) {
-      filtered = filtered.filter(p => {
-        const title = String(p?.title || "").toLowerCase();
-        const body = String(p?.body || "").toLowerCase();
-        const tags = Array.isArray(p?.tags) ? p.tags.join(" ").toLowerCase() : "";
-        return title.includes(query) || body.includes(query) || tags.includes(query);
-      });
-    }
-
-    count.textContent = `${filtered.length} Posts`;
-
-    if (!filtered.length) {
-      list.innerHTML = `<div class="small">Keine Treffer.</div>`;
-      return;
-    }
-
-    list.innerHTML = filtered.map(p => {
-      const title = window.sf.escapeHtml(p?.title || "Ohne Titel");
-      const date = window.sf.escapeHtml(p?.date || "");
-      const author = window.sf.escapeHtml(p?.author || "");
-      const typeUp = window.sf.escapeHtml(String(p?.type || "news").toUpperCase());
-      const body = window.sf.escapeHtml(p?.body || "");
-      const tags = Array.isArray(p?.tags) ? p.tags : [];
-
-      const meta = [date, author, typeUp].filter(Boolean).join(" • ");
-
-      const tagHtml = tags.length
-        ? `<div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;">
-            ${tags.map(t => `<span class="pill"><b>${window.sf.escapeHtml(t)}</b></span>`).join("")}
-           </div>`
-        : "";
-
-      return `
-        <article style="margin-top:12px; padding:14px; border:1px solid rgba(255,255,255,0.10); border-radius:16px; background: rgba(0,0,0,0.16);">
-          <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-            <div style="font-weight:900; font-size:16px;">${title}</div>
-            <div class="small" style="white-space:nowrap;">${meta}</div>
-          </div>
-
-          ${tagHtml}
-
-          <div class="small" style="margin-top:10px; white-space:pre-wrap; line-height:1.65;">${body}</div>
-        </article>
-      `;
-    }).join("");
+    return date.toLocaleDateString("de-DE", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric"
+    });
   }
 
-  async function load() {
-    list.textContent = "Lädt…";
-
-    try {
-      const data = await window.sf.fetchJSON("/data/news.json");
-
-      updated.textContent = data?.updated_at
-        ? ("Update: " + window.sf.formatTime(data.updated_at))
-        : "Update: —";
-
-      const posts = Array.isArray(data?.posts) ? data.posts.slice() : [];
-
-      // stabiler index für fallback
-      for (let i = 0; i < posts.length; i++) posts[i]._i = i;
-
-      posts.sort(cmpDesc);
-      all = posts;
-
-      render();
-    } catch (e) {
-      updated.textContent = "Update: —";
-      list.innerHTML = `<div class="small">Konnte News gerade nicht laden.</div>`;
-    }
+  function formatBody(text) {
+    return escapeHtml(text).replace(/\n/g, "<br>");
   }
 
-  q.addEventListener("input", render);
-  type.addEventListener("change", render);
+  function renderTags(tags) {
+    if (!Array.isArray(tags) || tags.length === 0) return "";
+    return tags
+      .map(tag => `<span class="badge">${escapeHtml(tag)}</span>`)
+      .join(" ");
+  }
 
-  reload.addEventListener("click", async () => {
-    const t = Date.now();
-    if (t - lastManual < 5000) return; // anti-spam
-    lastManual = t;
-    await load();
-  });
+  function renderPost(post) {
+    return `
+      <article class="news-item">
+        <div class="news-meta">
+          ${escapeHtml(post.type || "Devlog")} • ${formatDate(post.date)}
+          ${post.author ? `• ${escapeHtml(post.author)}` : ""}
+        </div>
 
-  await load();
-})();
+        <h3>${escapeHtml(post.title || "Ohne Titel")}</h3>
+
+        ${post.tags && post.tags.length
