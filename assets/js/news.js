@@ -19,7 +19,7 @@
   }
 
   function formatDate(dateString) {
-    if (!dateString) return "Unbekanntes Datum";
+    if (!dateString) return "Unbekannt";
 
     const date = new Date(dateString);
     if (Number.isNaN(date.getTime())) return dateString;
@@ -32,14 +32,12 @@
   }
 
   function formatBody(text) {
-    return escapeHtml(text).replace(/\n/g, "<br>");
+    return escapeHtml(text || "").replace(/\n/g, "<br>");
   }
 
   function renderTags(tags) {
     if (!Array.isArray(tags) || tags.length === 0) return "";
-    return tags
-      .map(tag => `<span class="badge">${escapeHtml(tag)}</span>`)
-      .join(" ");
+    return tags.map(tag => `<span class="badge">${escapeHtml(tag)}</span>`).join(" ");
   }
 
   function renderPost(post) {
@@ -52,7 +50,9 @@
 
         <h3>${escapeHtml(post.title || "Ohne Titel")}</h3>
 
-        ${post.tags && post.tags.length ? `<p style="margin-bottom:10px;">${renderTags(post.tags)}</p>` : ""}
+        ${Array.isArray(post.tags) && post.tags.length
+          ? `<p style="margin-bottom:10px;">${renderTags(post.tags)}</p>`
+          : ""}
 
         <p>${formatBody(post.body || "")}</p>
       </article>
@@ -64,6 +64,16 @@
     if (el) el.textContent = value;
   }
 
+  function updateVisitCounter() {
+    const visitEl = document.getElementById("visit-count");
+    if (!visitEl) return;
+
+    let visits = localStorage.getItem("stormfire_visits");
+    visits = visits ? parseInt(visits, 10) + 1 : 1;
+    localStorage.setItem("stormfire_visits", visits);
+    visitEl.textContent = String(visits);
+  }
+
   async function loadNews() {
     const listEl = document.getElementById("news-list");
     const countEl = document.getElementById("news-count");
@@ -73,18 +83,10 @@
 
     try {
       const data = await fetchJSON("./data/news.json");
-
       const posts = Array.isArray(data.posts) ? data.posts : [];
 
-      if (countEl) {
-        countEl.textContent = String(posts.length);
-      }
-
-      if (updatedEl) {
-        updatedEl.textContent = data.updated_at
-          ? formatDate(data.updated_at)
-          : "Unbekannt";
-      }
+      if (countEl) countEl.textContent = String(posts.length);
+      if (updatedEl) updatedEl.textContent = formatDate(data.updated_at);
 
       if (posts.length === 0) {
         listEl.innerHTML = `
@@ -108,29 +110,17 @@
         <div class="news-item">
           <div class="news-meta">Fehler</div>
           <h3>News konnten nicht geladen werden</h3>
-          <p>
-            Die Datei <strong>data/news.json</strong> konnte nicht geladen werden.
-            Prüfe Pfad, JSON-Inhalt und GitHub Pages Cache.
-          </p>
+          <p>Die Datei <strong>data/news.json</strong> konnte nicht geladen oder gelesen werden.</p>
         </div>
       `;
     }
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-    loadNews();
-
-    // Optional: gleiche Platzhalter wie auf den anderen Seiten
     setText("login-status", "In Entwicklung");
     setText("realm-status", "In Entwicklung");
     setText("player-count", "0");
-
-    const visitEl = document.getElementById("visit-count");
-    if (visitEl) {
-      let visits = localStorage.getItem("stormfire_visits");
-      visits = visits ? parseInt(visits, 10) + 1 : 1;
-      localStorage.setItem("stormfire_visits", visits);
-      visitEl.textContent = String(visits);
-    }
+    updateVisitCounter();
+    loadNews();
   });
 })();
