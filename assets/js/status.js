@@ -1,6 +1,6 @@
 (() => {
   const SUPABASE_URL = "https://furuovwvtbbgedxqukzz.supabase.co";
-  const SUPABASE_PUBLISHABLE_KEY = "DEIN_PUBLISHABLE_KEY_HIER";
+  const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_GmsSvpE-8xoRVsgePDIrsQ_p-jH5gQ2";
 
   const CHARACTERS_TABLE = "characters";
   const SITE_REALM_STATUS_TABLE = "site_realm_status";
