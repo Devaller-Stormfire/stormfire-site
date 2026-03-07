@@ -5,14 +5,16 @@
 
   // SUPABASE
   const SUPABASE_URL = "https://furuovwvtbbgedxqukzz.supabase.co";
-  const SUPABASE_PUBLISHABLE_KEY = "HIER_DEIN_PUBLISHABLE_KEY_EINFUEGEN";
+
+  // WICHTIG:
+  // HIER DEINEN ECHTEN PUBLISHABLE KEY EINTRAGEN
+  const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_GmsSvpE-8xoRVsgePDIrsQ_p-jH5gQ2";
 
   // TABELLEN
   const CHARACTERS_TABLE = "characters";
   const SITE_REALM_STATUS_TABLE = "site_realm_status";
 
-  // WICHTIG:
-  // Falls deine Fraktionsspalte anders heißt, hier ändern.
+  // Falls deine Fraktionsspalte anders heißt, hier ändern
   const FACTION_COLUMN = "faction";
 
   // FRAKTIONEN
@@ -21,10 +23,6 @@
 
   // NEWS DATEI
   const NEWS_JSON_PATH = "./data/news.json";
-
-  // =========================================================
-  // HELPERS
-  // =========================================================
 
   function getEl(id) {
     return document.getElementById(id);
@@ -65,9 +63,7 @@
     if (!dateString) return "Unbekannt";
 
     const date = new Date(dateString);
-    if (Number.isNaN(date.getTime())) {
-      return dateString;
-    }
+    if (Number.isNaN(date.getTime())) return dateString;
 
     return date.toLocaleDateString("de-DE", {
       day: "2-digit",
@@ -80,10 +76,6 @@
     const noteEl = getEl("status-note");
     if (noteEl) noteEl.textContent = text;
   }
-
-  // =========================================================
-  // DEVICE VISITS
-  // =========================================================
 
   function updateVisitCounter() {
     const key = "stormfire_visits";
@@ -98,10 +90,6 @@
     setText("visit-count", visits);
   }
 
-  // =========================================================
-  // NEWS
-  // =========================================================
-
   async function loadNews() {
     const listEl = getEl("news-list");
     if (!listEl) return;
@@ -112,7 +100,6 @@
 
       const data = await response.json();
       const posts = Array.isArray(data.posts) ? data.posts.slice(0, 3) : [];
-
       if (posts.length === 0) return;
 
       listEl.innerHTML = posts.map((post) => {
@@ -134,10 +121,6 @@
     }
   }
 
-  // =========================================================
-  // SUPABASE
-  // =========================================================
-
   function createSupabaseClient() {
     if (!window.supabase || !window.supabase.createClient) {
       throw new Error("Supabase Browser Client wurde nicht geladen.");
@@ -145,7 +128,7 @@
 
     if (
       !SUPABASE_PUBLISHABLE_KEY ||
-      SUPABASE_PUBLISHABLE_KEY.includes("sb_publishable_GmsSvpE-8xoRVsgePDIrsQ_p-jH5gQ2")
+      SUPABASE_PUBLISHABLE_KEY.includes("DEIN_ECHTER_PUBLISHABLE_KEY_HIER")
     ) {
       throw new Error("Publishable Key fehlt in assets/js/status.js.");
     }
@@ -169,10 +152,7 @@
     const rows = Array.isArray(result.data) ? result.data : [];
 
     const realmsOnline = rows.filter(row => row.online === true).length;
-
-    const playersOnline = rows.reduce((sum, row) => {
-      return sum + Number(row.players_online || 0);
-    }, 0);
+    const playersOnline = rows.reduce((sum, row) => sum + Number(row.players_online || 0), 0);
 
     setText("realms-online", realmsOnline);
     setText("players-online-live", playersOnline);
@@ -196,27 +176,21 @@
       .from(CHARACTERS_TABLE)
       .select("*", { count: "exact", head: true });
 
-    if (totalResult.error) {
-      throw totalResult.error;
-    }
+    if (totalResult.error) throw totalResult.error;
 
     const faction1Result = await client
       .from(CHARACTERS_TABLE)
       .select("*", { count: "exact", head: true })
       .eq(FACTION_COLUMN, FACTION_1);
 
-    if (faction1Result.error) {
-      throw faction1Result.error;
-    }
+    if (faction1Result.error) throw faction1Result.error;
 
     const faction2Result = await client
       .from(CHARACTERS_TABLE)
       .select("*", { count: "exact", head: true })
       .eq(FACTION_COLUMN, FACTION_2);
 
-    if (faction2Result.error) {
-      throw faction2Result.error;
-    }
+    if (faction2Result.error) throw faction2Result.error;
 
     const totalPlayers = totalResult.count || 0;
     const faction1Players = faction1Result.count || 0;
@@ -226,11 +200,7 @@
     setText("drachenbund-count", faction1Players);
     setText("wolfsmark-count", faction2Players);
 
-    return {
-      totalPlayers,
-      faction1Players,
-      faction2Players
-    };
+    return { totalPlayers, faction1Players, faction2Players };
   }
 
   async function loadSupabaseStats() {
@@ -261,7 +231,7 @@
       }
 
       if (counts.totalPlayers === 0) {
-        note += " Aktuell sind noch keine Charaktere in der Online-Auswertung vorhanden oder die Fraktionsspalte heißt anders.";
+        note += " Aktuell sind noch keine Charaktere in der Online-Auswertung vorhanden.";
       }
 
       setStatusNote(note);
@@ -276,11 +246,6 @@
       );
     }
   }
-
-  // =========================================================
-  // OPTIONAL: Fraktionsbalken automatisch einfügen
-  // Falls du später in HTML ein Element mit id='faction-balance' hast.
-  // =========================================================
 
   function renderFactionBalance() {
     const wrap = getEl("faction-balance");
@@ -313,10 +278,6 @@
       </div>
     `);
   }
-
-  // =========================================================
-  // INIT
-  // =========================================================
 
   document.addEventListener("DOMContentLoaded", async () => {
     updateVisitCounter();
