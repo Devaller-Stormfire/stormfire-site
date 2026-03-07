@@ -1,74 +1,128 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>STORMFIRE – Leaderboard</title>
-  <link rel="icon" href="/assets/img/logo.png" />
-  <link rel="stylesheet" href="/assets/css/style.css" />
+  <meta name="description" content="Leaderboard und spätere Ranglisten für STORMFIRE.">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <canvas id="astral"></canvas>
-
   <div class="layout">
+
     <aside class="sidebar">
-      <div class="brandBox">
-        <img src="/assets/img/logo.png" alt="STORMFIRE Logo" />
-        <div>
-          <div class="t1">STORMFIRE</div>
-          <div class="t2">Leaderboard</div>
+      <a class="brand" href="index.html">
+        <div class="brand-logo"></div>
+        <div class="brand-text">
+          <strong>STORMFIRE</strong>
+          <span>Leaderboard</span>
         </div>
-      </div>
+      </a>
 
-      <div class="sideSection">
-        <div class="sideTitle">Navigation</div>
-        <nav class="sideNav">
-          <a class="navbtn" href="/index.html">Home</a>
-          <a class="navbtn" href="/news.html">News</a>
-          <a class="navbtn" href="/status.html">Realm Status</a>
-          <a class="navbtn" href="/leaderboard.html">Leaderboard</a>
-          <a class="navbtn" href="/roadmap.html">Roadmap</a>
-          <a class="navbtn" href="/gallery.html">Galerie</a>
-          <a class="navbtn" href="/team.html">Team</a>
-          <a class="navbtn" href="/discord.html">Discord</a>
-          <a class="navbtn" href="/download.html">Launcher</a>
-          <a class="navbtn" href="/impressum.html">Impressum</a>
-        </nav>
-      </div>
+      <nav class="sidebar-nav">
+        <a href="index.html">Home</a>
+        <a href="news.html">News</a>
+        <a href="status.html">Realm Status</a>
+        <a class="active" href="leaderboard.html">Leaderboard</a>
+        <a href="roadmap.html">Roadmap</a>
+        <a href="gallery.html">Galerie</a>
+        <a href="geschichte.html">Geschichte</a>
+        <a href="team.html">Team</a>
+        <a href="discord.html">Discord</a>
+        <a href="download.html">Launcher</a>
+        <a href="impressum.html">Impressum</a>
+      </nav>
 
-      <div class="sideSection">
-        <div class="sideTitle">Live</div>
-        <div class="liveStatus">
-          <span class="dot warn" id="liveDot"></span>
-          <span id="liveTxt">Lädt…</span>
-        </div>
+      <div class="sidebar-box">
+        <h3>Ranglisten</h3>
+        <p>Später für PvE-, PvP- und Realm-Ranglisten gedacht.</p>
       </div>
     </aside>
 
     <main class="content">
-      <div class="hero">
-        <div>
-          <h1>Leaderboard</h1>
-          <p>Top 5 PvP • Most Damage • Most Gold • Most Playtime</p>
-        </div>
-        <div class="badge">
-          <span class="dot warn"></span>
-          <span id="lbUpdated">Lädt…</span>
-        </div>
+      <div class="translate-note">
+        Diese Seite ist aktuell auf Deutsch. Dein Browser kann sie automatisch übersetzen.
       </div>
 
-      <section class="grid" id="lbGrid"></section>
+      <section class="page-head">
+        <h1>Leaderboard</h1>
+        <p>Hier werden später Ranglisten, Realm-Werte und weitere Wettbewerbsdaten von STORMFIRE erscheinen.</p>
+      </section>
 
-      <footer>
-        © <span id="year"></span> STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)
+      <section class="section">
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-label">Login Server</div>
+            <div class="stat-value status-dev" id="login-status">In Entwicklung</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-label">Realm Server</div>
+            <div class="stat-value status-dev" id="realm-status">In Entwicklung</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-label">Spieler online</div>
+            <div class="stat-value" id="player-count">0</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-label">Besuche auf diesem Gerät</div>
+            <div class="stat-value" id="visit-count">0</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="grid-3">
+          <article class="card">
+            <h3>PvE Ranglisten</h3>
+            <p>Später für Dungeon-, Raid- und andere PvE-bezogene Leistungen.</p>
+          </article>
+
+          <article class="card">
+            <h3>PvP Ranglisten</h3>
+            <p>Geplante Ranglisten für Arena, Fraktionskonflikte und weitere PvP-Systeme.</p>
+          </article>
+
+          <article class="card">
+            <h3>Realm Statistiken</h3>
+            <p>Spätere Daten zu Aktivität, Erfolgen und weiteren realmbezogenen Werten.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="card">
+          <h3>Noch keine Live-Daten</h3>
+          <p>
+            Da STORMFIRE sich noch in der Entwicklung befindet, gibt es aktuell keine echten Ranglisten.
+            Diese Seite ist bereits vorbereitet und wird später mit den echten Daten verbunden.
+          </p>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div>© STORMFIRE • Projekt in Entwicklung</div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="news.html">News</a>
+          <a href="roadmap.html">Roadmap</a>
+        </div>
       </footer>
     </main>
+
   </div>
 
-  <script src="/assets/js/astral.js"></script>
-  <script src="/assets/js/common.js"></script>
-  <script src="/assets/js/site.js"></script>
-  <script src="/assets/js/leaderboard.js"></script>
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById("login-status").textContent = "In Entwicklung";
+    document.getElementById("realm-status").textContent = "In Entwicklung";
+    document.getElementById("player-count").textContent = "0";
+
+    let visits = localStorage.getItem("stormfire_visits");
+    visits = visits ? parseInt(visits, 10) + 1 : 1;
+    localStorage.setItem("stormfire_visits", visits);
+    document.getElementById("visit-count").textContent = visits;
+  </script>
 </body>
 </html>
