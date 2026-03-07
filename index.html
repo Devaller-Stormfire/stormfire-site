@@ -4,11 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>STORMFIRE Portal</title>
-  <meta name="description" content="STORMFIRE – Indie MMORPG in Entwicklung. News, Status, Roadmap und Projektfortschritt." />
+  <meta
+    name="description"
+    content="STORMFIRE – Indie MMORPG in Entwicklung. News, Status, Roadmap und Projektfortschritt."
+  />
 
   <link rel="stylesheet" href="./assets/css/style.css" />
-
-  <!-- Supabase Browser Client -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
@@ -18,9 +19,13 @@
     <aside class="sidebar">
       <a class="brand" href="./index.html" aria-label="STORMFIRE Startseite">
         <div class="brand-logo">
-          <img src="./assets/images/logo.png" alt="STORMFIRE Logo"
-               onerror="this.style.display='none'; this.parentElement.classList.add('brand-logo-fallback'); this.parentElement.innerHTML='SF';">
+          <img
+            src="./assets/images/logo.png"
+            alt="STORMFIRE Logo"
+            onerror="this.style.display='none'; this.parentElement.classList.add('brand-logo-fallback'); this.parentElement.innerHTML='SF';"
+          />
         </div>
+
         <div class="brand-text">
           <strong>STORMFIRE</strong>
           <span>MMORPG Portal</span>
@@ -41,19 +46,61 @@
         <a href="./impressum.html">Impressum</a>
       </nav>
 
-      <div class="sidebar-box">
-        <h3>Projektstatus</h3>
-        <p>Frühe Entwicklung mit Fokus auf Datenbank, Networking und Weltbasis.</p>
+      <!-- SERVER STATUS IN SIDEBAR -->
+      <div class="sidebar-box status-sidebar">
+        <h3>Server Status</h3>
+
+        <div class="sidebar-status-row">
+          <span>Login / Datenbank</span>
+          <strong id="login-status" class="status-dev">Lädt…</strong>
+        </div>
+
+        <div class="sidebar-status-row">
+          <span>Realm Server</span>
+          <strong id="realm-status" class="status-dev">Lädt…</strong>
+        </div>
+
+        <div class="sidebar-status-row">
+          <span>Spieler gesamt</span>
+          <strong id="player-count">0</strong>
+        </div>
+
+        <div class="sidebar-status-row">
+          <span>Drachenbund</span>
+          <strong id="drachenbund-count">0</strong>
+        </div>
+
+        <div class="sidebar-status-row">
+          <span>Wolfsmark</span>
+          <strong id="wolfsmark-count">0</strong>
+        </div>
+
+        <div class="sidebar-status-row">
+          <span>Realms online</span>
+          <strong id="realms-online">0</strong>
+        </div>
+
+        <div class="sidebar-status-row">
+          <span>Spieler online</span>
+          <strong id="players-online-live">0</strong>
+        </div>
+
+        <div class="sidebar-status-row">
+          <span>Besuche Gerät</span>
+          <strong id="visit-count">0</strong>
+        </div>
+
+        <p class="sidebar-status-note" id="status-note">
+          Verbindung wird aufgebaut…
+        </p>
       </div>
     </aside>
 
     <!-- CONTENT -->
     <main class="content">
-      <div class="page-shell">
+      <div class="page-shell single-column">
 
-        <!-- LINKE HAUPTSPALTE -->
         <section class="main-column">
-
           <div class="translate-note">
             Diese Website ist aktuell auf Deutsch. Dein Browser kann sie automatisch übersetzen.
           </div>
@@ -169,65 +216,6 @@
             </div>
           </footer>
         </section>
-
-        <!-- RECHTE STATUS-SPALTE -->
-        <aside class="status-column">
-          <div class="status-panel">
-            <div class="status-panel-head">
-              <div class="status-kicker">LIVE STATUS</div>
-              <h2>Server Übersicht</h2>
-              <p>
-                Realm-übergreifende Werte aus Supabase, Fraktionen zusammengefasst über alle Realms.
-              </p>
-            </div>
-
-            <div class="status-list">
-              <div class="status-row">
-                <span>Login / Datenbank</span>
-                <strong id="login-status" class="status-dev">Lädt…</strong>
-              </div>
-
-              <div class="status-row">
-                <span>Realm Server</span>
-                <strong id="realm-status" class="status-dev">Lädt…</strong>
-              </div>
-
-              <div class="status-row">
-                <span>Spieler gesamt</span>
-                <strong id="player-count">0</strong>
-              </div>
-
-              <div class="status-row">
-                <span>Drachenbund gesamt</span>
-                <strong id="drachenbund-count">0</strong>
-              </div>
-
-              <div class="status-row">
-                <span>Wolfsmark gesamt</span>
-                <strong id="wolfsmark-count">0</strong>
-              </div>
-
-              <div class="status-row">
-                <span>Realms online</span>
-                <strong id="realms-online">0</strong>
-              </div>
-
-              <div class="status-row">
-                <span>Spieler online (Realm-Status)</span>
-                <strong id="players-online-live">0</strong>
-              </div>
-
-              <div class="status-row">
-                <span>Besuche auf diesem Gerät</span>
-                <strong id="visit-count">0</strong>
-              </div>
-            </div>
-
-            <div class="status-note" id="status-note">
-              Verbindung wird aufgebaut…
-            </div>
-          </div>
-        </aside>
 
       </div>
     </main>
