@@ -1,55 +1,65 @@
 {
-  "updated_at": "2026-03-06T20:30:00+01:00",
+  "updated_at": "2026-03-06T21:30:00+01:00",
   "posts": [
     {
-      "id": "devlog-005",
-      "type": "devlog",
-      "title": "Devlog 5 – Die ersten Inseln erwachen",
+      "id": "devlog-006",
+      "type": "Devlog",
+      "title": "Weltaufbau, Assets und neue Grundlagen",
       "date": "2026-03-06",
-      "ts": "2026-03-06T20:30:00+01:00",
-      "author": "Devaller",
-      "tags": ["DEVLOG", "WORLD"],
-      "body": "Heute haben wir einen weiteren großen Schritt in der Welt von STORMFIRE erreicht.\n\nDie Startinseln unserer Welt sind nun vollständig aufgebaut.\n\nDie Landschaften stehen bereits – Küsten, Wege und das Fundament der ersten Abenteuer sind gelegt.\n\nWas noch fehlt, sind die letzten Details:\n\n• Gebäude\n• NPCs\n• Vegetation und Gras\n\nDoch das Herz dieser Welt schlägt bereits.\n\nParallel kämpfen wir weiterhin damit, unsere Datenbank vollständig mit dem System zu verbinden. Es ist einer dieser Momente in der Entwicklung, in denen man kurz am Verzweifeln ist – aber genau solche Hürden formen das Fundament eines großen Projekts.\n\nNoch ein paar Schritte.\nNoch ein paar Nächte.\n\nDann wird STORMFIRE beginnen, wirklich zu leben.\n\nDer Sturm sammelt seine Kraft."
+      "ts": "2026-03-06T21:30:00+01:00",
+      "author": "Stormfire Team",
+      "tags": ["Welt", "Assets", "Entwicklung"],
+      "body": "Aktuell bauen wir die visuelle und strukturelle Basis von STORMFIRE weiter aus.\n\nDazu gehören neue Charaktere, Natur-Assets, Gebäude, Props, Gegner und erste Reiseideen wie die Astralbahn.\n\nZiel ist es, Schritt für Schritt eine zusammenhängende Weltbasis zu schaffen."
+    },
+    {
+      "id": "devlog-005",
+      "type": "Systemupdate",
+      "title": "Fokus auf Datenbank und Networking",
+      "date": "2026-03-05",
+      "ts": "2026-03-05T20:00:00+01:00",
+      "author": "Stormfire Team",
+      "tags": ["Backend", "Datenbank", "Multiplayer"],
+      "body": "Der aktuelle technische Schwerpunkt liegt auf der Integration der Datenbank und der Multiplayer-Grundlagen.\n\nAccountdaten, Charakterfluss und die spätere Realm-Struktur sollen zuerst stabil stehen, bevor weitere große Systeme folgen."
     },
     {
       "id": "devlog-004",
-      "type": "devlog",
-      "title": "Devlog 4 – Das Herz der Welt",
+      "type": "Charaktersystem",
+      "title": "Charaktererstellung weiter ausgebaut",
       "date": "2026-03-04",
-      "ts": "2026-03-04T18:30:00+01:00",
-      "author": "Devaller",
-      "tags": ["DEVLOG", "DATABASE", "PROGRESS"],
-      "body": "Heute haben wir einen wichtigen Meilenstein für STORMFIRE erreicht.\n\nDie Grundlage unserer Datenbank ist nun erfolgreich in das Projekt integriert.\n\nDas bedeutet, dass Systeme wie Accounts, Charaktere, Rankings und Realms bald vollständig aus einer zentralen Datenquelle arbeiten werden.\n\nDer Kern der Struktur steht bereits.\n\nJetzt müssen wir ihn nur noch vollständig zum Leben erwecken.\n\nNoch einige Verbindungen, Tests und Feinschliff – und das Fundament unseres Online-Universums wird aktiv.\n\nDie Welt von Jueria formt sich weiter.\n\nSTORMFIRE wächst.\nUnd der Sturm sammelt seine Kraft."
+      "ts": "2026-03-04T19:15:00+01:00",
+      "author": "Stormfire Team",
+      "tags": ["Charaktere", "Fraktionen", "UI"],
+      "body": "Die Charaktererstellung wurde weiter verfeinert.\n\nFraktionen, Rassen, Vorschauen und die grundsätzliche UI-Richtung sind inzwischen deutlich klarer.\n\nDas Ziel bleibt ein klassisch inspiriertes MMORPG-Gefühl mit eigener Stormfire-Identität."
     },
     {
       "id": "devlog-003",
-      "type": "devlog",
-      "title": "Devlog 3 – Der Sturm formt sich",
+      "type": "Website",
+      "title": "Website und Projektportal werden erweitert",
       "date": "2026-03-03",
-      "ts": "2026-03-03T16:45:00+01:00",
-      "author": "Devaller",
-      "tags": ["DEVLOG", "DISCORD", "COMMUNITY"],
-      "body": "Heute wurde unsere Discord-Community offiziell integriert...\n\nWir bauen die Brücke zwischen Website, Launcher und Community.\n\nDas Tor öffnet sich weiter."
+      "ts": "2026-03-03T18:10:00+01:00",
+      "author": "Stormfire Team",
+      "tags": ["Website", "Portal", "Devlog"],
+      "body": "Die Website dient nicht nur als Visitenkarte, sondern als zentrales Projektportal für STORMFIRE.\n\nNach und nach werden News, Lore, Launcher-Infos, Statusbereiche und Community-Zugänge erweitert."
     },
     {
       "id": "devlog-002",
-      "type": "devlog",
-      "title": "Devlog 2 – Das Tor öffnet sich",
-      "date": "2026-03-03",
-      "ts": "2026-03-03T16:00:00+01:00",
-      "author": "Devaller",
-      "tags": ["DEVLOG", "LAUNCHER"],
-      "body": "Mit dem heutigen Tag wurde das Tor zu STORMFIRE erschaffen.\n\nDer Launcher erhebt sich als erstes sichtbares Fundament unserer Welt – ein Portal zwischen Realität und Jueria.\n\nEr vereint News, Update-System, Realm-Informationen und bereitet die Bühne für Freundesliste und später DB.\n\nDer Sturm sammelt seine Kraft.\nUnd wir stehen erst am Anfang."
+      "type": "Vision",
+      "title": "Stormfire bleibt ein langfristiges MMORPG-Projekt",
+      "date": "2026-03-02",
+      "ts": "2026-03-02T17:00:00+01:00",
+      "author": "Stormfire Team",
+      "tags": ["Vision", "MMORPG", "Entwicklung"],
+      "body": "STORMFIRE ist kein kurzfristiges Konzeptprojekt, sondern ein langfristig geplantes MMORPG.\n\nDie Entwicklung wird bewusst früh dokumentiert, damit Fortschritte, Richtungen und Entscheidungen transparent sichtbar bleiben."
     },
     {
       "id": "devlog-001",
-      "type": "devlog",
-      "title": "Devlog 1 – Die Astralflamme wurde entzündet",
-      "date": "2026-03-02",
-      "ts": "2026-03-02T12:00:00+01:00",
-      "author": "Devaller",
-      "tags": ["DEVLOG", "WEBSITE", "MIRROR", "LAUNCHER"],
-      "body": "Die STORMFIRE-Website steht – und parallel wächst unser Launcher weiter.\n\n✅ Stabil:\n- Login & Register\n- Realm-Auswahl\n- Character Create & Select (fast)\n\n🔥 Fokus:\n- Mirror Multiplayer Foundation\n\n➡️ Danach:\n- Datenbank-Anbindung für Accounts/Charaktere\n\nSTORMFIRE lebt."
+      "type": "Lore",
+      "title": "Jueria und die Grundlagen der Welt",
+      "date": "2026-03-01",
+      "ts": "2026-03-01T16:30:00+01:00",
+      "author": "Stormfire Team",
+      "tags": ["Lore", "Jueria", "Welt"],
+      "body": "Die Welt von STORMFIRE trägt den Namen Jueria.\n\nNach dem Bruch des Juwels der Entstehung geriet das Gleichgewicht der Welt aus den Fugen: Der Norden wurde heiß, während der Süden in Kälte und Frost versank.\n\nDiese verdrehte Ordnung bildet die Grundlage für Fraktionen, Regionen und Konflikte."
     }
   ]
 }
