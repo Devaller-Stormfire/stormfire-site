@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>STORMFIRE</title>
-  <meta name="description" content="STORMFIRE ist ein klassisch inspiriertes MMORPG in Entwicklung. Devlogs, Lore, Roadmap und Projektstatus.">
+  <meta name="description" content="STORMFIRE ist ein klassisch inspiriertes MMORPG in Entwicklung. News, Lore, Roadmap und Projektstatus.">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -108,29 +108,36 @@
 
       <section class="section">
         <div class="section-head">
-          <h2>Die Welt von Stormfire</h2>
-          <p>Ein kurzer Einblick in die Identität der Spielwelt.</p>
+          <h2>Neueste News</h2>
+          <p>Die wichtigsten aktuellen Entwicklungen direkt auf der Startseite.</p>
         </div>
 
-        <div class="grid-2">
-          <article class="card">
-            <h3>Jueria</h3>
-            <p>Stormfire spielt in Jueria, einer Welt, deren Gleichgewicht einst durch das Juwel der Entstehung gehalten wurde.</p>
+        <div class="news-list">
+          <article class="news-item">
+            <div class="news-meta">06.03.2026 • Devlog</div>
+            <h3>Weltaufbau, Assets und neue Grundlagen</h3>
+            <p>
+              Charaktere, Natur, Gebäude, Props, Gegner und erste Transportideen wie die Astralbahn
+              bilden aktuell die visuelle und strukturelle Basis der Welt.
+            </p>
           </article>
 
-          <article class="card">
-            <h3>Der Bruch</h3>
-            <p>Als das Juwel zerbrach, wurde die Welt verdreht: Der Norden wurde heiß, der Süden kalt.</p>
+          <article class="news-item">
+            <div class="news-meta">05.03.2026 • Systemupdate</div>
+            <h3>Fokus auf Datenbank und Networking</h3>
+            <p>
+              Der aktuelle Schwerpunkt liegt auf der Anbindung der Datenbank sowie
+              auf den technischen Grundlagen für Multiplayer und Realm-Struktur.
+            </p>
           </article>
 
-          <article class="card">
-            <h3>Drachenbund</h3>
-            <p>Eine Fraktion, die Ordnung, Stabilität und Struktur innerhalb der Welt vertritt.</p>
-          </article>
-
-          <article class="card">
-            <h3>Wolfsmark</h3>
-            <p>Eine Fraktion, die Freiheit, Unabhängigkeit und Anpassung verkörpert.</p>
+          <article class="news-item">
+            <div class="news-meta">04.03.2026 • Charaktersystem</div>
+            <h3>Charaktererstellung weiter ausgebaut</h3>
+            <p>
+              Fraktionen, Rassen, Vorschauen und die allgemeine Richtung des Client-Flows
+              wurden weiter verfeinert.
+            </p>
           </article>
         </div>
       </section>
@@ -143,8 +150,8 @@
 
         <div class="grid-3">
           <a class="card" href="news.html">
-            <h3>Devlogs</h3>
-            <p>Fortschritte und Einblicke in die Entwicklung.</p>
+            <h3>Alle News</h3>
+            <p>Weitere Devlogs und Fortschritte ansehen.</p>
           </a>
 
           <a class="card" href="roadmap.html">
@@ -154,7 +161,7 @@
 
           <a class="card" href="geschichte.html">
             <h3>Lore</h3>
-            <p>Die Geschichte der Welt Jueria und ihre Fraktionen.</p>
+            <p>Die Geschichte der Welt Jueria und ihrer Fraktionen.</p>
           </a>
         </div>
       </section>
@@ -172,12 +179,10 @@
   </div>
 
   <script>
-    // Platzhalter-Livewerte
     document.getElementById("login-status").textContent = "In Entwicklung";
     document.getElementById("realm-status").textContent = "In Entwicklung";
     document.getElementById("player-count").textContent = "0";
 
-    // Lokaler Besucherzähler pro Browser/Gerät
     let visits = localStorage.getItem("stormfire_visits");
     visits = visits ? parseInt(visits, 10) + 1 : 1;
     localStorage.setItem("stormfire_visits", visits);
