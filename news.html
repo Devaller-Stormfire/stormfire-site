@@ -35,7 +35,7 @@
 
       <div class="sidebar-box">
         <h3>News Bereich</h3>
-        <p>Hier sammeln sich Devlogs, Fortschritte und Einblicke in die Entwicklung.</p>
+        <p>Hier findest du Devlogs, Fortschritte und wichtige Projektupdates zu STORMFIRE.</p>
       </div>
     </aside>
 
@@ -46,15 +46,13 @@
 
       <section class="page-head">
         <h1>News & Devlogs</h1>
-        <p>Hier dokumentieren wir die Entwicklung von STORMFIRE Schritt für Schritt.</p>
+        <p>
+          Hier dokumentieren wir die Entwicklung von STORMFIRE:
+          Systeme, Weltaufbau, Technik, Assets und wichtige Projektfortschritte.
+        </p>
       </section>
 
       <section class="section">
-        <div class="section-head">
-          <h2>Live Übersicht</h2>
-          <p>Aktuell noch Platzhalter, später an echte Systeme anbinden.</p>
-        </div>
-
         <div class="stat-grid">
           <div class="stat-card">
             <div class="stat-label">Login Server</div>
@@ -67,42 +65,29 @@
           </div>
 
           <div class="stat-card">
-            <div class="stat-label">Spieler online</div>
-            <div class="stat-value" id="player-count">0</div>
+            <div class="stat-label">News Einträge</div>
+            <div class="stat-value" id="news-count">0</div>
           </div>
 
           <div class="stat-card">
-            <div class="stat-label">Besuche auf diesem Gerät</div>
-            <div class="stat-value" id="visit-count">0</div>
+            <div class="stat-label">Zuletzt aktualisiert</div>
+            <div class="stat-value" id="news-updated">Unbekannt</div>
           </div>
         </div>
       </section>
 
       <section class="section">
-        <div class="news-list">
-          <article class="news-item">
-            <div class="news-meta">06.03.2026 • Devlog</div>
-            <h3>Weltaufbau, Assets und neue Grundlagen</h3>
-            <p>Charaktere, Gegner, Natur, Props, Gebäude und Transportideen werden aktuell als Weltbasis aufgebaut.</p>
-          </article>
+        <div class="section-head">
+          <h2>Aktuelle Einträge</h2>
+          <p>Die Einträge auf dieser Seite werden direkt aus der Datei <strong>data/news.json</strong> geladen.</p>
+        </div>
 
-          <article class="news-item">
-            <div class="news-meta">05.03.2026 • Systemupdate</div>
-            <h3>Fokus auf Datenbank und Networking</h3>
-            <p>Der Schwerpunkt liegt derzeit auf Account-Logik, Charakterspeicherung und den Grundlagen für Multiplayer.</p>
-          </article>
-
-          <article class="news-item">
-            <div class="news-meta">04.03.2026 • Charaktersystem</div>
-            <h3>Charaktererstellung weiter ausgebaut</h3>
-            <p>Fraktionen, Rassen, Vorschauen und UI-Struktur wurden weiter klarer ausgerichtet.</p>
-          </article>
-
-          <article class="news-item">
-            <div class="news-meta">03.03.2026 • Website</div>
-            <h3>Projektportal wird weiter ausgebaut</h3>
-            <p>Die Website dient als Devlog-Plattform, Lore-Portal und später auch als Launcher- und Statusbereich.</p>
-          </article>
+        <div id="news-list" class="news-list">
+          <div class="news-item">
+            <div class="news-meta">Lädt …</div>
+            <h3>News werden geladen</h3>
+            <p>Bitte kurz warten.</p>
+          </div>
         </div>
       </section>
 
@@ -118,15 +103,6 @@
 
   </div>
 
-  <script>
-    document.getElementById("login-status").textContent = "In Entwicklung";
-    document.getElementById("realm-status").textContent = "In Entwicklung";
-    document.getElementById("player-count").textContent = "0";
-
-    let visits = localStorage.getItem("stormfire_visits");
-    visits = visits ? parseInt(visits, 10) + 1 : 1;
-    localStorage.setItem("stormfire_visits", visits);
-    document.getElementById("visit-count").textContent = visits;
-  </script>
+  <script src="assets/js/news.js"></script>
 </body>
 </html>
