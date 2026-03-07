@@ -1,27 +1,12 @@
 (() => {
-  // =========================================================
-  // STORMFIRE Website Status
-  // =========================================================
-
-  // SUPABASE
   const SUPABASE_URL = "https://furuovwvtbbgedxqukzz.supabase.co";
+  const SUPABASE_PUBLISHABLE_KEY = "DEIN_PUBLISHABLE_KEY_HIER";
 
-  // WICHTIG:
-  // HIER DEINEN ECHTEN PUBLISHABLE KEY EINTRAGEN
-  const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_GmsSvpE-8xoRVsgePDIrsQ_p-jH5gQ2";
-
-  // TABELLEN
   const CHARACTERS_TABLE = "characters";
   const SITE_REALM_STATUS_TABLE = "site_realm_status";
-
-  // Falls deine Fraktionsspalte anders heißt, hier ändern
   const FACTION_COLUMN = "faction";
-
-  // FRAKTIONEN
   const FACTION_1 = "Drachenbund";
   const FACTION_2 = "Wolfsmark";
-
-  // NEWS DATEI
   const NEWS_JSON_PATH = "./data/news.json";
 
   function getEl(id) {
@@ -41,13 +26,14 @@
   function setStatus(id, text, className = "") {
     const el = getEl(id);
     if (!el) return;
-
     el.textContent = text;
     el.classList.remove("status-online", "status-offline", "status-dev");
+    if (className) el.classList.add(className);
+  }
 
-    if (className) {
-      el.classList.add(className);
-    }
+  function setStatusNote(text) {
+    const el = getEl("status-note");
+    if (el) el.textContent = text;
   }
 
   function escapeHtml(value) {
@@ -61,7 +47,6 @@
 
   function formatDate(dateString) {
     if (!dateString) return "Unbekannt";
-
     const date = new Date(dateString);
     if (Number.isNaN(date.getTime())) return dateString;
 
@@ -72,21 +57,12 @@
     });
   }
 
-  function setStatusNote(text) {
-    const noteEl = getEl("status-note");
-    if (noteEl) noteEl.textContent = text;
-  }
-
   function updateVisitCounter() {
-    const key = "stormfire_visits";
-    let visits = localStorage.getItem(key);
-
+    let visits = localStorage.getItem("stormfire_visits");
     visits = visits ? parseInt(visits, 10) : 0;
     if (Number.isNaN(visits)) visits = 0;
-
     visits += 1;
-    localStorage.setItem(key, String(visits));
-
+    localStorage.setItem("stormfire_visits", String(visits));
     setText("visit-count", visits);
   }
 
@@ -117,7 +93,7 @@
         `;
       }).join("");
     } catch (error) {
-      console.error("News konnten nicht geladen werden:", error);
+      console.error("News Fehler:", error);
     }
   }
 
@@ -128,45 +104,72 @@
 
     if (
       !SUPABASE_PUBLISHABLE_KEY ||
-      SUPABASE_PUBLISHABLE_KEY.includes("DEIN_ECHTER_PUBLISHABLE_KEY_HIER")
+      SUPABASE_PUBLISHABLE_KEY.includes("DEIN_PUBLISHABLE_KEY_HIER")
     ) {
-      throw new Error("Publishable Key fehlt in assets/js/status.js.");
+      throw new Error("Publishable Key fehlt.");
     }
 
-    return window.supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_PUBLISHABLE_KEY
-    );
+    return window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+  }
+
+  function renderRealmList(rows) {
+    const listEl = getEl("realm-list");
+    if (!listEl) return;
+
+    if (!Array.isArray(rows) || rows.length === 0) {
+      listEl.innerHTML = `<div class="realm-list-empty">Keine Realm-Daten vorhanden.</div>`;
+      return;
+    }
+
+    listEl.innerHTML = rows.map((row) => {
+      const realmName = escapeHtml(row.realm_key || "Unbekannter Realm");
+      const online = row.online === true;
+      const playersOnline = Number(row.players_online || 0);
+
+      return `
+        <div class="realm-row">
+          <div class="realm-name">${realmName}</div>
+          <div class="realm-meta">
+            <span>${playersOnline} Spieler</span>
+            <span class="realm-state ${online ? "realm-state-online" : "realm-state-offline"}">
+              <span class="dot ${online ? "dot-green" : "dot-red"}"></span>
+              ${online ? "Online" : "Offline"}
+            </span>
+          </div>
+        </div>
+      `;
+    }).join("");
   }
 
   async function loadRealmStatus(client) {
-    const result = await client
+    const { data, error } = await client
       .from(SITE_REALM_STATUS_TABLE)
       .select("realm_key, online, players_online, queue_size, last_heartbeat, updated_at")
       .order("realm_key", { ascending: true });
 
-    if (result.error) {
-      throw result.error;
-    }
+    if (error) throw error;
 
-    const rows = Array.isArray(result.data) ? result.data : [];
-
-    const realmsOnline = rows.filter(row => row.online === true).length;
+    const rows = Array.isArray(data) ? data : [];
+    const realmsOnline = rows.filter((row) => row.online === true).length;
+    const realmsOffline = Math.max(0, rows.length - realmsOnline);
     const playersOnline = rows.reduce((sum, row) => sum + Number(row.players_online || 0), 0);
 
     setText("realms-online", realmsOnline);
+    setText("realms-offline", realmsOffline);
     setText("players-online-live", playersOnline);
+
+    renderRealmList(rows);
 
     if (rows.length === 0) {
       setStatus("realm-status", "Keine Daten", "status-dev");
       return rows;
     }
 
-    if (realmsOnline > 0) {
-      setStatus("realm-status", "Online", "status-online");
-    } else {
-      setStatus("realm-status", "Offline", "status-offline");
-    }
+    setStatus(
+      "realm-status",
+      realmsOnline > 0 ? "Online" : "Offline",
+      realmsOnline > 0 ? "status-online" : "status-offline"
+    );
 
     return rows;
   }
@@ -203,69 +206,21 @@
     return { totalPlayers, faction1Players, faction2Players };
   }
 
-  async function loadSupabaseStats() {
-    try {
-      const client = createSupabaseClient();
-
-      setStatus("login-status", "Verbinde…", "status-dev");
-      setStatus("realm-status", "Lädt…", "status-dev");
-      setStatusNote("Live-Daten werden aus Supabase geladen…");
-
-      const realmRows = await loadRealmStatus(client);
-      const counts = await loadCharacterCounts(client);
-
-      setStatus("login-status", "Verbunden", "status-online");
-
-      let note = "Live-Daten erfolgreich geladen. Realm-Zahlen stammen aus site_realm_status, Fraktionszahlen aus characters.";
-
-      if (realmRows.length > 0) {
-        const newestUpdate = realmRows
-          .map(row => row.updated_at || row.last_heartbeat)
-          .filter(Boolean)
-          .sort()
-          .pop();
-
-        if (newestUpdate) {
-          note += ` Letztes Realm-Update: ${formatDate(newestUpdate)}.`;
-        }
-      }
-
-      if (counts.totalPlayers === 0) {
-        note += " Aktuell sind noch keine Charaktere in der Online-Auswertung vorhanden.";
-      }
-
-      setStatusNote(note);
-    } catch (error) {
-      console.error("Supabase Fehler:", error);
-
-      setStatus("login-status", "Fehler", "status-offline");
-      setStatus("realm-status", "Fehler", "status-offline");
-
-      setStatusNote(
-        "Die Live-Daten konnten nicht geladen werden. Prüfe Publishable Key, RLS/Policies und den Namen der Fraktionsspalte in characters."
-      );
-    }
-  }
-
-  function renderFactionBalance() {
+  function renderFactionBalance(drachenbund, wolfsmark) {
     const wrap = getEl("faction-balance");
     if (!wrap) return;
 
-    const drachenbund = Number(getEl("drachenbund-count")?.textContent || 0);
-    const wolfsmark = Number(getEl("wolfsmark-count")?.textContent || 0);
-    const total = drachenbund + wolfsmark;
+    const total = Number(drachenbund || 0) + Number(wolfsmark || 0);
 
     if (total <= 0) {
-      setHtml("faction-balance", `
-        <div class="faction-balance-empty">Noch keine Fraktionsdaten verfügbar.</div>
-      `);
+      wrap.innerHTML = `<div class="faction-balance-empty">Noch keine Fraktionsdaten verfügbar.</div>`;
       return;
     }
 
     const drachenPercent = ((drachenbund / total) * 100).toFixed(1);
     const wolfsPercent = ((wolfsmark / total) * 100).toFixed(1);
 
-    setHtml("faction-balance", `
+    wrap.innerHTML = `
       <div class="faction-balance-wrap">
         <div class="faction-balance-head">
           <span>Drachenbund ${drachenPercent}%</span>
@@ -276,13 +231,53 @@
           <div class="faction-balance-wolfsmark" style="width:${wolfsPercent}%"></div>
         </div>
       </div>
-    `);
+    `;
+  }
+
+  async function loadSupabaseStats() {
+    try {
+      setStatus("login-status", "Verbinde…", "status-dev");
+      setStatus("realm-status", "Lädt…", "status-dev");
+      setStatusNote("Live-Daten werden geladen…");
+
+      const client = createSupabaseClient();
+
+      const realmRows = await loadRealmStatus(client);
+      const counts = await loadCharacterCounts(client);
+
+      renderFactionBalance(counts.faction1Players, counts.faction2Players);
+      setStatus("login-status", "Verbunden", "status-online");
+
+      let note = "Live-Daten erfolgreich geladen.";
+
+      if (realmRows.length > 0) {
+        const newestUpdate = realmRows
+          .map((row) => row.updated_at || row.last_heartbeat)
+          .filter(Boolean)
+          .sort()
+          .pop();
+
+        if (newestUpdate) {
+          note += ` Letztes Realm-Update: ${formatDate(newestUpdate)}.`;
+        }
+      }
+
+      if (counts.totalPlayers === 0) {
+        note += " Aktuell sind noch keine Charaktere vorhanden.";
+      }
+
+      setStatusNote(note);
+    } catch (error) {
+      console.error("Supabase Fehler:", error);
+      setStatus("login-status", "Fehler", "status-offline");
+      setStatus("realm-status", "Fehler", "status-offline");
+      setStatusNote("Fehler beim Laden der Live-Daten. Prüfe Key, Policies und Spaltennamen.");
+    }
   }
 
   document.addEventListener("DOMContentLoaded", async () => {
     updateVisitCounter();
     await loadNews();
     await loadSupabaseStats();
-    renderFactionBalance();
   });
 })();
