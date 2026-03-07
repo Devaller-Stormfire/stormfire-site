@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>STORMFIRE – Discord</title>
-  <meta name="description" content="Discord und Community-Bereich von STORMFIRE. Folge der Entwicklung und bleibe mit dem Projekt verbunden." />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <meta name="description" content="Discord und Community-Bereich von STORMFIRE. Folge der Entwicklung und bleibe mit dem Projekt verbunden.">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <header class="topbar">
-    <div class="container topbar-inner">
+  <div class="layout">
+
+    <aside class="sidebar">
       <a class="brand" href="index.html">
         <div class="brand-logo"></div>
         <div class="brand-text">
@@ -18,7 +19,7 @@
         </div>
       </a>
 
-      <nav class="nav">
+      <nav class="sidebar-nav">
         <a href="index.html">Home</a>
         <a href="news.html">News</a>
         <a href="status.html">Realm Status</a>
@@ -31,130 +32,119 @@
         <a href="download.html">Launcher</a>
         <a href="impressum.html">Impressum</a>
       </nav>
-    </div>
-  </header>
 
-  <main>
-    <section class="page-head">
-      <div class="container">
-        <div class="translate-note">
-          Diese Seite ist aktuell auf Deutsch. Dein Browser kann sie in der Regel automatisch übersetzen.
-        </div>
-        <h1>Discord & Community</h1>
-        <p>
-          Hier findest du den Community-Bereich von STORMFIRE.
-          Später wird Discord die zentrale Anlaufstelle für News, Feedback, Tests und Austausch.
-        </p>
+      <div class="sidebar-box">
+        <h3>Community</h3>
+        <p>Discord wird später die zentrale Anlaufstelle für News, Feedback und Tests.</p>
       </div>
-    </section>
+    </aside>
 
-    <section class="section">
-      <div class="container">
-        <div class="hero-grid">
-          <div class="hero-panel">
-            <div class="kicker">Community</div>
-            <h1 style="font-size:clamp(1.8rem,4vw,2.8rem);">Bleib mit STORMFIRE verbunden</h1>
-            <p>
-              Discord wird später der zentrale Ort für Projektupdates,
-              Diskussionen, Screenshots, frühes Feedback und Community-Aufbau rund um STORMFIRE.
-            </p>
+    <main class="content">
+      <div class="translate-note">
+        Diese Seite ist aktuell auf Deutsch. Dein Browser kann sie automatisch übersetzen.
+      </div>
 
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="#" target="_blank" rel="noopener noreferrer">Discord beitreten</a>
-              <a class="btn btn-secondary" href="news.html">News lesen</a>
-            </div>
+      <section class="page-head">
+        <h1>Discord & Community</h1>
+        <p>Hier findest du den Community-Bereich von STORMFIRE und bleibst mit dem Projekt verbunden.</p>
+      </section>
+
+      <section class="section">
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-label">Login Server</div>
+            <div class="stat-value status-dev" id="login-status">In Entwicklung</div>
           </div>
 
-          <aside class="hero-side hero-panel">
-            <div class="stat">
-              <div class="stat-label">Community</div>
-              <div class="stat-value">Im Aufbau</div>
-            </div>
+          <div class="stat-card">
+            <div class="stat-label">Realm Server</div>
+            <div class="stat-value status-dev" id="realm-status">In Entwicklung</div>
+          </div>
 
-            <div class="stat">
-              <div class="stat-label">Geplante Inhalte</div>
-              <div class="stat-value">News, Feedback, Tests</div>
-            </div>
+          <div class="stat-card">
+            <div class="stat-label">Spieler online</div>
+            <div class="stat-value" id="player-count">0</div>
+          </div>
 
-            <div class="stat">
-              <div class="stat-label">Ziel</div>
-              <div class="stat-value">Zentrale Anlaufstelle</div>
-            </div>
-          </aside>
+          <div class="stat-card">
+            <div class="stat-label">Besuche auf diesem Gerät</div>
+            <div class="stat-value" id="visit-count">0</div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Was dich im Discord später erwartet</h2>
-          <p>Der Server soll nicht nur Werbung sein, sondern ein echter Projektbereich.</p>
-        </div>
-
-        <div class="grid-3">
+      <section class="section">
+        <div class="grid-2">
           <article class="card">
-            <h3>Entwicklungsupdates</h3>
-            <p>Neue Devlogs, Teaser, Fortschritte und Hinweise zu aktuellen Projektbereichen.</p>
+            <h3>Discord beitreten</h3>
+            <p>
+              Discord wird später der Ort für Projektupdates, Community-Austausch,
+              Screenshots, Feedback und frühe Testphasen.
+            </p>
           </article>
 
           <article class="card">
-            <h3>Feedback & Ideen</h3>
-            <p>Raum für Meinungen, Vorschläge und Austausch rund um Systeme, Welt und Design.</p>
+            <h3>Geplante Inhalte</h3>
+            <p>
+              News, Entwicklungsupdates, Fraktionsbereiche,
+              Testerrollen und allgemeine Community-Bereiche rund um STORMFIRE.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="grid-3">
+          <article class="card">
+            <h3>Dev Updates</h3>
+            <p>Neue Fortschritte und Projektmeldungen schneller direkt im Community-Bereich.</p>
+          </article>
+
+          <article class="card">
+            <h3>Feedback</h3>
+            <p>Meinungen, Vorschläge und Diskussionen zu Welt, Systemen und Stilrichtung.</p>
           </article>
 
           <article class="card">
             <h3>Spätere Tests</h3>
-            <p>Wenn die Zeit dafür kommt, wird Discord auch für Alpha- und Beta-Informationen wichtig.</p>
+            <p>Discord wird später wichtig für Alpha- und Beta-Informationen.</p>
           </article>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section">
-      <div class="container">
-        <div class="grid-2">
-          <article class="card">
-            <h3>Frühe Community</h3>
-            <p>
-              Gerade in frühen Entwicklungsphasen ist eine kleine, ehrliche Community oft wertvoller
-              als bloße Reichweite. Discord soll genau dafür ein passender Ort werden.
-            </p>
-          </article>
-
-          <article class="card">
-            <h3>Mehr als nur ein Chat</h3>
-            <p>
-              Langfristig kann der Discord auch Bereiche für Lore, Fraktionen, Devlogs,
-              Testerrollen, Community-News und besondere Projektmeilensteine enthalten.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
+      <section class="section">
         <div class="card">
           <h3>Discord-Link</h3>
           <p>
-            Sobald euer finaler oder aktueller Einladungslink feststeht, ersetzt du einfach das
-            <strong>#</strong> im Button oben durch euren echten Discord-Link.
+            Sobald euer finaler Einladungslink feststeht, kannst du hier einfach deinen echten Discord-Link einfügen.
+          </p>
+          <p style="margin-top:12px;">
+            <a href="#" style="color:#f0d39b;">Discord-Link hier eintragen</a>
           </p>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div>© STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)</div>
-      <div class="footer-links">
-        <a href="index.html">Home</a>
-        <a href="news.html">News</a>
-        <a href="download.html">Launcher</a>
-      </div>
-    </div>
-  </footer>
+      <footer class="footer">
+        <div>© STORMFIRE • Projekt in Entwicklung</div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="news.html">News</a>
+          <a href="download.html">Launcher</a>
+        </div>
+      </footer>
+    </main>
+
+  </div>
+
+  <script>
+    document.getElementById("login-status").textContent = "In Entwicklung";
+    document.getElementById("realm-status").textContent = "In Entwicklung";
+    document.getElementById("player-count").textContent = "0";
+
+    let visits = localStorage.getItem("stormfire_visits");
+    visits = visits ? parseInt(visits, 10) + 1 : 1;
+    localStorage.setItem("stormfire_visits", visits);
+    document.getElementById("visit-count").textContent = visits;
+  </script>
 </body>
 </html>
