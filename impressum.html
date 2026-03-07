@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>STORMFIRE – Impressum</title>
-  <meta name="description" content="Impressum und rechtliche Angaben zu STORMFIRE." />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <meta name="description" content="Impressum und rechtliche Angaben zu STORMFIRE.">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
   <div class="layout">
+
     <aside class="sidebar">
       <a class="brand" href="index.html">
         <div class="brand-logo"></div>
@@ -34,20 +35,42 @@
 
       <div class="sidebar-box">
         <h3>Rechtlicher Hinweis</h3>
-        <p>Bitte die Angaben an deine tatsächlichen Daten anpassen, falls nötig.</p>
+        <p>Bitte die Angaben noch mit deinen echten Daten prüfen und anpassen.</p>
       </div>
     </aside>
 
     <main class="content">
       <div class="translate-note">
-        Diese Seite ist aktuell auf Deutsch. Dein Browser kann sie in der Regel automatisch übersetzen.
+        Diese Seite ist aktuell auf Deutsch. Dein Browser kann sie automatisch übersetzen.
       </div>
 
       <section class="page-head">
         <h1>Impressum</h1>
-        <p>
-          Rechtliche Angaben zur Website und zum Projekt STORMFIRE.
-        </p>
+        <p>Rechtliche Angaben zur Website und zum Projekt STORMFIRE.</p>
+      </section>
+
+      <section class="section">
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-label">Login Server</div>
+            <div class="stat-value status-dev" id="login-status">In Entwicklung</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-label">Realm Server</div>
+            <div class="stat-value status-dev" id="realm-status">In Entwicklung</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-label">Spieler online</div>
+            <div class="stat-value" id="player-count">0</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-label">Besuche auf diesem Gerät</div>
+            <div class="stat-value" id="visit-count">0</div>
+          </div>
+        </div>
       </section>
 
       <section class="section">
@@ -55,8 +78,8 @@
           <article class="card">
             <h3>Angaben gemäß § 5 TMG</h3>
             <p>
-              Denis Toni Güven<br />
-              STORMFIRE Projekt<br />
+              Denis Toni Güven<br>
+              STORMFIRE Projekt<br>
               Deutschland
             </p>
           </article>
@@ -64,7 +87,7 @@
           <article class="card">
             <h3>Kontakt</h3>
             <p>
-              E-Mail: team@stormfire.dev<br />
+              E-Mail: deine-email@example.com<br>
               Website: stormfire.dev
             </p>
           </article>
@@ -73,9 +96,9 @@
 
       <section class="section">
         <div class="card">
-          <h3>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h3>
+          <h3>Verantwortlich für den Inhalt</h3>
           <p>
-            Denis Toni Güven<br />
+            Denis Toni Güven<br>
             Deutschland
           </p>
         </div>
@@ -86,57 +109,23 @@
           <h3>Hinweis zum Projektstatus</h3>
           <p>
             STORMFIRE ist ein Projekt in Entwicklung.
-            Inhalte, Funktionen, Beschreibungen, Bilder und Systeme auf dieser Website
-            können sich im Verlauf der Entwicklung jederzeit ändern.
+            Inhalte, Funktionen, Bilder und Beschreibungen können sich jederzeit ändern.
           </p>
         </div>
       </section>
 
       <section class="section">
         <div class="card">
-          <h3>Haftung für Inhalte</h3>
+          <h3>Urheberrecht & Assets</h3>
           <p>
-            Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt.
-            Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden.
-          </p>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="card">
-          <h3>Haftung für Links</h3>
-          <p>
-            Diese Website kann Links zu externen Websites Dritter enthalten.
-            Auf deren Inhalte besteht kein Einfluss.
-            Deshalb kann für diese fremden Inhalte keine Gewähr übernommen werden.
-          </p>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="card">
-          <h3>Urheberrecht</h3>
-          <p>
-            Die durch den Seitenbetreiber erstellten Inhalte und Werke auf dieser Website
-            unterliegen dem deutschen Urheberrecht.
-            Inhalte Dritter werden als solche gekennzeichnet, sofern dies erforderlich ist.
-          </p>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="card">
-          <h3>Asset- und Modellhinweise</h3>
-          <p>
-            Im Rahmen der Entwicklung können externe Assets, Modelle oder Tools verwendet werden.
-            Deren Nutzung erfolgt im Rahmen der jeweiligen Lizenzen.
-            Erforderliche Hinweise oder Credits werden bei Bedarf ergänzt.
+            Verwendete Inhalte und externe Assets unterliegen den jeweiligen Lizenzen.
+            Erforderliche Hinweise und Credits werden bei Bedarf ergänzt.
           </p>
         </div>
       </section>
 
       <footer class="footer">
-        <div>© STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)</div>
+        <div>© STORMFIRE • Projekt in Entwicklung</div>
         <div class="footer-links">
           <a href="index.html">Home</a>
           <a href="news.html">News</a>
@@ -144,6 +133,18 @@
         </div>
       </footer>
     </main>
+
   </div>
+
+  <script>
+    document.getElementById("login-status").textContent = "In Entwicklung";
+    document.getElementById("realm-status").textContent = "In Entwicklung";
+    document.getElementById("player-count").textContent = "0";
+
+    let visits = localStorage.getItem("stormfire_visits");
+    visits = visits ? parseInt(visits, 10) + 1 : 1;
+    localStorage.setItem("stormfire_visits", visits);
+    document.getElementById("visit-count").textContent = visits;
+  </script>
 </body>
 </html>
