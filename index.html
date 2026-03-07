@@ -1,36 +1,44 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>STORMFIRE</title>
-  <meta name="description" content="STORMFIRE ist ein klassisch inspiriertes MMORPG in Entwicklung. News, Lore, Roadmap und Projektstatus.">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STORMFIRE Portal</title>
+  <meta name="description" content="STORMFIRE – Indie MMORPG in Entwicklung. News, Status, Roadmap und Projektfortschritt." />
+
+  <link rel="stylesheet" href="./assets/css/style.css" />
+
+  <!-- Supabase Browser Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
   <div class="layout">
 
+    <!-- SIDEBAR -->
     <aside class="sidebar">
-      <a class="brand" href="index.html">
-        <div class="brand-logo"></div>
+      <a class="brand" href="./index.html" aria-label="STORMFIRE Startseite">
+        <div class="brand-logo">
+          <img src="./assets/images/logo.png" alt="STORMFIRE Logo"
+               onerror="this.style.display='none'; this.parentElement.classList.add('brand-logo-fallback'); this.parentElement.innerHTML='SF';">
+        </div>
         <div class="brand-text">
           <strong>STORMFIRE</strong>
-          <span>Portal</span>
+          <span>MMORPG Portal</span>
         </div>
       </a>
 
       <nav class="sidebar-nav">
-        <a class="active" href="index.html">Home</a>
-        <a href="news.html">News</a>
-        <a href="status.html">Realm Status</a>
-        <a href="leaderboard.html">Leaderboard</a>
-        <a href="roadmap.html">Roadmap</a>
-        <a href="gallery.html">Galerie</a>
-        <a href="geschichte.html">Geschichte</a>
-        <a href="team.html">Team</a>
-        <a href="discord.html">Discord</a>
-        <a href="download.html">Launcher</a>
-        <a href="impressum.html">Impressum</a>
+        <a href="./index.html" class="active">Home</a>
+        <a href="./news.html">News</a>
+        <a href="./status.html">Realm Status</a>
+        <a href="./leaderboard.html">Leaderboard</a>
+        <a href="./roadmap.html">Roadmap</a>
+        <a href="./gallery.html">Galerie</a>
+        <a href="./geschichte.html">Geschichte</a>
+        <a href="./team.html">Team</a>
+        <a href="./discord.html">Discord</a>
+        <a href="./download.html">Launcher</a>
+        <a href="./impressum.html">Impressum</a>
       </nav>
 
       <div class="sidebar-box">
@@ -39,154 +47,192 @@
       </div>
     </aside>
 
+    <!-- CONTENT -->
     <main class="content">
-      <div class="translate-note">
-        Diese Website ist aktuell auf Deutsch. Dein Browser kann sie automatisch übersetzen.
+      <div class="page-shell">
+
+        <!-- LINKE HAUPTSPALTE -->
+        <section class="main-column">
+
+          <div class="translate-note">
+            Diese Website ist aktuell auf Deutsch. Dein Browser kann sie automatisch übersetzen.
+          </div>
+
+          <section class="hero-section">
+            <div class="kicker">MMORPG IN ENTWICKLUNG • UNITY CLIENT</div>
+            <h1 class="hero-title">Willkommen bei STORMFIRE</h1>
+            <p class="hero-text">
+              STORMFIRE ist ein klassisch inspiriertes MMORPG-Projekt mit eigener Welt,
+              Fraktionen, offenen Regionen, Dungeons, Berufen und langfristiger Progression.
+            </p>
+          </section>
+
+          <section class="section">
+            <div class="section-head">
+              <h2>Aktuelle Entwicklung</h2>
+              <p>Der technische Unterbau steht aktuell vor den späteren Inhalten.</p>
+            </div>
+
+            <div class="feature-grid">
+              <article class="feature-item">
+                <h3>Login & Charakter</h3>
+                <p>
+                  Login, Register, Realm-Auswahl sowie Character Create und Character Select
+                  funktionieren bereits im Client.
+                </p>
+              </article>
+
+              <article class="feature-item">
+                <h3>Datenbank</h3>
+                <p>
+                  Charaktere werden aktuell von lokaler Speicherung auf die Online-Datenbank
+                  umgestellt.
+                </p>
+              </article>
+
+              <article class="feature-item">
+                <h3>Networking</h3>
+                <p>
+                  Danach folgt der Mirror-Spawn in der World auf der Startinsel als nächster
+                  großer Schritt.
+                </p>
+              </article>
+            </div>
+          </section>
+
+          <section class="section">
+            <div class="section-head">
+              <h2>Neueste News</h2>
+              <p>Die wichtigsten aktuellen Entwicklungen direkt auf der Startseite.</p>
+            </div>
+
+            <div id="news-list" class="news-list">
+              <article class="news-item">
+                <div class="news-meta">06.03.2026 • Devlog</div>
+                <h3>Weltaufbau, Assets und neue Grundlagen</h3>
+                <p>
+                  Charaktere, Natur, Gebäude, Props, Gegner und erste Transportideen wie die
+                  Astralbahn bilden aktuell die visuelle und strukturelle Basis der Welt.
+                </p>
+              </article>
+
+              <article class="news-item">
+                <div class="news-meta">05.03.2026 • Systemupdate</div>
+                <h3>Fokus auf Datenbank und Networking</h3>
+                <p>
+                  Der aktuelle Schwerpunkt liegt auf der Anbindung der Datenbank sowie auf den
+                  technischen Grundlagen für Multiplayer und Realm-Struktur.
+                </p>
+              </article>
+
+              <article class="news-item">
+                <div class="news-meta">04.03.2026 • Charaktersystem</div>
+                <h3>Charaktererstellung weiter ausgebaut</h3>
+                <p>
+                  Fraktionen, Rassen, Vorschauen und die allgemeine Richtung des Client-Flows
+                  wurden weiter verfeinert.
+                </p>
+              </article>
+            </div>
+          </section>
+
+          <section class="section">
+            <div class="section-head">
+              <h2>Schnellzugriffe</h2>
+              <p>Die wichtigsten Projektbereiche direkt erreichbar.</p>
+            </div>
+
+            <div class="quick-links">
+              <a class="quick-link" href="./news.html">
+                <strong>Alle News</strong>
+                <span>Weitere Devlogs und Fortschritte ansehen.</span>
+              </a>
+
+              <a class="quick-link" href="./roadmap.html">
+                <strong>Roadmap</strong>
+                <span>Geplante Entwicklungsschritte des Projekts.</span>
+              </a>
+
+              <a class="quick-link" href="./geschichte.html">
+                <strong>Lore</strong>
+                <span>Die Geschichte der Welt Jueria und ihrer Fraktionen.</span>
+              </a>
+            </div>
+          </section>
+
+          <footer class="footer">
+            <div>© STORMFIRE • Projekt in Entwicklung</div>
+            <div class="footer-links">
+              <a href="./impressum.html">Impressum</a>
+              <a href="./news.html">News</a>
+              <a href="./download.html">Launcher</a>
+            </div>
+          </footer>
+        </section>
+
+        <!-- RECHTE STATUS-SPALTE -->
+        <aside class="status-column">
+          <div class="status-panel">
+            <div class="status-panel-head">
+              <div class="status-kicker">LIVE STATUS</div>
+              <h2>Server Übersicht</h2>
+              <p>
+                Realm-übergreifende Werte aus Supabase, Fraktionen zusammengefasst über alle Realms.
+              </p>
+            </div>
+
+            <div class="status-list">
+              <div class="status-row">
+                <span>Login / Datenbank</span>
+                <strong id="login-status" class="status-dev">Lädt…</strong>
+              </div>
+
+              <div class="status-row">
+                <span>Realm Server</span>
+                <strong id="realm-status" class="status-dev">Lädt…</strong>
+              </div>
+
+              <div class="status-row">
+                <span>Spieler gesamt</span>
+                <strong id="player-count">0</strong>
+              </div>
+
+              <div class="status-row">
+                <span>Drachenbund gesamt</span>
+                <strong id="drachenbund-count">0</strong>
+              </div>
+
+              <div class="status-row">
+                <span>Wolfsmark gesamt</span>
+                <strong id="wolfsmark-count">0</strong>
+              </div>
+
+              <div class="status-row">
+                <span>Realms online</span>
+                <strong id="realms-online">0</strong>
+              </div>
+
+              <div class="status-row">
+                <span>Spieler online (Realm-Status)</span>
+                <strong id="players-online-live">0</strong>
+              </div>
+
+              <div class="status-row">
+                <span>Besuche auf diesem Gerät</span>
+                <strong id="visit-count">0</strong>
+              </div>
+            </div>
+
+            <div class="status-note" id="status-note">
+              Verbindung wird aufgebaut…
+            </div>
+          </div>
+        </aside>
+
       </div>
-
-      <section class="page-head">
-        <div class="kicker">MMORPG in Entwicklung • Unity Client</div>
-        <h1 class="hero-title">Willkommen bei STORMFIRE</h1>
-        <p class="hero-text">
-          STORMFIRE ist ein klassisch inspiriertes MMORPG-Projekt mit eigener Welt, Fraktionen,
-          offenen Regionen, Dungeons, Berufen und langfristiger Progression.
-        </p>
-      </section>
-
-      <section class="section">
-        <div class="section-head">
-          <h2>Live Übersicht</h2>
-          <p>Diese Werte sind aktuell Platzhalter und können später an echte Daten angebunden werden.</p>
-        </div>
-
-        <div class="stat-grid">
-          <div class="stat-card">
-            <div class="stat-label">Login Server</div>
-            <div class="stat-value status-dev" id="login-status">In Entwicklung</div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-label">Realm Server</div>
-            <div class="stat-value status-dev" id="realm-status">In Entwicklung</div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-label">Spieler online</div>
-            <div class="stat-value" id="player-count">0</div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-label">Besuche auf diesem Gerät</div>
-            <div class="stat-value" id="visit-count">0</div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="section-head">
-          <h2>Aktuelle Entwicklung</h2>
-          <p>Der technische Unterbau steht aktuell vor den späteren Inhalten.</p>
-        </div>
-
-        <div class="grid-3">
-          <article class="card">
-            <h3>Login & Charakter</h3>
-            <p>Der Client besitzt bereits grundlegende Systeme für Login, Realm-Auswahl und Charaktererstellung.</p>
-          </article>
-
-          <article class="card">
-            <h3>Datenbank</h3>
-            <p>Accounts, Charaktere und spätere Spielsysteme werden aktuell an die Datenbank angebunden.</p>
-          </article>
-
-          <article class="card">
-            <h3>Networking</h3>
-            <p>Parallel dazu wird die Multiplayer-Struktur vorbereitet, damit STORMFIRE später online spielbar wird.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="section-head">
-          <h2>Neueste News</h2>
-          <p>Die wichtigsten aktuellen Entwicklungen direkt auf der Startseite.</p>
-        </div>
-
-        <div class="news-list">
-          <article class="news-item">
-            <div class="news-meta">06.03.2026 • Devlog</div>
-            <h3>Weltaufbau, Assets und neue Grundlagen</h3>
-            <p>
-              Charaktere, Natur, Gebäude, Props, Gegner und erste Transportideen wie die Astralbahn
-              bilden aktuell die visuelle und strukturelle Basis der Welt.
-            </p>
-          </article>
-
-          <article class="news-item">
-            <div class="news-meta">05.03.2026 • Systemupdate</div>
-            <h3>Fokus auf Datenbank und Networking</h3>
-            <p>
-              Der aktuelle Schwerpunkt liegt auf der Anbindung der Datenbank sowie
-              auf den technischen Grundlagen für Multiplayer und Realm-Struktur.
-            </p>
-          </article>
-
-          <article class="news-item">
-            <div class="news-meta">04.03.2026 • Charaktersystem</div>
-            <h3>Charaktererstellung weiter ausgebaut</h3>
-            <p>
-              Fraktionen, Rassen, Vorschauen und die allgemeine Richtung des Client-Flows
-              wurden weiter verfeinert.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="section-head">
-          <h2>Schnellzugriffe</h2>
-          <p>Die wichtigsten Projektbereiche direkt erreichbar.</p>
-        </div>
-
-        <div class="grid-3">
-          <a class="card" href="news.html">
-            <h3>Alle News</h3>
-            <p>Weitere Devlogs und Fortschritte ansehen.</p>
-          </a>
-
-          <a class="card" href="roadmap.html">
-            <h3>Roadmap</h3>
-            <p>Geplante Entwicklungsschritte des Projekts.</p>
-          </a>
-
-          <a class="card" href="geschichte.html">
-            <h3>Lore</h3>
-            <p>Die Geschichte der Welt Jueria und ihrer Fraktionen.</p>
-          </a>
-        </div>
-      </section>
-
-      <footer class="footer">
-        <div>© STORMFIRE • Projekt in Entwicklung</div>
-        <div class="footer-links">
-          <a href="impressum.html">Impressum</a>
-          <a href="news.html">News</a>
-          <a href="download.html">Launcher</a>
-        </div>
-      </footer>
     </main>
-
   </div>
 
-  <script>
-    document.getElementById("login-status").textContent = "In Entwicklung";
-    document.getElementById("realm-status").textContent = "In Entwicklung";
-    document.getElementById("player-count").textContent = "0";
-
-    let visits = localStorage.getItem("stormfire_visits");
-    visits = visits ? parseInt(visits, 10) + 1 : 1;
-    localStorage.setItem("stormfire_visits", visits);
-    document.getElementById("visit-count").textContent = visits;
-  </script>
+  <script src="./assets/js/status.js"></script>
 </body>
 </html>
