@@ -1,7 +1,12 @@
 // status.js — lädt Realm-Live-Daten aus Supabase aus site_realm_status
 
+// status.js — lädt Realm-Live-Daten aus Supabase aus site_realm_status
+
 (async function () {
   const $ = (id) => document.getElementById(id);
+
+  // ...
+})();
 
   const SUPABASE_URL = "https://furuovwvtbbgedxqukzz.supabase.co";
   const SUPABASE_ANON_KEY = "sb_publishable_GmsSvpE-8xoRVsgePDIrsQ_p-jH5gQ2";
