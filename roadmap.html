@@ -1,143 +1,105 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>STORMFIRE – Roadmap</title>
-  <meta name="description" content="Roadmap von STORMFIRE. Geplante Entwicklungsschritte vom aktuellen Stand bis zu späteren Spielsystemen.">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <meta name="description" content="Die aktuelle Entwicklungsrichtung von STORMFIRE." />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
   <div class="layout">
-
     <aside class="sidebar">
-      <a class="brand" href="index.html">
-        <div class="brand-logo"></div>
+      <a class="brand" href="./index.html" aria-label="STORMFIRE Startseite">
+        <div class="brand-logo">
+          <img src="assets/images/logo.png" alt="STORMFIRE Logo" onerror="this.style.display='none'; this.parentElement.classList.add('brand-logo-fallback'); this.parentElement.textContent='SF';" />
+        </div>
         <div class="brand-text">
           <strong>STORMFIRE</strong>
-          <span>Roadmap</span>
+          <span>MMORPG Portal</span>
         </div>
       </a>
-
       <nav class="sidebar-nav">
-        <a href="index.html">Home</a>
-        <a href="news.html">News</a>
-        <a href="status.html">Realm Status</a>
-        <a href="leaderboard.html">Leaderboard</a>
-        <a class="active" href="roadmap.html">Roadmap</a>
-        <a href="gallery.html">Galerie</a>
-        <a href="geschichte.html">Geschichte</a>
-        <a href="team.html">Team</a>
-        <a href="discord.html">Discord</a>
-        <a href="download.html">Launcher</a>
-        <a href="impressum.html">Impressum</a>
+        <a href="./index.html" class="">Home</a>
+        <a href="./news.html" class="">News</a>
+        <a href="./status.html" class="">Realm Status</a>
+        <a href="./leaderboard.html" class="">Leaderboard</a>
+        <a href="./roadmap.html" class="active">Roadmap</a>
+        <a href="./gallery.html" class="">Galerie</a>
+        <a href="./geschichte.html" class="">Geschichte</a>
+        <a href="./team.html" class="">Team</a>
+        <a href="./discord.html" class="">Discord</a>
+        <a href="./download.html" class="">Launcher</a>
+        <a href="./impressum.html" class="">Impressum</a>
       </nav>
-
-      <div class="sidebar-box">
-        <h3>Roadmap</h3>
-        <p>Die Roadmap zeigt die Richtung des Projekts, nicht starre Versprechen.</p>
-      </div>
     </aside>
 
     <main class="content">
-      <div class="translate-note">
-        Diese Seite ist aktuell auf Deutsch. Dein Browser kann sie automatisch übersetzen.
+      <div class="content-inner">
+
+        <section class="section">
+          <div class="section-head">
+            <h1>Roadmap</h1>
+            <p>Die Roadmap zeigt die Richtung des Projekts, nicht starre Versprechen.</p>
+          </div>
+          <div class="news-list">
+            <article class="news-item"><h3>1. Grundsysteme stabilisieren</h3><p>Datenbank, Login-Flows, Charakterdaten und saubere Persistenz.</p></article>
+            <article class="news-item"><h3>2. Multiplayer &amp; Realm-Struktur</h3><p>Networking, Realm-Logik und die ersten onlinefähigen Grundlagen.</p></article>
+            <article class="news-item"><h3>3. Spielwelt-Basis</h3><p>Vorngar, Elyraen, Aetherion, Weltmodule, Bahnhöfe, Häfen und Regionen.</p></article>
+            <article class="news-item"><h3>4. Charaktere, Gegner und NPCs</h3><p>Spielbare Rassen, Wachen, Storyfiguren, Gegner und Monsterintegration.</p></article>
+            <article class="news-item"><h3>5. Kampfsystem &amp; Progression</h3><p>Klassenlogik, Attribute, Gegnerverhalten, Talente und Progressionskern.</p></article>
+            <article class="news-item"><h3>6. Inventar, Items und Berufe</h3><p>Inventar, Loot, Ausrüstung, Handwerk und ökonomische Grundsysteme.</p></article>
+            <article class="news-item"><h3>7. Dungeons, PvE und PvP</h3><p>Instanzen, Fraktionskonflikte, PvE-Systeme und spätere PvP-Inhalte.</p></article>
+            <article class="news-item"><h3>8. Alpha-Phase</h3><p>Erste testbare Phase mit Fokus auf Stabilität, Feedback und Kern-Gameplay.</p></article>
+          </div>
+        </section>
+
+
+        <footer class="footer">
+          <div>© STORMFIRE • Projekt in Entwicklung</div>
+          <div class="footer-links">
+            <a href="./impressum.html">Impressum</a>
+            <a href="./news.html">News</a>
+            <a href="./download.html">Launcher</a>
+          </div>
+        </footer>
       </div>
-
-      <section class="page-head">
-        <h1>Roadmap</h1>
-        <p>Die aktuelle Entwicklungsrichtung von STORMFIRE vom technischen Fundament bis zur spielbaren Welt.</p>
-      </section>
-
-      <section class="section">
-        <div class="stat-grid">
-          <div class="stat-card">
-            <div class="stat-label">Login Server</div>
-            <div class="stat-value status-dev" id="login-status">In Entwicklung</div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-label">Realm Server</div>
-            <div class="stat-value status-dev" id="realm-status">In Entwicklung</div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-label">Spieler online</div>
-            <div class="stat-value" id="player-count">0</div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-label">Besuche auf diesem Gerät</div>
-            <div class="stat-value" id="visit-count">0</div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="roadmap-list">
-          <article class="roadmap-step">
-            <h3>1. Grundsysteme stabilisieren</h3>
-            <p>Datenbank, Login-Flows, Charakterdaten und saubere Persistenz.</p>
-          </article>
-
-          <article class="roadmap-step">
-            <h3>2. Multiplayer & Realm-Struktur</h3>
-            <p>Networking, Realm-Logik und die ersten onlinefähigen Grundlagen.</p>
-          </article>
-
-          <article class="roadmap-step">
-            <h3>3. Spielwelt-Basis</h3>
-            <p>Vorngar, Elyraen, Aetherion, Weltmodule, Bahnhöfe, Häfen und Regionen.</p>
-          </article>
-
-          <article class="roadmap-step">
-            <h3>4. Charaktere, Gegner und NPCs</h3>
-            <p>Spielbare Rassen, Wachen, Storyfiguren, Gegner und Monsterintegration.</p>
-          </article>
-
-          <article class="roadmap-step">
-            <h3>5. Kampfsystem & Progression</h3>
-            <p>Klassenlogik, Attribute, Gegnerverhalten, Talente und Progressionskern.</p>
-          </article>
-
-          <article class="roadmap-step">
-            <h3>6. Inventar, Items und Berufe</h3>
-            <p>Inventar, Loot, Ausrüstung, Handwerk und ökonomische Grundsysteme.</p>
-          </article>
-
-          <article class="roadmap-step">
-            <h3>7. Dungeons, PvE und PvP</h3>
-            <p>Instanzen, Fraktionskonflikte, PvE-Systeme und spätere PvP-Inhalte.</p>
-          </article>
-
-          <article class="roadmap-step">
-            <h3>8. Alpha-Phase</h3>
-            <p>Erste testbare Phase mit Fokus auf Stabilität, Feedback und Kern-Gameplay.</p>
-          </article>
-        </div>
-      </section>
-
-      <footer class="footer">
-        <div>© STORMFIRE • Projekt in Entwicklung</div>
-        <div class="footer-links">
-          <a href="index.html">Home</a>
-          <a href="news.html">News</a>
-          <a href="download.html">Launcher</a>
-        </div>
-      </footer>
     </main>
 
+    <aside class="status-panel">
+      <div class="status-panel-head">
+        <div class="status-kicker">LIVE STATUS</div>
+        <h2>Realm Server</h2>
+        <p>Automatisch aus Supabase geladen.</p>
+      </div>
+
+      <div class="status-overview">
+        <div class="status-big-row"><span>Login / Datenbank</span><strong id="login-status" class="status-dev">Lädt…</strong></div>
+        <div class="status-big-row"><span>Realm Server</span><strong id="realm-status" class="status-dev">Lädt…</strong></div>
+        <div class="status-big-row"><span>Spieler gesamt</span><strong id="player-count">0</strong></div>
+        <div class="status-big-row"><span>Drachenbund</span><strong id="drachenbund-count">0</strong></div>
+        <div class="status-big-row"><span>Wolfsmark</span><strong id="wolfsmark-count">0</strong></div>
+        <div class="status-big-row"><span>Spieler online</span><strong id="players-online-live">0</strong></div>
+        <div class="status-big-row"><span>Besuche Gerät</span><strong id="visit-count">0</strong></div>
+      </div>
+
+      <div class="realm-summary-box">
+        <div class="realm-summary-title">Realm Übersicht</div>
+        <div class="realm-summary-stats">
+          <div class="realm-summary-chip realm-summary-online"><span class="dot dot-green"></span><span id="realms-online">0</span><span>online</span></div>
+          <div class="realm-summary-chip realm-summary-offline"><span class="dot dot-red"></span><span id="realms-offline">0</span><span>offline</span></div>
+        </div>
+      </div>
+
+      <div class="realm-list-box">
+        <div class="realm-list-title">Alle Realms</div>
+        <div id="realm-list" class="realm-list"><div class="realm-list-empty">Realm-Daten werden geladen…</div></div>
+      </div>
+
+      <div class="status-note" id="status-note">Verbindung wird aufgebaut…</div>
+    </aside>
   </div>
-
-  <script>
-    document.getElementById("login-status").textContent = "In Entwicklung";
-    document.getElementById("realm-status").textContent = "In Entwicklung";
-    document.getElementById("player-count").textContent = "0";
-
-    let visits = localStorage.getItem("stormfire_visits");
-    visits = visits ? parseInt(visits, 10) + 1 : 1;
-    localStorage.setItem("stormfire_visits", visits);
-    document.getElementById("visit-count").textContent = visits;
-  </script>
+  <script src="./assets/js/status.js"></script>
 </body>
 </html>
