@@ -1,92 +1,176 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Launcher | STORMFIRE</title>
+  <meta name="description" content="Der Stormfire Launcher und spätere Download-Zugänge." />
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Launcher | STORMFIRE</title>
-
-<link rel="stylesheet" href="./assets/css/style.css">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
-
 <body>
+  <div class="layout">
 
-<div class="layout">
+    <aside class="sidebar">
+      <a class="brand" href="./index.html" aria-label="STORMFIRE Startseite">
+        <div class="brand-logo">
+          <img
+            src="assets/images/logo.png"
+            alt="STORMFIRE Logo"
+            onerror="this.style.display='none'; this.parentElement.classList.add('brand-logo-fallback'); this.parentElement.textContent='SF';"
+          />
+        </div>
 
-<aside class="sidebar">
+        <div class="brand-text">
+          <strong>STORMFIRE</strong>
+          <span>MMORPG Portal</span>
+        </div>
+      </a>
 
-<a class="brand" href="./index.html">
+      <nav class="sidebar-nav">
+        <a href="./index.html">Home</a>
+        <a href="./news.html">News</a>
+        <a href="./status.html">Realm Status</a>
+        <a href="./leaderboard.html">Leaderboard</a>
+        <a href="./roadmap.html">Roadmap</a>
+        <a href="./gallery.html">Galerie</a>
+        <a href="./geschichte.html">Geschichte</a>
+        <a href="./team.html">Team</a>
+        <a href="./discord.html">Discord</a>
+        <a href="./download.html" class="active">Launcher</a>
+        <a href="./impressum.html">Impressum</a>
+      </nav>
+    </aside>
 
-<div class="brand-logo">
-<img src="assets/images/logo.png"
-onerror="this.style.display='none';this.parentElement.textContent='SF';">
-</div>
+    <main class="content">
+      <div class="content-inner">
 
-<div class="brand-text">
-<strong>STORMFIRE</strong>
-<span>MMORPG Portal</span>
-</div>
+        <section class="hero-section">
+          <div class="kicker">LAUNCHER • CLIENT • DOWNLOAD</div>
+          <h1 class="hero-title">Stormfire Launcher</h1>
+          <p class="hero-text">
+            Der Launcher befindet sich aktuell noch in Entwicklung und wird später
+            den Zugang zum Spielclient, Updates und News direkt bündeln.
+          </p>
+        </section>
 
-</a>
+        <section class="section">
+          <div class="section-head">
+            <h2>Geplant für den Launcher</h2>
+            <p>Diese Funktionen sind für den späteren Start vorgesehen.</p>
+          </div>
 
-<nav class="sidebar-nav">
+          <div class="feature-grid">
+            <article class="feature-item">
+              <h3>Client Download</h3>
+              <p>
+                Der Spielclient wird später direkt über den Stormfire Launcher bereitgestellt.
+              </p>
+            </article>
 
-<a href="./index.html">Home</a>
-<a href="./news.html">News</a>
-<a href="./status.html">Realm Status</a>
-<a href="./leaderboard.html">Leaderboard</a>
-<a href="./roadmap.html">Roadmap</a>
-<a href="./gallery.html">Galerie</a>
-<a href="./geschichte.html">Geschichte</a>
-<a href="./team.html">Team</a>
-<a href="./discord.html">Discord</a>
-<a href="./download.html" class="active">Launcher</a>
-<a href="./impressum.html">Impressum</a>
+            <article class="feature-item">
+              <h3>Patch-System</h3>
+              <p>
+                Updates, Anpassungen und neue Inhalte sollen bequem über den Launcher verteilt werden.
+              </p>
+            </article>
 
-</nav>
+            <article class="feature-item">
+              <h3>News & Hinweise</h3>
+              <p>
+                Wichtige Informationen können direkt beim Start angezeigt werden.
+              </p>
+            </article>
 
-</aside>
+            <article class="feature-item">
+              <h3>Realm Informationen</h3>
+              <p>
+                Spätere Realm-Statusanzeigen und Hinweise auf Wartungen oder Testphasen sind geplant.
+              </p>
+            </article>
+          </div>
+        </section>
 
-<main class="content">
+        <section class="section">
+          <div class="section-head">
+            <h2>Aktueller Stand</h2>
+            <p>Der Launcher ist begonnen, aber momentan pausiert.</p>
+          </div>
 
-<div class="content-inner">
+          <article class="news-item">
+            <p>
+              Der aktuelle Fokus liegt auf Charakterfluss, Datenbank, Realm-Struktur
+              und dem richtigen Spawn in der Welt. Danach rückt der Launcher wieder stärker in den Vordergrund.
+            </p>
+          </article>
+        </section>
 
-<h1>Stormfire Launcher</h1>
+      </div>
+    </main>
 
-<p>
-Der Launcher befindet sich aktuell noch in Entwicklung.
-</p>
+    <aside class="status-panel">
+      <div class="status-panel-head">
+        <div class="status-kicker">LIVE STATUS</div>
+        <h2>Realm Server</h2>
+        <p>Automatisch aus Supabase geladen.</p>
+      </div>
 
-<p>
-Sobald eine spielbare Version verfügbar ist,
-wird der Download hier bereitgestellt.
-</p>
+      <div class="status-overview">
+        <div class="status-big-row">
+          <span>Login / Datenbank</span>
+          <strong id="login-status" class="status-dev">Lädt…</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Realm Server</span>
+          <strong id="realm-status" class="status-dev">Lädt…</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Spieler gesamt</span>
+          <strong id="player-count">0</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Drachenbund</span>
+          <strong id="drachenbund-count">0</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Wolfsmark</span>
+          <strong id="wolfsmark-count">0</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Spieler online</span>
+          <strong id="players-online-live">0</strong>
+        </div>
+      </div>
 
-</div>
+      <div class="realm-summary-box">
+        <div class="realm-summary-title">Realm Übersicht</div>
+        <div class="realm-summary-stats">
+          <div class="realm-summary-chip realm-summary-online">
+            <span class="dot dot-green"></span>
+            <span id="realms-online">0</span>
+            <span>online</span>
+          </div>
+          <div class="realm-summary-chip realm-summary-offline">
+            <span class="dot dot-red"></span>
+            <span id="realms-offline">0</span>
+            <span>offline</span>
+          </div>
+        </div>
+      </div>
 
-</main>
+      <div class="realm-list-box">
+        <div class="realm-list-title">Alle Realms</div>
+        <div id="realm-list" class="realm-list">
+          <div class="realm-list-empty">Realm-Daten werden geladen…</div>
+        </div>
+      </div>
 
+      <div class="status-note" id="status-note">Verbindung wird aufgebaut…</div>
+    </aside>
 
-<aside class="status-panel">
+  </div>
 
-<div class="status-big-row">
-<span>Realm Server</span>
-<strong id="realm-status">Lädt…</strong>
-</div>
-
-<div class="status-big-row">
-<span>Spieler Online</span>
-<strong id="players-online-live">0</strong>
-</div>
-
-</aside>
-
-</div>
-
-<script src="./assets/js/status.js"></script>
-
+  <script src="./assets/js/status.js"></script>
 </body>
 </html>
