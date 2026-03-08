@@ -3,61 +3,100 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>STORMFIRE – Status</title>
-  <meta name="description" content="Live-Serverstatus, Realm-Infos und Fraktionsverteilung." />
+  <title>Realm Status | STORMFIRE</title>
+  <meta name="description" content="Live Status aller Stormfire Realms und Server." />
+
   <link rel="stylesheet" href="./assets/css/style.css" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
   <div class="layout">
+
     <aside class="sidebar">
       <a class="brand" href="./index.html" aria-label="STORMFIRE Startseite">
         <div class="brand-logo">
-          <img src="assets/images/logo.png" alt="STORMFIRE Logo" onerror="this.style.display='none'; this.parentElement.classList.add('brand-logo-fallback'); this.parentElement.textContent='SF';" />
+          <img
+            src="assets/images/logo.png"
+            alt="STORMFIRE Logo"
+            onerror="this.style.display='none'; this.parentElement.classList.add('brand-logo-fallback'); this.parentElement.textContent='SF';"
+          />
         </div>
+
         <div class="brand-text">
           <strong>STORMFIRE</strong>
           <span>MMORPG Portal</span>
         </div>
       </a>
+
       <nav class="sidebar-nav">
-        <a href="./index.html" class="">Home</a>
-        <a href="./news.html" class="">News</a>
+        <a href="./index.html">Home</a>
+        <a href="./news.html">News</a>
         <a href="./status.html" class="active">Realm Status</a>
-        <a href="./leaderboard.html" class="">Leaderboard</a>
-        <a href="./roadmap.html" class="">Roadmap</a>
-        <a href="./gallery.html" class="">Galerie</a>
-        <a href="./geschichte.html" class="">Geschichte</a>
-        <a href="./team.html" class="">Team</a>
-        <a href="./discord.html" class="">Discord</a>
-        <a href="./download.html" class="">Launcher</a>
-        <a href="./impressum.html" class="">Impressum</a>
+        <a href="./leaderboard.html">Leaderboard</a>
+        <a href="./roadmap.html">Roadmap</a>
+        <a href="./gallery.html">Galerie</a>
+        <a href="./geschichte.html">Geschichte</a>
+        <a href="./team.html">Team</a>
+        <a href="./discord.html">Discord</a>
+        <a href="./download.html">Launcher</a>
+        <a href="./impressum.html">Impressum</a>
       </nav>
     </aside>
 
     <main class="content">
       <div class="content-inner">
 
+        <section class="hero-section">
+          <div class="kicker">SERVER • REALMS • LIVE</div>
+          <h1 class="hero-title">Realm Status</h1>
+          <p class="hero-text">
+            Hier siehst du den aktuellen Stand aller Stormfire Realms,
+            die Anzahl aktiver Realms sowie die live gemeldeten Spielerzahlen.
+          </p>
+        </section>
+
         <section class="section">
           <div class="section-head">
-            <h1>Live-Serverstatus</h1>
-            <p>Aktuelle Realm-Infos, Spielerzahlen und Fraktionsverteilung – direkt aus Supabase.</p>
+            <h2>Server Übersicht</h2>
+            <p>Live-Werte werden automatisch aus der Datenbank geladen.</p>
           </div>
+
           <div class="feature-grid">
-            <article class="feature-item"><h3>Realm Server</h3><p id="realm-status-page">Die Daten rechts werden live geladen und zeigen den aktuellen Status aller Realms.</p></article>
-            <article class="feature-item"><h3>Spieler &amp; Fraktionen</h3><p>Die Gesamtauswertung kombiniert alle Charaktere und Fraktionen über sämtliche Realms.</p></article>
+            <article class="feature-item">
+              <h3>Login / Datenbank</h3>
+              <p id="status-page-login">Der Verbindungsstatus wird rechts live angezeigt.</p>
+            </article>
+
+            <article class="feature-item">
+              <h3>Realm Server</h3>
+              <p id="status-page-realm">Der aktuelle Realm-Status wird automatisch synchronisiert.</p>
+            </article>
+
+            <article class="feature-item">
+              <h3>Spieler gesamt</h3>
+              <p>
+                Alle gespeicherten Charaktere werden realmübergreifend zusammengeführt.
+              </p>
+            </article>
+
+            <article class="feature-item">
+              <h3>Spieler online</h3>
+              <p>
+                Die Online-Zahl basiert auf den gemeldeten Realm-Werten.
+              </p>
+            </article>
           </div>
         </section>
 
-
-        <footer class="footer">
-          <div>© STORMFIRE • Projekt in Entwicklung</div>
-          <div class="footer-links">
-            <a href="./impressum.html">Impressum</a>
-            <a href="./news.html">News</a>
-            <a href="./download.html">Launcher</a>
+        <section class="section">
+          <div class="section-head">
+            <h2>Alle Realms</h2>
+            <p>Übersicht aller bekannten Serverzustände.</p>
           </div>
-        </footer>
+
+          <div id="realm-list"></div>
+        </section>
+
       </div>
     </main>
 
@@ -69,31 +108,83 @@
       </div>
 
       <div class="status-overview">
-        <div class="status-big-row"><span>Login / Datenbank</span><strong id="login-status" class="status-dev">Lädt…</strong></div>
-        <div class="status-big-row"><span>Realm Server</span><strong id="realm-status" class="status-dev">Lädt…</strong></div>
-        <div class="status-big-row"><span>Spieler gesamt</span><strong id="player-count">0</strong></div>
-        <div class="status-big-row"><span>Drachenbund</span><strong id="drachenbund-count">0</strong></div>
-        <div class="status-big-row"><span>Wolfsmark</span><strong id="wolfsmark-count">0</strong></div>
-        <div class="status-big-row"><span>Spieler online</span><strong id="players-online-live">0</strong></div>
-        <div class="status-big-row"><span>Besuche Gerät</span><strong id="visit-count">0</strong></div>
+        <div class="status-big-row">
+          <span>Login / Datenbank</span>
+          <strong id="login-status" class="status-dev">Lädt…</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Realm Server</span>
+          <strong id="realm-status" class="status-dev">Lädt…</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Spieler gesamt</span>
+          <strong id="player-count">0</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Drachenbund</span>
+          <strong id="drachenbund-count">0</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Wolfsmark</span>
+          <strong id="wolfsmark-count">0</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Spieler online</span>
+          <strong id="players-online-live">0</strong>
+        </div>
       </div>
 
       <div class="realm-summary-box">
         <div class="realm-summary-title">Realm Übersicht</div>
         <div class="realm-summary-stats">
-          <div class="realm-summary-chip realm-summary-online"><span class="dot dot-green"></span><span id="realms-online">0</span><span>online</span></div>
-          <div class="realm-summary-chip realm-summary-offline"><span class="dot dot-red"></span><span id="realms-offline">0</span><span>offline</span></div>
+          <div class="realm-summary-chip realm-summary-online">
+            <span class="dot dot-green"></span>
+            <span id="realms-online">0</span>
+            <span>online</span>
+          </div>
+          <div class="realm-summary-chip realm-summary-offline">
+            <span class="dot dot-red"></span>
+            <span id="realms-offline">0</span>
+            <span>offline</span>
+          </div>
         </div>
       </div>
 
       <div class="realm-list-box">
         <div class="realm-list-title">Alle Realms</div>
-        <div id="realm-list" class="realm-list"><div class="realm-list-empty">Realm-Daten werden geladen…</div></div>
+        <div id="realm-list-status-panel" class="realm-list">
+          <div class="realm-list-empty">Realm-Daten werden geladen…</div>
+        </div>
       </div>
 
       <div class="status-note" id="status-note">Verbindung wird aufgebaut…</div>
     </aside>
+
   </div>
+
   <script src="./assets/js/status.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const mainList = document.getElementById("realm-list");
+      const sideList = document.getElementById("realm-list-status-panel");
+
+      const syncLists = () => {
+        if (mainList && sideList && sideList.innerHTML.trim() !== "") {
+          mainList.innerHTML = sideList.innerHTML;
+        }
+
+        const login = document.getElementById("login-status");
+        const realm = document.getElementById("realm-status");
+        const loginText = document.getElementById("status-page-login");
+        const realmText = document.getElementById("status-page-realm");
+
+        if (login && loginText) loginText.textContent = `Aktueller Status: ${login.textContent}`;
+        if (realm && realmText) realmText.textContent = `Aktueller Status: ${realm.textContent}`;
+      };
+
+      setTimeout(syncLists, 1200);
+      setTimeout(syncLists, 2500);
+    });
+  </script>
 </body>
 </html>
