@@ -1,15 +1,6 @@
-// site.js — Sidebar Active Link + Live Realm Status aus Supabase
-(async function () {
-  try {
-    const path = location.pathname.replace(/\/+$/, "") || "/index.html";
-    document.querySelectorAll(".sideNav a.navbtn").forEach((a) => {
-      const href = (a.getAttribute("href") || "").replace(/\/+$/, "");
-      if (href && href === path) a.classList.add("active");
-    });
-  } catch {}
+// site.js — Navigation + Live Realm Status aus Supabase
 
-  const liveDot = document.getElementById("liveDot");
-  const liveTxt = document.getElementById("liveTxt");
+(async function () {
 
   const SUPABASE_URL = "https://furuovwvtbbgedxqukzz.supabase.co";
   const SUPABASE_ANON_KEY = "sb_publishable_GmsSvpE-8xoRVsgePDIrsQ_p-jH5gQ2";
@@ -18,7 +9,11 @@
     return new Intl.NumberFormat("de-DE").format(Number(value || 0));
   }
 
+  const liveDot = document.getElementById("liveDot");
+  const liveTxt = document.getElementById("liveTxt");
+
   function setLive(state, realmName, online) {
+
     if (!liveDot || !liveTxt) return;
 
     liveDot.classList.remove("good", "warn", "bad");
@@ -27,28 +22,29 @@
     else if (state === "maintenance") liveDot.classList.add("warn");
     else liveDot.classList.add("bad");
 
-    const name = realmName || "Realm";
-    liveTxt.textContent = `${name} • ${String(state).toUpperCase()} • ${formatNumber(online)} online`;
+    liveTxt.textContent =
+      `${realmName} • ${state.toUpperCase()} • ${formatNumber(online)} online`;
   }
 
-  async function loadLive() {
+  async function loadRealmStatus() {
+
     try {
-      const url =
-        `${SUPABASE_URL}/rest/v1/realm_live_status` +
-        `?select=realm_key,realm_name,status,players_online` +
-        `&realm_key=eq.ewiger-bund`;
 
-      const res = await fetch(url, {
-        headers: {
-          apikey: SUPABASE_ANON_KEY,
-          Authorization: `Bearer ${SUPABASE_ANON_KEY}`
+      const res = await fetch(
+        `${SUPABASE_URL}/rest/v1/realm_live_status?select=realm_name,status,players_online&realm_key=eq.ewiger-bund`,
+        {
+          headers: {
+            apikey: SUPABASE_ANON_KEY,
+            Authorization: `Bearer ${SUPABASE_ANON_KEY}`
+          }
         }
-      });
+      );
 
-      if (!res.ok) throw new Error(`Supabase HTTP ${res.status}`);
+      if (!res.ok) throw new Error("Supabase Fehler");
 
-      const rows = await res.json();
-      const realm = rows?.[0];
+      const data = await res.json();
+
+      const realm = data?.[0];
 
       if (!realm) {
         setLive("offline", "Realm", 0);
@@ -57,20 +53,30 @@
 
       setLive(
         String(realm.status || "offline").toLowerCase(),
-        realm.realm_name || "Realm",
-        realm.players_online || 0
+        realm.realm_name,
+        realm.players_online
       );
+
     } catch (err) {
-      console.error(err);
+
+      console.error("[site.js]", err);
+
       setLive("offline", "Realm", 0);
+
     }
+
   }
 
-  await loadLive();
+  // Seite laden
+  await loadRealmStatus();
 
+  // Auto Update alle 15 Sekunden
   setInterval(() => {
+
     if (document.visibilityState === "visible") {
-      loadLive();
+      loadRealmStatus();
     }
+
   }, 15000);
+
 })();
