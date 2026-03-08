@@ -1,111 +1,183 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team | STORMFIRE</title>
+  <meta name="description" content="Das Team hinter Stormfire und Möglichkeiten zur Bewerbung." />
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Team | STORMFIRE</title>
-
-<link rel="stylesheet" href="./assets/css/style.css">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
-
 <body>
+  <div class="layout">
 
-<div class="layout">
+    <aside class="sidebar">
+      <a class="brand" href="./index.html" aria-label="STORMFIRE Startseite">
+        <div class="brand-logo">
+          <img
+            src="assets/images/logo.png"
+            alt="STORMFIRE Logo"
+            onerror="this.style.display='none'; this.parentElement.classList.add('brand-logo-fallback'); this.parentElement.textContent='SF';"
+          />
+        </div>
 
-<aside class="sidebar">
+        <div class="brand-text">
+          <strong>STORMFIRE</strong>
+          <span>MMORPG Portal</span>
+        </div>
+      </a>
 
-<a class="brand" href="./index.html">
+      <nav class="sidebar-nav">
+        <a href="./index.html">Home</a>
+        <a href="./news.html">News</a>
+        <a href="./status.html">Realm Status</a>
+        <a href="./leaderboard.html">Leaderboard</a>
+        <a href="./roadmap.html">Roadmap</a>
+        <a href="./gallery.html">Galerie</a>
+        <a href="./geschichte.html">Geschichte</a>
+        <a href="./team.html" class="active">Team</a>
+        <a href="./discord.html">Discord</a>
+        <a href="./download.html">Launcher</a>
+        <a href="./impressum.html">Impressum</a>
+      </nav>
+    </aside>
 
-<div class="brand-logo">
-<img src="assets/images/logo.png"
-onerror="this.style.display='none';this.parentElement.textContent='SF';">
-</div>
+    <main class="content">
+      <div class="content-inner">
 
-<div class="brand-text">
-<strong>STORMFIRE</strong>
-<span>MMORPG Portal</span>
-</div>
+        <section class="hero-section">
+          <div class="kicker">TEAM • ENTWICKLUNG • MITWIRKEN</div>
+          <h1 class="hero-title">Das Team hinter Stormfire</h1>
+          <p class="hero-text">
+            STORMFIRE ist ein Indie-MMORPG Projekt in aktiver Entwicklung.
+            Die Basis wächst Schritt für Schritt – technisch, visuell und inhaltlich.
+          </p>
+        </section>
 
-</a>
+        <section class="section">
+          <div class="section-head">
+            <h2>Aktueller Fokus</h2>
+            <p>Die wichtigsten Bereiche, an denen gerade gearbeitet wird.</p>
+          </div>
 
-<nav class="sidebar-nav">
+          <div class="feature-grid">
+            <article class="feature-item">
+              <h3>Projektleitung</h3>
+              <p>
+                Die Richtung des Projekts, Spielvision und technische Struktur werden zentral koordiniert.
+              </p>
+            </article>
 
-<a href="./index.html">Home</a>
-<a href="./news.html">News</a>
-<a href="./status.html">Realm Status</a>
-<a href="./leaderboard.html">Leaderboard</a>
-<a href="./roadmap.html">Roadmap</a>
-<a href="./gallery.html">Galerie</a>
-<a href="./geschichte.html">Geschichte</a>
-<a href="./team.html" class="active">Team</a>
-<a href="./discord.html">Discord</a>
-<a href="./download.html">Launcher</a>
-<a href="./impressum.html">Impressum</a>
+            <article class="feature-item">
+              <h3>Client & Systeme</h3>
+              <p>
+                Login, Charakterfluss, Datenbank, UI, Weltaufbau und technische MMORPG-Grundlagen.
+              </p>
+            </article>
 
-</nav>
+            <article class="feature-item">
+              <h3>Website & Infrastruktur</h3>
+              <p>
+                Projektportal, Devlogs, Realm-Status, Launcher-Struktur und Community-Zugänge.
+              </p>
+            </article>
 
-</aside>
+            <article class="feature-item">
+              <h3>Welt & Identität</h3>
+              <p>
+                Lore, Fraktionen, Assets, Gegner, Regionen und die eigene Atmosphäre von Stormfire.
+              </p>
+            </article>
+          </div>
+        </section>
 
-<main class="content">
+        <section class="section">
+          <div class="section-head">
+            <h2>Mitwirken</h2>
+            <p>Wenn du dich für Stormfire bewerben möchtest, findest du hier den Einstieg.</p>
+          </div>
 
-<div class="content-inner">
+          <article class="news-item">
+            <h3>Bewerbung</h3>
+            <p>
+              Wer das Projekt aktiv unterstützen möchte, kann sich über die Bewerbungsseite informieren.
+              Dort sollen später Rollen, Hilfebereiche und Kontaktmöglichkeiten übersichtlich gesammelt werden.
+            </p>
+            <p style="margin-top:14px;">
+              <a class="quick-link" href="./bewerbung.html">
+                <strong>Zur Bewerbungsseite</strong>
+                <span>Öffnet die Bewerbungsseite von STORMFIRE.</span>
+              </a>
+            </p>
+          </article>
+        </section>
 
-<h1>Stormfire Team</h1>
+      </div>
+    </main>
 
-<p>
-STORMFIRE wird aktuell als Indie-MMORPG Projekt entwickelt.
-</p>
+    <aside class="status-panel">
+      <div class="status-panel-head">
+        <div class="status-kicker">LIVE STATUS</div>
+        <h2>Realm Server</h2>
+        <p>Automatisch aus Supabase geladen.</p>
+      </div>
 
-<h2>Projektleitung</h2>
+      <div class="status-overview">
+        <div class="status-big-row">
+          <span>Login / Datenbank</span>
+          <strong id="login-status" class="status-dev">Lädt…</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Realm Server</span>
+          <strong id="realm-status" class="status-dev">Lädt…</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Spieler gesamt</span>
+          <strong id="player-count">0</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Drachenbund</span>
+          <strong id="drachenbund-count">0</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Wolfsmark</span>
+          <strong id="wolfsmark-count">0</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Spieler online</span>
+          <strong id="players-online-live">0</strong>
+        </div>
+      </div>
 
-<p>
-Devaller – Projektleitung & Entwicklung
-</p>
+      <div class="realm-summary-box">
+        <div class="realm-summary-title">Realm Übersicht</div>
+        <div class="realm-summary-stats">
+          <div class="realm-summary-chip realm-summary-online">
+            <span class="dot dot-green"></span>
+            <span id="realms-online">0</span>
+            <span>online</span>
+          </div>
+          <div class="realm-summary-chip realm-summary-offline">
+            <span class="dot dot-red"></span>
+            <span id="realms-offline">0</span>
+            <span>offline</span>
+          </div>
+        </div>
+      </div>
 
-<h2>Entwicklung</h2>
+      <div class="realm-list-box">
+        <div class="realm-list-title">Alle Realms</div>
+        <div id="realm-list" class="realm-list">
+          <div class="realm-list-empty">Realm-Daten werden geladen…</div>
+        </div>
+      </div>
 
-<ul>
+      <div class="status-note" id="status-note">Verbindung wird aufgebaut…</div>
+    </aside>
 
-<li>Gameplay Systeme</li>
-<li>Server Architektur</li>
-<li>Website & Infrastruktur</li>
-<li>Weltentwicklung</li>
+  </div>
 
-</ul>
-
-<h2>Ziel</h2>
-
-<p>
-Ein klassisch inspiriertes MMORPG mit eigener Welt, eigener Lore
-und langfristiger Entwicklung.
-</p>
-
-</div>
-
-</main>
-
-
-<aside class="status-panel">
-
-<div class="status-big-row">
-<span>Realm Server</span>
-<strong id="realm-status">Lädt…</strong>
-</div>
-
-<div class="status-big-row">
-<span>Spieler Online</span>
-<strong id="players-online-live">0</strong>
-</div>
-
-</aside>
-
-</div>
-
-<script src="./assets/js/status.js"></script>
-
+  <script src="./assets/js/status.js"></script>
 </body>
 </html>
