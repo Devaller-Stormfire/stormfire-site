@@ -1,755 +1,171 @@
-:root{
-  --bg:#040816;
-  --bg2:#08101d;
-  --bg3:#0b1730;
-  --sidebar:#07111f;
-
-  --line:rgba(255,255,255,0.08);
-  --line-soft:rgba(255,255,255,0.05);
-
-  --text:#eef4ff;
-  --muted:#9fb0c9;
-
-  --gold:#d8b36a;
-  --gold-soft:rgba(216,179,106,0.16);
-
-  --green:#56d38b;
-  --red:#ff8d8d;
-  --yellow:#f0d39b;
-
-  --astral-blue:rgba(76,130,255,0.16);
-  --astral-cyan:rgba(71,201,255,0.10);
-  --astral-violet:rgba(151,95,255,0.11);
-
-  --card-bg:rgba(255,255,255,0.03);
-  --card-bg-strong:rgba(255,255,255,0.045);
-
-  --shadow-soft:0 10px 30px rgba(0,0,0,0.18);
-  --shadow-strong:0 16px 40px rgba(0,0,0,0.24);
-
-  --content-max:980px;
-}
-
-*{
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  margin:0;
-  font-family:Inter,system-ui,Arial,sans-serif;
-  color:var(--text);
-  line-height:1.6;
-  background:
-    radial-gradient(circle at 15% 20%, var(--astral-cyan) 0%, transparent 22%),
-    radial-gradient(circle at 82% 18%, var(--astral-violet) 0%, transparent 24%),
-    radial-gradient(circle at 50% 75%, var(--astral-blue) 0%, transparent 28%),
-    linear-gradient(115deg, rgba(255,255,255,0.025) 0%, transparent 25%, rgba(255,255,255,0.02) 50%, transparent 75%),
-    linear-gradient(180deg, var(--bg) 0%, var(--bg2) 40%, var(--bg3) 100%);
-  background-attachment:fixed;
-}
-
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  background:
-    radial-gradient(circle at 12% 14%, rgba(255,255,255,0.22) 0 1px, transparent 1.5px),
-    radial-gradient(circle at 78% 21%, rgba(255,255,255,0.18) 0 1px, transparent 1.5px),
-    radial-gradient(circle at 62% 62%, rgba(255,255,255,0.15) 0 1px, transparent 1.5px),
-    radial-gradient(circle at 26% 74%, rgba(255,255,255,0.12) 0 1px, transparent 1.5px),
-    radial-gradient(circle at 90% 70%, rgba(255,255,255,0.14) 0 1px, transparent 1.5px);
-  opacity:.55;
-}
-
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
-img{
-  max-width:100%;
-  display:block;
-}
-
-/* =========================================================
-   LAYOUT
-========================================================= */
-
-.layout{
-  display:grid;
-  grid-template-columns:260px minmax(0,1fr) 340px;
-  min-height:100vh;
-}
-
-.sidebar{
-  background:linear-gradient(180deg, rgba(5,11,22,0.95) 0%, rgba(7,14,28,0.90) 100%);
-  border-right:1px solid var(--line);
-  padding:24px 16px;
-  position:sticky;
-  top:0;
-  height:100vh;
-  overflow-y:auto;
-  backdrop-filter:blur(8px);
-}
-
-.content{
-  min-width:0;
-  padding:34px 34px 60px;
-}
-
-.content-inner{
-  max-width:var(--content-max);
-}
-
-.status-panel{
-  border-left:1px solid var(--line);
-  padding:24px 18px 32px;
-  position:sticky;
-  top:0;
-  height:100vh;
-  overflow-y:auto;
-  background:linear-gradient(180deg, rgba(5,11,22,0.45) 0%, rgba(7,14,28,0.18) 100%);
-  backdrop-filter:blur(6px);
-}
-
-/* =========================================================
-   BRAND / LOGO
-========================================================= */
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  margin-bottom:28px;
-}
-
-.brand-logo{
-  width:58px;
-  height:58px;
-  flex:0 0 58px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-  border-radius:14px;
-  background:linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
-  border:1px solid rgba(255,255,255,0.08);
-  box-shadow:0 0 30px rgba(84,125,255,0.10);
-}
-
-.brand-logo img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-}
-
-.brand-logo-fallback{
-  font-size:1.1rem;
-  font-weight:800;
-  letter-spacing:0.08em;
-  color:#f0d39b;
-}
-
-.brand-text{
-  display:flex;
-  flex-direction:column;
-  line-height:1.05;
-}
-
-.brand-text strong{
-  font-size:1.2rem;
-  letter-spacing:0.06em;
-}
-
-.brand-text span{
-  font-size:0.75rem;
-  color:var(--muted);
-  letter-spacing:0.14em;
-  text-transform:uppercase;
-}
-
-/* =========================================================
-   SIDEBAR NAV
-========================================================= */
-
-.sidebar-nav{
-  display:flex;
-  flex-direction:column;
-  gap:4px;
-}
-
-.sidebar-nav a{
-  position:relative;
-  display:block;
-  padding:10px 10px 10px 14px;
-  border-radius:10px;
-  color:var(--muted);
-  transition:color .18s ease, transform .18s ease, background .18s ease;
-}
-
-.sidebar-nav a::before{
-  content:"";
-  position:absolute;
-  left:0;
-  top:50%;
-  transform:translateY(-50%);
-  width:2px;
-  height:0;
-  background:var(--gold);
-  border-radius:999px;
-  opacity:0;
-  transition:height .18s ease, opacity .18s ease;
-}
-
-.sidebar-nav a:hover{
-  color:var(--text);
-  background:rgba(255,255,255,0.03);
-  transform:translateX(2px);
-}
-
-.sidebar-nav a:hover::before,
-.sidebar-nav a.active::before{
-  height:70%;
-  opacity:1;
-}
-
-.sidebar-nav a.active{
-  color:var(--text);
-  background:rgba(255,255,255,0.04);
-}
-
-/* =========================================================
-   TYPO
-========================================================= */
-
-.translate-note{
-  margin:0 0 20px;
-  padding:0 0 12px;
-  border-bottom:1px solid var(--gold-soft);
-  color:#edd6a0;
-  font-size:0.94rem;
-}
-
-.hero-section{
-  margin-bottom:38px;
-}
-
-.kicker{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  margin-bottom:14px;
-  color:#f0d59b;
-  font-size:0.86rem;
-  letter-spacing:0.08em;
-  text-transform:uppercase;
-}
-
-.kicker::before{
-  content:"";
-  width:28px;
-  height:1px;
-  background:var(--gold);
-}
-
-.hero-title{
-  margin:0 0 12px;
-  font-size:clamp(2.5rem, 5vw, 4.4rem);
-  line-height:1.02;
-  letter-spacing:-0.03em;
-}
-
-.hero-text{
-  margin:0;
-  max-width:860px;
-  color:var(--muted);
-  font-size:1.08rem;
-}
-
-.section{
-  margin-top:36px;
-}
-
-.section-head{
-  margin-bottom:18px;
-  padding-bottom:10px;
-  border-bottom:1px solid var(--line-soft);
-}
-
-.section-head h1,
-.section-head h2{
-  margin:0 0 6px;
-}
-
-.section-head h1{
-  font-size:2rem;
-}
-
-.section-head h2{
-  font-size:1.55rem;
-}
-
-.section-head p{
-  margin:0;
-  color:var(--muted);
-}
-
-/* =========================================================
-   CONTENT BLOCKS
-========================================================= */
-
-.feature-grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:26px 34px;
-}
-
-.feature-item,
-.news-item{
-  padding:20px 20px 18px;
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:18px;
-  background:var(--card-bg);
-  box-shadow:var(--shadow-soft);
-}
-
-.feature-item h3,
-.news-item h3{
-  margin:0 0 10px;
-  font-size:1rem;
-}
-
-.feature-item p,
-.news-item p{
-  margin:0;
-  color:var(--muted);
-}
-
-.news-list{
-  display:grid;
-  gap:18px;
-}
-
-.news-meta{
-  font-size:0.84rem;
-  color:var(--muted);
-  margin-bottom:8px;
-  letter-spacing:0.04em;
-}
-
-.quick-links{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:24px;
-}
-
-.quick-link{
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-  padding:18px;
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:18px;
-  background:var(--card-bg);
-  box-shadow:var(--shadow-soft);
-  transition:transform .18s ease, border-color .18s ease, background .18s ease;
-}
-
-.quick-link:hover{
-  transform:translateY(-2px);
-  border-color:rgba(216,179,106,0.22);
-  background:rgba(255,255,255,0.04);
-}
-
-.quick-link strong{
-  font-size:1rem;
-}
-
-.quick-link span{
-  color:var(--muted);
-}
-
-/* =========================================================
-   STATUS PANEL
-========================================================= */
-
-.status-panel-head{
-  margin-bottom:18px;
-}
-
-.status-kicker{
-  margin-bottom:10px;
-  font-size:0.8rem;
-  letter-spacing:0.12em;
-  text-transform:uppercase;
-  color:#d8b36a;
-}
-
-.status-panel-head h2{
-  margin:0 0 8px;
-  font-size:1.7rem;
-  line-height:1.1;
-}
-
-.status-panel-head p{
-  margin:0;
-  color:var(--muted);
-  font-size:0.95rem;
-}
-
-.status-overview{
-  display:grid;
-  gap:0;
-  border-top:1px solid var(--line);
-  margin-bottom:18px;
-}
-
-.status-big-row{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap:12px;
-  padding:12px 0;
-  border-bottom:1px solid var(--line-soft);
-}
-
-.status-big-row span{
-  color:var(--muted);
-  font-size:0.94rem;
-}
-
-.status-big-row strong{
-  color:var(--text);
-  text-align:right;
-}
-
-.realm-summary-box,
-.realm-list-box{
-  margin-top:20px;
-  padding-top:14px;
-  border-top:1px solid var(--line);
-}
-
-.realm-summary-title,
-.realm-list-title{
-  font-size:0.95rem;
-  font-weight:700;
-  margin-bottom:12px;
-}
-
-.realm-summary-stats{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
-
-.realm-summary-chip{
-  display:inline-flex;
-  align-items:center;
-  gap:7px;
-  padding:8px 10px;
-  border:1px solid rgba(255,255,255,0.07);
-  border-radius:999px;
-  background:rgba(255,255,255,0.025);
-  font-size:0.86rem;
-}
-
-.dot{
-  width:9px;
-  height:9px;
-  border-radius:999px;
-  display:inline-block;
-}
-
-.dot-green{
-  background:var(--green);
-  box-shadow:0 0 10px rgba(86,211,139,0.4);
-}
-
-.dot-red{
-  background:var(--red);
-  box-shadow:0 0 10px rgba(255,141,141,0.35);
-}
-
-.realm-list{
-  display:grid;
-  gap:10px;
-}
-
-.realm-row{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-  padding:12px 0;
-  border-bottom:1px solid var(--line-soft);
-}
-
-.realm-name{
-  font-size:0.93rem;
-  color:var(--text);
-}
-
-.realm-meta{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  color:var(--muted);
-  font-size:0.84rem;
-}
-
-.realm-state{
-  display:inline-flex;
-  align-items:center;
-  gap:7px;
-  font-weight:600;
-}
-
-.realm-state-online{
-  color:var(--green);
-}
-
-.realm-state-offline{
-  color:var(--red);
-}
-
-.realm-list-empty{
-  color:var(--muted);
-  font-size:0.9rem;
-}
-
-.status-note{
-  margin-top:18px;
-  color:var(--muted);
-  font-size:0.9rem;
-  line-height:1.5;
-}
-
-.status-online{
-  color:var(--green) !important;
-}
-
-.status-offline{
-  color:var(--red) !important;
-}
-
-.status-dev{
-  color:var(--yellow) !important;
-}
-
-/* =========================================================
-   NEWS / DEVLOG CARDS
-========================================================= */
-
-.stormfire-news-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:22px;
-}
-
-.stormfire-devlog-card{
-  padding:22px 22px 20px;
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:20px;
-  background:linear-gradient(180deg, rgba(255,255,255,0.035) 0%, rgba(255,255,255,0.025) 100%);
-  box-shadow:var(--shadow-strong);
-  backdrop-filter:blur(6px);
-}
-
-.stormfire-devlog-card h3{
-  margin:0 0 12px;
-  font-size:1.15rem;
-  line-height:1.3;
-}
-
-.stormfire-devlog-card p{
-  margin:0;
-  color:var(--muted);
-  white-space:normal;
-  word-break:break-word;
-  overflow:visible;
-}
-
-.stormfire-devlog-meta{
-  margin-bottom:10px;
-  font-size:0.84rem;
-  color:var(--muted);
-  letter-spacing:0.03em;
-}
-
-.stormfire-devlog-tags{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin:0 0 14px;
-}
-
-.stormfire-devlog-tag{
-  display:inline-flex;
-  align-items:center;
-  padding:5px 10px;
-  border-radius:999px;
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.06);
-  color:var(--text);
-  font-size:0.78rem;
-}
-
-/* =========================================================
-   ROADMAP
-========================================================= */
-
-.roadmap-showcase{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:28px;
-}
-
-.roadmap-card{
-  padding:22px;
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:20px;
-  background:rgba(255,255,255,0.03);
-  box-shadow:var(--shadow-strong);
-  backdrop-filter:blur(6px);
-}
-
-.roadmap-card-head{
-  margin-bottom:16px;
-}
-
-.roadmap-card-head h3{
-  margin:0;
-  font-size:1.2rem;
-}
-
-.roadmap-card-kicker{
-  margin-bottom:8px;
-  font-size:0.78rem;
-  letter-spacing:0.14em;
-  text-transform:uppercase;
-  color:#d8b36a;
-}
-
-.roadmap-image{
-  width:100%;
-  display:block;
-  border-radius:16px;
-  border:1px solid rgba(255,255,255,0.08);
-  box-shadow:0 10px 30px rgba(0,0,0,0.30);
-}
-
-/* =========================================================
-   FACTION BALANCE
-========================================================= */
-
-.faction-balance-wrap{
-  display:grid;
-  gap:10px;
-}
-
-.faction-balance-head{
-  display:flex;
-  justify-content:space-between;
-  gap:12px;
-  font-size:0.92rem;
-  color:var(--muted);
-}
-
-.faction-balance-bar{
-  width:100%;
-  height:16px;
-  display:flex;
-  overflow:hidden;
-  border-radius:999px;
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.06);
-}
-
-.faction-balance-drachenbund{
-  height:100%;
-  background:linear-gradient(90deg, #57b0ff, #84d4ff);
-}
-
-.faction-balance-wolfsmark{
-  height:100%;
-  background:linear-gradient(90deg, #d88d4c, #f0ba73);
-}
-
-.faction-balance-empty{
-  color:var(--muted);
-  font-size:0.92rem;
-}
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.footer{
-  margin-top:42px;
-  padding-top:18px;
-  border-top:1px solid var(--line);
-  color:var(--muted);
-  font-size:0.95rem;
-}
-
-.footer-links{
-  display:flex;
-  flex-wrap:wrap;
-  gap:14px;
-  margin-top:8px;
-}
-
-.footer-links a:hover{
-  color:var(--text);
-}
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media (max-width:1400px){
-  .layout{
-    grid-template-columns:240px minmax(0,1fr) 320px;
-  }
-}
-
-@media (max-width:1200px){
-  .feature-grid{
-    grid-template-columns:1fr;
-  }
-
-  .quick-links{
-    grid-template-columns:1fr;
-  }
-}
-
-@media (max-width:1024px){
-  .layout{
-    grid-template-columns:1fr;
-  }
-
-  .sidebar,
-  .status-panel{
-    position:relative;
-    height:auto;
-    border:none;
-  }
-
-  .sidebar{
-    border-bottom:1px solid var(--line);
-  }
-
-  .status-panel{
-    border-top:1px solid var(--line);
-  }
-
-  .content{
-    padding:24px 18px 36px;
-  }
-}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bewerbung | STORMFIRE</title>
+  <meta name="description" content="Bewerbungen für Beta-Tester und GM-Rollen bei STORMFIRE." />
+
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div class="layout">
+
+    <aside class="sidebar">
+      <a class="brand" href="./index.html" aria-label="STORMFIRE Startseite">
+        <div class="brand-logo">
+          <img
+            src="assets/images/logo.png"
+            alt="STORMFIRE Logo"
+            onerror="this.style.display='none'; this.parentElement.classList.add('brand-logo-fallback'); this.parentElement.textContent='SF';"
+          />
+        </div>
+        <div class="brand-text">
+          <strong>STORMFIRE</strong>
+          <span>MMORPG Portal</span>
+        </div>
+      </a>
+
+      <nav class="sidebar-nav">
+        <a href="./index.html">Home</a>
+        <a href="./news.html">News</a>
+        <a href="./status.html">Realm Status</a>
+        <a href="./leaderboard.html">Leaderboard</a>
+        <a href="./roadmap.html">Roadmap</a>
+        <a href="./gallery.html">Galerie</a>
+        <a href="./geschichte.html">Geschichte</a>
+        <a href="./team.html">Team</a>
+        <a href="./discord.html">Discord</a>
+        <a href="./download.html">Launcher</a>
+        <a href="./impressum.html">Impressum</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <div class="content-inner">
+
+        <section class="hero-section">
+          <div class="kicker">BEWERBUNG • COMMUNITY • TESTPHASEN</div>
+          <h1 class="hero-title">Bewerbungen</h1>
+          <p class="hero-text">
+            Aktuell sind nur Bewerbungen als Beta-Tester oder für eine spätere GM-Rolle vorgesehen.
+          </p>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <h2>Aktuell möglich</h2>
+            <p>Derzeit nehmen wir nur diese beiden Arten von Bewerbungen entgegen.</p>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-item">
+              <h3>Beta Tester</h3>
+              <p>
+                Bewerbung für zukünftige Testphasen von Stormfire, um Inhalte,
+                Spielfluss und technische Abläufe frühzeitig mit zu prüfen.
+              </p>
+            </article>
+
+            <article class="feature-item">
+              <h3>Game Master (GM)</h3>
+              <p>
+                Bewerbung für eine mögliche spätere GM-Rolle zur Unterstützung von
+                Community, Ordnung und Ingame-Betreuung.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <h2>Bewerbung per E-Mail</h2>
+            <p>Bitte sende deine Bewerbung direkt an das Team.</p>
+          </div>
+
+          <article class="stormfire-devlog-card">
+            <div class="stormfire-devlog-meta">Kontakt • Offizielle Bewerbung</div>
+            <h3>team@stormfire.dev</h3>
+            <p>
+              Sende deine Bewerbung bitte per E-Mail an <strong>team@stormfire.dev</strong>.
+              Gib dabei an, ob du dich als <strong>Beta Tester</strong> oder für eine
+              <strong>GM-Rolle</strong> bewerben möchtest.
+            </p>
+            <p style="margin-top:18px;">
+              <a class="quick-link" href="mailto:team@stormfire.dev?subject=Stormfire%20Bewerbung">
+                <strong>Bewerbung per Mail senden</strong>
+                <span>Öffnet dein E-Mail-Programm mit der richtigen Adresse.</span>
+              </a>
+            </p>
+          </article>
+        </section>
+
+      </div>
+    </main>
+
+    <aside class="status-panel">
+      <div class="status-panel-head">
+        <div class="status-kicker">LIVE STATUS</div>
+        <h2>Realm Server</h2>
+        <p>Automatisch aus Supabase geladen.</p>
+      </div>
+
+      <div class="status-overview">
+        <div class="status-big-row">
+          <span>Login / Datenbank</span>
+          <strong id="login-status" class="status-dev">Lädt…</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Realm Server</span>
+          <strong id="realm-status" class="status-dev">Lädt…</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Spieler gesamt</span>
+          <strong id="player-count">0</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Drachenbund</span>
+          <strong id="drachenbund-count">0</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Wolfsmark</span>
+          <strong id="wolfsmark-count">0</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Spieler online</span>
+          <strong id="players-online-live">0</strong>
+        </div>
+      </div>
+
+      <div class="realm-summary-box">
+        <div class="realm-summary-title">Realm Übersicht</div>
+        <div class="realm-summary-stats">
+          <div class="realm-summary-chip realm-summary-online">
+            <span class="dot dot-green"></span>
+            <span id="realms-online">0</span>
+            <span>online</span>
+          </div>
+          <div class="realm-summary-chip realm-summary-offline">
+            <span class="dot dot-red"></span>
+            <span id="realms-offline">0</span>
+            <span>offline</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="realm-list-box">
+        <div class="realm-list-title">Alle Realms</div>
+        <div id="realm-list" class="realm-list">
+          <div class="realm-list-empty">Realm-Daten werden geladen…</div>
+        </div>
+      </div>
+
+      <div class="status-note" id="status-note">Verbindung wird aufgebaut…</div>
+    </aside>
+
+  </div>
+
+  <script src="./assets/js/status.js"></script>
+</body>
+</html>
