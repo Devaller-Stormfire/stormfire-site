@@ -1,66 +1,88 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>STORMFIRE – Mein Account</title>
-  <link rel="icon" href="/assets/img/logo.png" />
-  <link rel="stylesheet" href="/assets/css/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STORMFIRE – Account</title>
+  <meta name="description" content="Accountbereich von STORMFIRE." />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
-  <canvas id="astral"></canvas>
-
-  <div class="page">
-    <header>
-      <div class="brand">
-        <img src="/assets/img/logo.png" alt="STORMFIRE Logo" />
-        <div class="title">
+  <div class="layout">
+    <aside class="sidebar">
+      <a class="brand" href="./index.html" aria-label="STORMFIRE Startseite">
+        <div class="brand-logo">
+          <img src="assets/images/logo.png" alt="STORMFIRE Logo" onerror="this.style.display='none'; this.parentElement.classList.add('brand-logo-fallback'); this.parentElement.textContent='SF';" />
+        </div>
+        <div class="brand-text">
           <strong>STORMFIRE</strong>
-          <span>Dev Logs • News • Patchnotes</span>
+          <span>MMORPG Portal</span>
         </div>
-      </div>
+      </a>
+      <nav class="sidebar-nav">
+        <a href="./index.html" class="">Home</a>
+        <a href="./news.html" class="">News</a>
+        <a href="./status.html" class="">Realm Status</a>
+        <a href="./leaderboard.html" class="">Leaderboard</a>
+        <a href="./roadmap.html" class="">Roadmap</a>
+        <a href="./gallery.html" class="">Galerie</a>
+        <a href="./geschichte.html" class="">Geschichte</a>
+        <a href="./team.html" class="">Team</a>
+        <a href="./discord.html" class="">Discord</a>
+        <a href="./download.html" class="">Launcher</a>
+        <a href="./impressum.html" class="">Impressum</a>
+      </nav>
+    </aside>
 
-      <div class="headerRight">
-        <nav>
-          <a class="navbtn" href="/index.html">Home</a>
-          <a class="navbtn" href="/gallery.html">Galerie</a>
-          <a class="navbtn" href="/login.html">Login</a>
-          <a class="navbtn active" href="/account.html">Mein Account</a>
-        </nav>
+    <main class="content">
+      <div class="content-inner">
+<section class="section"><div class="section-head"><h1>Account</h1><p>Bereich für Accountdaten, Profilinfos und spätere Kontoverwaltung.</p></div></section>
 
-        <div class="liveStatus">
-          <span class="dot warn" id="liveDot"></span>
-          <span id="liveTxt">Lädt…</span>
-        </div>
-      </div>
-    </header>
-
-    <main>
-      <div class="hero">
-        <div>
-          <h1>Mein Account</h1>
-          <p>Frontend-Ansicht: später echte Charaktere vom Server.</p>
-        </div>
-        <div class="badge"><span class="dot warn"></span><span id="accUser">—</span></div>
-      </div>
-
-      <section class="grid">
-        <article class="card" style="grid-column: span 12;">
-          <div class="hd"><h2>Charaktere</h2><span class="small">Demo-Daten</span></div>
-          <div class="bd">
-            <div id="charList" class="small">Lädt…</div>
+        <footer class="footer">
+          <div>© STORMFIRE • Projekt in Entwicklung</div>
+          <div class="footer-links">
+            <a href="./impressum.html">Impressum</a>
+            <a href="./news.html">News</a>
+            <a href="./download.html">Launcher</a>
           </div>
-        </article>
-      </section>
+        </footer>
+      </div>
     </main>
 
-    <footer>
-      © <span id="year"></span> STORMFIRE • Rechte: Denis Toni Güven (Projekt in Entwicklung)
-    </footer>
-  </div>
+    <aside class="status-panel">
+      <div class="status-panel-head">
+        <div class="status-kicker">LIVE STATUS</div>
+        <h2>Realm Server</h2>
+        <p>Automatisch aus Supabase geladen.</p>
+      </div>
 
-  <script src="/assets/js/common.js"></script>
-  <script src="/assets/js/site.js"></script>
-  <script src="/assets/js/account.js"></script>
+      <div class="status-overview">
+        <div class="status-big-row"><span>Login / Datenbank</span><strong id="login-status" class="status-dev">Lädt…</strong></div>
+        <div class="status-big-row"><span>Realm Server</span><strong id="realm-status" class="status-dev">Lädt…</strong></div>
+        <div class="status-big-row"><span>Spieler gesamt</span><strong id="player-count">0</strong></div>
+        <div class="status-big-row"><span>Drachenbund</span><strong id="drachenbund-count">0</strong></div>
+        <div class="status-big-row"><span>Wolfsmark</span><strong id="wolfsmark-count">0</strong></div>
+        <div class="status-big-row"><span>Spieler online</span><strong id="players-online-live">0</strong></div>
+        <div class="status-big-row"><span>Besuche Gerät</span><strong id="visit-count">0</strong></div>
+      </div>
+
+      <div class="realm-summary-box">
+        <div class="realm-summary-title">Realm Übersicht</div>
+        <div class="realm-summary-stats">
+          <div class="realm-summary-chip realm-summary-online"><span class="dot dot-green"></span><span id="realms-online">0</span><span>online</span></div>
+          <div class="realm-summary-chip realm-summary-offline"><span class="dot dot-red"></span><span id="realms-offline">0</span><span>offline</span></div>
+        </div>
+      </div>
+
+      <div class="realm-list-box">
+        <div class="realm-list-title">Alle Realms</div>
+        <div id="realm-list" class="realm-list"><div class="realm-list-empty">Realm-Daten werden geladen…</div></div>
+      </div>
+
+      <div class="status-note" id="status-note">Verbindung wird aufgebaut…</div>
+    </aside>
+  </div>
+  <script src="./assets/js/status.js"></script>
 </body>
 </html>
