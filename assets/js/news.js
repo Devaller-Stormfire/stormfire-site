@@ -1,26 +1,17 @@
 (() => {
+  const NEWS_JSON_PATH = "./data/news.json";
+
   function escapeHtml(value) {
     return String(value ?? "")
       .replace(/&/g, "&amp;")
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
-  }
-
-  async function fetchJSON(path) {
-    const response = await fetch(path, { cache: "no-store" });
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status} while loading ${path}`);
-    }
-
-    return await response.json();
+      .replace(/'/g, "&#39;");
   }
 
   function formatDate(dateString) {
     if (!dateString) return "Unbekannt";
-
     const date = new Date(dateString);
     if (Number.isNaN(date.getTime())) return dateString;
 
@@ -31,96 +22,73 @@
     });
   }
 
-  function formatBody(text) {
-    return escapeHtml(text || "").replace(/\n/g, "<br>");
-  }
-
   function renderTags(tags) {
     if (!Array.isArray(tags) || tags.length === 0) return "";
-    return tags.map(tag => `<span class="badge">${escapeHtml(tag)}</span>`).join(" ");
-  }
-
-  function renderPost(post) {
     return `
-      <article class="news-item">
-        <div class="news-meta">
-          ${escapeHtml(post.type || "Devlog")} • ${formatDate(post.date)}
-          ${post.author ? `• ${escapeHtml(post.author)}` : ""}
-        </div>
-
-        <h3>${escapeHtml(post.title || "Ohne Titel")}</h3>
-
-        ${Array.isArray(post.tags) && post.tags.length
-          ? `<p style="margin-bottom:10px;">${renderTags(post.tags)}</p>`
-          : ""}
-
-        <p>${formatBody(post.body || "")}</p>
-      </article>
+      <div class="stormfire-devlog-tags">
+        ${tags.map(tag => `<span class="stormfire-devlog-tag">${escapeHtml(tag)}</span>`).join("")}
+      </div>
     `;
   }
 
-  function setText(id, value) {
-    const el = document.getElementById(id);
-    if (el) el.textContent = value;
-  }
-
-  function updateVisitCounter() {
-    const visitEl = document.getElementById("visit-count");
-    if (!visitEl) return;
-
-    let visits = localStorage.getItem("stormfire_visits");
-    visits = visits ? parseInt(visits, 10) + 1 : 1;
-    localStorage.setItem("stormfire_visits", visits);
-    visitEl.textContent = String(visits);
-  }
-
-  async function loadNews() {
+  async function loadAllNews() {
     const listEl = document.getElementById("news-list");
-    const countEl = document.getElementById("news-count");
-    const updatedEl = document.getElementById("news-updated");
-
     if (!listEl) return;
 
     try {
-      const data = await fetchJSON("./data/news.json");
-      const posts = Array.isArray(data.posts) ? data.posts : [];
-
-      if (countEl) countEl.textContent = String(posts.length);
-      if (updatedEl) updatedEl.textContent = formatDate(data.updated_at);
-
-      if (posts.length === 0) {
+      const response = await fetch(NEWS_JSON_PATH, { cache: "no-store" });
+      if (!response.ok) {
         listEl.innerHTML = `
-          <div class="news-item">
-            <div class="news-meta">Keine Einträge</div>
-            <h3>Noch keine News vorhanden</h3>
-            <p>Aktuell sind noch keine News oder Devlogs eingetragen.</p>
-          </div>
+          <article class="stormfire-devlog-card">
+            <div class="stormfire-devlog-meta">Fehler</div>
+            <h3>News konnten nicht geladen werden</h3>
+            <p>Die Datei data/news.json konnte nicht geöffnet werden.</p>
+          </article>
         `;
         return;
       }
 
-      listEl.innerHTML = posts.map(renderPost).join("");
+      const data = await response.json();
+      const posts = Array.isArray(data.posts) ? data.posts : [];
+
+      if (posts.length === 0) {
+        listEl.innerHTML = `
+          <article class="stormfire-devlog-card">
+            <div class="stormfire-devlog-meta">Keine Einträge</div>
+            <h3>Noch keine Devlogs vorhanden</h3>
+            <p>Es wurden aktuell keine News-Einträge gefunden.</p>
+          </article>
+        `;
+        return;
+      }
+
+      listEl.innerHTML = posts.map((post) => {
+        const type = escapeHtml(post.type || "Devlog");
+        const title = escapeHtml(post.title || "Ohne Titel");
+        const date = escapeHtml(formatDate(post.date));
+        const author = escapeHtml(post.author || "Stormfire Team");
+        const body = escapeHtml(post.body || "").replace(/\n/g, "<br><br>");
+
+        return `
+          <article class="stormfire-devlog-card">
+            <div class="stormfire-devlog-meta">${date} • ${type} • ${author}</div>
+            <h3>${title}</h3>
+            ${renderTags(post.tags)}
+            <p>${body}</p>
+          </article>
+        `;
+      }).join("");
     } catch (error) {
-      console.error("Fehler beim Laden der News:", error);
-
-      if (countEl) countEl.textContent = "0";
-      if (updatedEl) updatedEl.textContent = "Fehler";
-
+      console.error("News Fehler:", error);
       listEl.innerHTML = `
-        <div class="news-item">
-          <div class="news-meta">Fehler</div>
+        <article class="stormfire-devlog-card">
+          <div class="stormfire-devlog-meta">Fehler</div>
           <h3>News konnten nicht geladen werden</h3>
-          <p>Die Datei <strong>data/news.json</strong> konnte nicht geladen oder gelesen werden.</p>
-        </div>
+          <p>Beim Laden der Devlogs ist ein Fehler aufgetreten.</p>
+        </article>
       `;
     }
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    setText("login-status", "In Entwicklung");
-    setText("realm-status", "In Entwicklung");
-    setText("player-count", "0");
-    updateVisitCounter();
-    loadNews();
-  });
+  document.addEventListener("DOMContentLoaded", loadAllNews);
 })();
