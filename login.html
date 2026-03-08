@@ -3,50 +3,101 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>STORMFIRE – Login</title>
-  <meta name="description" content="Loginbereich von STORMFIRE." />
+  <title>Login | STORMFIRE</title>
+  <meta name="description" content="Login-Bereich und zukünftiger Zugang für STORMFIRE." />
+
   <link rel="stylesheet" href="./assets/css/style.css" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
   <div class="layout">
+
     <aside class="sidebar">
       <a class="brand" href="./index.html" aria-label="STORMFIRE Startseite">
         <div class="brand-logo">
-          <img src="assets/images/logo.png" alt="STORMFIRE Logo" onerror="this.style.display='none'; this.parentElement.classList.add('brand-logo-fallback'); this.parentElement.textContent='SF';" />
+          <img
+            src="assets/images/logo.png"
+            alt="STORMFIRE Logo"
+            onerror="this.style.display='none'; this.parentElement.classList.add('brand-logo-fallback'); this.parentElement.textContent='SF';"
+          />
         </div>
         <div class="brand-text">
           <strong>STORMFIRE</strong>
           <span>MMORPG Portal</span>
         </div>
       </a>
+
       <nav class="sidebar-nav">
-        <a href="./index.html" class="">Home</a>
-        <a href="./news.html" class="">News</a>
-        <a href="./status.html" class="">Realm Status</a>
-        <a href="./leaderboard.html" class="">Leaderboard</a>
-        <a href="./roadmap.html" class="">Roadmap</a>
-        <a href="./gallery.html" class="">Galerie</a>
-        <a href="./geschichte.html" class="">Geschichte</a>
-        <a href="./team.html" class="">Team</a>
-        <a href="./discord.html" class="">Discord</a>
-        <a href="./download.html" class="">Launcher</a>
-        <a href="./impressum.html" class="">Impressum</a>
+        <a href="./index.html">Home</a>
+        <a href="./news.html">News</a>
+        <a href="./status.html">Realm Status</a>
+        <a href="./leaderboard.html">Leaderboard</a>
+        <a href="./roadmap.html">Roadmap</a>
+        <a href="./gallery.html">Galerie</a>
+        <a href="./geschichte.html">Geschichte</a>
+        <a href="./team.html">Team</a>
+        <a href="./discord.html">Discord</a>
+        <a href="./download.html">Launcher</a>
+        <a href="./impressum.html">Impressum</a>
       </nav>
     </aside>
 
     <main class="content">
       <div class="content-inner">
-<section class="section"><div class="section-head"><h1>Login</h1><p>Dieser Bereich kann später für Web-Login, Account-Verknüpfung oder Wartungshinweise genutzt werden.</p></div></section>
 
-        <footer class="footer">
-          <div>© STORMFIRE • Projekt in Entwicklung</div>
-          <div class="footer-links">
-            <a href="./impressum.html">Impressum</a>
-            <a href="./news.html">News</a>
-            <a href="./download.html">Launcher</a>
+        <section class="hero-section">
+          <div class="kicker">LOGIN • ZUGANG • SPIELSTART</div>
+          <h1 class="hero-title">Stormfire Login</h1>
+          <p class="hero-text">
+            Der Login-Flow ist bereits Teil des Spielclients. Diese Seite dient aktuell als
+            Website-Bereich für spätere Informationen und Zugänge rund um den Login.
+          </p>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <h2>Aktueller Stand</h2>
+            <p>Was bereits funktioniert.</p>
           </div>
-        </footer>
+
+          <div class="news-list">
+            <article class="news-item">
+              <h3>Account Speicherung</h3>
+              <p>
+                Das Account-System ist an die Datenbank angebunden und speichert Accounts im Projektfluss.
+              </p>
+            </article>
+
+            <article class="news-item">
+              <h3>Charakterfluss</h3>
+              <p>
+                Login, Realm-Auswahl, Charaktererstellung und Weltladen greifen inzwischen ineinander.
+              </p>
+            </article>
+
+            <article class="news-item">
+              <h3>Nächster Schritt</h3>
+              <p>
+                Der korrekt ausgewählte Charakter soll beim Betreten der Welt sauber gespawnt werden.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <h2>Hinweis</h2>
+            <p>Website und Spielclient sind nicht dasselbe.</p>
+          </div>
+
+          <article class="news-item">
+            <p>
+              Der eigentliche Login findet im Stormfire Client statt. Diese Website begleitet
+              die Entwicklung und wird später ergänzende Informationen und Zugänge bieten.
+            </p>
+          </article>
+        </section>
+
       </div>
     </main>
 
@@ -58,31 +109,60 @@
       </div>
 
       <div class="status-overview">
-        <div class="status-big-row"><span>Login / Datenbank</span><strong id="login-status" class="status-dev">Lädt…</strong></div>
-        <div class="status-big-row"><span>Realm Server</span><strong id="realm-status" class="status-dev">Lädt…</strong></div>
-        <div class="status-big-row"><span>Spieler gesamt</span><strong id="player-count">0</strong></div>
-        <div class="status-big-row"><span>Drachenbund</span><strong id="drachenbund-count">0</strong></div>
-        <div class="status-big-row"><span>Wolfsmark</span><strong id="wolfsmark-count">0</strong></div>
-        <div class="status-big-row"><span>Spieler online</span><strong id="players-online-live">0</strong></div>
-        <div class="status-big-row"><span>Besuche Gerät</span><strong id="visit-count">0</strong></div>
+        <div class="status-big-row">
+          <span>Login / Datenbank</span>
+          <strong id="login-status" class="status-dev">Lädt…</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Realm Server</span>
+          <strong id="realm-status" class="status-dev">Lädt…</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Spieler gesamt</span>
+          <strong id="player-count">0</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Drachenbund</span>
+          <strong id="drachenbund-count">0</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Wolfsmark</span>
+          <strong id="wolfsmark-count">0</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Spieler online</span>
+          <strong id="players-online-live">0</strong>
+        </div>
       </div>
 
       <div class="realm-summary-box">
         <div class="realm-summary-title">Realm Übersicht</div>
         <div class="realm-summary-stats">
-          <div class="realm-summary-chip realm-summary-online"><span class="dot dot-green"></span><span id="realms-online">0</span><span>online</span></div>
-          <div class="realm-summary-chip realm-summary-offline"><span class="dot dot-red"></span><span id="realms-offline">0</span><span>offline</span></div>
+          <div class="realm-summary-chip realm-summary-online">
+            <span class="dot dot-green"></span>
+            <span id="realms-online">0</span>
+            <span>online</span>
+          </div>
+          <div class="realm-summary-chip realm-summary-offline">
+            <span class="dot dot-red"></span>
+            <span id="realms-offline">0</span>
+            <span>offline</span>
+          </div>
         </div>
       </div>
 
       <div class="realm-list-box">
         <div class="realm-list-title">Alle Realms</div>
-        <div id="realm-list" class="realm-list"><div class="realm-list-empty">Realm-Daten werden geladen…</div></div>
+        <div id="realm-list" class="realm-list">
+          <div class="realm-list-empty">Realm-Daten werden geladen…</div>
+        </div>
       </div>
 
       <div class="status-note" id="status-note">Verbindung wird aufgebaut…</div>
     </aside>
+
   </div>
+
   <script src="./assets/js/status.js"></script>
 </body>
 </html>
