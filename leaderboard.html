@@ -3,63 +3,105 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>STORMFIRE – Leaderboard</title>
-  <meta name="description" content="Top Ranglisten für PvP, Damage, Gold und Playtime." />
+  <title>Leaderboard | STORMFIRE</title>
+  <meta name="description" content="Übersicht der späteren Ranglisten und Fraktionsstände in STORMFIRE." />
+
   <link rel="stylesheet" href="./assets/css/style.css" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
   <div class="layout">
+
     <aside class="sidebar">
       <a class="brand" href="./index.html" aria-label="STORMFIRE Startseite">
         <div class="brand-logo">
-          <img src="assets/images/logo.png" alt="STORMFIRE Logo" onerror="this.style.display='none'; this.parentElement.classList.add('brand-logo-fallback'); this.parentElement.textContent='SF';" />
+          <img
+            src="assets/images/logo.png"
+            alt="STORMFIRE Logo"
+            onerror="this.style.display='none'; this.parentElement.classList.add('brand-logo-fallback'); this.parentElement.textContent='SF';"
+          />
         </div>
+
         <div class="brand-text">
           <strong>STORMFIRE</strong>
           <span>MMORPG Portal</span>
         </div>
       </a>
+
       <nav class="sidebar-nav">
-        <a href="./index.html" class="">Home</a>
-        <a href="./news.html" class="">News</a>
-        <a href="./status.html" class="">Realm Status</a>
+        <a href="./index.html">Home</a>
+        <a href="./news.html">News</a>
+        <a href="./status.html">Realm Status</a>
         <a href="./leaderboard.html" class="active">Leaderboard</a>
-        <a href="./roadmap.html" class="">Roadmap</a>
-        <a href="./gallery.html" class="">Galerie</a>
-        <a href="./geschichte.html" class="">Geschichte</a>
-        <a href="./team.html" class="">Team</a>
-        <a href="./discord.html" class="">Discord</a>
-        <a href="./download.html" class="">Launcher</a>
-        <a href="./impressum.html" class="">Impressum</a>
+        <a href="./roadmap.html">Roadmap</a>
+        <a href="./gallery.html">Galerie</a>
+        <a href="./geschichte.html">Geschichte</a>
+        <a href="./team.html">Team</a>
+        <a href="./discord.html">Discord</a>
+        <a href="./download.html">Launcher</a>
+        <a href="./impressum.html">Impressum</a>
       </nav>
     </aside>
 
     <main class="content">
       <div class="content-inner">
 
+        <section class="hero-section">
+          <div class="kicker">RANGLISTEN • FRAKTIONEN • FORTSCHRITT</div>
+          <h1 class="hero-title">Leaderboard</h1>
+          <p class="hero-text">
+            Das Ranglistensystem wird später Charaktere, Fraktionen und verschiedene
+            Spielbereiche sichtbar machen. Aktuell dient diese Seite als Vorschau auf
+            die geplante Struktur.
+          </p>
+        </section>
+
         <section class="section">
           <div class="section-head">
-            <h1>Top 5 Ranglisten</h1>
-            <p>PvP, Damage, Gold und Playtime – direkt aus <code>data/leaderboard.json</code>.</p>
+            <h2>Geplante Ranglisten</h2>
+            <p>Diese Bereiche sind für spätere Leaderboards vorgesehen.</p>
           </div>
+
           <div class="feature-grid">
-            <article class="feature-item"><h3>Top 5 PvP</h3><p>Rating-Rangliste für die aktuell stärksten PvP-Charaktere.</p></article>
-            <article class="feature-item"><h3>Most Damage</h3><p>Gesamtschaden im Überblick für die stärksten Damage-Dealer.</p></article>
-            <article class="feature-item"><h3>Most Gold</h3><p>Wer besitzt aktuell das meiste Gold im Projektstand.</p></article>
-            <article class="feature-item"><h3>Most Playtime</h3><p>Spielzeit-Rangliste für die aktivsten Charaktere.</p></article>
+            <article class="feature-item">
+              <h3>Top Charaktere</h3>
+              <p>
+                Übersicht der stärksten und weitesten entwickelten Charaktere.
+              </p>
+            </article>
+
+            <article class="feature-item">
+              <h3>Fraktionsstand</h3>
+              <p>
+                Vergleich von Drachenbund und Wolfsmark über alle Realms hinweg.
+              </p>
+            </article>
+
+            <article class="feature-item">
+              <h3>PvP Ranglisten</h3>
+              <p>
+                Arena, Wertungen und spätere kompetitive Statistiken.
+              </p>
+            </article>
+
+            <article class="feature-item">
+              <h3>Realm Aktivität</h3>
+              <p>
+                Aktivität einzelner Realms und deren momentane Präsenz.
+              </p>
+            </article>
           </div>
         </section>
 
-
-        <footer class="footer">
-          <div>© STORMFIRE • Projekt in Entwicklung</div>
-          <div class="footer-links">
-            <a href="./impressum.html">Impressum</a>
-            <a href="./news.html">News</a>
-            <a href="./download.html">Launcher</a>
+        <section class="section">
+          <div class="section-head">
+            <h2>Fraktionsbalance</h2>
+            <p>Gesamtverteilung aller Charaktere.</p>
           </div>
-        </footer>
+
+          <div id="faction-balance"></div>
+        </section>
+
       </div>
     </main>
 
@@ -71,31 +113,60 @@
       </div>
 
       <div class="status-overview">
-        <div class="status-big-row"><span>Login / Datenbank</span><strong id="login-status" class="status-dev">Lädt…</strong></div>
-        <div class="status-big-row"><span>Realm Server</span><strong id="realm-status" class="status-dev">Lädt…</strong></div>
-        <div class="status-big-row"><span>Spieler gesamt</span><strong id="player-count">0</strong></div>
-        <div class="status-big-row"><span>Drachenbund</span><strong id="drachenbund-count">0</strong></div>
-        <div class="status-big-row"><span>Wolfsmark</span><strong id="wolfsmark-count">0</strong></div>
-        <div class="status-big-row"><span>Spieler online</span><strong id="players-online-live">0</strong></div>
-        <div class="status-big-row"><span>Besuche Gerät</span><strong id="visit-count">0</strong></div>
+        <div class="status-big-row">
+          <span>Login / Datenbank</span>
+          <strong id="login-status" class="status-dev">Lädt…</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Realm Server</span>
+          <strong id="realm-status" class="status-dev">Lädt…</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Spieler gesamt</span>
+          <strong id="player-count">0</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Drachenbund</span>
+          <strong id="drachenbund-count">0</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Wolfsmark</span>
+          <strong id="wolfsmark-count">0</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Spieler online</span>
+          <strong id="players-online-live">0</strong>
+        </div>
       </div>
 
       <div class="realm-summary-box">
         <div class="realm-summary-title">Realm Übersicht</div>
         <div class="realm-summary-stats">
-          <div class="realm-summary-chip realm-summary-online"><span class="dot dot-green"></span><span id="realms-online">0</span><span>online</span></div>
-          <div class="realm-summary-chip realm-summary-offline"><span class="dot dot-red"></span><span id="realms-offline">0</span><span>offline</span></div>
+          <div class="realm-summary-chip realm-summary-online">
+            <span class="dot dot-green"></span>
+            <span id="realms-online">0</span>
+            <span>online</span>
+          </div>
+          <div class="realm-summary-chip realm-summary-offline">
+            <span class="dot dot-red"></span>
+            <span id="realms-offline">0</span>
+            <span>offline</span>
+          </div>
         </div>
       </div>
 
       <div class="realm-list-box">
         <div class="realm-list-title">Alle Realms</div>
-        <div id="realm-list" class="realm-list"><div class="realm-list-empty">Realm-Daten werden geladen…</div></div>
+        <div id="realm-list" class="realm-list">
+          <div class="realm-list-empty">Realm-Daten werden geladen…</div>
+        </div>
       </div>
 
       <div class="status-note" id="status-note">Verbindung wird aufgebaut…</div>
     </aside>
+
   </div>
+
   <script src="./assets/js/status.js"></script>
 </body>
 </html>
