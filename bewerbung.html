@@ -1,83 +1,88 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>STORMFIRE – Bewerbung</title>
-<link rel="stylesheet" href="/assets/css/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STORMFIRE – Bewerbung</title>
+  <meta name="description" content="Bewerbungsbereich für STORMFIRE." />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
-<canvas id="astral"></canvas>
+  <div class="layout">
+    <aside class="sidebar">
+      <a class="brand" href="./index.html" aria-label="STORMFIRE Startseite">
+        <div class="brand-logo">
+          <img src="assets/images/logo.png" alt="STORMFIRE Logo" onerror="this.style.display='none'; this.parentElement.classList.add('brand-logo-fallback'); this.parentElement.textContent='SF';" />
+        </div>
+        <div class="brand-text">
+          <strong>STORMFIRE</strong>
+          <span>MMORPG Portal</span>
+        </div>
+      </a>
+      <nav class="sidebar-nav">
+        <a href="./index.html" class="">Home</a>
+        <a href="./news.html" class="">News</a>
+        <a href="./status.html" class="">Realm Status</a>
+        <a href="./leaderboard.html" class="">Leaderboard</a>
+        <a href="./roadmap.html" class="">Roadmap</a>
+        <a href="./gallery.html" class="">Galerie</a>
+        <a href="./geschichte.html" class="">Geschichte</a>
+        <a href="./team.html" class="">Team</a>
+        <a href="./discord.html" class="">Discord</a>
+        <a href="./download.html" class="">Launcher</a>
+        <a href="./impressum.html" class="">Impressum</a>
+      </nav>
+    </aside>
 
-<div class="layout">
+    <main class="content">
+      <div class="content-inner">
+<section class="section"><div class="section-head"><h1>Bewerbung</h1><p>Hier können später Bewerbungen für Team, Helfer oder Tester eingebunden werden.</p></div></section>
 
-<aside class="sidebar">
-  <div class="brandBox">
-    <img src="/assets/img/logo.png" />
-    <div>
-      <div class="t1">STORMFIRE</div>
-      <div class="t2">Bewerbung</div>
-    </div>
+        <footer class="footer">
+          <div>© STORMFIRE • Projekt in Entwicklung</div>
+          <div class="footer-links">
+            <a href="./impressum.html">Impressum</a>
+            <a href="./news.html">News</a>
+            <a href="./download.html">Launcher</a>
+          </div>
+        </footer>
+      </div>
+    </main>
+
+    <aside class="status-panel">
+      <div class="status-panel-head">
+        <div class="status-kicker">LIVE STATUS</div>
+        <h2>Realm Server</h2>
+        <p>Automatisch aus Supabase geladen.</p>
+      </div>
+
+      <div class="status-overview">
+        <div class="status-big-row"><span>Login / Datenbank</span><strong id="login-status" class="status-dev">Lädt…</strong></div>
+        <div class="status-big-row"><span>Realm Server</span><strong id="realm-status" class="status-dev">Lädt…</strong></div>
+        <div class="status-big-row"><span>Spieler gesamt</span><strong id="player-count">0</strong></div>
+        <div class="status-big-row"><span>Drachenbund</span><strong id="drachenbund-count">0</strong></div>
+        <div class="status-big-row"><span>Wolfsmark</span><strong id="wolfsmark-count">0</strong></div>
+        <div class="status-big-row"><span>Spieler online</span><strong id="players-online-live">0</strong></div>
+        <div class="status-big-row"><span>Besuche Gerät</span><strong id="visit-count">0</strong></div>
+      </div>
+
+      <div class="realm-summary-box">
+        <div class="realm-summary-title">Realm Übersicht</div>
+        <div class="realm-summary-stats">
+          <div class="realm-summary-chip realm-summary-online"><span class="dot dot-green"></span><span id="realms-online">0</span><span>online</span></div>
+          <div class="realm-summary-chip realm-summary-offline"><span class="dot dot-red"></span><span id="realms-offline">0</span><span>offline</span></div>
+        </div>
+      </div>
+
+      <div class="realm-list-box">
+        <div class="realm-list-title">Alle Realms</div>
+        <div id="realm-list" class="realm-list"><div class="realm-list-empty">Realm-Daten werden geladen…</div></div>
+      </div>
+
+      <div class="status-note" id="status-note">Verbindung wird aufgebaut…</div>
+    </aside>
   </div>
-
-  <nav class="sideNav">
-    <a class="navbtn" href="/index.html">Home</a>
-    <a class="navbtn" href="/team.html">Team</a>
-    <a class="navbtn active" href="/bewerbung.html">Bewerben</a>
-    <a class="navbtn" href="/discord.html">Discord</a>
-  </nav>
-</aside>
-
-<main class="content">
-
-<div class="hero">
-  <h1>Beta / Admin Bewerbung</h1>
-  <p>Werde Teil des STORMFIRE Teams.</p>
-</div>
-
-<section class="grid">
-
-<article class="card" style="grid-column: span 12;">
-  <div class="hd">
-    <h2>Was wir suchen</h2>
-  </div>
-  <div class="small" style="white-space:pre-wrap;">
-• Aktive Community-Mitglieder  
-• Reife Kommunikation  
-• Interesse an Balance & Feedback  
-• Zuverlässigkeit  
-  </div>
-</article>
-
-<article class="card" style="grid-column: span 12; text-align:center;">
-  <div class="hd">
-    <h2>Bewerben</h2>
-  </div>
-
-  <div class="small" style="margin-bottom:16px;">
-    Aktuell über Discord. Später direkt im Account-System.
-  </div>
-
-  <a href="https://discord.gg/wvpdyZ6wW"
-     target="_blank"
-     class="navbtn"
-     style="padding:14px 22px;">
-     Bewerbung über Discord starten
-  </a>
-
-</article>
-
-</section>
-
-<footer>
-© <span id="year"></span> STORMFIRE
-</footer>
-
-</main>
-</div>
-
-<script>
-document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+  <script src="./assets/js/status.js"></script>
 </body>
 </html>
