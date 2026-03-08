@@ -4,34 +4,45 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>STORMFIRE Portal</title>
-  <meta name="description" content="STORMFIRE – Indie MMORPG in Entwicklung. News, Status, Roadmap und Projektfortschritt." />
+  <meta
+    name="description"
+    content="STORMFIRE – Indie MMORPG in Entwicklung. News, Status, Roadmap und Projektfortschritt."
+  />
+
   <link rel="stylesheet" href="./assets/css/style.css" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
   <div class="layout">
+
     <aside class="sidebar">
       <a class="brand" href="./index.html" aria-label="STORMFIRE Startseite">
         <div class="brand-logo">
-          <img src="assets/images/logo.png" alt="STORMFIRE Logo" onerror="this.style.display='none'; this.parentElement.classList.add('brand-logo-fallback'); this.parentElement.textContent='SF';" />
+          <img
+            src="assets/images/logo.png"
+            alt="STORMFIRE Logo"
+            onerror="this.style.display='none'; this.parentElement.classList.add('brand-logo-fallback'); this.parentElement.textContent='SF';"
+          />
         </div>
+
         <div class="brand-text">
           <strong>STORMFIRE</strong>
           <span>MMORPG Portal</span>
         </div>
       </a>
+
       <nav class="sidebar-nav">
         <a href="./index.html" class="active">Home</a>
-        <a href="./news.html" class="">News</a>
-        <a href="./status.html" class="">Realm Status</a>
-        <a href="./leaderboard.html" class="">Leaderboard</a>
-        <a href="./roadmap.html" class="">Roadmap</a>
-        <a href="./gallery.html" class="">Galerie</a>
-        <a href="./geschichte.html" class="">Geschichte</a>
-        <a href="./team.html" class="">Team</a>
-        <a href="./discord.html" class="">Discord</a>
-        <a href="./download.html" class="">Launcher</a>
-        <a href="./impressum.html" class="">Impressum</a>
+        <a href="./news.html">News</a>
+        <a href="./status.html">Realm Status</a>
+        <a href="./leaderboard.html">Leaderboard</a>
+        <a href="./roadmap.html">Roadmap</a>
+        <a href="./gallery.html">Galerie</a>
+        <a href="./geschichte.html">Geschichte</a>
+        <a href="./team.html">Team</a>
+        <a href="./discord.html">Discord</a>
+        <a href="./download.html">Launcher</a>
+        <a href="./impressum.html">Impressum</a>
       </nav>
     </aside>
 
@@ -43,47 +54,89 @@
         </div>
 
         <section class="hero-section">
-          <div class="kicker">MMORPG IN ENTWICKLUNG • UNITY CLIENT</div>
+          <div class="kicker">MMORPG IN ENTWICKLUNG • UNITY • MIRROR</div>
           <h1 class="hero-title">Willkommen bei STORMFIRE</h1>
           <p class="hero-text">
-            STORMFIRE ist ein klassisch inspiriertes MMORPG-Projekt mit eigener Welt,
-            Fraktionen, offenen Regionen, Dungeons, Berufen und langfristiger Progression.
+            STORMFIRE ist ein klassisch inspiriertes Indie-MMORPG mit eigener Welt,
+            Fraktionen, offenen Regionen, Dungeons, Fortschrittssystemen und langfristiger Entwicklung.
+            Schritt für Schritt wächst aus Konzept, Technik und Weltaufbau eine echte Online-Welt.
           </p>
         </section>
 
         <section class="section">
           <div class="section-head">
-            <h2>Aktuelle Entwicklung</h2>
-            <p>Der technische Unterbau steht aktuell vor den späteren Inhalten.</p>
+            <h2>Aktueller Stand</h2>
+            <p>Die wichtigsten Fortschritte des Projekts auf einen Blick.</p>
           </div>
 
           <div class="feature-grid">
             <article class="feature-item">
-              <h3>Login &amp; Charakter</h3>
-              <p>Login, Register, Realm-Auswahl sowie Character Create und Character Select funktionieren bereits im Client.</p>
+              <h3>Login & Datenbank</h3>
+              <p>
+                Das Account-System ist an die Datenbank angebunden und speichert Accounts bereits sauber.
+              </p>
             </article>
+
             <article class="feature-item">
-              <h3>Datenbank</h3>
-              <p>Charaktere werden aktuell von lokaler Speicherung auf die Online-Datenbank umgestellt.</p>
+              <h3>Charakterfluss</h3>
+              <p>
+                Charaktere können erstellt und gespeichert werden. Der Ablauf bis in die Welt ist bereits verbunden.
+              </p>
             </article>
+
             <article class="feature-item">
-              <h3>Networking</h3>
-              <p>Danach folgt der Mirror-Spawn in der World auf der Startinsel als nächster großer Schritt.</p>
+              <h3>Welt lädt</h3>
+              <p>
+                Der technische Übergang von Login und Auswahl bis in die Spielwelt funktioniert bereits.
+              </p>
+            </article>
+
+            <article class="feature-item">
+              <h3>Nächster Schritt</h3>
+              <p>
+                Als Nächstes wird der korrekt ausgewählte Charakter in der Welt gespawnt,
+                bevor der vollständige Multiplayer-Spawn über Mirror folgt.
+              </p>
             </article>
           </div>
         </section>
 
         <section class="section">
           <div class="section-head">
-            <h2>Neueste News</h2>
-            <p>Die wichtigsten aktuellen Entwicklungen direkt auf der Startseite.</p>
+            <h2>Neueste Devlogs</h2>
+            <p>Die drei aktuellsten Entwicklungslogs aus dem Projekt.</p>
           </div>
-          <div id="news-list" class="news-list">
-            <article class="news-item">
-              <div class="news-meta">06.03.2026 • Devlog</div>
-              <h3>Weltaufbau, Assets und neue Grundlagen</h3>
-              <p>Die ersten Systeme, Weltbausteine und die Grundstruktur des Projekts wurden weiter ausgebaut.</p>
+
+          <div id="news-list" class="stormfire-news-grid">
+            <article class="stormfire-devlog-card">
+              <div class="stormfire-devlog-meta">Lädt…</div>
+              <h3>Devlogs werden geladen</h3>
+              <p>Bitte einen Moment warten.</p>
             </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <h2>Schnellzugriffe</h2>
+            <p>Die wichtigsten Projektbereiche direkt erreichbar.</p>
+          </div>
+
+          <div class="quick-links">
+            <a class="quick-link" href="./news.html">
+              <strong>Alle News</strong>
+              <span>Alle Devlogs und Fortschritte im Überblick.</span>
+            </a>
+
+            <a class="quick-link" href="./roadmap.html">
+              <strong>Roadmap</strong>
+              <span>Die Entwicklungsrichtung und kommenden Meilensteine.</span>
+            </a>
+
+            <a class="quick-link" href="./geschichte.html">
+              <strong>Lore</strong>
+              <span>Die Welt Jueria, ihre Fraktionen und der Ursprung von Stormfire.</span>
+            </a>
           </div>
         </section>
 
@@ -92,9 +145,9 @@
             <h2>Fraktionsbalance</h2>
             <p>Gesamtauswertung aller Charaktere über alle Realms.</p>
           </div>
+
           <div id="faction-balance"></div>
         </section>
-
 
         <footer class="footer">
           <div>© STORMFIRE • Projekt in Entwicklung</div>
@@ -104,6 +157,7 @@
             <a href="./download.html">Launcher</a>
           </div>
         </footer>
+
       </div>
     </main>
 
@@ -115,31 +169,90 @@
       </div>
 
       <div class="status-overview">
-        <div class="status-big-row"><span>Login / Datenbank</span><strong id="login-status" class="status-dev">Lädt…</strong></div>
-        <div class="status-big-row"><span>Realm Server</span><strong id="realm-status" class="status-dev">Lädt…</strong></div>
-        <div class="status-big-row"><span>Spieler gesamt</span><strong id="player-count">0</strong></div>
-        <div class="status-big-row"><span>Drachenbund</span><strong id="drachenbund-count">0</strong></div>
-        <div class="status-big-row"><span>Wolfsmark</span><strong id="wolfsmark-count">0</strong></div>
-        <div class="status-big-row"><span>Spieler online</span><strong id="players-online-live">0</strong></div>
-        <div class="status-big-row"><span>Besuche Gerät</span><strong id="visit-count">0</strong></div>
+        <div class="status-big-row">
+          <span>Login / Datenbank</span>
+          <strong id="login-status" class="status-dev">Lädt…</strong>
+        </div>
+
+        <div class="status-big-row">
+          <span>Realm Server</span>
+          <strong id="realm-status" class="status-dev">Lädt…</strong>
+        </div>
+
+        <div class="status-big-row">
+          <span>Spieler gesamt</span>
+          <strong id="player-count">0</strong>
+        </div>
+
+        <div class="status-big-row">
+          <span>Drachenbund</span>
+          <strong id="drachenbund-count">0</strong>
+        </div>
+
+        <div class="status-big-row">
+          <span>Wolfsmark</span>
+          <strong id="wolfsmark-count">0</strong>
+        </div>
+
+        <div class="status-big-row">
+          <span>Spieler online</span>
+          <strong id="players-online-live">0</strong>
+        </div>
+
+        <div class="status-big-row">
+          <span>Besuche Gerät</span>
+          <strong id="visit-count">0</strong>
+        </div>
       </div>
 
       <div class="realm-summary-box">
         <div class="realm-summary-title">Realm Übersicht</div>
         <div class="realm-summary-stats">
-          <div class="realm-summary-chip realm-summary-online"><span class="dot dot-green"></span><span id="realms-online">0</span><span>online</span></div>
-          <div class="realm-summary-chip realm-summary-offline"><span class="dot dot-red"></span><span id="realms-offline">0</span><span>offline</span></div>
+          <div class="realm-summary-chip realm-summary-online">
+            <span class="dot dot-green"></span>
+            <span id="realms-online">0</span>
+            <span>online</span>
+          </div>
+
+          <div class="realm-summary-chip realm-summary-offline">
+            <span class="dot dot-red"></span>
+            <span id="realms-offline">0</span>
+            <span>offline</span>
+          </div>
         </div>
       </div>
 
       <div class="realm-list-box">
         <div class="realm-list-title">Alle Realms</div>
-        <div id="realm-list" class="realm-list"><div class="realm-list-empty">Realm-Daten werden geladen…</div></div>
+        <div id="realm-list" class="realm-list">
+          <div class="realm-list-empty">Realm-Daten werden geladen…</div>
+        </div>
       </div>
 
       <div class="status-note" id="status-note">Verbindung wird aufgebaut…</div>
     </aside>
+
   </div>
+
+  <script src="./assets/js/news.js"></script>
   <script src="./assets/js/status.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const listEl = document.getElementById("news-list");
+      if (!listEl) return;
+
+      const trimToLatestThree = () => {
+        const cards = listEl.querySelectorAll(".stormfire-devlog-card");
+        if (cards.length > 3) {
+          cards.forEach((card, index) => {
+            if (index >= 3) card.remove();
+          });
+        }
+      };
+
+      setTimeout(trimToLatestThree, 800);
+      setTimeout(trimToLatestThree, 1600);
+    });
+  </script>
 </body>
 </html>
