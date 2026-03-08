@@ -31,12 +31,7 @@
     }
   }
 
-  async function fetchRealmData() {
-    const url =
-      `${SUPABASE_URL}/rest/v1/realm_live_status` +
-      `?select=realm_key,realm_name,status,players_online,updated_at` +
-      `&realm_key=eq.ewiger-bund`;
-
+  async function fetchJson(url) {
     const res = await fetch(url, {
       headers: {
         apikey: SUPABASE_ANON_KEY,
@@ -48,46 +43,137 @@
       throw new Error(`Supabase HTTP ${res.status}`);
     }
 
-    const rows = await res.json();
+    return await res.json();
+  }
+
+  async function fetchMainRealm() {
+    const url =
+      `${SUPABASE_URL}/rest/v1/realm_live_status` +
+      `?select=realm_key,realm_name,status,players_online,updated_at` +
+      `&realm_key=eq.ewiger-bund`;
+
+    const rows = await fetchJson(url);
     return rows?.[0] || null;
   }
 
-  try {
-    const data = await fetchRealmData();
+  async function fetchAllRealms() {
+    const url =
+      `${SUPABASE_URL}/rest/v1/realm_live_status` +
+      `?select=realm_key,realm_name,status,players_online,updated_at` +
+      `&order=realm_name.asc`;
 
-    if (!data) {
-      setBadge("offline", "KEINE DATEN");
-      $("lastUpdated").textContent = "Keine Realm-Daten gefunden.";
+    return await fetchJson(url);
+  }
+
+  function renderRealmOverview(realms) {
+    const onlineCount = realms.filter(
+      (r) => String(r.status || "").toLowerCase() === "online"
+    ).length;
+
+    const offlineCount = realms.length - onlineCount;
+
+    if ($("onlineRealms")) $("onlineRealms").textContent = formatNumber(onlineCount);
+    if ($("offlineRealms")) $("offlineRealms").textContent = formatNumber(offlineCount);
+
+    const list =
+      $("realmList") ||
+      $("allRealmsList") ||
+      $("realmsList") ||
+      $("realmOverviewList");
+
+    if (!list) return;
+
+    list.innerHTML = "";
+
+    if (!realms.length) {
+      list.innerHTML = `<div class="muted">Keine Realm-Daten gefunden.</div>`;
       return;
     }
 
-    const state = String(data.status || "offline").toLowerCase();
+    realms.forEach((realm) => {
+      const state = String(realm.status || "offline").toLowerCase();
+      const row = document.createElement("div");
+      row.className = "realm-row";
+
+      row.innerHTML = `
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06);">
+          <div style="display:flex;align-items:center;gap:10px;min-width:0;">
+            <span style="width:10px;height:10px;border-radius:50%;display:inline-block;"
+                  class="${state === "online" ? "good" : state === "maintenance" ? "warn" : "bad"}"></span>
+            <span style="font-weight:600;">${realm.realm_name || "—"}</span>
+          </div>
+          <div style="text-align:right;white-space:nowrap;">
+            <div>${formatNumber(realm.players_online)} online</div>
+            <div style="opacity:.7;font-size:12px;">${state.toUpperCase()}</div>
+          </div>
+        </div>
+      `;
+
+      list.appendChild(row);
+    });
+  }
+
+  try {
+    const [mainRealm, allRealms] = await Promise.all([
+      fetchMainRealm(),
+      fetchAllRealms()
+    ]);
+
+    if (!mainRealm) {
+      setBadge("offline", "KEINE DATEN");
+      if ($("lastUpdated")) {
+        $("lastUpdated").textContent = "Keine Realm-Daten gefunden.";
+      }
+      renderRealmOverview(allRealms || []);
+      return;
+    }
+
+    const state = String(mainRealm.status || "offline").toLowerCase();
 
     if (state === "online") setBadge("online", "ONLINE");
     else if (state === "maintenance") setBadge("maintenance", "MAINTENANCE");
     else setBadge("offline", "OFFLINE");
 
     if ($("lastUpdated")) {
-      $("lastUpdated").textContent = "Letztes Update: " + formatTime(data.updated_at);
+      $("lastUpdated").textContent =
+        "Letztes Update: " + formatTime(mainRealm.updated_at);
     }
 
     if ($("serverName")) $("serverName").textContent = "STORMFIRE Login";
-    if ($("realmName")) $("realmName").textContent = data.realm_name || "—";
+    if ($("realmName")) $("realmName").textContent = mainRealm.realm_name || "—";
     if ($("region")) $("region").textContent = "EU";
     if ($("mode")) $("mode").textContent = "Live";
-    if ($("playersOnline")) $("playersOnline").textContent = formatNumber(data.players_online);
+    if ($("playersOnline")) {
+      $("playersOnline").textContent = formatNumber(mainRealm.players_online);
+    }
     if ($("capacity")) $("capacity").textContent = "—";
 
-    // Optional: Fraktionsblöcke unverändert lassen oder später separat anbinden
     if ($("faction1")) $("faction1").textContent = "Drachenbund";
     if ($("faction2")) $("faction2").textContent = "Wolfsmark";
     if ($("faction1Sub")) $("faction1Sub").textContent = "Live-Daten separat";
     if ($("faction2Sub")) $("faction2Sub").textContent = "Live-Daten separat";
+
+    renderRealmOverview(allRealms || []);
   } catch (err) {
-    console.error(err);
+    console.error("[status.js]", err);
     setBadge("offline", "DATENFEHLER");
+
     if ($("lastUpdated")) {
-      $("lastUpdated").textContent = "Konnte Live-Daten aus Supabase nicht laden.";
+      $("lastUpdated").textContent =
+        "Konnte Live-Daten aus Supabase nicht laden.";
     }
+
+    const list =
+      $("realmList") ||
+      $("allRealmsList") ||
+      $("realmsList") ||
+      $("realmOverviewList");
+
+    if (list) {
+      list.innerHTML = `<div class="muted">Verbindung zu Supabase fehlgeschlagen.</div>`;
+    }
+
+    if ($("onlineRealms")) $("onlineRealms").textContent = "0";
+    if ($("offlineRealms")) $("offlineRealms").textContent = "0";
   }
 })();
