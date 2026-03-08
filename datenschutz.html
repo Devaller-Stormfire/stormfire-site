@@ -3,50 +3,115 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>STORMFIRE – Datenschutz</title>
-  <meta name="description" content="Datenschutzhinweise von STORMFIRE." />
+  <title>Datenschutz | STORMFIRE</title>
+  <meta name="description" content="Datenschutzhinweise für das Projektportal von STORMFIRE." />
+
   <link rel="stylesheet" href="./assets/css/style.css" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
   <div class="layout">
+
     <aside class="sidebar">
       <a class="brand" href="./index.html" aria-label="STORMFIRE Startseite">
         <div class="brand-logo">
-          <img src="assets/images/logo.png" alt="STORMFIRE Logo" onerror="this.style.display='none'; this.parentElement.classList.add('brand-logo-fallback'); this.parentElement.textContent='SF';" />
+          <img
+            src="assets/images/logo.png"
+            alt="STORMFIRE Logo"
+            onerror="this.style.display='none'; this.parentElement.classList.add('brand-logo-fallback'); this.parentElement.textContent='SF';"
+          />
         </div>
         <div class="brand-text">
           <strong>STORMFIRE</strong>
           <span>MMORPG Portal</span>
         </div>
       </a>
+
       <nav class="sidebar-nav">
-        <a href="./index.html" class="">Home</a>
-        <a href="./news.html" class="">News</a>
-        <a href="./status.html" class="">Realm Status</a>
-        <a href="./leaderboard.html" class="">Leaderboard</a>
-        <a href="./roadmap.html" class="">Roadmap</a>
-        <a href="./gallery.html" class="">Galerie</a>
-        <a href="./geschichte.html" class="">Geschichte</a>
-        <a href="./team.html" class="">Team</a>
-        <a href="./discord.html" class="">Discord</a>
-        <a href="./download.html" class="">Launcher</a>
-        <a href="./impressum.html" class="">Impressum</a>
+        <a href="./index.html">Home</a>
+        <a href="./news.html">News</a>
+        <a href="./status.html">Realm Status</a>
+        <a href="./leaderboard.html">Leaderboard</a>
+        <a href="./roadmap.html">Roadmap</a>
+        <a href="./gallery.html">Galerie</a>
+        <a href="./geschichte.html">Geschichte</a>
+        <a href="./team.html">Team</a>
+        <a href="./discord.html">Discord</a>
+        <a href="./download.html">Launcher</a>
+        <a href="./impressum.html">Impressum</a>
       </nav>
     </aside>
 
     <main class="content">
       <div class="content-inner">
-<section class="section"><div class="section-head"><h1>Datenschutz</h1><p>Hier stehen die Datenschutzhinweise der Website.</p></div><div class="news-list"><article class="news-item"><h3>Hinweis</h3><p>Ersetze diesen Bereich mit deinen vollständigen Datenschutzhinweisen.</p></article></div></section>
 
-        <footer class="footer">
-          <div>© STORMFIRE • Projekt in Entwicklung</div>
-          <div class="footer-links">
-            <a href="./impressum.html">Impressum</a>
-            <a href="./news.html">News</a>
-            <a href="./download.html">Launcher</a>
+        <section class="hero-section">
+          <div class="kicker">DATENSCHUTZ • WEBSITE • HINWEISE</div>
+          <h1 class="hero-title">Datenschutz</h1>
+          <p class="hero-text">
+            Diese Seite dient als grundlegender Datenschutzhinweis für das Stormfire Projektportal.
+            Sie ersetzt keine rechtliche Beratung, bietet aber eine erste Basisstruktur.
+          </p>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <h2>Allgemeiner Hinweis</h2>
+            <p>Umgang mit Informationen auf dieser Website.</p>
           </div>
-        </footer>
+
+          <article class="news-item">
+            <p>
+              Beim Besuch dieser Website können technisch notwendige Informationen anfallen,
+              die für die Bereitstellung und Darstellung der Seite üblich sind.
+            </p>
+          </article>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <h2>Externe Dienste</h2>
+            <p>Hinweise zu eingebundenen oder verlinkten Diensten.</p>
+          </div>
+
+          <div class="news-list">
+            <article class="news-item">
+              <h3>GitHub Pages</h3>
+              <p>
+                Die Website wird über GitHub Pages bereitgestellt. Dabei können technische Serverdaten verarbeitet werden.
+              </p>
+            </article>
+
+            <article class="news-item">
+              <h3>Supabase</h3>
+              <p>
+                Für öffentliche Statusanzeigen werden Daten aus Supabase geladen, etwa Realm-Status oder Zählerstände.
+              </p>
+            </article>
+
+            <article class="news-item">
+              <h3>Discord</h3>
+              <p>
+                Beim Wechsel auf Discord gelten zusätzlich die Datenschutz- und Nutzungsbedingungen des jeweiligen Dienstes.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <h2>Wichtiger Hinweis</h2>
+            <p>Diese Seite ist aktuell eine Projektbasis.</p>
+          </div>
+
+          <article class="news-item">
+            <p>
+              Sobald STORMFIRE weiter wächst oder öffentliche Zugänge umfangreicher werden,
+              sollte diese Seite durch eine vollständig ausgearbeitete Datenschutzerklärung ergänzt werden.
+            </p>
+          </article>
+        </section>
+
       </div>
     </main>
 
@@ -58,31 +123,60 @@
       </div>
 
       <div class="status-overview">
-        <div class="status-big-row"><span>Login / Datenbank</span><strong id="login-status" class="status-dev">Lädt…</strong></div>
-        <div class="status-big-row"><span>Realm Server</span><strong id="realm-status" class="status-dev">Lädt…</strong></div>
-        <div class="status-big-row"><span>Spieler gesamt</span><strong id="player-count">0</strong></div>
-        <div class="status-big-row"><span>Drachenbund</span><strong id="drachenbund-count">0</strong></div>
-        <div class="status-big-row"><span>Wolfsmark</span><strong id="wolfsmark-count">0</strong></div>
-        <div class="status-big-row"><span>Spieler online</span><strong id="players-online-live">0</strong></div>
-        <div class="status-big-row"><span>Besuche Gerät</span><strong id="visit-count">0</strong></div>
+        <div class="status-big-row">
+          <span>Login / Datenbank</span>
+          <strong id="login-status" class="status-dev">Lädt…</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Realm Server</span>
+          <strong id="realm-status" class="status-dev">Lädt…</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Spieler gesamt</span>
+          <strong id="player-count">0</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Drachenbund</span>
+          <strong id="drachenbund-count">0</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Wolfsmark</span>
+          <strong id="wolfsmark-count">0</strong>
+        </div>
+        <div class="status-big-row">
+          <span>Spieler online</span>
+          <strong id="players-online-live">0</strong>
+        </div>
       </div>
 
       <div class="realm-summary-box">
         <div class="realm-summary-title">Realm Übersicht</div>
         <div class="realm-summary-stats">
-          <div class="realm-summary-chip realm-summary-online"><span class="dot dot-green"></span><span id="realms-online">0</span><span>online</span></div>
-          <div class="realm-summary-chip realm-summary-offline"><span class="dot dot-red"></span><span id="realms-offline">0</span><span>offline</span></div>
+          <div class="realm-summary-chip realm-summary-online">
+            <span class="dot dot-green"></span>
+            <span id="realms-online">0</span>
+            <span>online</span>
+          </div>
+          <div class="realm-summary-chip realm-summary-offline">
+            <span class="dot dot-red"></span>
+            <span id="realms-offline">0</span>
+            <span>offline</span>
+          </div>
         </div>
       </div>
 
       <div class="realm-list-box">
         <div class="realm-list-title">Alle Realms</div>
-        <div id="realm-list" class="realm-list"><div class="realm-list-empty">Realm-Daten werden geladen…</div></div>
+        <div id="realm-list" class="realm-list">
+          <div class="realm-list-empty">Realm-Daten werden geladen…</div>
+        </div>
       </div>
 
       <div class="status-note" id="status-note">Verbindung wird aufgebaut…</div>
     </aside>
+
   </div>
+
   <script src="./assets/js/status.js"></script>
 </body>
 </html>
