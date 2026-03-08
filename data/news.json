@@ -1,75 +1,85 @@
 {
-"updated_at": "2026-03-07T22:30:00+01:00",
-"posts": [
-{
-"id": "devlog-007",
-"type": "Devlog",
-"title": "Account, Charaktere und erste Weltverbindung",
-"date": "2026-03-07",
-"ts": "2026-03-07T22:30:00+01:00",
-"author": "Stormfire Team",
-"tags": ["Backend", "Charaktere", "Welt"],
-"body": "Ein weiterer wichtiger Meilenstein für STORMFIRE ist erreicht.\n\nDas Account-System funktioniert nun vollständig mit der Datenbank. Neue Accounts können erstellt und gespeichert werden, und auch das Charakter-System hat einen großen Fortschritt gemacht: Charaktere können erstellt und korrekt gespeichert werden.\n\nZusätzlich lädt nun bereits die Spielwelt, sodass der grundlegende Ablauf funktioniert:\n\nLogin → Realm auswählen → Charakter erstellen → Welt laden\n\nDer nächste Schritt in der Entwicklung ist nun, dass beim Betreten der Welt der tatsächlich ausgewählte Charakter korrekt gespawnt wird.\n\nSobald das funktioniert, geht es weiter mit dem vollständigen Multiplayer-Spawn über Mirror und den ersten echten Spielerinteraktionen in der Welt."
-},
-{
-"id": "devlog-006",
-"type": "Devlog",
-"title": "Weltaufbau, Assets und neue Grundlagen",
-"date": "2026-03-06",
-"ts": "2026-03-06T21:30:00+01:00",
-"author": "Stormfire Team",
-"tags": ["Welt", "Assets", "Entwicklung"],
-"body": "Aktuell bauen wir die visuelle und strukturelle Basis von STORMFIRE weiter aus.\n\nDazu gehören neue Charaktere, Natur-Assets, Gebäude, Props, Gegner und erste Reiseideen wie die Astralbahn.\n\nZiel ist es, Schritt für Schritt eine zusammenhängende Weltbasis zu schaffen."
-},
-{
-"id": "devlog-005",
-"type": "Systemupdate",
-"title": "Fokus auf Datenbank und Networking",
-"date": "2026-03-05",
-"ts": "2026-03-05T20:00:00+01:00",
-"author": "Stormfire Team",
-"tags": ["Backend", "Datenbank", "Multiplayer"],
-"body": "Der aktuelle technische Schwerpunkt liegt auf der Integration der Datenbank und der Multiplayer-Grundlagen.\n\nAccountdaten, Charakterfluss und die spätere Realm-Struktur sollen zuerst stabil stehen, bevor weitere große Systeme folgen."
-},
-{
-"id": "devlog-004",
-"type": "Charaktersystem",
-"title": "Charaktererstellung weiter ausgebaut",
-"date": "2026-03-04",
-"ts": "2026-03-04T19:15:00+01:00",
-"author": "Stormfire Team",
-"tags": ["Charaktere", "Fraktionen", "UI"],
-"body": "Die Charaktererstellung wurde weiter verfeinert.\n\nFraktionen, Rassen, Vorschauen und die grundsätzliche UI-Richtung sind inzwischen deutlich klarer.\n\nDas Ziel bleibt ein klassisch inspiriertes MMORPG-Gefühl mit eigener Stormfire-Identität."
-},
-{
-"id": "devlog-003",
-"type": "Website",
-"title": "Website und Projektportal werden erweitert",
-"date": "2026-03-03",
-"ts": "2026-03-03T18:10:00+01:00",
-"author": "Stormfire Team",
-"tags": ["Website", "Portal", "Devlog"],
-"body": "Die Website dient nicht nur als Visitenkarte, sondern als zentrales Projektportal für STORMFIRE.\n\nNach und nach werden News, Lore, Launcher-Infos, Statusbereiche und Community-Zugänge erweitert."
-},
-{
-"id": "devlog-002",
-"type": "Vision",
-"title": "Stormfire bleibt ein langfristiges MMORPG-Projekt",
-"date": "2026-03-02",
-"ts": "2026-03-02T17:00:00+01:00",
-"author": "Stormfire Team",
-"tags": ["Vision", "MMORPG", "Entwicklung"],
-"body": "STORMFIRE ist kein kurzfristiges Konzeptprojekt, sondern ein langfristig geplantes MMORPG.\n\nDie Entwicklung wird bewusst früh dokumentiert, damit Fortschritte, Richtungen und Entscheidungen transparent sichtbar bleiben."
-},
-{
-"id": "devlog-001",
-"type": "Lore",
-"title": "Jueria und die Grundlagen der Welt",
-"date": "2026-03-01",
-"ts": "2026-03-01T16:30:00+01:00",
-"author": "Stormfire Team",
-"tags": ["Lore", "Jueria", "Welt"],
-"body": "Die Welt von STORMFIRE trägt den Namen Jueria.\n\nNach dem Bruch des Juwels der Entstehung geriet das Gleichgewicht der Welt aus den Fugen: Der Norden wurde heiß, während der Süden in Kälte und Frost versank.\n\nDiese verdrehte Ordnung bildet die Grundlage für Fraktionen, Regionen und Konflikte."
-}
-]
+  "updated_at": "2026-03-08T23:00:00+01:00",
+  "posts": [
+    {
+      "id": "devlog-008",
+      "type": "Devlog",
+      "title": "Charakter Spawn und erste Schritte in der Welt",
+      "date": "2026-03-08",
+      "ts": "2026-03-08T23:00:00+01:00",
+      "author": "Stormfire Team",
+      "tags": ["Welt", "Charaktere", "Entwicklung"],
+      "body": "Ein weiterer großer Schritt in der Entwicklung von STORMFIRE ist geschafft.\n\nDer ausgewählte Charakter kann nun korrekt in der World Scene gespawnt werden. Damit funktioniert erstmals der vollständige Ablauf vom Login bis zum tatsächlichen Betreten der Spielwelt.\n\nDer aktuelle Ablauf sieht nun so aus:\n\nLogin → Realm auswählen → Charakter auswählen → Charakter spawn in der Welt\n\nZusätzlich besitzt die World Scene nun eine eigene Playlist mit Hintergrundmusik, wodurch die Spielwelt während der Entwicklung bereits eine eigene Atmosphäre erhält.\n\nIn den kommenden Tagen konzentrieren wir uns auf die nächsten Schritte der Entwicklung. Die Charaktere sollen zunächst grundlegende Bewegungsanimationen wie Laufen und Idle erhalten, damit sie sich natürlicher durch die Welt bewegen können.\n\nParallel dazu arbeiten wir weiter am Aufbau der Welt. Neue Dekorationen, Objekte und Umgebungsdetails sollen die Regionen nach und nach lebendiger wirken lassen.\n\nSobald diese Grundlagen stehen, beginnen wir mit dem nächsten großen System: dem Combat System."
+    },
+    {
+      "id": "devlog-007",
+      "type": "Devlog",
+      "title": "Account, Charaktere und erste Weltverbindung",
+      "date": "2026-03-07",
+      "ts": "2026-03-07T22:30:00+01:00",
+      "author": "Stormfire Team",
+      "tags": ["Backend", "Charaktere", "Welt"],
+      "body": "Ein weiterer wichtiger Meilenstein für STORMFIRE ist erreicht.\n\nDas Account-System funktioniert nun vollständig mit der Datenbank. Neue Accounts können erstellt und gespeichert werden, und auch das Charakter-System hat einen großen Fortschritt gemacht: Charaktere können erstellt und korrekt gespeichert werden.\n\nZusätzlich lädt nun bereits die Spielwelt, sodass der grundlegende Ablauf funktioniert:\n\nLogin → Realm auswählen → Charakter erstellen → Welt laden\n\nDer nächste Schritt in der Entwicklung ist nun, dass beim Betreten der Welt der tatsächlich ausgewählte Charakter korrekt gespawnt wird.\n\nSobald das funktioniert, geht es weiter mit dem vollständigen Multiplayer-Spawn über Mirror und den ersten echten Spielerinteraktionen in der Welt."
+    },
+    {
+      "id": "devlog-006",
+      "type": "Devlog",
+      "title": "Weltaufbau, Assets und neue Grundlagen",
+      "date": "2026-03-06",
+      "ts": "2026-03-06T21:30:00+01:00",
+      "author": "Stormfire Team",
+      "tags": ["Welt", "Assets", "Entwicklung"],
+      "body": "Aktuell bauen wir die visuelle und strukturelle Basis von STORMFIRE weiter aus.\n\nDazu gehören neue Charaktere, Natur-Assets, Gebäude, Props, Gegner und erste Reiseideen wie die Astralbahn.\n\nZiel ist es, Schritt für Schritt eine zusammenhängende Weltbasis zu schaffen."
+    },
+    {
+      "id": "devlog-005",
+      "type": "Systemupdate",
+      "title": "Fokus auf Datenbank und Networking",
+      "date": "2026-03-05",
+      "ts": "2026-03-05T20:00:00+01:00",
+      "author": "Stormfire Team",
+      "tags": ["Backend", "Datenbank", "Multiplayer"],
+      "body": "Der aktuelle technische Schwerpunkt liegt auf der Integration der Datenbank und der Multiplayer-Grundlagen.\n\nAccountdaten, Charakterfluss und die spätere Realm-Struktur sollen zuerst stabil stehen, bevor weitere große Systeme folgen."
+    },
+    {
+      "id": "devlog-004",
+      "type": "Charaktersystem",
+      "title": "Charaktererstellung weiter ausgebaut",
+      "date": "2026-03-04",
+      "ts": "2026-03-04T19:15:00+01:00",
+      "author": "Stormfire Team",
+      "tags": ["Charaktere", "Fraktionen", "UI"],
+      "body": "Die Charaktererstellung wurde weiter verfeinert.\n\nFraktionen, Rassen, Vorschauen und die grundsätzliche UI-Richtung sind inzwischen deutlich klarer.\n\nDas Ziel bleibt ein klassisch inspiriertes MMORPG-Gefühl mit eigener Stormfire-Identität."
+    },
+    {
+      "id": "devlog-003",
+      "type": "Website",
+      "title": "Website und Projektportal werden erweitert",
+      "date": "2026-03-03",
+      "ts": "2026-03-03T18:10:00+01:00",
+      "author": "Stormfire Team",
+      "tags": ["Website", "Portal", "Devlog"],
+      "body": "Die Website dient nicht nur als Visitenkarte, sondern als zentrales Projektportal für STORMFIRE.\n\nNach und nach werden News, Lore, Launcher-Infos, Statusbereiche und Community-Zugänge erweitert."
+    },
+    {
+      "id": "devlog-002",
+      "type": "Vision",
+      "title": "Stormfire bleibt ein langfristiges MMORPG-Projekt",
+      "date": "2026-03-02",
+      "ts": "2026-03-02T17:00:00+01:00",
+      "author": "Stormfire Team",
+      "tags": ["Vision", "MMORPG", "Entwicklung"],
+      "body": "STORMFIRE ist kein kurzfristiges Konzeptprojekt, sondern ein langfristig geplantes MMORPG.\n\nDie Entwicklung wird bewusst früh dokumentiert, damit Fortschritte, Richtungen und Entscheidungen transparent sichtbar bleiben."
+    },
+    {
+      "id": "devlog-001",
+      "type": "Lore",
+      "title": "Jueria und die Grundlagen der Welt",
+      "date": "2026-03-01",
+      "ts": "2026-03-01T16:30:00+01:00",
+      "author": "Stormfire Team",
+      "tags": ["Lore", "Jueria", "Welt"],
+      "body": "Die Welt von STORMFIRE trägt den Namen Jueria.\n\nNach dem Bruch des Juwels der Entstehung geriet das Gleichgewicht der Welt aus den Fugen: Der Norden wurde heiß, während der Süden in Kälte und Frost versank.\n\nDiese verdrehte Ordnung bildet die Grundlage für Fraktionen, Regionen und Konflikte."
+    }
+  ]
 }
