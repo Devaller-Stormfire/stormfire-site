@@ -3,18 +3,30 @@
   --bg2:#08101d;
   --bg3:#0b1730;
   --sidebar:#07111f;
+
   --line:rgba(255,255,255,0.08);
   --line-soft:rgba(255,255,255,0.05);
+
   --text:#eef4ff;
   --muted:#9fb0c9;
+
   --gold:#d8b36a;
   --gold-soft:rgba(216,179,106,0.16);
+
   --green:#56d38b;
   --red:#ff8d8d;
   --yellow:#f0d39b;
-  --astral-blue:rgba(76, 130, 255, 0.16);
-  --astral-cyan:rgba(71, 201, 255, 0.10);
-  --astral-violet:rgba(151, 95, 255, 0.11);
+
+  --astral-blue:rgba(76,130,255,0.16);
+  --astral-cyan:rgba(71,201,255,0.10);
+  --astral-violet:rgba(151,95,255,0.11);
+
+  --card-bg:rgba(255,255,255,0.03);
+  --card-bg-strong:rgba(255,255,255,0.045);
+
+  --shadow-soft:0 10px 30px rgba(0,0,0,0.18);
+  --shadow-strong:0 16px 40px rgba(0,0,0,0.24);
+
   --content-max:980px;
 }
 
@@ -64,14 +76,18 @@ img{
   display:block;
 }
 
+/* =========================================================
+   LAYOUT
+========================================================= */
+
 .layout{
   display:grid;
-  grid-template-columns:260px minmax(0, 1fr) 340px;
+  grid-template-columns:260px minmax(0,1fr) 340px;
   min-height:100vh;
 }
 
 .sidebar{
-  background:linear-gradient(180deg, rgba(5,11,22,0.95) 0%, rgba(7,14,28,0.9) 100%);
+  background:linear-gradient(180deg, rgba(5,11,22,0.95) 0%, rgba(7,14,28,0.90) 100%);
   border-right:1px solid var(--line);
   padding:24px 16px;
   position:sticky;
@@ -100,6 +116,10 @@ img{
   background:linear-gradient(180deg, rgba(5,11,22,0.45) 0%, rgba(7,14,28,0.18) 100%);
   backdrop-filter:blur(6px);
 }
+
+/* =========================================================
+   BRAND / LOGO
+========================================================= */
 
 .brand{
   display:flex;
@@ -153,6 +173,10 @@ img{
   text-transform:uppercase;
 }
 
+/* =========================================================
+   SIDEBAR NAV
+========================================================= */
+
 .sidebar-nav{
   display:flex;
   flex-direction:column;
@@ -198,6 +222,10 @@ img{
   color:var(--text);
   background:rgba(255,255,255,0.04);
 }
+
+/* =========================================================
+   TYPO
+========================================================= */
 
 .translate-note{
   margin:0 0 20px;
@@ -253,8 +281,16 @@ img{
   border-bottom:1px solid var(--line-soft);
 }
 
+.section-head h1,
 .section-head h2{
   margin:0 0 6px;
+}
+
+.section-head h1{
+  font-size:2rem;
+}
+
+.section-head h2{
   font-size:1.55rem;
 }
 
@@ -263,6 +299,10 @@ img{
   color:var(--muted);
 }
 
+/* =========================================================
+   CONTENT BLOCKS
+========================================================= */
+
 .feature-grid{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
@@ -270,10 +310,12 @@ img{
 }
 
 .feature-item,
-.news-item,
-.quick-link{
-  padding:0 0 18px;
-  border-bottom:1px solid var(--line-soft);
+.news-item{
+  padding:20px 20px 18px;
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:18px;
+  background:var(--card-bg);
+  box-shadow:var(--shadow-soft);
 }
 
 .feature-item h3,
@@ -296,7 +338,7 @@ img{
 .news-meta{
   font-size:0.84rem;
   color:var(--muted);
-  margin-bottom:6px;
+  margin-bottom:8px;
   letter-spacing:0.04em;
 }
 
@@ -310,11 +352,18 @@ img{
   display:flex;
   flex-direction:column;
   gap:6px;
-  transition:transform .18s ease, color .18s ease;
+  padding:18px;
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:18px;
+  background:var(--card-bg);
+  box-shadow:var(--shadow-soft);
+  transition:transform .18s ease, border-color .18s ease, background .18s ease;
 }
 
 .quick-link:hover{
   transform:translateY(-2px);
+  border-color:rgba(216,179,106,0.22);
+  background:rgba(255,255,255,0.04);
 }
 
 .quick-link strong{
@@ -324,6 +373,10 @@ img{
 .quick-link span{
   color:var(--muted);
 }
+
+/* =========================================================
+   STATUS PANEL
+========================================================= */
 
 .status-panel-head{
   margin-bottom:18px;
@@ -433,7 +486,7 @@ img{
   justify-content:space-between;
   align-items:center;
   gap:12px;
-  padding:10px 0;
+  padding:12px 0;
   border-bottom:1px solid var(--line-soft);
 }
 
@@ -477,25 +530,6 @@ img{
   line-height:1.5;
 }
 
-.footer{
-  margin-top:42px;
-  padding-top:18px;
-  border-top:1px solid var(--line);
-  color:var(--muted);
-  font-size:0.95rem;
-}
-
-.footer-links{
-  display:flex;
-  flex-wrap:wrap;
-  gap:14px;
-  margin-top:8px;
-}
-
-.footer-links a:hover{
-  color:var(--text);
-}
-
 .status-online{
   color:var(--green) !important;
 }
@@ -507,6 +541,112 @@ img{
 .status-dev{
   color:var(--yellow) !important;
 }
+
+/* =========================================================
+   NEWS / DEVLOG CARDS
+========================================================= */
+
+.stormfire-news-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:22px;
+}
+
+.stormfire-devlog-card{
+  padding:22px 22px 20px;
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:20px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.035) 0%, rgba(255,255,255,0.025) 100%);
+  box-shadow:var(--shadow-strong);
+  backdrop-filter:blur(6px);
+}
+
+.stormfire-devlog-card h3{
+  margin:0 0 12px;
+  font-size:1.15rem;
+  line-height:1.3;
+}
+
+.stormfire-devlog-card p{
+  margin:0;
+  color:var(--muted);
+  white-space:normal;
+  word-break:break-word;
+  overflow:visible;
+}
+
+.stormfire-devlog-meta{
+  margin-bottom:10px;
+  font-size:0.84rem;
+  color:var(--muted);
+  letter-spacing:0.03em;
+}
+
+.stormfire-devlog-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:0 0 14px;
+}
+
+.stormfire-devlog-tag{
+  display:inline-flex;
+  align-items:center;
+  padding:5px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.06);
+  color:var(--text);
+  font-size:0.78rem;
+}
+
+/* =========================================================
+   ROADMAP
+========================================================= */
+
+.roadmap-showcase{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:28px;
+}
+
+.roadmap-card{
+  padding:22px;
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:20px;
+  background:rgba(255,255,255,0.03);
+  box-shadow:var(--shadow-strong);
+  backdrop-filter:blur(6px);
+}
+
+.roadmap-card-head{
+  margin-bottom:16px;
+}
+
+.roadmap-card-head h3{
+  margin:0;
+  font-size:1.2rem;
+}
+
+.roadmap-card-kicker{
+  margin-bottom:8px;
+  font-size:0.78rem;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:#d8b36a;
+}
+
+.roadmap-image{
+  width:100%;
+  display:block;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,0.08);
+  box-shadow:0 10px 30px rgba(0,0,0,0.30);
+}
+
+/* =========================================================
+   FACTION BALANCE
+========================================================= */
 
 .faction-balance-wrap{
   display:grid;
@@ -546,9 +686,36 @@ img{
   font-size:0.92rem;
 }
 
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+  margin-top:42px;
+  padding-top:18px;
+  border-top:1px solid var(--line);
+  color:var(--muted);
+  font-size:0.95rem;
+}
+
+.footer-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  margin-top:8px;
+}
+
+.footer-links a:hover{
+  color:var(--text);
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
 @media (max-width:1400px){
   .layout{
-    grid-template-columns:240px minmax(0, 1fr) 320px;
+    grid-template-columns:240px minmax(0,1fr) 320px;
   }
 }
 
@@ -585,55 +752,4 @@ img{
   .content{
     padding:24px 18px 36px;
   }
-  .stormfire-news-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:22px;
-}
-
-.stormfire-devlog-card{
-  padding:22px 22px 20px;
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:18px;
-  background:rgba(255,255,255,0.03);
-  box-shadow:0 10px 30px rgba(0,0,0,0.18);
-}
-
-.stormfire-devlog-card h3{
-  margin:0 0 12px;
-  font-size:1.15rem;
-}
-
-.stormfire-devlog-card p{
-  margin:0;
-  color:var(--muted);
-  white-space:normal;
-  word-break:break-word;
-  overflow:visible;
-}
-
-.stormfire-devlog-meta{
-  margin-bottom:10px;
-  font-size:0.84rem;
-  color:var(--muted);
-  letter-spacing:0.03em;
-}
-
-.stormfire-devlog-tags{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin:0 0 14px;
-}
-
-.stormfire-devlog-tag{
-  display:inline-flex;
-  align-items:center;
-  padding:5px 10px;
-  border-radius:999px;
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.06);
-  color:var(--text);
-  font-size:0.78rem;
-}
 }
