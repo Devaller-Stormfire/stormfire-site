@@ -1,6 +1,8 @@
-// site.js — Navigation + kleine Live-Anzeige aus Supabase (site_realm_status)
+// site.js — Navigation + kleiner Live-Status
 
-(async function () {
+(function () {
+  console.log("[site.js] loaded");
+
   try {
     const path = location.pathname.replace(/\/+$/, "") || "/index.html";
     document.querySelectorAll(".sideNav a.navbtn").forEach((a) => {
@@ -9,7 +11,9 @@
         a.classList.add("active");
       }
     });
-  } catch {}
+  } catch (err) {
+    console.error("[site.js] nav error", err);
+  }
 
   const SUPABASE_URL = "https://furuovwvtbbgedxqukzz.supabase.co";
   const SUPABASE_ANON_KEY = "sb_publishable_GmsSvpE-8xoRVsgePDIrsQ_p-jH5gQ2";
@@ -21,7 +25,7 @@
     return new Intl.NumberFormat("de-DE").format(Number(value || 0));
   }
 
-  function setLive(state, label, online) {
+  function setLive(state, text) {
     if (!liveDot || !liveTxt) return;
 
     liveDot.classList.remove("good", "warn", "bad");
@@ -30,7 +34,7 @@
     else if (state === "maintenance") liveDot.classList.add("warn");
     else liveDot.classList.add("bad");
 
-    liveTxt.textContent = `${label} • ${String(state).toUpperCase()} • ${formatNumber(online)} online`;
+    liveTxt.textContent = text;
   }
 
   async function loadLive() {
@@ -41,40 +45,31 @@
           headers: {
             apikey: SUPABASE_ANON_KEY,
             Authorization: `Bearer ${SUPABASE_ANON_KEY}`
-          }
+          },
+          cache: "no-store"
         }
       );
 
       if (!res.ok) {
-        throw new Error(`Supabase HTTP ${res.status}`);
+        throw new Error(`HTTP ${res.status}`);
       }
 
       const rows = await res.json();
-
-      if (!Array.isArray(rows) || rows.length === 0) {
-        setLive("offline", "Realms", 0);
-        return;
-      }
-
       const onlineRealms = rows.filter((r) => !!r.online).length;
       const totalPlayers = rows.reduce((sum, r) => sum + Number(r.players_online || 0), 0);
 
       setLive(
         onlineRealms > 0 ? "online" : "offline",
-        `${onlineRealms} Realm${onlineRealms === 1 ? "" : "s"}`,
-        totalPlayers
+        `${onlineRealms} Realm${onlineRealms === 1 ? "" : "s"} • ${formatNumber(totalPlayers)} online`
       );
+
+      console.log("[site.js] success", { onlineRealms, totalPlayers });
     } catch (err) {
-      console.error("[site.js]", err);
-      setLive("offline", "Realms", 0);
+      console.error("[site.js] error", err);
+      setLive("offline", "Realms • 0 online");
     }
   }
 
-  await loadLive();
-
-  setInterval(() => {
-    if (document.visibilityState === "visible") {
-      loadLive();
-    }
-  }, 15000);
+  loadLive();
+  setInterval(loadLive, 15000);
 })();
