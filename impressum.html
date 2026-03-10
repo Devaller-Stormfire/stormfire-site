@@ -1,172 +1,100 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Impressum | STORMFIRE</title>
-
-<meta name="description" content="Impressum des Stormfire Projektportals." />
-
-<link rel="stylesheet" href="./assets/css/style.css">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
+  <meta charset="UTF-8">
+  <title>Stormfire - Impressum</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/css/style.css">
 </head>
-
 <body>
 
 <div class="layout">
 
-<aside class="sidebar">
+  <aside class="sideNav">
+    <div class="brand">
+      <img src="./assets/images/logo.png" alt="Stormfire Logo">
+      <div>
+        <div class="brandTitle">STORMFIRE</div>
+        <div class="brandSub">MMORPG PORTAL</div>
+      </div>
+    </div>
 
-<a class="brand" href="./index.html">
+    <nav class="navGroup">
+      <a class="navbtn" href="./index.html">Home</a>
+      <a class="navbtn" href="./news.html">News</a>
+      <a class="navbtn" href="./status.html">Realm Status</a>
+      <a class="navbtn" href="./leaderboard.html">Leaderboard</a>
+      <a class="navbtn" href="./roadmap.html">Roadmap</a>
+      <a class="navbtn" href="./galerie.html">Galerie</a>
+      <a class="navbtn" href="./geschichte.html">Geschichte</a>
+      <a class="navbtn" href="./team.html">Team</a>
+      <a class="navbtn" href="./discord.html">Discord</a>
+      <a class="navbtn" href="./launcher.html">Launcher</a>
+      <a class="navbtn" href="./impressum.html">Impressum</a>
+    </nav>
+  </aside>
 
-<div class="brand-logo">
-<img src="assets/images/logo.png"
-onerror="this.style.display='none';this.parentElement.textContent='SF';">
-</div>
+  <main class="content">
+    <div class="eyebrow">Rechtliches • Kontakt • Projekt</div>
+    <h1 class="heroTitle">Impressum</h1>
 
-<div class="brand-text">
-<strong>STORMFIRE</strong>
-<span>MMORPG Portal</span>
-</div>
+    <p class="heroText">
+      Hier können alle rechtlich notwendigen Angaben für die Website und das Projekt STORMFIRE hinterlegt werden.
+    </p>
 
-</a>
+    <div class="postCard">
+      <h2>Angaben gemäß den gesetzlichen Vorgaben</h2>
+      <p>
+        Name, Anschrift, Kontaktadresse und weitere erforderliche Angaben können hier später final eingetragen werden.
+      </p>
+    </div>
 
-<nav class="sidebar-nav">
+    <div class="postCard">
+      <h2>Projektkontakt</h2>
+      <p>
+        Für Projektanfragen, Community-Themen oder rechtliche Hinweise kannst du hier später auch die passende Kontaktadresse ergänzen.
+      </p>
+    </div>
+  </main>
 
-<a href="./index.html">Home</a>
-<a href="./news.html">News</a>
-<a href="./status.html">Realm Status</a>
-<a href="./leaderboard.html">Leaderboard</a>
-<a href="./roadmap.html">Roadmap</a>
-<a href="./gallery.html">Galerie</a>
-<a href="./geschichte.html">Geschichte</a>
-<a href="./team.html">Team</a>
-<a href="./discord.html">Discord</a>
-<a href="./download.html">Launcher</a>
-<a href="./impressum.html" class="active">Impressum</a>
+  <aside class="statusPanel">
+    <div class="statusMini">Live Status</div>
+    <h2>Realm Server</h2>
+    <div class="statusSub">Automatisch aus Supabase geladen.</div>
+    <div class="hr"></div>
 
-</nav>
+    <div class="statusRow"><span>Status</span><span class="statusValue"><span id="statusDot" class="bad"></span> <span id="statusText">Lädt...</span></span></div>
+    <div class="statusRow"><span>Login / Datenbank</span><span id="loginStatus" class="statusValue">Lädt...</span></div>
+    <div class="statusRow"><span>Realm Server</span><span id="realmName" class="statusValue">Lädt...</span></div>
+    <div class="statusRow"><span>Spieler gesamt</span><span id="playersTotal" class="statusValue">0</span></div>
+    <div class="statusRow"><span>Drachenbund</span><span id="faction1" class="statusValue">0</span></div>
+    <div class="statusRow"><span>Wolfsmark</span><span id="faction2" class="statusValue">0</span></div>
+    <div class="statusRow"><span>Spieler online</span><span id="playersOnline" class="statusValue">0</span></div>
+    <div class="statusRow"><span>Queue / Besuche</span><span id="capacity" class="statusValue">0</span></div>
 
-</aside>
+    <div class="hr"></div>
 
+    <h3>Realm Übersicht</h3>
+    <div class="realmOverview">
+      <div class="realmStat"><span class="dot good"></span><span id="onlineRealms">0</span> online</div>
+      <div class="realmStat"><span class="dot bad"></span><span id="offlineRealms">0</span> offline</div>
+    </div>
 
-<main class="content">
+    <div class="hr"></div>
 
-<div class="content-inner">
+    <h3>Alle Realms</h3>
+    <div id="realmList" class="realmList">
+      <div class="muted">Realm-Daten werden geladen...</div>
+      <div class="muted">Verbindung wird aufgebaut...</div>
+    </div>
 
-<section class="hero-section">
-
-<div class="kicker">RECHTLICHES</div>
-
-<h1 class="hero-title">
-Impressum
-</h1>
-
-<p class="hero-text">
-Diese Website dient als Projektportal für das Indie-MMORPG STORMFIRE.
-</p>
-
-</section>
-
-
-<section class="section">
-
-<div class="section-head">
-<h2>Angaben gemäß § 5 TMG</h2>
-</div>
-
-<div class="news-item">
-
-<p>
-Stormfire Projekt<br>
-Indie MMORPG Entwicklung
-</p>
-
-<p>
-Verantwortlich für Inhalte gemäß §55 RStV:
-</p>
-
-<p>
-Stormfire Development Team
-</p>
-
-</div>
-
-</section>
-
-
-<section class="section">
-
-<div class="section-head">
-<h2>Haftung für Inhalte</h2>
-</div>
-
-<div class="news-item">
-
-<p>
-Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt.
-Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte
-können wir jedoch keine Gewähr übernehmen.
-</p>
+    <div class="hr"></div>
+    <div id="lastUpdated" class="muted">Letztes Update: Lädt...</div>
+  </aside>
 
 </div>
 
-</section>
-
-
-<section class="section">
-
-<div class="section-head">
-<h2>Projektstatus</h2>
-</div>
-
-<div class="news-item">
-
-<p>
-STORMFIRE ist ein nicht kommerzielles Indie-MMORPG Projekt in Entwicklung.
-Alle Inhalte dieser Website dienen ausschließlich der Dokumentation
-und Präsentation der Entwicklung.
-</p>
-
-</div>
-
-</section>
-
-
-</div>
-
-</main>
-
-
-<aside class="status-panel">
-
-<div class="status-panel-head">
-<div class="status-kicker">LIVE STATUS</div>
-<h2>Realm Server</h2>
-</div>
-
-<div class="status-overview">
-
-<div class="status-big-row">
-<span>Realm Server</span>
-<strong id="realm-status">Lädt…</strong>
-</div>
-
-<div class="status-big-row">
-<span>Spieler Online</span>
-<strong id="players-online-live">0</strong>
-</div>
-
-</div>
-
-</aside>
-
-</div>
-
+<script src="./assets/js/site.js"></script>
 <script src="./assets/js/status.js"></script>
-
 </body>
 </html>
