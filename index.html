@@ -1,166 +1,157 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<title>Stormfire MMORPG Portal</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link rel="stylesheet" href="./assets/css/style.css">
+  <meta charset="UTF-8">
+  <title>Stormfire - Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/css/style.css">
 </head>
-
 <body>
 
 <div class="layout">
 
-<!-- Sidebar -->
+  <aside class="sideNav">
+    <div class="brand">
+      <img src="./assets/images/logo.png" alt="Stormfire Logo">
+      <div>
+        <div class="brandTitle">STORMFIRE</div>
+        <div class="brandSub">MMORPG PORTAL</div>
+      </div>
+    </div>
 
-<aside class="sideNav">
+    <nav class="navGroup">
+      <a class="navbtn" href="./index.html">Home</a>
+      <a class="navbtn" href="./news.html">News</a>
+      <a class="navbtn" href="./status.html">Realm Status</a>
+      <a class="navbtn" href="./leaderboard.html">Leaderboard</a>
+      <a class="navbtn" href="./roadmap.html">Roadmap</a>
+      <a class="navbtn" href="./galerie.html">Galerie</a>
+      <a class="navbtn" href="./geschichte.html">Geschichte</a>
+      <a class="navbtn" href="./team.html">Team</a>
+      <a class="navbtn" href="./discord.html">Discord</a>
+      <a class="navbtn" href="./launcher.html">Launcher</a>
+      <a class="navbtn" href="./impressum.html">Impressum</a>
+    </nav>
+  </aside>
 
-<div class="logo">
-<img src="./assets/images/logo.png" alt="Stormfire">
-<h2>STORMFIRE</h2>
-<span>MMORPG PORTAL</span>
-</div>
+  <main class="content">
+    <div class="eyebrow">MMORPG in Entwicklung • Unity • Mirror</div>
+    <h1 class="heroTitle">Willkommen bei STORMFIRE</h1>
 
-<nav>
+    <p class="heroText">
+      STORMFIRE ist ein klassisch inspiriertes Indie-MMORPG mit eigener Welt, Fraktionen,
+      offenen Regionen, Dungeons, Fortschrittssystemen und langfristiger Entwicklung.
+      Schritt für Schritt wächst aus Konzept, Technik und Weltaufbau eine echte Online-Welt.
+    </p>
 
-<a class="navbtn active" href="./index.html">Home</a>
-<a class="navbtn" href="./news.html">News</a>
-<a class="navbtn" href="./status.html">Realm Status</a>
-<a class="navbtn" href="./leaderboard.html">Leaderboard</a>
-<a class="navbtn" href="./roadmap.html">Roadmap</a>
-<a class="navbtn" href="./galerie.html">Galerie</a>
-<a class="navbtn" href="./geschichte.html">Geschichte</a>
-<a class="navbtn" href="./team.html">Team</a>
-<a class="navbtn" href="./discord.html">Discord</a>
-<a class="navbtn" href="./launcher.html">Launcher</a>
-<a class="navbtn" href="./impressum.html">Impressum</a>
+    <h2 class="sectionTitle">Aktueller Stand</h2>
+    <p class="sectionText">Die wichtigsten Fortschritte des Projekts auf einen Blick.</p>
 
-</nav>
+    <div class="cards">
+      <div class="card">
+        <h3>Login & Datenbank</h3>
+        <p>Das Account-System ist an die Datenbank angebunden und speichert Accounts bereits sauber.</p>
+      </div>
 
-</aside>
+      <div class="card">
+        <h3>Charakterfluss</h3>
+        <p>Charaktere können erstellt und gespeichert werden. Der Ablauf bis in die Welt ist verbunden.</p>
+      </div>
 
-<!-- Main -->
+      <div class="card">
+        <h3>Welt lädt</h3>
+        <p>Der technische Übergang von Login und Auswahl bis in die Spielwelt funktioniert bereits.</p>
+      </div>
 
-<main class="content">
+      <div class="card">
+        <h3>Nächster Schritt</h3>
+        <p>Als Nächstes folgen Animationen, weitere Weltgestaltung und danach das Combat System.</p>
+      </div>
+    </div>
+  </main>
 
-<h1>Willkommen bei STORMFIRE</h1>
+  <aside class="statusPanel">
+    <div class="statusMini">Live Status</div>
+    <h2>Realm Server</h2>
+    <div class="statusSub">Automatisch aus Supabase geladen.</div>
 
-<p>
-STORMFIRE ist ein klassisch inspiriertes Indie-MMORPG mit eigener Welt,
-Fraktionen, offenen Regionen, Dungeons und langfristiger Entwicklung.
-</p>
+    <div class="hr"></div>
 
-<h2>Aktueller Stand</h2>
+    <div class="statusRow">
+      <span>Status</span>
+      <span class="statusValue">
+        <span id="statusDot" class="bad"></span>
+        <span id="statusText">Lädt...</span>
+      </span>
+    </div>
 
-<div class="cards">
+    <div class="statusRow">
+      <span>Login / Datenbank</span>
+      <span id="loginStatus" class="statusValue">Lädt...</span>
+    </div>
 
-<div class="card">
-<h3>Login & Datenbank</h3>
-<p>Das Account-System ist an die Datenbank angebunden und funktioniert stabil.</p>
-</div>
+    <div class="statusRow">
+      <span>Realm Server</span>
+      <span id="realmName" class="statusValue">Lädt...</span>
+    </div>
 
-<div class="card">
-<h3>Charakterfluss</h3>
-<p>Charaktere können erstellt werden und der Ablauf bis in die Welt funktioniert.</p>
-</div>
+    <div class="statusRow">
+      <span>Spieler gesamt</span>
+      <span id="playersTotal" class="statusValue">0</span>
+    </div>
 
-<div class="card">
-<h3>Welt lädt</h3>
-<p>Die Spielwelt wird korrekt geladen und Charaktere können gespawnt werden.</p>
-</div>
+    <div class="statusRow">
+      <span>Drachenbund</span>
+      <span id="faction1" class="statusValue">0</span>
+    </div>
 
-<div class="card">
-<h3>Nächster Schritt</h3>
-<p>Als Nächstes folgen Animationen, Weltgestaltung und das Combat System.</p>
-</div>
+    <div class="statusRow">
+      <span>Wolfsmark</span>
+      <span id="faction2" class="statusValue">0</span>
+    </div>
 
-</div>
+    <div class="statusRow">
+      <span>Spieler online</span>
+      <span id="playersOnline" class="statusValue">0</span>
+    </div>
 
-</main>
+    <div class="statusRow">
+      <span>Queue / Besuche</span>
+      <span id="capacity" class="statusValue">0</span>
+    </div>
 
-<!-- Status Panel -->
+    <div class="hr"></div>
 
-<aside class="statusPanel">
+    <h3>Realm Übersicht</h3>
 
-<h3>Realm Server</h3>
+    <div class="realmOverview">
+      <div class="realmStat">
+        <span class="dot good"></span>
+        <span id="onlineRealms">0</span> online
+      </div>
 
-<div class="statusRow">
-<span>Status</span>
-<span>
-<span id="statusDot" class="bad"></span>
-<span id="statusText">Lädt...</span>
-</span>
-</div>
+      <div class="realmStat">
+        <span class="dot bad"></span>
+        <span id="offlineRealms">0</span> offline
+      </div>
+    </div>
 
-<div class="statusRow">
-<span>Login / Datenbank</span>
-<span id="loginStatus">Lädt...</span>
-</div>
+    <div class="hr"></div>
 
-<div class="statusRow">
-<span>Realm Server</span>
-<span id="realmName">Lädt...</span>
-</div>
+    <h3>Alle Realms</h3>
 
-<div class="statusRow">
-<span>Spieler gesamt</span>
-<span id="playersTotal">0</span>
-</div>
+    <div id="realmList" class="realmList">
+      <div class="muted">Realm-Daten werden geladen...</div>
+      <div class="muted">Verbindung wird aufgebaut...</div>
+    </div>
 
-<div class="statusRow">
-<span>Drachenbund</span>
-<span id="faction1">0</span>
-</div>
-
-<div class="statusRow">
-<span>Wolfsmark</span>
-<span id="faction2">0</span>
-</div>
-
-<div class="statusRow">
-<span>Spieler online</span>
-<span id="playersOnline">0</span>
-</div>
-
-<div class="statusRow">
-<span>Besuche Gerät</span>
-<span id="capacity">0</span>
-</div>
-
-<h4>Realm Übersicht</h4>
-
-<div class="realmOverview">
-
-<div class="realmStat">
-<span class="dot good"></span>
-<span id="onlineRealms">0</span> online
-</div>
-
-<div class="realmStat">
-<span class="dot bad"></span>
-<span id="offlineRealms">0</span> offline
-</div>
-
-</div>
-
-<h4>Alle Realms</h4>
-
-<div id="realmList">
-
-<div>Realm-Daten werden geladen...</div>
-<div>Verbindung wird aufgebaut...</div>
-
-</div>
-
-</aside>
+    <div class="hr"></div>
+    <div id="lastUpdated" class="muted">Letztes Update: Lädt...</div>
+  </aside>
 
 </div>
-
-<!-- Scripts -->
 
 <script src="./assets/js/site.js"></script>
 <script src="./assets/js/status.js"></script>
-
 </body>
 </html>
