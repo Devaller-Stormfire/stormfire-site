@@ -1,219 +1,104 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Geschichte | STORMFIRE</title>
-  <meta name="description" content="Die Welt von Jueria, ihre Fraktionen und der Ursprung von STORMFIRE." />
-
-  <link rel="stylesheet" href="./assets/css/style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <meta charset="UTF-8">
+  <title>Stormfire - Geschichte</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-  <div class="layout">
 
-    <aside class="sidebar">
-      <a class="brand" href="./index.html" aria-label="STORMFIRE Startseite">
-        <div class="brand-logo">
-          <img
-            src="assets/images/logo.png"
-            alt="STORMFIRE Logo"
-            onerror="this.style.display='none'; this.parentElement.classList.add('brand-logo-fallback'); this.parentElement.textContent='SF';"
-          />
-        </div>
+<div class="layout">
 
-        <div class="brand-text">
-          <strong>STORMFIRE</strong>
-          <span>MMORPG Portal</span>
-        </div>
-      </a>
-
-      <nav class="sidebar-nav">
-        <a href="./index.html">Home</a>
-        <a href="./news.html">News</a>
-        <a href="./status.html">Realm Status</a>
-        <a href="./leaderboard.html">Leaderboard</a>
-        <a href="./roadmap.html">Roadmap</a>
-        <a href="./gallery.html">Galerie</a>
-        <a href="./geschichte.html" class="active">Geschichte</a>
-        <a href="./team.html">Team</a>
-        <a href="./discord.html">Discord</a>
-        <a href="./download.html">Launcher</a>
-        <a href="./impressum.html">Impressum</a>
-      </nav>
-    </aside>
-
-    <main class="content">
-      <div class="content-inner">
-
-        <section class="hero-section">
-          <div class="kicker">LORE • WELT • FRAKTIONEN</div>
-          <h1 class="hero-title">Die Welt von Jueria</h1>
-          <p class="hero-text">
-            STORMFIRE spielt in der Welt Jueria – einer zerrissenen Welt,
-            deren Ordnung durch den Bruch des Juwels der Entstehung
-            für immer verändert wurde.
-          </p>
-        </section>
-
-        <section class="section">
-          <div class="section-head">
-            <h2>Der Bruch</h2>
-            <p>Der Ursprung der verdrehten Weltordnung.</p>
-          </div>
-
-          <div class="news-list">
-            <article class="news-item">
-              <h3>Das Juwel der Entstehung</h3>
-              <p>
-                Einst hielt das Juwel der Entstehung das Gleichgewicht Juerias zusammen.
-                Mit seinem Bruch gerieten Natur, Astralkraft und die Ordnung der Kontinente
-                aus den Fugen.
-              </p>
-            </article>
-
-            <article class="news-item">
-              <h3>Verdrehte Welt</h3>
-              <p>
-                Seitdem brennt der Norden in Hitze, während der Süden von Eis und Kälte
-                beherrscht wird. Diese Umkehr prägt Regionen, Reiche, Völker und Konflikte.
-              </p>
-            </article>
-          </div>
-        </section>
-
-        <section class="section">
-          <div class="section-head">
-            <h2>Die Kontinente</h2>
-            <p>Zwei große Landmassen prägen Jueria.</p>
-          </div>
-
-          <div class="feature-grid">
-            <article class="feature-item">
-              <h3>Vorngar</h3>
-              <p>
-                Ein Kontinent der Spannungen: Im Norden dominieren orkische Gebiete,
-                während im Süden Menschenreiche um Ordnung, Schutz und Einfluss kämpfen.
-              </p>
-            </article>
-
-            <article class="feature-item">
-              <h3>Elyraen</h3>
-              <p>
-                Heimat uralter Wälder, astraler Kräfte und alter Konflikte.
-                Elfen und Trolle stehen hier in einem Spannungsfeld aus Freiheit,
-                Macht und Überleben.
-              </p>
-            </article>
-          </div>
-        </section>
-
-        <section class="section">
-          <div class="section-head">
-            <h2>Die Fraktionen</h2>
-            <p>Keine reine Gut-gegen-Böse-Erzählung, sondern ein Kampf der Prinzipien.</p>
-          </div>
-
-          <div class="news-list">
-            <article class="news-item">
-              <h3>Drachenbund</h3>
-              <p>
-                Der Drachenbund steht für Ordnung, Struktur und Schutz.
-                Seine Reiche glauben daran, dass Jueria nur durch Disziplin,
-                Bündnisse und gefestigte Herrschaft stabilisiert werden kann.
-              </p>
-            </article>
-
-            <article class="news-item">
-              <h3>Wolfsmark</h3>
-              <p>
-                Wolfsmark steht für Freiheit, Eigenständigkeit und rohe Entschlossenheit.
-                Für diese Fraktion ist starre Ordnung oft nur eine andere Form von Ketten.
-              </p>
-            </article>
-          </div>
-        </section>
-
-        <section class="section">
-          <div class="section-head">
-            <h2>Aetherion</h2>
-            <p>Die neutrale Stadt zwischen den Fronten.</p>
-          </div>
-
-          <article class="news-item">
-            <p>
-              Aetherion ist eine neutrale Zuflucht und ein Knotenpunkt zwischen den Mächten.
-              Händler, Reisende, Gelehrte und Suchende kreuzen hier ihre Wege.
-              Doch selbst diese Stadt bleibt nicht unberührt vom Astralstrom und den Rissen der Welt.
-            </p>
-          </article>
-        </section>
-
+  <aside class="sideNav">
+    <div class="brand">
+      <img src="./assets/images/logo.png" alt="Stormfire Logo">
+      <div>
+        <div class="brandTitle">STORMFIRE</div>
+        <div class="brandSub">MMORPG PORTAL</div>
       </div>
-    </main>
+    </div>
 
-    <aside class="status-panel">
-      <div class="status-panel-head">
-        <div class="status-kicker">LIVE STATUS</div>
-        <h2>Realm Server</h2>
-        <p>Automatisch aus Supabase geladen.</p>
-      </div>
+    <nav class="navGroup">
+      <a class="navbtn" href="./index.html">Home</a>
+      <a class="navbtn" href="./news.html">News</a>
+      <a class="navbtn" href="./status.html">Realm Status</a>
+      <a class="navbtn" href="./leaderboard.html">Leaderboard</a>
+      <a class="navbtn" href="./roadmap.html">Roadmap</a>
+      <a class="navbtn" href="./galerie.html">Galerie</a>
+      <a class="navbtn" href="./geschichte.html">Geschichte</a>
+      <a class="navbtn" href="./team.html">Team</a>
+      <a class="navbtn" href="./discord.html">Discord</a>
+      <a class="navbtn" href="./launcher.html">Launcher</a>
+      <a class="navbtn" href="./impressum.html">Impressum</a>
+    </nav>
+  </aside>
 
-      <div class="status-overview">
-        <div class="status-big-row">
-          <span>Login / Datenbank</span>
-          <strong id="login-status" class="status-dev">Lädt…</strong>
-        </div>
-        <div class="status-big-row">
-          <span>Realm Server</span>
-          <strong id="realm-status" class="status-dev">Lädt…</strong>
-        </div>
-        <div class="status-big-row">
-          <span>Spieler gesamt</span>
-          <strong id="player-count">0</strong>
-        </div>
-        <div class="status-big-row">
-          <span>Drachenbund</span>
-          <strong id="drachenbund-count">0</strong>
-        </div>
-        <div class="status-big-row">
-          <span>Wolfsmark</span>
-          <strong id="wolfsmark-count">0</strong>
-        </div>
-        <div class="status-big-row">
-          <span>Spieler online</span>
-          <strong id="players-online-live">0</strong>
-        </div>
-      </div>
+  <main class="content">
+    <div class="eyebrow">Lore • Welt • Ursprung</div>
+    <h1 class="heroTitle">Die Geschichte von STORMFIRE</h1>
 
-      <div class="realm-summary-box">
-        <div class="realm-summary-title">Realm Übersicht</div>
-        <div class="realm-summary-stats">
-          <div class="realm-summary-chip realm-summary-online">
-            <span class="dot dot-green"></span>
-            <span id="realms-online">0</span>
-            <span>online</span>
-          </div>
-          <div class="realm-summary-chip realm-summary-offline">
-            <span class="dot dot-red"></span>
-            <span id="realms-offline">0</span>
-            <span>offline</span>
-          </div>
-        </div>
-      </div>
+    <p class="heroText">
+      Die Welt von STORMFIRE heißt Jueria. Nach dem Bruch des Juwels der Entstehung geriet das Gleichgewicht der Welt aus den Fugen.
+    </p>
 
-      <div class="realm-list-box">
-        <div class="realm-list-title">Alle Realms</div>
-        <div id="realm-list" class="realm-list">
-          <div class="realm-list-empty">Realm-Daten werden geladen…</div>
-        </div>
-      </div>
+    <div class="postCard">
+      <div class="meta">Lore</div>
+      <h2>Jueria</h2>
+      <p>
+        Der Norden wurde heiß, während der Süden in Kälte und Frost versank. Diese verdrehte Ordnung bildet die Grundlage
+        für Fraktionen, Regionen und Konflikte in der Welt von STORMFIRE.
+      </p>
+    </div>
 
-      <div class="status-note" id="status-note">Verbindung wird aufgebaut…</div>
-    </aside>
+    <div class="postCard">
+      <div class="meta">Grundthema</div>
+      <h2>Ordnung und Freiheit</h2>
+      <p>
+        Im Zentrum der Welt stehen nicht einfache Gut-und-Böse-Strukturen, sondern die Spannungen zwischen Ordnung, Freiheit,
+        Macht, Struktur und Überleben in einer gebrochenen Welt.
+      </p>
+    </div>
+  </main>
 
-  </div>
+  <aside class="statusPanel">
+    <div class="statusMini">Live Status</div>
+    <h2>Realm Server</h2>
+    <div class="statusSub">Automatisch aus Supabase geladen.</div>
+    <div class="hr"></div>
 
-  <script src="./assets/js/status.js"></script>
+    <div class="statusRow"><span>Status</span><span class="statusValue"><span id="statusDot" class="bad"></span> <span id="statusText">Lädt...</span></span></div>
+    <div class="statusRow"><span>Login / Datenbank</span><span id="loginStatus" class="statusValue">Lädt...</span></div>
+    <div class="statusRow"><span>Realm Server</span><span id="realmName" class="statusValue">Lädt...</span></div>
+    <div class="statusRow"><span>Spieler gesamt</span><span id="playersTotal" class="statusValue">0</span></div>
+    <div class="statusRow"><span>Drachenbund</span><span id="faction1" class="statusValue">0</span></div>
+    <div class="statusRow"><span>Wolfsmark</span><span id="faction2" class="statusValue">0</span></div>
+    <div class="statusRow"><span>Spieler online</span><span id="playersOnline" class="statusValue">0</span></div>
+    <div class="statusRow"><span>Queue / Besuche</span><span id="capacity" class="statusValue">0</span></div>
+
+    <div class="hr"></div>
+
+    <h3>Realm Übersicht</h3>
+    <div class="realmOverview">
+      <div class="realmStat"><span class="dot good"></span><span id="onlineRealms">0</span> online</div>
+      <div class="realmStat"><span class="dot bad"></span><span id="offlineRealms">0</span> offline</div>
+    </div>
+
+    <div class="hr"></div>
+
+    <h3>Alle Realms</h3>
+    <div id="realmList" class="realmList">
+      <div class="muted">Realm-Daten werden geladen...</div>
+      <div class="muted">Verbindung wird aufgebaut...</div>
+    </div>
+
+    <div class="hr"></div>
+    <div id="lastUpdated" class="muted">Letztes Update: Lädt...</div>
+  </aside>
+
+</div>
+
+<script src="./assets/js/site.js"></script>
+<script src="./assets/js/status.js"></script>
 </body>
 </html>
