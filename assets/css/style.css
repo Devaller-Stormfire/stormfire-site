@@ -201,6 +201,16 @@ img{max-width:100%;display:block}
   box-shadow:var(--shadow);
 }
 
+.postCard h2,
+.postCard h3{
+  margin:0 0 12px;
+}
+
+.postCard p{
+  color:#c1d0ec;
+  line-height:1.6;
+}
+
 .meta{
   color:var(--muted);
   font-size:14px;
@@ -221,6 +231,25 @@ img{max-width:100%;display:block}
   background:rgba(255,255,255,.03);
   color:#dce7ff;
   font-size:13px;
+}
+
+.imageCard{
+  margin-top:24px;
+  background:linear-gradient(180deg,rgba(17,28,51,.78),rgba(18,30,54,.54));
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:20px;
+  box-shadow:var(--shadow);
+}
+
+.imageCard h3{
+  margin:0 0 14px;
+}
+
+.imageCard img{
+  width:100%;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.06);
 }
 
 .statusPanel{
@@ -245,6 +274,11 @@ img{max-width:100%;display:block}
 .statusPanel h2{
   margin:0 0 8px;
   font-size:24px;
+}
+
+.statusPanel h3{
+  margin:0 0 12px;
+  font-size:16px;
 }
 
 .statusSub{
