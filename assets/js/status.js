@@ -1,5 +1,3 @@
-// status.js — STORMFIRE Server Status aus Supabase (site_realm_status)
-
 (function () {
   console.log("[status.js] loaded");
 
@@ -7,6 +5,15 @@
   const SUPABASE_ANON_KEY = "sb_publishable_GmsSvpE-8xoRVsgePDIrsQ_p-jH5gQ2";
 
   const $ = (id) => document.getElementById(id);
+
+  const REALM_DISPLAY = {
+    "Aschepakt": "Aschepakt",
+    "Blutpfad": "Blutpfad",
+    "Ewiger Bund": "Ewiger Bund",
+    "Schattenpfad": "Schattenpfad",
+    "Sturmklippe": "Sturmklippe",
+    "Sturmkrone": "Sturmkrone"
+  };
 
   function formatNumber(value) {
     return new Intl.NumberFormat("de-DE").format(Number(value || 0));
@@ -48,6 +55,48 @@
     return await res.json();
   }
 
+  function renderRealmList(realms) {
+    const list = $("realmList");
+    if (!list) return;
+
+    list.innerHTML = "";
+
+    const sorted = [...realms].sort((a, b) => {
+      const an = REALM_DISPLAY[a.realm_key] || a.realm_key || "";
+      const bn = REALM_DISPLAY[b.realm_key] || b.realm_key || "";
+      return an.localeCompare(bn, "de");
+    });
+
+    sorted.forEach((realm) => {
+      const row = document.createElement("div");
+      row.className = "realmRow";
+
+      const left = document.createElement("div");
+      left.className = "realmLeft";
+
+      const dot = document.createElement("span");
+      dot.className = realm.online ? "good" : "bad";
+
+      const name = document.createElement("span");
+      name.className = "realmName";
+      name.textContent = REALM_DISPLAY[realm.realm_key] || realm.realm_key;
+
+      left.appendChild(dot);
+      left.appendChild(name);
+
+      const right = document.createElement("div");
+      right.className = "realmRight";
+      right.innerHTML = `
+        <div>${formatNumber(realm.players_online)} online</div>
+        <div class="realmState">${realm.online ? "ONLINE" : "OFFLINE"}</div>
+      `;
+
+      row.appendChild(left);
+      row.appendChild(right);
+      list.appendChild(row);
+    });
+  }
+
   async function loadStatus() {
     try {
       console.log("[status.js] fetching...");
@@ -70,80 +119,27 @@
       const onlineRealms = realms.filter(r => !!r.online).length;
       const offlineRealms = realms.length - onlineRealms;
       const totalOnlinePlayers = realms.reduce((sum, r) => sum + Number(r.players_online || 0), 0);
+      const mainRealm = realms.find(r => r.online) || realms[0];
 
       setBadge(onlineRealms > 0 ? "online" : "offline", onlineRealms > 0 ? "ONLINE" : "OFFLINE");
 
+      setText("loginStatus", "ONLINE");
+      setText("realmName", mainRealm ? (REALM_DISPLAY[mainRealm.realm_key] || mainRealm.realm_key) : "—");
+      setText("playersTotal", formatNumber(characters.length));
+      setText("faction1", formatNumber(drachenbund.length));
+      setText("faction2", formatNumber(wolfsmark.length));
       setText("playersOnline", formatNumber(totalOnlinePlayers));
+      setText("capacity", mainRealm ? formatNumber(mainRealm.queue_size || 0) : "0");
       setText("onlineRealms", formatNumber(onlineRealms));
       setText("offlineRealms", formatNumber(offlineRealms));
 
-      setText("playersTotal", formatNumber(characters.length));
-      setText("totalPlayers", formatNumber(characters.length));
+      const last = mainRealm?.updated_at || mainRealm?.last_heartbeat;
+      setText(
+        "lastUpdated",
+        "Letztes Update: " + (last ? new Date(last).toLocaleString("de-DE") : new Date().toLocaleString("de-DE"))
+      );
 
-      setText("faction1", formatNumber(drachenbund.length));
-      setText("faction2", formatNumber(wolfsmark.length));
-
-      if ($("faction1Sub")) $("faction1Sub").textContent = "Drachenbund";
-      if ($("faction2Sub")) $("faction2Sub").textContent = "Wolfsmark";
-
-      const loginStatus = $("loginStatus");
-      if (loginStatus) loginStatus.textContent = "ONLINE";
-
-      const mainRealm = realms.find(r => r.online) || realms[0];
-      if ($("realmName")) $("realmName").textContent = mainRealm ? mainRealm.realm_key : "—";
-      if ($("serverName")) $("serverName").textContent = "STORMFIRE Login";
-      if ($("region")) $("region").textContent = "EU";
-      if ($("mode")) $("mode").textContent = "Live";
-      if ($("capacity")) $("capacity").textContent = mainRealm ? formatNumber(mainRealm.queue_size || 0) : "0";
-
-      if ($("lastUpdated")) {
-        $("lastUpdated").textContent =
-          "Letztes Update: " + new Date().toLocaleString("de-DE");
-      }
-
-      const list = $("realmList");
-      if (list) {
-        list.innerHTML = "";
-
-        realms.forEach((realm) => {
-          const row = document.createElement("div");
-          row.className = "realmRow";
-          row.style.display = "flex";
-          row.style.justifyContent = "space-between";
-          row.style.alignItems = "center";
-          row.style.padding = "10px 0";
-          row.style.borderBottom = "1px solid rgba(255,255,255,.06)";
-
-          const left = document.createElement("div");
-          left.style.display = "flex";
-          left.style.alignItems = "center";
-          left.style.gap = "10px";
-
-          const dot = document.createElement("span");
-          dot.style.width = "10px";
-          dot.style.height = "10px";
-          dot.style.borderRadius = "50%";
-          dot.className = realm.online ? "good" : "bad";
-
-          const name = document.createElement("span");
-          name.style.fontWeight = "600";
-          name.textContent = realm.realm_key;
-
-          left.appendChild(dot);
-          left.appendChild(name);
-
-          const right = document.createElement("div");
-          right.style.textAlign = "right";
-          right.innerHTML = `
-            <div>${formatNumber(realm.players_online)} online</div>
-            <div style="opacity:.7;font-size:12px;">${realm.online ? "ONLINE" : "OFFLINE"}</div>
-          `;
-
-          row.appendChild(left);
-          row.appendChild(right);
-          list.appendChild(row);
-        });
-      }
+      renderRealmList(realms);
 
       console.log("[status.js] success", {
         onlineRealms,
@@ -154,9 +150,7 @@
     } catch (err) {
       console.error("[status.js] error", err);
       setBadge("offline", "DATENFEHLER");
-      if ($("lastUpdated")) {
-        $("lastUpdated").textContent = "Konnte Live-Daten nicht laden.";
-      }
+      setText("lastUpdated", "Letztes Update: Fehler beim Laden");
     }
   }
 
