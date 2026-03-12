@@ -1,20 +1,23 @@
 :root{
   --bg-1:#030816;
   --bg-2:#07132b;
-  --bg-3:#0b1d3d;
   --panel:#0b1428cc;
   --line:rgba(255,255,255,.08);
   --text:#eef4ff;
   --muted:#9fb1d1;
   --gold:#f3c970;
-  --good:#4ee28f;
-  --bad:#ff7d7d;
+  --good:#45e287;
+  --good-text:#7dffb0;
+  --bad:#ff6f6f;
+  --bad-text:#ff9a9a;
   --warn:#ffcf70;
+  --online-count:#8fd3ff;
   --shadow:0 20px 50px rgba(0,0,0,.35);
 }
 
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
+
 body{
   font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
   color:var(--text);
@@ -44,7 +47,7 @@ img{max-width:100%;display:block}
 
 .layout{
   display:grid;
-  grid-template-columns:252px 1fr 330px;
+  grid-template-columns:252px 1fr 340px;
   min-height:100vh;
 }
 
@@ -63,6 +66,7 @@ img{max-width:100%;display:block}
   align-items:center;
   gap:14px;
   margin-bottom:26px;
+  cursor:pointer;
 }
 
 .brand img{
@@ -138,7 +142,7 @@ img{max-width:100%;display:block}
 }
 
 .heroTitle{
-  font-size:68px;
+  font-size:64px;
   line-height:.95;
   margin:0 0 18px;
   letter-spacing:-.04em;
@@ -161,4 +165,319 @@ img{max-width:100%;display:block}
 
 .sectionText{
   color:var(--muted);
-  margin:0 0
+  margin:0 0 22px;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:26px;
+}
+
+.card,
+.postCard,
+.imageCard{
+  margin-top:24px;
+  background:linear-gradient(180deg,rgba(17,28,51,.78),rgba(18,30,54,.54));
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:22px;
+  box-shadow:var(--shadow);
+}
+
+.cards .card{
+  margin-top:0;
+}
+
+.card h3,
+.postCard h2,
+.postCard h3,
+.imageCard h3{
+  margin:0 0 12px;
+}
+
+.card p,
+.postCard p{
+  margin:0;
+  color:#c1d0ec;
+  line-height:1.6;
+  font-size:15px;
+}
+
+.postCard p + p{
+  margin-top:14px;
+}
+
+.meta{
+  color:var(--muted);
+  font-size:14px;
+  margin-bottom:12px;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:16px;
+}
+
+.tag{
+  padding:7px 12px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.03);
+  color:#dce7ff;
+  font-size:13px;
+}
+
+.imageCard img{
+  width:100%;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.06);
+}
+
+.discordFrame{
+  width:100%;
+  min-height:520px;
+  border:1px solid var(--line);
+  border-radius:22px;
+  background:rgba(255,255,255,.02);
+}
+
+.statusPanel{
+  position:sticky;
+  top:0;
+  height:100vh;
+  padding:28px 18px;
+  border-left:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(8,12,33,.88),rgba(5,12,28,.80));
+  backdrop-filter:blur(10px);
+  overflow:auto;
+}
+
+.statusMini{
+  color:var(--gold);
+  font-size:13px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+
+.statusPanel h2{
+  margin:0 0 8px;
+  font-size:24px;
+}
+
+.statusPanel h3{
+  margin:0 0 12px;
+  font-size:16px;
+}
+
+.statusSub{
+  color:var(--muted);
+  line-height:1.45;
+  margin-bottom:18px;
+}
+
+.hr{
+  height:1px;
+  background:var(--line);
+  margin:18px 0;
+}
+
+.statusRow{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 0;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.statusRow:last-child{border-bottom:none}
+
+.statusRow span:first-child{
+  color:#b7c8e6;
+}
+
+.statusValue{
+  font-weight:700;
+  color:#fff;
+}
+
+.statusOnline{
+  color:var(--good-text);
+}
+
+.statusOffline{
+  color:var(--bad-text);
+}
+
+.playersOnlineValue{
+  color:var(--online-count);
+}
+
+.realmOverview{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:14px;
+}
+
+.realmStat{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 14px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.03);
+  color:#eaf1ff;
+}
+
+.dot,
+.good,
+.bad,
+.warn{
+  display:inline-block;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+}
+
+.dot.good,.good{background:var(--good)}
+.dot.bad,.bad{background:var(--bad)}
+.dot.warn,.warn{background:var(--warn)}
+
+.realmList{
+  margin-top:14px;
+}
+
+.realmRow{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  padding:11px 0;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.realmRow:last-child{border-bottom:none}
+
+.realmLeft{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width:0;
+}
+
+.realmName{
+  font-weight:600;
+}
+
+.realmRight{
+  text-align:right;
+  white-space:nowrap;
+}
+
+.realmState{
+  font-size:12px;
+  margin-top:2px;
+  font-weight:700;
+}
+
+.realmState.online{
+  color:var(--good-text);
+}
+
+.realmState.offline{
+  color:var(--bad-text);
+}
+
+.realmPlayers{
+  color:var(--online-count);
+  font-weight:700;
+}
+
+.muted{
+  color:var(--muted);
+}
+
+.btnRow{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:18px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px 18px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.04);
+  color:#fff;
+  font-weight:700;
+  transition:.2s ease;
+}
+
+.btn:hover{
+  background:rgba(255,255,255,.08);
+}
+
+.btnPrimary{
+  background:linear-gradient(90deg,rgba(255,216,107,.16),rgba(255,255,255,.04));
+  border-color:rgba(255,216,107,.28);
+}
+
+.loginGate{
+  margin-top:18px;
+  padding:16px 18px;
+  border-radius:18px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.03);
+}
+
+.statGrid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+  margin-top:18px;
+}
+
+.statBox{
+  padding:18px;
+  border-radius:18px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.03);
+}
+
+.statLabel{
+  color:var(--muted);
+  font-size:13px;
+  margin-bottom:8px;
+}
+
+.statNumber{
+  font-size:28px;
+  font-weight:800;
+}
+
+@media (max-width: 1280px){
+  .layout{grid-template-columns:220px 1fr 300px}
+  .heroTitle{font-size:56px}
+}
+
+@media (max-width: 1100px){
+  .layout{grid-template-columns:1fr}
+  .sideNav,.statusPanel{
+    position:relative;
+    height:auto;
+    border:none;
+  }
+  .cards{grid-template-columns:1fr}
+  .heroTitle{font-size:48px}
+  .statGrid{grid-template-columns:1fr}
+}
