@@ -22,18 +22,23 @@
     if (el) el.textContent = value;
   }
 
-  function setBadge(state, text) {
+  function setBadge(isOnline) {
     const dot = $("statusDot");
     const label = $("statusText");
     if (!dot || !label) return;
 
-    dot.classList.remove("good", "warn", "bad");
+    dot.classList.remove("good", "bad", "warn");
+    label.classList.remove("statusOnline", "statusOffline");
 
-    if (state === "online") dot.classList.add("good");
-    else if (state === "maintenance") dot.classList.add("warn");
-    else dot.classList.add("bad");
-
-    label.textContent = text;
+    if (isOnline) {
+      dot.classList.add("good");
+      label.classList.add("statusOnline");
+      label.textContent = "ONLINE";
+    } else {
+      dot.classList.add("bad");
+      label.classList.add("statusOffline");
+      label.textContent = "OFFLINE";
+    }
   }
 
   async function fetchJson(url) {
@@ -62,31 +67,22 @@
     });
 
     sorted.forEach((realm) => {
+      const online = !!realm.online;
+
       const row = document.createElement("div");
       row.className = "realmRow";
 
-      const left = document.createElement("div");
-      left.className = "realmLeft";
-
-      const dot = document.createElement("span");
-      dot.className = realm.online ? "good" : "bad";
-
-      const name = document.createElement("span");
-      name.className = "realmName";
-      name.textContent = REALM_DISPLAY[realm.realm_key] || realm.realm_key;
-
-      left.appendChild(dot);
-      left.appendChild(name);
-
-      const right = document.createElement("div");
-      right.className = "realmRight";
-      right.innerHTML = `
-        <div>${formatNumber(realm.players_online)} online</div>
-        <div class="realmState">${realm.online ? "ONLINE" : "OFFLINE"}</div>
+      row.innerHTML = `
+        <div class="realmLeft">
+          <span class="${online ? "good" : "bad"}"></span>
+          <span class="realmName">${REALM_DISPLAY[realm.realm_key] || realm.realm_key}</span>
+        </div>
+        <div class="realmRight">
+          <div class="realmPlayers">${formatNumber(realm.players_online)} online</div>
+          <div class="realmState ${online ? "online" : "offline"}">${online ? "ONLINE" : "OFFLINE"}</div>
+        </div>
       `;
 
-      row.appendChild(left);
-      row.appendChild(right);
       list.appendChild(row);
     });
   }
@@ -104,9 +100,17 @@
       const offlineRealms = realms.length - onlineRealms;
       const totalOnlinePlayers = realms.reduce((sum, r) => sum + Number(r.players_online || 0), 0);
       const mainRealm = realms.find(r => r.online) || realms[0];
+      const isOnline = onlineRealms > 0;
 
-      setBadge(onlineRealms > 0 ? "online" : "offline", onlineRealms > 0 ? "ONLINE" : "OFFLINE");
-      setText("loginStatus", "ONLINE");
+      setBadge(isOnline);
+
+      setText("loginStatus", isOnline ? "ONLINE" : "OFFLINE");
+      const loginEl = $("loginStatus");
+      if (loginEl) {
+        loginEl.classList.remove("statusOnline", "statusOffline");
+        loginEl.classList.add(isOnline ? "statusOnline" : "statusOffline");
+      }
+
       setText("realmName", mainRealm ? (REALM_DISPLAY[mainRealm.realm_key] || mainRealm.realm_key) : "—");
       setText("playersTotal", formatNumber(characters.length));
       setText("faction1", formatNumber(drachenbund.length));
@@ -116,13 +120,16 @@
       setText("onlineRealms", formatNumber(onlineRealms));
       setText("offlineRealms", formatNumber(offlineRealms));
 
+      const playersOnlineEl = $("playersOnline");
+      if (playersOnlineEl) playersOnlineEl.classList.add("playersOnlineValue");
+
       const last = mainRealm?.updated_at || mainRealm?.last_heartbeat;
       setText("lastUpdated", "Letztes Update: " + (last ? new Date(last).toLocaleString("de-DE") : new Date().toLocaleString("de-DE")));
 
       renderRealmList(realms);
     } catch (err) {
       console.error("[status.js] error", err);
-      setBadge("offline", "DATENFEHLER");
+      setBadge(false);
       setText("lastUpdated", "Letztes Update: Fehler beim Laden");
     }
   }
