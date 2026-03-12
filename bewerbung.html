@@ -1,171 +1,94 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bewerbung | STORMFIRE</title>
-  <meta name="description" content="Bewerbungen für Beta-Tester und GM-Rollen bei STORMFIRE." />
-
-  <link rel="stylesheet" href="./assets/css/style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <meta charset="UTF-8">
+  <title>Stormfire - Bewerbung</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-  <div class="layout">
+<div class="layout">
 
-    <aside class="sidebar">
-      <a class="brand" href="./index.html" aria-label="STORMFIRE Startseite">
-        <div class="brand-logo">
-          <img
-            src="assets/images/logo.png"
-            alt="STORMFIRE Logo"
-            onerror="this.style.display='none'; this.parentElement.classList.add('brand-logo-fallback'); this.parentElement.textContent='SF';"
-          />
-        </div>
-        <div class="brand-text">
-          <strong>STORMFIRE</strong>
-          <span>MMORPG Portal</span>
-        </div>
-      </a>
-
-      <nav class="sidebar-nav">
-        <a href="./index.html">Home</a>
-        <a href="./news.html">News</a>
-        <a href="./status.html">Realm Status</a>
-        <a href="./leaderboard.html">Leaderboard</a>
-        <a href="./roadmap.html">Roadmap</a>
-        <a href="./gallery.html">Galerie</a>
-        <a href="./geschichte.html">Geschichte</a>
-        <a href="./team.html">Team</a>
-        <a href="./discord.html">Discord</a>
-        <a href="./download.html">Launcher</a>
-        <a href="./impressum.html">Impressum</a>
-      </nav>
-    </aside>
-
-    <main class="content">
-      <div class="content-inner">
-
-        <section class="hero-section">
-          <div class="kicker">BEWERBUNG • COMMUNITY • TESTPHASEN</div>
-          <h1 class="hero-title">Bewerbungen</h1>
-          <p class="hero-text">
-            Aktuell sind nur Bewerbungen als Beta-Tester oder für eine spätere GM-Rolle vorgesehen.
-          </p>
-        </section>
-
-        <section class="section">
-          <div class="section-head">
-            <h2>Aktuell möglich</h2>
-            <p>Derzeit nehmen wir nur diese beiden Arten von Bewerbungen entgegen.</p>
-          </div>
-
-          <div class="feature-grid">
-            <article class="feature-item">
-              <h3>Beta Tester</h3>
-              <p>
-                Bewerbung für zukünftige Testphasen von Stormfire, um Inhalte,
-                Spielfluss und technische Abläufe frühzeitig mit zu prüfen.
-              </p>
-            </article>
-
-            <article class="feature-item">
-              <h3>Game Master (GM)</h3>
-              <p>
-                Bewerbung für eine mögliche spätere GM-Rolle zur Unterstützung von
-                Community, Ordnung und Ingame-Betreuung.
-              </p>
-            </article>
-          </div>
-        </section>
-
-        <section class="section">
-          <div class="section-head">
-            <h2>Bewerbung per E-Mail</h2>
-            <p>Bitte sende deine Bewerbung direkt an das Team.</p>
-          </div>
-
-          <article class="stormfire-devlog-card">
-            <div class="stormfire-devlog-meta">Kontakt • Offizielle Bewerbung</div>
-            <h3>team@stormfire.dev</h3>
-            <p>
-              Sende deine Bewerbung bitte per E-Mail an <strong>team@stormfire.dev</strong>.
-              Gib dabei an, ob du dich als <strong>Beta Tester</strong> oder für eine
-              <strong>GM-Rolle</strong> bewerben möchtest.
-            </p>
-            <p style="margin-top:18px;">
-              <a class="quick-link" href="mailto:team@stormfire.dev?subject=Stormfire%20Bewerbung">
-                <strong>Bewerbung per Mail senden</strong>
-                <span>Öffnet dein E-Mail-Programm mit der richtigen Adresse.</span>
-              </a>
-            </p>
-          </article>
-        </section>
-
+  <aside class="sideNav">
+    <a class="brand" href="./index.html">
+      <img src="./assets/images/logo.png" alt="Stormfire Logo">
+      <div>
+        <div class="brandTitle">STORMFIRE</div>
+        <div class="brandSub">MMORPG PORTAL</div>
       </div>
-    </main>
+    </a>
 
-    <aside class="status-panel">
-      <div class="status-panel-head">
-        <div class="status-kicker">LIVE STATUS</div>
-        <h2>Realm Server</h2>
-        <p>Automatisch aus Supabase geladen.</p>
-      </div>
+    <nav class="navGroup">
+      <a class="navbtn" href="./index.html">Home</a>
+      <a class="navbtn" href="./news.html">News</a>
+      <a class="navbtn" href="./status.html">Realm Status</a>
+      <a class="navbtn" href="./leaderboard.html">Leaderboard</a>
+      <a class="navbtn" href="./roadmap.html">Roadmap</a>
+      <a class="navbtn" href="./galerie.html">Galerie</a>
+      <a class="navbtn" href="./geschichte.html">Geschichte</a>
+      <a class="navbtn" href="./team.html">Team</a>
+      <a class="navbtn" href="./bewerbung.html">Bewerbung</a>
+      <a class="navbtn" href="./account.html">Account ansehen</a>
+      <a class="navbtn" href="./discord.html">Discord</a>
+      <a class="navbtn" href="./launcher.html">Launcher</a>
+      <a class="navbtn" href="./impressum.html">Impressum</a>
+      <a class="navbtn" href="./datenschutz.html">Datenschutz</a>
+    </nav>
+  </aside>
 
-      <div class="status-overview">
-        <div class="status-big-row">
-          <span>Login / Datenbank</span>
-          <strong id="login-status" class="status-dev">Lädt…</strong>
-        </div>
-        <div class="status-big-row">
-          <span>Realm Server</span>
-          <strong id="realm-status" class="status-dev">Lädt…</strong>
-        </div>
-        <div class="status-big-row">
-          <span>Spieler gesamt</span>
-          <strong id="player-count">0</strong>
-        </div>
-        <div class="status-big-row">
-          <span>Drachenbund</span>
-          <strong id="drachenbund-count">0</strong>
-        </div>
-        <div class="status-big-row">
-          <span>Wolfsmark</span>
-          <strong id="wolfsmark-count">0</strong>
-        </div>
-        <div class="status-big-row">
-          <span>Spieler online</span>
-          <strong id="players-online-live">0</strong>
-        </div>
-      </div>
+  <main class="content">
+    <div class="eyebrow">Mithelfen • Projekt • Bewerbung</div>
+    <h1 class="heroTitle">Bewerbung</h1>
 
-      <div class="realm-summary-box">
-        <div class="realm-summary-title">Realm Übersicht</div>
-        <div class="realm-summary-stats">
-          <div class="realm-summary-chip realm-summary-online">
-            <span class="dot dot-green"></span>
-            <span id="realms-online">0</span>
-            <span>online</span>
-          </div>
-          <div class="realm-summary-chip realm-summary-offline">
-            <span class="dot dot-red"></span>
-            <span id="realms-offline">0</span>
-            <span>offline</span>
-          </div>
-        </div>
-      </div>
+    <p class="heroText">
+      Wenn du STORMFIRE später unterstützen möchtest, kannst du hier deine Bewerbung oder Kontaktmöglichkeit finden.
+    </p>
 
-      <div class="realm-list-box">
-        <div class="realm-list-title">Alle Realms</div>
-        <div id="realm-list" class="realm-list">
-          <div class="realm-list-empty">Realm-Daten werden geladen…</div>
-        </div>
-      </div>
+    <div class="postCard">
+      <h2>Projektbewerbung</h2>
+      <p>
+        Hier kannst du später ein Bewerbungsformular, Discord-Kontakt oder eine E-Mail-Adresse für Unterstützer einbauen.
+      </p>
+    </div>
+  </main>
 
-      <div class="status-note" id="status-note">Verbindung wird aufgebaut…</div>
-    </aside>
+  <aside class="statusPanel">
+    <div class="statusMini">Live Status</div>
+    <h2>Realm Server</h2>
+    <div class="statusSub">Automatisch aus Supabase geladen.</div>
+    <div class="hr"></div>
 
-  </div>
+    <div class="statusRow"><span>Status</span><span class="statusValue"><span id="statusDot" class="bad"></span> <span id="statusText">Lädt...</span></span></div>
+    <div class="statusRow"><span>Login / Datenbank</span><span id="loginStatus" class="statusValue">Lädt...</span></div>
+    <div class="statusRow"><span>Realm Server</span><span id="realmName" class="statusValue">Lädt...</span></div>
+    <div class="statusRow"><span>Spieler gesamt</span><span id="playersTotal" class="statusValue">0</span></div>
+    <div class="statusRow"><span>Drachenbund</span><span id="faction1" class="statusValue">0</span></div>
+    <div class="statusRow"><span>Wolfsmark</span><span id="faction2" class="statusValue">0</span></div>
+    <div class="statusRow"><span>Spieler online</span><span id="playersOnline" class="statusValue">0</span></div>
+    <div class="statusRow"><span>Queue / Besuche</span><span id="capacity" class="statusValue">0</span></div>
 
-  <script src="./assets/js/status.js"></script>
+    <div class="hr"></div>
+
+    <h3>Realm Übersicht</h3>
+    <div class="realmOverview">
+      <div class="realmStat"><span class="dot good"></span><span id="onlineRealms">0</span> online</div>
+      <div class="realmStat"><span class="dot bad"></span><span id="offlineRealms">0</span> offline</div>
+    </div>
+
+    <div class="hr"></div>
+
+    <h3>Alle Realms</h3>
+    <div id="realmList" class="realmList">
+      <div class="muted">Realm-Daten werden geladen...</div>
+    </div>
+
+    <div class="hr"></div>
+    <div id="lastUpdated" class="muted">Letztes Update: Lädt...</div>
+  </aside>
+
+</div>
+
+<script src="./assets/js/site.js"></script>
+<script src="./assets/js/status.js"></script>
 </body>
 </html>
