@@ -10,13 +10,14 @@
 <div class="layout">
 
   <aside class="sideNav">
-    <div class="brand">
+    <a class="brand" href="./index.html">
       <img src="./assets/images/logo.png" alt="Stormfire Logo">
       <div>
         <div class="brandTitle">STORMFIRE</div>
         <div class="brandSub">MMORPG PORTAL</div>
       </div>
-    </div>
+    </a>
+
     <nav class="navGroup">
       <a class="navbtn" href="./index.html">Home</a>
       <a class="navbtn" href="./news.html">News</a>
@@ -26,6 +27,8 @@
       <a class="navbtn" href="./galerie.html">Galerie</a>
       <a class="navbtn" href="./geschichte.html">Geschichte</a>
       <a class="navbtn" href="./team.html">Team</a>
+      <a class="navbtn" href="./bewerbung.html">Bewerbung</a>
+      <a class="navbtn" href="./account.html">Account ansehen</a>
       <a class="navbtn" href="./discord.html">Discord</a>
       <a class="navbtn" href="./launcher.html">Launcher</a>
       <a class="navbtn" href="./impressum.html">Impressum</a>
@@ -36,15 +39,26 @@
   <main class="content">
     <div class="eyebrow">Projekt • Team • Aufbau</div>
     <h1 class="heroTitle">Stormfire Team</h1>
+
     <p class="heroText">
-      STORMFIRE wird als Indie-MMORPG Schritt für Schritt aufgebaut. Die Entwicklung verbindet Technik, Weltaufbau und Systeme.
+      STORMFIRE wird Schritt für Schritt aufgebaut. Wenn du später mithelfen möchtest, findest du hier den Weg zur Bewerbung.
     </p>
 
     <div class="cards">
-      <div class="card"><h3>Projektleitung</h3><p>Der Kern des Projekts besteht aktuell aus direkter Entwicklung von Website, Spielsystemen und Weltaufbau.</p></div>
-      <div class="card"><h3>Entwicklung</h3><p>Der Fokus liegt auf Charakterfluss, Welteintritt, Statussystem, Gestaltung und späterem Combat System.</p></div>
-      <div class="card"><h3>Langfristige Vision</h3><p>Ziel ist ein klassisch inspiriertes MMORPG mit eigener Identität.</p></div>
-      <div class="card"><h3>Späterer Ausbau</h3><p>Hier können später weitere Teammitglieder und Rollen ergänzt werden.</p></div>
+      <div class="card">
+        <h3>Projektvision</h3>
+        <p>Das Ziel ist ein langfristig aufgebautes MMORPG mit eigener Identität und klarer Stormfire-Richtung.</p>
+      </div>
+
+      <div class="card">
+        <h3>Entwicklung</h3>
+        <p>Aktuell liegt der Fokus auf Charakterfluss, Welteintritt, Statussystem, Gestaltung und Combat-Grundlagen.</p>
+      </div>
+    </div>
+
+    <div class="btnRow">
+      <a class="btn btnPrimary" href="./bewerbung.html">Zur Bewerbung</a>
+      <a class="btn" href="./account.html">Account ansehen</a>
     </div>
   </main>
 
@@ -53,6 +67,7 @@
     <h2>Realm Server</h2>
     <div class="statusSub">Automatisch aus Supabase geladen.</div>
     <div class="hr"></div>
+
     <div class="statusRow"><span>Status</span><span class="statusValue"><span id="statusDot" class="bad"></span> <span id="statusText">Lädt...</span></span></div>
     <div class="statusRow"><span>Login / Datenbank</span><span id="loginStatus" class="statusValue">Lädt...</span></div>
     <div class="statusRow"><span>Realm Server</span><span id="realmName" class="statusValue">Lädt...</span></div>
@@ -61,18 +76,22 @@
     <div class="statusRow"><span>Wolfsmark</span><span id="faction2" class="statusValue">0</span></div>
     <div class="statusRow"><span>Spieler online</span><span id="playersOnline" class="statusValue">0</span></div>
     <div class="statusRow"><span>Queue / Besuche</span><span id="capacity" class="statusValue">0</span></div>
+
     <div class="hr"></div>
+
     <h3>Realm Übersicht</h3>
     <div class="realmOverview">
       <div class="realmStat"><span class="dot good"></span><span id="onlineRealms">0</span> online</div>
       <div class="realmStat"><span class="dot bad"></span><span id="offlineRealms">0</span> offline</div>
     </div>
+
     <div class="hr"></div>
+
     <h3>Alle Realms</h3>
     <div id="realmList" class="realmList">
       <div class="muted">Realm-Daten werden geladen...</div>
-      <div class="muted">Verbindung wird aufgebaut...</div>
     </div>
+
     <div class="hr"></div>
     <div id="lastUpdated" class="muted">Letztes Update: Lädt...</div>
   </aside>
