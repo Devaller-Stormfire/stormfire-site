@@ -1,142 +1,79 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<title>Stormfire - News</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="./assets/css/style.css">
+  <meta charset="UTF-8">
+  <title>Stormfire - News</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-
 <div class="layout">
 
-<aside class="sideNav">
+  <aside class="sideNav">
+    <div class="brand">
+      <img src="./assets/images/logo.png" alt="Stormfire Logo">
+      <div>
+        <div class="brandTitle">STORMFIRE</div>
+        <div class="brandSub">MMORPG PORTAL</div>
+      </div>
+    </div>
+    <nav class="navGroup">
+      <a class="navbtn" href="./index.html">Home</a>
+      <a class="navbtn" href="./news.html">News</a>
+      <a class="navbtn" href="./status.html">Realm Status</a>
+      <a class="navbtn" href="./leaderboard.html">Leaderboard</a>
+      <a class="navbtn" href="./roadmap.html">Roadmap</a>
+      <a class="navbtn" href="./galerie.html">Galerie</a>
+      <a class="navbtn" href="./geschichte.html">Geschichte</a>
+      <a class="navbtn" href="./team.html">Team</a>
+      <a class="navbtn" href="./discord.html">Discord</a>
+      <a class="navbtn" href="./launcher.html">Launcher</a>
+      <a class="navbtn" href="./impressum.html">Impressum</a>
+      <a class="navbtn" href="./datenschutz.html">Datenschutz</a>
+    </nav>
+  </aside>
 
-<div class="brand">
-<img src="./assets/images/logo.png">
-<div>
-<div class="brandTitle">STORMFIRE</div>
-<div class="brandSub">MMORPG PORTAL</div>
-</div>
-</div>
+  <main class="content">
+    <div class="eyebrow">Entwicklung • Updates • Devlogs</div>
+    <h1 class="heroTitle">Stormfire News</h1>
+    <p class="heroText">
+      Hier findest du Devlogs, Fortschritte und Updates zur Entwicklung von STORMFIRE.
+    </p>
+    <div id="newsContainer"></div>
+  </main>
 
-<nav class="navGroup">
-<a class="navbtn" href="./index.html">Home</a>
-<a class="navbtn" href="./news.html">News</a>
-<a class="navbtn" href="./status.html">Realm Status</a>
-<a class="navbtn" href="./leaderboard.html">Leaderboard</a>
-<a class="navbtn" href="./roadmap.html">Roadmap</a>
-<a class="navbtn" href="./galerie.html">Galerie</a>
-<a class="navbtn" href="./geschichte.html">Geschichte</a>
-<a class="navbtn" href="./team.html">Team</a>
-<a class="navbtn" href="./discord.html">Discord</a>
-<a class="navbtn" href="./launcher.html">Launcher</a>
-<a class="navbtn" href="./impressum.html">Impressum</a>
-<a class="navbtn" href="./datenschutz.html">Datenschutz</a>
-</nav>
-
-</aside>
-
-<main class="content">
-
-<div class="eyebrow">Entwicklung • Updates • Devlogs</div>
-<h1 class="heroTitle">Stormfire News</h1>
-
-<p class="heroText">
-Hier findest du Devlogs, Fortschritte und Updates zur Entwicklung von STORMFIRE.
-Alle neuen Entwicklungsstände werden hier dokumentiert.
-</p>
-
-<div id="newsContainer"></div>
-
-</main>
-
-<aside class="statusPanel">
-
-<div class="statusMini">Live Status</div>
-<h2>Realm Server</h2>
-<div class="statusSub">Automatisch aus Supabase geladen.</div>
-
-<div class="hr"></div>
-
-<div class="statusRow">
-<span>Status</span>
-<span class="statusValue">
-<span id="statusDot" class="bad"></span>
-<span id="statusText">Lädt...</span>
-</span>
-</div>
-
-<div class="statusRow">
-<span>Login / Datenbank</span>
-<span id="loginStatus" class="statusValue">Lädt...</span>
-</div>
-
-<div class="statusRow">
-<span>Realm Server</span>
-<span id="realmName" class="statusValue">Lädt...</span>
-</div>
-
-<div class="statusRow">
-<span>Spieler gesamt</span>
-<span id="playersTotal" class="statusValue">0</span>
-</div>
-
-<div class="statusRow">
-<span>Drachenbund</span>
-<span id="faction1" class="statusValue">0</span>
-</div>
-
-<div class="statusRow">
-<span>Wolfsmark</span>
-<span id="faction2" class="statusValue">0</span>
-</div>
-
-<div class="statusRow">
-<span>Spieler online</span>
-<span id="playersOnline" class="statusValue">0</span>
-</div>
-
-<div class="statusRow">
-<span>Queue</span>
-<span id="capacity" class="statusValue">0</span>
-</div>
-
-<div class="hr"></div>
-
-<h3>Realm Übersicht</h3>
-
-<div class="realmOverview">
-<div class="realmStat">
-<span class="dot good"></span>
-<span id="onlineRealms">0</span> online
-</div>
-
-<div class="realmStat">
-<span class="dot bad"></span>
-<span id="offlineRealms">0</span> offline
-</div>
-</div>
-
-<div class="hr"></div>
-
-<h3>Alle Realms</h3>
-
-<div id="realmList" class="realmList">
-<div class="muted">Realm-Daten werden geladen...</div>
-</div>
-
-<div class="hr"></div>
-
-<div id="lastUpdated" class="muted">Letztes Update: Lädt...</div>
-
-</aside>
+  <aside class="statusPanel">
+    <div class="statusMini">Live Status</div>
+    <h2>Realm Server</h2>
+    <div class="statusSub">Automatisch aus Supabase geladen.</div>
+    <div class="hr"></div>
+    <div class="statusRow"><span>Status</span><span class="statusValue"><span id="statusDot" class="bad"></span> <span id="statusText">Lädt...</span></span></div>
+    <div class="statusRow"><span>Login / Datenbank</span><span id="loginStatus" class="statusValue">Lädt...</span></div>
+    <div class="statusRow"><span>Realm Server</span><span id="realmName" class="statusValue">Lädt...</span></div>
+    <div class="statusRow"><span>Spieler gesamt</span><span id="playersTotal" class="statusValue">0</span></div>
+    <div class="statusRow"><span>Drachenbund</span><span id="faction1" class="statusValue">0</span></div>
+    <div class="statusRow"><span>Wolfsmark</span><span id="faction2" class="statusValue">0</span></div>
+    <div class="statusRow"><span>Spieler online</span><span id="playersOnline" class="statusValue">0</span></div>
+    <div class="statusRow"><span>Queue</span><span id="capacity" class="statusValue">0</span></div>
+    <div class="hr"></div>
+    <h3>Realm Übersicht</h3>
+    <div class="realmOverview">
+      <div class="realmStat"><span class="dot good"></span><span id="onlineRealms">0</span> online</div>
+      <div class="realmStat"><span class="dot bad"></span><span id="offlineRealms">0</span> offline</div>
+    </div>
+    <div class="hr"></div>
+    <h3>Alle Realms</h3>
+    <div id="realmList" class="realmList">
+      <div class="muted">Realm-Daten werden geladen...</div>
+    </div>
+    <div class="hr"></div>
+    <div id="lastUpdated" class="muted">Letztes Update: Lädt...</div>
+  </aside>
 
 </div>
 
 <script src="./assets/js/site.js"></script>
 <script src="./assets/js/status.js"></script>
 <script src="./assets/js/news.js"></script>
-
 </body>
 </html>
