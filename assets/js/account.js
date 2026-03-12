@@ -1,44 +1,28 @@
-(async function(){
-  document.getElementById("year").textContent = new Date().getFullYear();
+(function () {
+  const gate = document.getElementById("accountGate");
+  const content = document.getElementById("accountContent");
+  const nameEl = document.getElementById("accountName");
+  const killsEl = document.getElementById("accountKills");
+  const deathsEl = document.getElementById("accountDeaths");
+  const levelEl = document.getElementById("accountLevel");
+  const realmEl = document.getElementById("accountRealm");
 
-  const accUser = document.getElementById("accUser");
-  const charList = document.getElementById("charList");
+  if (!gate || !content) return;
 
-  function getSession(){
-    try{ return JSON.parse(localStorage.getItem("sf_session")||"null"); }catch{ return null; }
-  }
+  const isLoggedIn = localStorage.getItem("stormfire_logged_in") === "true";
 
-  const s = getSession();
-  accUser.textContent = s ? s.user : "Nicht eingeloggt";
-
-  if(!s){
-    charList.innerHTML = `Bitte <a href="/login.html">einloggen</a>, um deine Charaktere zu sehen.`;
+  if (!isLoggedIn) {
+    gate.style.display = "block";
+    content.style.display = "none";
     return;
   }
 
-  // Demo-Accounts (später API)
-  try{
-    const data = await window.sf.fetchJSON("/data/accounts_demo.json");
-    const acc = (data.accounts || []).find(a => (a.username||"").toLowerCase() === s.user.toLowerCase());
-    if(!acc){
-      charList.textContent = "Kein Demo-Account gefunden. (Teste: Devaller)";
-      return;
-    }
+  gate.style.display = "none";
+  content.style.display = "block";
 
-    const chars = Array.isArray(acc.characters) ? acc.characters : [];
-    if(chars.length === 0){
-      charList.textContent = "Noch keine Charaktere.";
-      return;
-    }
-
-    charList.innerHTML = chars.map(c => {
-      return `<div style="margin-bottom:10px;">
-        <div style="font-weight:900;">${window.sf.escapeHtml(c.name)} (Lv ${window.sf.escapeHtml(c.level)})</div>
-        <div class="small">${window.sf.escapeHtml(c.faction)} • ${window.sf.escapeHtml(c.race)} • ${window.sf.escapeHtml(c.class)}</div>
-      </div>`;
-    }).join("");
-  }catch(e){
-    console.warn(e);
-    charList.textContent = "Konnte Demo-Charaktere nicht laden.";
-  }
+  if (nameEl) nameEl.textContent = localStorage.getItem("stormfire_account_name") || "Stormfire Spieler";
+  if (killsEl) killsEl.textContent = localStorage.getItem("stormfire_kills") || "0";
+  if (deathsEl) deathsEl.textContent = localStorage.getItem("stormfire_deaths") || "0";
+  if (levelEl) levelEl.textContent = localStorage.getItem("stormfire_level") || "1";
+  if (realmEl) realmEl.textContent = localStorage.getItem("stormfire_realm") || "Ewiger Bund";
 })();
