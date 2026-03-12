@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-
 <div class="layout">
 
   <aside class="sideNav">
@@ -18,7 +17,6 @@
         <div class="brandSub">MMORPG PORTAL</div>
       </div>
     </div>
-
     <nav class="navGroup">
       <a class="navbtn" href="./index.html">Home</a>
       <a class="navbtn" href="./news.html">News</a>
@@ -31,58 +29,33 @@
       <a class="navbtn" href="./discord.html">Discord</a>
       <a class="navbtn" href="./launcher.html">Launcher</a>
       <a class="navbtn" href="./impressum.html">Impressum</a>
+      <a class="navbtn" href="./datenschutz.html">Datenschutz</a>
     </nav>
   </aside>
 
   <main class="content">
     <div class="eyebrow">Ranglisten • Fortschritt • Spieler</div>
     <h1 class="heroTitle">Leaderboard</h1>
-
     <p class="heroText">
-      Hier können später Ranglisten für Charaktere, Fraktionen, PvP, PvE, Erfolge oder andere Stormfire-Systeme dargestellt werden.
+      Hier können später Ranglisten für Charaktere, Fraktionen, PvP, PvE und weitere Stormfire-Systeme dargestellt werden.
     </p>
 
     <div class="cards">
       <div class="card">
         <h3>Charakter-Ranglisten</h3>
-        <p>
-          Später können hier die stärksten oder fortgeschrittensten Charaktere nach Realm, Fraktion oder Fortschritt gelistet werden.
-        </p>
+        <p>Später können hier die stärksten oder fortgeschrittensten Charaktere nach Realm oder Fraktion gelistet werden.</p>
       </div>
-
       <div class="card">
         <h3>PvP & PvE</h3>
-        <p>
-          Arena-Wertungen, Dungeon-Fortschritte, Raid-Erfolge und weitere Wettbewerbsdaten können später hier sichtbar werden.
-        </p>
+        <p>Arena-Wertungen, Dungeon-Fortschritte, Raid-Erfolge und weitere Wettbewerbsdaten können hier sichtbar werden.</p>
       </div>
-
       <div class="card">
         <h3>Fraktionsvergleich</h3>
-        <p>
-          Auch Fraktionsstände, Realm-bezogene Unterschiede oder besondere Meilensteine lassen sich später in Leaderboards abbilden.
-        </p>
+        <p>Auch Fraktionsstände, Realm-Unterschiede oder besondere Meilensteine lassen sich später darstellen.</p>
       </div>
-
       <div class="card">
         <h3>Status</h3>
-        <p>
-          Aktuell dient diese Seite als Grundlage für spätere Ranglisten-Systeme und die Anbindung an echte Spieldaten.
-        </p>
-      </div>
-    </div>
-
-    <div class="postCard">
-      <div class="meta">Vorschau</div>
-      <h2>Zukünftige Ranglisten</h2>
-      <p>
-        Sobald weitere Spielsysteme live angebunden sind, kann diese Seite echte Rankings direkt aus der Datenbank oder aus den Realm-Systemen laden.
-      </p>
-      <div class="tags">
-        <span class="tag">Leaderboard</span>
-        <span class="tag">PvE</span>
-        <span class="tag">PvP</span>
-        <span class="tag">Realm</span>
+        <p>Aktuell dient diese Seite als Grundlage für spätere Ranglisten-Systeme und echte Datenanbindung.</p>
       </div>
     </div>
   </main>
@@ -91,65 +64,27 @@
     <div class="statusMini">Live Status</div>
     <h2>Realm Server</h2>
     <div class="statusSub">Automatisch aus Supabase geladen.</div>
-
     <div class="hr"></div>
-
-    <div class="statusRow">
-      <span>Status</span>
-      <span class="statusValue"><span id="statusDot" class="bad"></span> <span id="statusText">Lädt...</span></span>
-    </div>
-
-    <div class="statusRow">
-      <span>Login / Datenbank</span>
-      <span id="loginStatus" class="statusValue">Lädt...</span>
-    </div>
-
-    <div class="statusRow">
-      <span>Realm Server</span>
-      <span id="realmName" class="statusValue">Lädt...</span>
-    </div>
-
-    <div class="statusRow">
-      <span>Spieler gesamt</span>
-      <span id="playersTotal" class="statusValue">0</span>
-    </div>
-
-    <div class="statusRow">
-      <span>Drachenbund</span>
-      <span id="faction1" class="statusValue">0</span>
-    </div>
-
-    <div class="statusRow">
-      <span>Wolfsmark</span>
-      <span id="faction2" class="statusValue">0</span>
-    </div>
-
-    <div class="statusRow">
-      <span>Spieler online</span>
-      <span id="playersOnline" class="statusValue">0</span>
-    </div>
-
-    <div class="statusRow">
-      <span>Queue / Besuche</span>
-      <span id="capacity" class="statusValue">0</span>
-    </div>
-
+    <div class="statusRow"><span>Status</span><span class="statusValue"><span id="statusDot" class="bad"></span> <span id="statusText">Lädt...</span></span></div>
+    <div class="statusRow"><span>Login / Datenbank</span><span id="loginStatus" class="statusValue">Lädt...</span></div>
+    <div class="statusRow"><span>Realm Server</span><span id="realmName" class="statusValue">Lädt...</span></div>
+    <div class="statusRow"><span>Spieler gesamt</span><span id="playersTotal" class="statusValue">0</span></div>
+    <div class="statusRow"><span>Drachenbund</span><span id="faction1" class="statusValue">0</span></div>
+    <div class="statusRow"><span>Wolfsmark</span><span id="faction2" class="statusValue">0</span></div>
+    <div class="statusRow"><span>Spieler online</span><span id="playersOnline" class="statusValue">0</span></div>
+    <div class="statusRow"><span>Queue / Besuche</span><span id="capacity" class="statusValue">0</span></div>
     <div class="hr"></div>
-
     <h3>Realm Übersicht</h3>
     <div class="realmOverview">
       <div class="realmStat"><span class="dot good"></span><span id="onlineRealms">0</span> online</div>
       <div class="realmStat"><span class="dot bad"></span><span id="offlineRealms">0</span> offline</div>
     </div>
-
     <div class="hr"></div>
-
     <h3>Alle Realms</h3>
     <div id="realmList" class="realmList">
       <div class="muted">Realm-Daten werden geladen...</div>
       <div class="muted">Verbindung wird aufgebaut...</div>
     </div>
-
     <div class="hr"></div>
     <div id="lastUpdated" class="muted">Letztes Update: Lädt...</div>
   </aside>
