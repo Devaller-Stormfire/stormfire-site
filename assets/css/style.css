@@ -236,12 +236,12 @@ img{max-width:100%;display:block}
   border:1px solid rgba(255,255,255,.06);
 }
 
-.discordFrame{
-  width:100%;
-  min-height:520px;
+.discordBox{
+  min-height:320px;
   border:1px solid var(--line);
-  border-radius:22px;
-  background:rgba(255,255,255,.02);
+  border-radius:20px;
+  padding:22px;
+  background:rgba(255,255,255,.03);
 }
 
 .statusPanel{
