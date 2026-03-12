@@ -1,6 +1,4 @@
 (function () {
-  console.log("[status.js] loaded");
-
   const SUPABASE_URL = "https://furuovwvtbbgedxqukzz.supabase.co";
   const SUPABASE_ANON_KEY = "sb_publishable_GmsSvpE-8xoRVsgePDIrsQ_p-jH5gQ2";
 
@@ -27,7 +25,6 @@
   function setBadge(state, text) {
     const dot = $("statusDot");
     const label = $("statusText");
-
     if (!dot || !label) return;
 
     dot.classList.remove("good", "warn", "bad");
@@ -48,10 +45,7 @@
       cache: "no-store"
     });
 
-    if (!res.ok) {
-      throw new Error(`HTTP ${res.status} for ${url}`);
-    }
-
+    if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
     return await res.json();
   }
 
@@ -99,21 +93,11 @@
 
   async function loadStatus() {
     try {
-      console.log("[status.js] fetching...");
-
       const [realms, characters, drachenbund, wolfsmark] = await Promise.all([
-        fetchJson(
-          `${SUPABASE_URL}/rest/v1/site_realm_status?select=realm_key,online,players_online,queue_size,last_heartbeat,updated_at`
-        ),
-        fetchJson(
-          `${SUPABASE_URL}/rest/v1/characters?select=id`
-        ),
-        fetchJson(
-          `${SUPABASE_URL}/rest/v1/characters?select=id&faction=eq.Drachenbund`
-        ),
-        fetchJson(
-          `${SUPABASE_URL}/rest/v1/characters?select=id&faction=eq.Wolfsmark`
-        )
+        fetchJson(`${SUPABASE_URL}/rest/v1/site_realm_status?select=realm_key,online,players_online,queue_size,last_heartbeat,updated_at`),
+        fetchJson(`${SUPABASE_URL}/rest/v1/characters?select=id`),
+        fetchJson(`${SUPABASE_URL}/rest/v1/characters?select=id&faction=eq.Drachenbund`),
+        fetchJson(`${SUPABASE_URL}/rest/v1/characters?select=id&faction=eq.Wolfsmark`)
       ]);
 
       const onlineRealms = realms.filter(r => !!r.online).length;
@@ -122,7 +106,6 @@
       const mainRealm = realms.find(r => r.online) || realms[0];
 
       setBadge(onlineRealms > 0 ? "online" : "offline", onlineRealms > 0 ? "ONLINE" : "OFFLINE");
-
       setText("loginStatus", "ONLINE");
       setText("realmName", mainRealm ? (REALM_DISPLAY[mainRealm.realm_key] || mainRealm.realm_key) : "—");
       setText("playersTotal", formatNumber(characters.length));
@@ -134,19 +117,9 @@
       setText("offlineRealms", formatNumber(offlineRealms));
 
       const last = mainRealm?.updated_at || mainRealm?.last_heartbeat;
-      setText(
-        "lastUpdated",
-        "Letztes Update: " + (last ? new Date(last).toLocaleString("de-DE") : new Date().toLocaleString("de-DE"))
-      );
+      setText("lastUpdated", "Letztes Update: " + (last ? new Date(last).toLocaleString("de-DE") : new Date().toLocaleString("de-DE")));
 
       renderRealmList(realms);
-
-      console.log("[status.js] success", {
-        onlineRealms,
-        offlineRealms,
-        totalOnlinePlayers,
-        characters: characters.length
-      });
     } catch (err) {
       console.error("[status.js] error", err);
       setBadge("offline", "DATENFEHLER");
