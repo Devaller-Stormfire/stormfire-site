@@ -7,17 +7,16 @@
   <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-
 <div class="layout">
 
   <aside class="sideNav">
-    <div class="brand">
+    <a class="brand" href="./index.html">
       <img src="./assets/images/logo.png" alt="Stormfire Logo">
       <div>
         <div class="brandTitle">STORMFIRE</div>
         <div class="brandSub">MMORPG PORTAL</div>
       </div>
-    </div>
+    </a>
 
     <nav class="navGroup">
       <a class="navbtn" href="./index.html">Home</a>
@@ -28,9 +27,12 @@
       <a class="navbtn" href="./galerie.html">Galerie</a>
       <a class="navbtn" href="./geschichte.html">Geschichte</a>
       <a class="navbtn" href="./team.html">Team</a>
+      <a class="navbtn" href="./bewerbung.html">Bewerbung</a>
+      <a class="navbtn" href="./account.html">Account ansehen</a>
       <a class="navbtn" href="./discord.html">Discord</a>
       <a class="navbtn" href="./launcher.html">Launcher</a>
       <a class="navbtn" href="./impressum.html">Impressum</a>
+      <a class="navbtn" href="./datenschutz.html">Datenschutz</a>
     </nav>
   </aside>
 
@@ -39,21 +41,23 @@
     <h1 class="heroTitle">Datenschutz</h1>
 
     <p class="heroText">
-      Hier können später die finalen Datenschutzinformationen für Website, Kontaktformulare, externe Dienste und gegebenenfalls Spiel- oder Account-bezogene Daten ergänzt werden.
+      Hier können später die finalen Datenschutzinformationen für Website,
+      Kontaktformulare und weitere Dienste ergänzt werden.
     </p>
 
     <div class="postCard">
       <h2>Allgemeine Hinweise</h2>
       <p>
-        Diese Seite dient als Platzhalter für die zukünftige Datenschutzerklärung von STORMFIRE. Hier können später Informationen zu gespeicherten Daten,
-        Kontaktwegen, Serverdiensten, Analyse- oder Hosting-Diensten eingetragen werden.
+        Diese Seite dient als Platzhalter für die zukünftige Datenschutzerklärung
+        von STORMFIRE.
       </p>
     </div>
 
     <div class="postCard">
       <h2>Projekt & Website</h2>
       <p>
-        Falls Formulare, Accountbereiche oder weitere Dienste ergänzt werden, kann diese Seite entsprechend erweitert und rechtlich finalisiert werden.
+        Falls Formulare, Accountbereiche oder weitere Dienste ergänzt werden,
+        kann diese Seite entsprechend erweitert werden.
       </p>
     </div>
   </main>
@@ -62,12 +66,14 @@
     <div class="statusMini">Live Status</div>
     <h2>Realm Server</h2>
     <div class="statusSub">Automatisch aus Supabase geladen.</div>
-
     <div class="hr"></div>
 
     <div class="statusRow">
       <span>Status</span>
-      <span class="statusValue"><span id="statusDot" class="bad"></span> <span id="statusText">Lädt...</span></span>
+      <span class="statusValue">
+        <span id="statusDot" class="bad"></span>
+        <span id="statusText">Lädt...</span>
+      </span>
     </div>
 
     <div class="statusRow">
@@ -109,8 +115,14 @@
 
     <h3>Realm Übersicht</h3>
     <div class="realmOverview">
-      <div class="realmStat"><span class="dot good"></span><span id="onlineRealms">0</span> online</div>
-      <div class="realmStat"><span class="dot bad"></span><span id="offlineRealms">0</span> offline</div>
+      <div class="realmStat">
+        <span class="dot good"></span>
+        <span id="onlineRealms">0</span> online
+      </div>
+      <div class="realmStat">
+        <span class="dot bad"></span>
+        <span id="offlineRealms">0</span> offline
+      </div>
     </div>
 
     <div class="hr"></div>
@@ -118,7 +130,6 @@
     <h3>Alle Realms</h3>
     <div id="realmList" class="realmList">
       <div class="muted">Realm-Daten werden geladen...</div>
-      <div class="muted">Verbindung wird aufgebaut...</div>
     </div>
 
     <div class="hr"></div>
