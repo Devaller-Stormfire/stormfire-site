@@ -10,13 +10,14 @@
 <div class="layout">
 
   <aside class="sideNav">
-    <div class="brand">
+    <a class="brand" href="./index.html">
       <img src="./assets/images/logo.png" alt="Stormfire Logo">
       <div>
         <div class="brandTitle">STORMFIRE</div>
         <div class="brandSub">MMORPG PORTAL</div>
       </div>
-    </div>
+    </a>
+
     <nav class="navGroup">
       <a class="navbtn" href="./index.html">Home</a>
       <a class="navbtn" href="./news.html">News</a>
@@ -26,6 +27,8 @@
       <a class="navbtn" href="./galerie.html">Galerie</a>
       <a class="navbtn" href="./geschichte.html">Geschichte</a>
       <a class="navbtn" href="./team.html">Team</a>
+      <a class="navbtn" href="./bewerbung.html">Bewerbung</a>
+      <a class="navbtn" href="./account.html">Account ansehen</a>
       <a class="navbtn" href="./discord.html">Discord</a>
       <a class="navbtn" href="./launcher.html">Launcher</a>
       <a class="navbtn" href="./impressum.html">Impressum</a>
@@ -36,8 +39,10 @@
   <main class="content">
     <div class="eyebrow">Planung • Meilensteine • Entwicklung</div>
     <h1 class="heroTitle">Stormfire Roadmap</h1>
+
     <p class="heroText">
-      Die Roadmap zeigt die aktuelle Entwicklungsrichtung und die nächsten Meilensteine von STORMFIRE.
+      Die Roadmap zeigt die aktuelle Entwicklungsrichtung und die nächsten
+      Meilensteine von STORMFIRE.
     </p>
 
     <div class="imageCard">
@@ -56,26 +61,71 @@
     <h2>Realm Server</h2>
     <div class="statusSub">Automatisch aus Supabase geladen.</div>
     <div class="hr"></div>
-    <div class="statusRow"><span>Status</span><span class="statusValue"><span id="statusDot" class="bad"></span> <span id="statusText">Lädt...</span></span></div>
-    <div class="statusRow"><span>Login / Datenbank</span><span id="loginStatus" class="statusValue">Lädt...</span></div>
-    <div class="statusRow"><span>Realm Server</span><span id="realmName" class="statusValue">Lädt...</span></div>
-    <div class="statusRow"><span>Spieler gesamt</span><span id="playersTotal" class="statusValue">0</span></div>
-    <div class="statusRow"><span>Drachenbund</span><span id="faction1" class="statusValue">0</span></div>
-    <div class="statusRow"><span>Wolfsmark</span><span id="faction2" class="statusValue">0</span></div>
-    <div class="statusRow"><span>Spieler online</span><span id="playersOnline" class="statusValue">0</span></div>
-    <div class="statusRow"><span>Queue / Besuche</span><span id="capacity" class="statusValue">0</span></div>
+
+    <div class="statusRow">
+      <span>Status</span>
+      <span class="statusValue">
+        <span id="statusDot" class="bad"></span>
+        <span id="statusText">Lädt...</span>
+      </span>
+    </div>
+
+    <div class="statusRow">
+      <span>Login / Datenbank</span>
+      <span id="loginStatus" class="statusValue">Lädt...</span>
+    </div>
+
+    <div class="statusRow">
+      <span>Realm Server</span>
+      <span id="realmName" class="statusValue">Lädt...</span>
+    </div>
+
+    <div class="statusRow">
+      <span>Spieler gesamt</span>
+      <span id="playersTotal" class="statusValue">0</span>
+    </div>
+
+    <div class="statusRow">
+      <span>Drachenbund</span>
+      <span id="faction1" class="statusValue">0</span>
+    </div>
+
+    <div class="statusRow">
+      <span>Wolfsmark</span>
+      <span id="faction2" class="statusValue">0</span>
+    </div>
+
+    <div class="statusRow">
+      <span>Spieler online</span>
+      <span id="playersOnline" class="statusValue">0</span>
+    </div>
+
+    <div class="statusRow">
+      <span>Queue / Besuche</span>
+      <span id="capacity" class="statusValue">0</span>
+    </div>
+
     <div class="hr"></div>
+
     <h3>Realm Übersicht</h3>
     <div class="realmOverview">
-      <div class="realmStat"><span class="dot good"></span><span id="onlineRealms">0</span> online</div>
-      <div class="realmStat"><span class="dot bad"></span><span id="offlineRealms">0</span> offline</div>
+      <div class="realmStat">
+        <span class="dot good"></span>
+        <span id="onlineRealms">0</span> online
+      </div>
+      <div class="realmStat">
+        <span class="dot bad"></span>
+        <span id="offlineRealms">0</span> offline
+      </div>
     </div>
+
     <div class="hr"></div>
+
     <h3>Alle Realms</h3>
     <div id="realmList" class="realmList">
       <div class="muted">Realm-Daten werden geladen...</div>
-      <div class="muted">Verbindung wird aufgebaut...</div>
     </div>
+
     <div class="hr"></div>
     <div id="lastUpdated" class="muted">Letztes Update: Lädt...</div>
   </aside>
