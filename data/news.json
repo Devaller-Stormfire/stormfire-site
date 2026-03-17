@@ -1,6 +1,16 @@
 {
-  "updated_at": "2026-03-08T23:00:00+01:00",
+  "updated_at": "2026-03-17T11:00:00+01:00",
   "posts": [
+    {
+      "id": "devlog-009",
+      "type": "Devlog",
+      "title": "World HUD und nächste Gameplay-Systeme",
+      "date": "2026-03-17",
+      "ts": "2026-03-17T11:00:00+01:00",
+      "author": "Stormfire Team",
+      "tags": ["HUD", "Interface", "Gameplay"],
+      "body": "Die Entwicklung von STORMFIRE schreitet weiter voran und der Fokus liegt aktuell auf der World Scene und den grundlegenden Gameplay-Systemen.\n\nNach dem erfolgreichen Spawn der Charaktere in der Welt arbeiten wir nun am nächsten großen Baustein: dem World HUD. Dieses Interface bildet später die zentrale Steuerung für Fähigkeiten, Aktionen und verschiedene Gameplay-Elemente.\n\nDas HUD wird vollständig über Code generiert. Dadurch kann sich das Interface automatisch an unterschiedliche Bildschirmgrößen und Auflösungen anpassen, ohne dass für jede Szene manuell UI-Elemente erstellt werden müssen.\n\nAktuell entstehen die ersten grundlegenden Elemente wie Actionbars, Interface-Strukturen und die Basis für zukünftige Systeme wie Questlog, Optionen und Charakterübersicht.\n\nParallel dazu laufen weitere Arbeiten an der Welt selbst. Neue Objekte, Umgebungsdetails und technische Grundlagen werden Schritt für Schritt ergänzt, damit sich die Welt von STORMFIRE immer lebendiger anfühlt.\n\nSobald das HUD stabil läuft, beginnen wir mit dem nächsten großen Entwicklungsschritt: dem Combat System. Dieses System wird später Kämpfe, Zielerfassung und Fähigkeiten miteinander verbinden und damit das eigentliche Gameplay von STORMFIRE ermöglichen."
+    },
     {
       "id": "devlog-008",
       "type": "Devlog",
